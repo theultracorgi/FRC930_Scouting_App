@@ -1,0 +1,82 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.RandomAccessFile;
+
+public class AutonWidgetGenerator {
+
+	
+	static FileWriter aXMLWriter;
+	static FileWriter aJavaWriter;
+	
+	
+	public static void autonCounterGenerator(String displayText, int startNum, String counterText){
+		try {
+			aXMLWriter = new FileWriter(Init.aXML);
+			aJavaWriter = new FileWriter(Init.aJava); 
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			aJavaWriter.append("sup");
+			aJavaWriter.append("suppers");
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	/*	try {
+			RandomAccessFile raf = new RandomAccessFile(Init.aXML, "rw");	
+			
+			try {
+				raf.seek(raf.length());
+				raf.close();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} 
+			
+		} catch (FileNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		try {
+			RandomAccessFile raf = new RandomAccessFile(Init.aJava, "rw");	
+			
+			try {
+				raf.seek(raf.length());
+				raf.close();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} 
+			
+		} catch (FileNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}*/
+}
+
+	
+	public static void autonRadioButtonGenerator(String displayText, int numButtons){
+		try {
+			aXMLWriter = new FileWriter(Init.aXML);
+			aJavaWriter = new FileWriter(Init.aJava); 
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			RandomAccessFile raf = new RandomAccessFile(Init.aJava, "rw");
+			raf.seek(raf.length());
+			aJavaWriter.append("sund");
+			aJavaWriter.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+}

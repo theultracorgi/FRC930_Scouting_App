@@ -6,42 +6,34 @@ import java.io.RandomAccessFile;
 
 public class AutonWidgetGenerator {
 
-	
-	static FileWriter aXMLWriter;
-	static FileWriter aJavaWriter;
+
 	
 	
 	public static void autonCounterGenerator(String displayText, int startNum, String counterText){
+		
 		try {
-			aXMLWriter = new FileWriter(Init.aXML);
-			aJavaWriter = new FileWriter(Init.aJava); 
+			Setup.aJavaWriter.append("sup");
+			Setup.aJavaWriter.append("suppies");
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	
+}
+
+	
+	public static void autonRadioButtonGenerator(String displayText, int numButtons){
+		
 		try {
-			RandomAccessFile raf = new RandomAccessFile(Init.aXML, "rw");	
+			RandomAccessFile raf = new RandomAccessFile(Setup.aJava, "rw");
+			raf.seek(raf.length());
+			Setup.aJavaWriter.append("sund");
 			
-			try {
-				raf.seek(raf.length());
-			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			} 
-			
-		} catch (FileNotFoundException e1) {
+		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e1.printStackTrace();
+			e.printStackTrace();
 		}
 	}
 	
-	public static void autonRadioButtonGenerator(String displayText, int numButtons, String[] buttonLabels){
-		try {
-			aXMLWriter = new FileWriter(Init.aXML);
-			aJavaWriter = new FileWriter(Init.aJava); 
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
 }

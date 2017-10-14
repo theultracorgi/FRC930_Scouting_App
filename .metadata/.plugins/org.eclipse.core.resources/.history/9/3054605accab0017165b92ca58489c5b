@@ -1,0 +1,11 @@
+
+public class Main {
+	static String[] buff = new String[10];
+	public static void main(String[] args) {
+		Init.autonInit();
+		Init.teleopInit();
+		AutonWidgetGenerator.autonCounterGenerator("sup", 1, "ma dude");
+		AutonWidgetGenerator.autonRadioButtonGenerator("s", 4, buff[]);
+	}
+
+}
