@@ -1,0 +1,3 @@
+EACH ITEM = 4dp left right
+SUBITEM = 6dp bottom of top subitem
+Image divider = 8dp top/bottom

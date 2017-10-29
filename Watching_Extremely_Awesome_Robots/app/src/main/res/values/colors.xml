@@ -2,6 +2,17 @@
 <resources>
     <color name="colorPrimary">#002699</color>
     <color name="colorPrimaryDark">#303f9f</color>
-    <color name="colorAccent">#303f9f</color>
-    <color name="background_material_light">#292929</color>
+    <color name="colorAccent">#3366FF</color>
+    <color name="background_material_dark">#282828</color>
+    <color name="Button">#3366ff</color>
+    <color name="textLight">#ffffff</color>
+    <color name="divider">#4b4b4b</color>
+    <color name="toggleOn">#3366ff</color>
+    <color name="toggleOff">#0036d7</color>
+    <color name="textBox">#D7DDEA</color>
+
+
+
+
+
 </resources>
