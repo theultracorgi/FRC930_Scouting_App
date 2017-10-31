@@ -4,7 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_material_dark">
+    android:background="@color/background_material">
+
+
+
 
     <ScrollView
         android:id="@+id/titleWindow"
@@ -18,7 +21,6 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             tools:ignore="ScrollViewSize"
-
             >
 
             <ImageView
@@ -32,9 +34,9 @@
                 android:id="@+id/unlimitedCounter"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
                 android:layout_marginLeft="4dp"
-                android:layout_marginRight="4dp">
+                android:layout_marginRight="4dp"
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -50,7 +52,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight=".7"
                         android:background="@color/textBox"
-                        android:gravity="center"
+                        android:textColor="@color/textLight"
                         android:maxLines="1"
                         android:padding="5dp"
                         android:text="objectsToCount"
@@ -63,7 +65,7 @@
                         android:layout_height="fill_parent"
                         android:layout_marginRight="8dp"
                         android:layout_weight=".3"
-                        android:background="@color/background_material_dark"
+                        android:background="@color/background_material"
                         android:maxLines="1"
                         android:padding="5dp"
                         android:text=""
@@ -121,7 +123,6 @@
                 android:layout_marginTop="8dp"
                 android:background="@color/divider" />
 
-
             <LinearLayout
                 android:id="@+id/taskToggle"
                 android:layout_width="match_parent"
@@ -138,6 +139,7 @@
                     android:layout_marginRight="8dp"
                     android:layout_weight=".7"
                     android:background="@color/textBox"
+                    android:textColor="@color/textLight"
                     android:maxLines="1"
                     android:padding="5dp"
                     android:text="condition"
@@ -150,13 +152,15 @@
                     android:layout_width="0dp"
                     android:layout_height="fill_parent"
                     android:layout_weight=".3"
-                    android:background="@drawable/toggle_button"
+                    android:background="@drawable/toggle_button_at"
+                    android:textOn="Met"
+                    android:textOff="Not Met"
 
                     />
 
 
-
             </LinearLayout>
+
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="7dp"
@@ -168,16 +172,15 @@
                 android:id="@+id/limitedCounter"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
                 android:layout_marginLeft="4dp"
                 android:layout_marginRight="4dp"
-                >
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
                     android:layout_marginBottom="6dp"
+                    android:orientation="horizontal"
 
                     >
 
@@ -187,10 +190,78 @@
                         android:layout_height="wrap_content"
                         android:layout_weight=".7"
                         android:background="@color/textBox"
-                        android:gravity="center"
+                        android:textColor="@color/textLight"
                         android:maxLines="1"
                         android:padding="5dp"
                         android:text="objectsToCount"
+                        android:textSize="30dp"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/displaySeek"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_marginRight="8dp"
+                        android:layout_weight=".3"
+                        android:background="@color/background_material"
+                        android:maxLines="1"
+                        android:padding="5dp"
+                        android:layout_gravity="center"
+                        android:text="numseek"
+                        android:textColor="#ffffff"
+                        android:textSize="30dp" />
+
+
+                </LinearLayout>
+
+                <SeekBar
+                    android:id="@+id/numItems"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:max="13"
+
+                    />
+
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="7dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/divider" />
+
+            <LinearLayout
+                android:id="@+id/radioState"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp"
+                android:orientation="vertical"
+
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="6dp"
+                    android:orientation="horizontal"
+
+                    >
+
+                    <TextView
+                        android:id="@+id/state"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".7"
+                        android:background="@color/textBox"
+                        android:textColor="@color/textLight"
+                        android:maxLines="1"
+                        android:padding="5dp"
+                        android:text="state"
                         android:textSize="30dp"
 
                         />
@@ -200,28 +271,113 @@
                         android:layout_height="fill_parent"
                         android:layout_marginRight="8dp"
                         android:layout_weight=".3"
-                        android:background="@color/background_material_dark"
+                        android:background="@color/background_material"
                         android:maxLines="1"
                         android:padding="5dp"
-                        android:text="numseek"
+                        android:text=""
                         android:textColor="#ffffff"
                         android:textSize="30dp" />
-
-
                 </LinearLayout>
 
-                <SeekBar
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:max="13"
+                    android:orientation="horizontal">
 
-                    />
+                    <RadioGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:checkedButton="@id/state1">
+
+                        <RadioButton
+                            android:id="@+id/state1"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:text="State1"
+                            android:textColor="@color/textLight"
+                            android:textSize="20dp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/state2"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:text="State2"
+                            android:textSize="20dp"
+                            android:textColor="@color/textLight"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/state3"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:text="State3"
+                            android:textSize="20dp"
+                            android:textColor="@color/textLight"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/state4"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:text="State4"
+                            android:textSize="20dp"
+                            android:textColor="@color/textLight"
+                            />
+                    </RadioGroup>
+                </LinearLayout>
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="7dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/divider" />
+
+            <LinearLayout
+                android:id="@+id/dropOp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp"
+                >
+                <TextView
+                    android:id="@+id/listType"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="8dp"
+                    android:layout_weight=".7"
+                    android:background="@color/textBox"
+                    android:textColor="@color/textLight"
+                    android:maxLines="1"
+                    android:padding="5dp"
+                    android:text="listType"
+                    android:textSize="30dp"/>
+                <Spinner
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight=".3"
+                    android:entries="@array/test_array"
+                    >
+                </Spinner>
 
             </LinearLayout>
 
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="7dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/divider" />
+
         </LinearLayout>
-
     </ScrollView>
-
 </RelativeLayout>
 

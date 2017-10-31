@@ -1,3 +1,15 @@
 <resources>
-    <string name="app_name">Watching_Extremely_Awesome_Robots</string>
+<string name="app_name">Watching_Extremely_Awesome_Robots</string>
+
+<string-array name="test_array">
+    <item>option1</item>
+    <item>option2</item>
+    <item>option3</item>
+    <item>option4</item>
+    <item>option5</item>
+    <item>option6</item>
+    <item>option7</item>
+    <item>option8</item>
+</string-array>
+
 </resources>
