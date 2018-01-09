@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_material">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:background="@color/background_material"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@color/background_material"
+            android:paddingLeft="8dp"
+            android:paddingTop="4dp"
+            android:text="Post Match"
+            android:textSize="30dp" />
+
+        <LinearLayout
+            android:id="@+id/matchResultCluster"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_corners_chunk_material"
+            android:orientation="horizontal"
+            android:paddingBottom="10dp"
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp"
+            android:paddingTop="10dp">
+
+            <TextView
+                android:id="@+id/matchResultView"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center"
+                android:layout_marginRight="8dp"
+                android:layout_weight=".7"
+                android:background="@color/white"
+                android:maxLines="1"
+                android:padding="5dp"
+                android:text="Match Result"
+                android:textColor="@color/textMedium"
+                android:textSize="30dp"
+
+                />
+
+            <ToggleButton
+                android:id="@+id/winLossButton"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight=".3"
+                android:background="@drawable/toggle_button_winloss"
+                android:textOff="Loss"
+                android:textOn="Win"
+                android:checked="true"
+                />
+
+
+
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="16dp"
+            android:background="@color/background_material" />
+
+
+        <LinearLayout
+            android:id="@+id/commentCluster"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_corners_chunk_material"
+            android:orientation="vertical"
+            android:paddingBottom="10dp"
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp"
+            android:paddingTop="10dp">
+
+            <TextView
+                android:id="@+id/commentView"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_marginRight="8dp"
+                android:layout_weight=".7"
+                android:background="@color/white"
+                android:maxLines="1"
+                android:padding="5dp"
+                android:text="Comments"
+                android:textColor="@color/textMedium"
+                android:textSize="30dp"
+
+                />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:hint="Was very fast, bad drivers, accurate etc."
+                />
+
+        </LinearLayout>
+
+       <!-- <Button
+            android:id="@+id/submitData"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/lightBlue"
+            android:text="Next"
+            android:onClick="goToTeleop"
+        />-->
+
+    </LinearLayout>
+
+
+</RelativeLayout>
