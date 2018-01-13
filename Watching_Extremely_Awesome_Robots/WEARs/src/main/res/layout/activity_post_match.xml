@@ -12,8 +12,7 @@
         android:layout_marginLeft="2dp"
         android:layout_marginRight="2dp"
         android:background="@color/background_material"
-        android:orientation="vertical"
-        >
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="match_parent"
@@ -44,7 +43,8 @@
                 android:layout_weight=".7"
                 android:background="@color/white"
                 android:maxLines="1"
-                android:padding="5dp"
+                android:paddingLeft="11dp"
+                android:paddingRight="4dp"
                 android:text="Match Result"
                 android:textColor="@color/textMedium"
                 android:textSize="30dp"
@@ -57,21 +57,61 @@
                 android:layout_height="fill_parent"
                 android:layout_weight=".3"
                 android:background="@drawable/toggle_button_winloss"
-                android:textOff="Loss"
-                android:textOn="Win"
                 android:checked="true"
-                />
+                android:textOff="Loss"
+                android:textOn="Win" />
 
 
-
-
-        </LinearLayout>
+        </LinearLayout> <!--Match Result-->
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="16dp"
+            android:layout_height="1dp"
             android:background="@color/background_material" />
 
+        <LinearLayout
+            android:id="@+id/tDisabled"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_corners_chunk_material"
+            android:orientation="horizontal"
+            android:paddingBottom="10dp"
+            android:paddingLeft="11dp"
+            android:paddingRight="4dp"
+            android:paddingTop="10dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center"
+                android:layout_marginRight="8dp"
+                android:layout_weight=".7"
+                android:background="@color/white"
+                android:maxLines="1"
+                android:padding="5dp"
+                android:text="Disabled"
+                android:textColor="@color/textMedium"
+                android:textSize="30dp"
+
+                />
+
+            <ToggleButton
+                android:id="@+id/disabled"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight=".3"
+                android:background="@drawable/toggle_button_at"
+                android:textOff="Not Disabled"
+                android:textOn="Disabled"
+
+                />
+
+        </LinearLayout> <!--Disabled-->
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/background_material" />
 
         <LinearLayout
             android:id="@+id/commentCluster"
@@ -80,7 +120,7 @@
             android:background="@drawable/rounded_corners_chunk_material"
             android:orientation="vertical"
             android:paddingBottom="10dp"
-            android:paddingLeft="4dp"
+            android:paddingLeft="11dp"
             android:paddingRight="4dp"
             android:paddingTop="10dp">
 
@@ -93,7 +133,8 @@
                 android:layout_weight=".7"
                 android:background="@color/white"
                 android:maxLines="1"
-                android:padding="5dp"
+                android:paddingLeft="11dp"
+                android:paddingRight="5dp"
                 android:text="Comments"
                 android:textColor="@color/textMedium"
                 android:textSize="30dp"
@@ -103,20 +144,39 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="16dp"
                 android:hint="Was very fast, bad drivers, accurate etc."
-                />
+                android:padding="16dp" />
 
-        </LinearLayout>
+        </LinearLayout> <!--Comments-->
 
-       <!-- <Button
-            android:id="@+id/submitData"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/lightBlue"
-            android:text="Next"
-            android:onClick="goToTeleop"
-        />-->
+            android:layout_height="match_parent"
+            android:background="@color/background_material"
+            android:gravity="center|bottom"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/finish"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_corners_chunk_material"
+                android:orientation="vertical"
+                android:paddingBottom="10dp"
+                android:paddingLeft="4dp"
+                android:paddingRight="4dp"
+                android:paddingTop="10dp">
+
+                <Button
+                    android:id="@+id/submitData"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/lightBlue"
+                    android:onClick="goToTeleop"
+                    android:text="Submit Data" />
+            </LinearLayout>
+
+        </LinearLayout> <!--Next-->
 
     </LinearLayout>
 

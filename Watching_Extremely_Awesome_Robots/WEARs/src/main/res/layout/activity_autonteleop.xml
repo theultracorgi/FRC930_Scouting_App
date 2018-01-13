@@ -8,12 +8,12 @@
 
 
     <ScrollView
-        tools:ignore="UselessParent"
         android:id="@+id/titleWindow"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true">
+        android:layout_alignParentTop="true"
+        tools:ignore="UselessParent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -21,6 +21,8 @@
             android:layout_marginLeft="2dp"
             android:layout_marginRight="2dp"
             android:orientation="vertical">
+
+            <!--AUTONOMOUS-->
 
             <TextView
                 android:layout_width="match_parent"
@@ -31,35 +33,77 @@
                 android:textSize="30dp" />
 
             <LinearLayout
-                android:id="@+id/unlimitedCounter"
+                android:id="@+id/autoLine"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_corners_chunk_material"
+                android:orientation="horizontal"
+                android:paddingBottom="10dp"
+                android:paddingLeft="11dp"
+                android:paddingRight="4dp"
+                android:paddingTop="10dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="8dp"
+                    android:layout_weight=".7"
+                    android:background="@color/white"
+                    android:maxLines="1"
+                    android:padding="5dp"
+                    android:text="AutoLine"
+                    android:textColor="@color/textMedium"
+                    android:textSize="30dp"
+
+                    />
+
+                <ToggleButton
+                    android:id="@+id/crossedAutoline"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight=".3"
+                    android:background="@drawable/toggle_button_at"
+                    android:textOff="Not Crossed"
+                    android:textOn="Crossed"
+
+                    />
+
+            </LinearLayout> <!--AutoLine-->
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/background_material" />
+
+            <LinearLayout
+                android:id="@+id/aSwitch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded_corners_chunk_material"
                 android:orientation="vertical"
                 android:paddingBottom="10dp"
-                android:paddingTop="10dp"
+                android:paddingTop="5dp"
 
                 >
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
+                    android:layout_height="0dp"
+                    android:layout_weight=".8"
                     android:orientation="horizontal"
-                    android:paddingLeft="4dp"
-                    android:paddingRight="4dp"
-
-                    >
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="11dp"
+                    android:paddingRight="10dp">
 
                     <TextView
-                        android:id="@+id/unlimitedItemType"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight=".7"
+                        android:layout_weight=".75"
                         android:background="@color/white"
-                        android:maxLines="1"
-                        android:padding="5dp"
-                        android:text="objectsToCount"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="15dp"
+                        android:text="Cubes on Switch"
                         android:textColor="@color/textMedium"
                         android:textSize="30dp"
 
@@ -69,34 +113,31 @@
                         android:layout_width="0dp"
                         android:layout_height="fill_parent"
                         android:layout_marginRight="8dp"
-                        android:layout_weight=".3"
+                        android:layout_weight=".25"
                         android:background="@color/white"
-                        android:maxLines="1"
-                        android:padding="5dp"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="15dp"
                         android:text=""
                         android:textColor="#ffffff"
-                        android:textSize="30dp" />
-
+                        android:textSize="25dp" />
 
                 </LinearLayout>
 
-                <ImageView
+                <Space
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginLeft="1dp"
-                    android:layout_marginRight="4dp"
-                    android:background="@color/background_material" />
+                    android:layout_height="0dp"
+                    android:layout_weight=".0" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:orientation="horizontal"
-                    android:paddingLeft="4dp"
-                    android:paddingRight="4dp">
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp">
 
                     <Button
-                        android:id="@+id/subtractNum"
+                        android:id="@+id/aSwitchSubtract"
                         android:layout_width="0dp"
                         android:layout_height="fill_parent"
                         android:layout_weight="1"
@@ -106,20 +147,20 @@
                         android:textSize="15dp" />
 
                     <TextView
-                        android:id="@+id/displayUnNum"
+                        android:id="@+id/aDisplaySwitch"
                         android:layout_width="0dp"
                         android:layout_height="fill_parent"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginRight="4dp"
                         android:layout_weight="2"
                         android:background="#D7DDEA"
                         android:gravity="center"
-                        android:padding="5dp"
                         android:text="0"
                         android:textSize="37dp"
                         tools:ignore="HardcodedText,SpUsage" />
 
-
                     <Button
-                        android:id="@+id/addNum"
+                        android:id="@+id/aSwitchAdd"
                         android:layout_width="0dp"
                         android:layout_height="fill_parent"
                         android:layout_weight="1"
@@ -131,139 +172,439 @@
 
                 </LinearLayout>
 
-            </LinearLayout>
+            </LinearLayout> <!--Autonomous Switch-->
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="16dp"
+                android:layout_height="1dp"
                 android:background="@color/background_material" />
 
             <LinearLayout
-                android:id="@+id/taskToggle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/rounded_corners_chunk_material"
-                android:orientation="horizontal"
-                android:paddingBottom="10dp"
-                android:paddingLeft="4dp"
-                android:paddingRight="4dp"
-                android:paddingTop="10dp">
-
-                <TextView
-                    android:id="@+id/task"
-                    android:layout_width="0dp"
-                    android:layout_height="fill_parent"
-                    android:layout_gravity="center"
-                    android:layout_marginRight="8dp"
-                    android:layout_weight=".7"
-                    android:background="@color/white"
-                    android:maxLines="1"
-                    android:padding="5dp"
-                    android:text="condition"
-                    android:textColor="@color/textMedium"
-                    android:textSize="30dp"
-
-                    />
-
-                <ToggleButton
-                    android:id="@+id/binaryToggle"
-                    android:layout_width="0dp"
-                    android:layout_height="fill_parent"
-                    android:layout_weight=".3"
-                    android:background="@drawable/toggle_button_at"
-                    android:textOff="Not Met"
-                    android:textOn="Met"
-
-                    />
-
-
-            </LinearLayout>
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="16dp"
-                android:background="@color/background_material" />
-
-            <LinearLayout
-                android:id="@+id/limitedCounter"
+                android:id="@+id/aScale"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded_corners_chunk_material"
                 android:orientation="vertical"
                 android:paddingBottom="10dp"
-                android:paddingTop="10dp"
+                android:paddingTop="5dp"
 
                 >
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="6dp"
+                    android:layout_height="0dp"
+                    android:layout_weight=".8"
                     android:orientation="horizontal"
-                    android:paddingLeft="4dp"
-                    android:paddingRight="4dp"
-
-                    >
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="11dp"
+                    android:paddingRight="10dp">
 
                     <TextView
-                        android:id="@+id/limitedItemType"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight=".7"
+                        android:layout_weight=".75"
                         android:background="@color/white"
-                        android:maxLines="1"
-                        android:padding="5dp"
-                        android:text="objectsToCount"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="15dp"
+                        android:text="Cubes on Scale"
                         android:textColor="@color/textMedium"
                         android:textSize="30dp"
 
                         />
 
                     <TextView
-                        android:id="@+id/displaySeek"
                         android:layout_width="0dp"
                         android:layout_height="fill_parent"
-                        android:layout_gravity="center"
                         android:layout_marginRight="8dp"
-                        android:layout_weight=".3"
+                        android:layout_weight=".25"
                         android:background="@color/white"
-                        android:maxLines="1"
-                        android:padding="5dp"
-                        android:text="0"
-                        android:textAlignment="center"
-                        android:textColor="@color/textDark"
-                        android:textSize="30dp" />
+                        android:paddingLeft="5dp"
+                        android:paddingRight="15dp"
+                        android:text=""
+                        android:textColor="#ffffff"
+                        android:textSize="25dp" />
 
                 </LinearLayout>
 
-                <ImageView
+                <Space
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginLeft="1dp"
-                    android:layout_marginRight="4dp"
-                    android:background="@color/background_material"
-                    android:paddingTop="10dp" />
+                    android:layout_height="0dp"
+                    android:layout_weight=".0" />
 
-                <SeekBar
-                    android:id="@+id/numItems"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:progressTint="@color/lightBlue"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:max="13"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp">
 
-                    />
+                    <Button
+                        android:id="@+id/aScaleSubtract"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:background="@color/lightBlue"
+                        android:onClick="unlimitedCounterSubtract"
+                        android:text="-1"
+                        android:textSize="15dp" />
 
-            </LinearLayout>
+                    <TextView
+                        android:id="@+id/aDisplayScale"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginRight="4dp"
+                        android:layout_weight="2"
+                        android:background="#D7DDEA"
+                        android:gravity="center"
+                        android:text="0"
+                        android:textSize="37dp"
+                        tools:ignore="HardcodedText,SpUsage" />
+
+                    <Button
+                        android:id="@+id/aScaleAdd"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:background="@color/lightBlue"
+                        android:onClick="unlimitedCounterAdd"
+                        android:text="+1"
+                        android:textSize="15dp" />
+
+
+                </LinearLayout>
+
+            </LinearLayout> <!--Autonomous Scale-->
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="16dp"
+                android:layout_height="1dp"
+                android:background="@color/background_material" />
+
+            <!--TELEOPERATED-->
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:paddingLeft="8dp"
+                android:paddingTop="4dp"
+                android:text="Teleop"
+                android:textSize="30dp" />
+
+            <LinearLayout
+                android:id="@+id/tSwitch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_corners_chunk_material"
+                android:orientation="vertical"
+                android:paddingBottom="10dp"
+                android:paddingTop="5dp"
+
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".8"
+                    android:orientation="horizontal"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="11dp"
+                    android:paddingRight="10dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".75"
+                        android:background="@color/white"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="15dp"
+                        android:text="Cubes on Switch"
+                        android:textColor="@color/textMedium"
+                        android:textSize="30dp"
+
+                        />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_marginRight="8dp"
+                        android:layout_weight=".25"
+                        android:background="@color/white"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="15dp"
+                        android:text=""
+                        android:textColor="#ffffff"
+                        android:textSize="25dp" />
+
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".0" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp">
+
+                    <Button
+                        android:id="@+id/tSwitchSubtract"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:background="@color/lightBlue"
+                        android:onClick="unlimitedCounterSubtract"
+                        android:text="-1"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/tDisplaySwitch"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginRight="4dp"
+                        android:layout_weight="2"
+                        android:background="#D7DDEA"
+                        android:gravity="center"
+                        android:text="0"
+                        android:textSize="37dp"
+                        tools:ignore="HardcodedText,SpUsage" />
+
+                    <Button
+                        android:id="@+id/tSwitchAdd"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:background="@color/lightBlue"
+                        android:onClick="unlimitedCounterAdd"
+                        android:text="+1"
+                        android:textSize="15dp" />
+
+
+                </LinearLayout>
+
+            </LinearLayout> <!--Teleop Switch-->
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
                 android:background="@color/background_material" />
 
             <LinearLayout
-                android:id="@+id/radioState"
+                android:id="@+id/tScale"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_corners_chunk_material"
+                android:orientation="vertical"
+                android:paddingBottom="10dp"
+                android:paddingTop="5dp"
+
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".8"
+                    android:orientation="horizontal"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="11dp"
+                    android:paddingRight="10dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".75"
+                        android:background="@color/white"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="15dp"
+                        android:text="Cubes on Scale"
+                        android:textColor="@color/textMedium"
+                        android:textSize="30dp"
+
+                        />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_marginRight="8dp"
+                        android:layout_weight=".25"
+                        android:background="@color/white"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="15dp"
+                        android:text=""
+                        android:textColor="#ffffff"
+                        android:textSize="25dp" />
+
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".0" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp">
+
+                    <Button
+                        android:id="@+id/tScaleSubtract"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:background="@color/lightBlue"
+                        android:onClick="unlimitedCounterSubtract"
+                        android:text="-1"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/tDisplayScale"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginRight="4dp"
+                        android:layout_weight="2"
+                        android:background="#D7DDEA"
+                        android:gravity="center"
+                        android:text="0"
+                        android:textSize="37dp"
+                        tools:ignore="HardcodedText,SpUsage" />
+
+                    <Button
+                        android:id="@+id/tScaleAdd"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:background="@color/lightBlue"
+                        android:onClick="unlimitedCounterAdd"
+                        android:text="+1"
+                        android:textSize="15dp" />
+
+
+                </LinearLayout>
+
+            </LinearLayout> <!--Teleop Scale-->
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/background_material" />
+
+            <LinearLayout
+                android:id="@+id/vault"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_corners_chunk_material"
+                android:orientation="vertical"
+                android:paddingBottom="10dp"
+                android:paddingTop="5dp"
+
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".8"
+                    android:orientation="horizontal"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="11dp"
+                    android:paddingRight="10dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".75"
+                        android:background="@color/white"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="15dp"
+                        android:text="Cubes in Vault"
+                        android:textColor="@color/textMedium"
+                        android:textSize="30dp"
+
+                        />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_marginRight="8dp"
+                        android:layout_weight=".25"
+                        android:background="@color/white"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="15dp"
+                        android:text=""
+                        android:textColor="#ffffff"
+                        android:textSize="25dp" />
+
+                </LinearLayout>
+
+
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".0" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp">
+
+                    <Button
+                        android:id="@+id/tVaultSubtract"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:background="@color/lightBlue"
+                        android:onClick="unlimitedCounterSubtract"
+                        android:text="-1"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/tDisplayVault"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginRight="4dp"
+                        android:layout_weight="2"
+                        android:background="#D7DDEA"
+                        android:gravity="center"
+                        android:text="0"
+                        android:textSize="37dp"
+                        tools:ignore="HardcodedText,SpUsage" />
+
+                    <Button
+                        android:id="@+id/tVaultAdd"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:background="@color/lightBlue"
+                        android:onClick="unlimitedCounterAdd"
+                        android:text="+1"
+                        android:textSize="15dp" />
+
+
+                </LinearLayout>
+
+            </LinearLayout> <!--Teleop Vault-->
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/background_material" />
+
+            <LinearLayout
+                android:id="@+id/endgame"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded_corners_chunk_material"
@@ -274,110 +615,104 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="6dp"
+                    android:layout_marginBottom="2dp"
                     android:orientation="horizontal"
-                    android:paddingLeft="4dp"
-                    android:paddingRight="4dp"
-
+                    android:paddingLeft="12dp"
+                    android:paddingRight="15dp"
+                    android:paddingBottom="2dp"
                     >
 
                     <TextView
-                        android:id="@+id/state"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight=".7"
+                        android:layout_weight=".75"
                         android:background="@color/white"
-                        android:maxLines="1"
-                        android:padding="5dp"
-                        android:text="state"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="15dp"
+                        android:text="Endgame State"
                         android:textColor="@color/textMedium"
-                        android:textSize="30dp"
-
-                        />
+                        android:textSize="30dp" />
 
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="fill_parent"
                         android:layout_marginRight="8dp"
-                        android:layout_weight=".3"
+                        android:layout_weight=".25"
                         android:background="@color/white"
-                        android:maxLines="1"
-                        android:padding="5dp"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="15dp"
                         android:text=""
                         android:textColor="#ffffff"
-                        android:textSize="30dp" />
+                        android:textSize="25dp" />
+
                 </LinearLayout>
 
                 <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginLeft="1dp"
-                    android:layout_marginRight="4dp"
-                    android:background="@color/background_material" />
-
+                    android:layout_height="2dp"
+                    android:background="@color/lighterBlue"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="19dp"
+                    android:layout_marginRight="18dp"
+                    />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:paddingLeft="4dp"
-                    android:paddingRight="4dp">
+                    android:paddingLeft="15dp"
+                    >
 
                     <RadioGroup
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:checkedButton="@id/state1">
+                        android:checkedButton="@id/onField">
 
                         <RadioButton
-                            android:id="@+id/state1"
+                            android:id="@+id/onField"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="8dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginBottom="12dp"
                             android:buttonTint="@color/lightBlue"
-                            android:text="State1"
+                            android:text="On the Field"
                             android:textColor="@color/textMedium"
-                            android:textSize="20dp" />
+                            android:textSize="26dp" />
 
                         <RadioButton
-                            android:id="@+id/state2"
+                            android:id="@+id/parked"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="8dp"
+                            android:layout_marginBottom="12dp"
                             android:buttonTint="@color/lightBlue"
-                            android:text="State2"
+                            android:text="Parked"
                             android:textColor="@color/textMedium"
-                            android:textSize="20dp" />
+                            android:textSize="26dp" />
 
                         <RadioButton
-                            android:id="@+id/state3"
+                            android:id="@+id/climbed"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="8dp"
+                            android:layout_marginBottom="12dp"
                             android:buttonTint="@color/lightBlue"
-                            android:text="State3"
+                            android:text="Elevated"
                             android:textColor="@color/textMedium"
-                            android:textSize="20dp" />
+                            android:textSize="26dp" />
 
-                        <RadioButton
-                            android:id="@+id/state4"
-                            android:layout_width="fill_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="8dp"
-                            android:buttonTint="@color/lightBlue"
-                            android:text="State4"
-                            android:textColor="@color/textMedium"
-                            android:textSize="20dp" />
+
                     </RadioGroup>
+
                 </LinearLayout>
-            </LinearLayout>
+
+            </LinearLayout> <!--Teleop Endgame Condition-->
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="32dp"
+                android:layout_height="24dp"
                 android:background="@color/background_material" />
 
             <LinearLayout
-                android:id="@+id/next"
+                android:id="@+id/tNext"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded_corners_chunk_material"
@@ -396,9 +731,15 @@
                     android:onClick="goToTeleop"
                     />
 
-            </LinearLayout>
+            </LinearLayout> <!--Next-->
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="8dp"
+                android:background="@color/background_material" />
 
         </LinearLayout>
+
     </ScrollView>
 
 </RelativeLayout>
