@@ -33,7 +33,7 @@
                 android:textSize="30dp" />
 
             <LinearLayout
-                android:id="@+id/autoLine"
+                android:id="@+id/aAutoLine"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded_corners_chunk_material"
@@ -59,11 +59,12 @@
                     />
 
                 <ToggleButton
-                    android:id="@+id/crossedAutoline"
+                    android:id="@+id/autoline"
                     android:layout_width="0dp"
                     android:layout_height="fill_parent"
                     android:layout_weight=".3"
                     android:background="@drawable/toggle_button_at"
+                    android:onClick="setAutoline"
                     android:textOff="Not Crossed"
                     android:textOn="Crossed"
 
@@ -142,12 +143,12 @@
                         android:layout_height="fill_parent"
                         android:layout_weight="1"
                         android:background="@color/lightBlue"
-                        android:onClick="unlimitedCounterSubtract"
+                        android:onClick="setASwitchSubtract"
                         android:text="-1"
                         android:textSize="15dp" />
 
                     <TextView
-                        android:id="@+id/aDisplaySwitch"
+                        android:id="@+id/aSwitchDisplay"
                         android:layout_width="0dp"
                         android:layout_height="fill_parent"
                         android:layout_marginLeft="4dp"
@@ -165,7 +166,7 @@
                         android:layout_height="fill_parent"
                         android:layout_weight="1"
                         android:background="@color/lightBlue"
-                        android:onClick="unlimitedCounterAdd"
+                        android:onClick="setASwitchAdd"
                         android:text="+1"
                         android:textSize="15dp" />
 
@@ -245,12 +246,12 @@
                         android:layout_height="fill_parent"
                         android:layout_weight="1"
                         android:background="@color/lightBlue"
-                        android:onClick="unlimitedCounterSubtract"
+                        android:onClick="setAScaleSubtract"
                         android:text="-1"
                         android:textSize="15dp" />
 
                     <TextView
-                        android:id="@+id/aDisplayScale"
+                        android:id="@+id/aScaleDisplay"
                         android:layout_width="0dp"
                         android:layout_height="fill_parent"
                         android:layout_marginLeft="4dp"
@@ -268,7 +269,7 @@
                         android:layout_height="fill_parent"
                         android:layout_weight="1"
                         android:background="@color/lightBlue"
-                        android:onClick="unlimitedCounterAdd"
+                        android:onClick="setAScaleAdd"
                         android:text="+1"
                         android:textSize="15dp" />
 
@@ -358,12 +359,12 @@
                         android:layout_height="fill_parent"
                         android:layout_weight="1"
                         android:background="@color/lightBlue"
-                        android:onClick="unlimitedCounterSubtract"
+                        android:onClick="setTSwitchSubtract"
                         android:text="-1"
                         android:textSize="15dp" />
 
                     <TextView
-                        android:id="@+id/tDisplaySwitch"
+                        android:id="@+id/tSwitchDisplay"
                         android:layout_width="0dp"
                         android:layout_height="fill_parent"
                         android:layout_marginLeft="4dp"
@@ -381,7 +382,7 @@
                         android:layout_height="fill_parent"
                         android:layout_weight="1"
                         android:background="@color/lightBlue"
-                        android:onClick="unlimitedCounterAdd"
+                        android:onClick="setTSwitchAdd"
                         android:text="+1"
                         android:textSize="15dp" />
 
@@ -461,12 +462,12 @@
                         android:layout_height="fill_parent"
                         android:layout_weight="1"
                         android:background="@color/lightBlue"
-                        android:onClick="unlimitedCounterSubtract"
+                        android:onClick="setTScaleSubtract"
                         android:text="-1"
                         android:textSize="15dp" />
 
                     <TextView
-                        android:id="@+id/tDisplayScale"
+                        android:id="@+id/tScaleDisplay"
                         android:layout_width="0dp"
                         android:layout_height="fill_parent"
                         android:layout_marginLeft="4dp"
@@ -484,7 +485,7 @@
                         android:layout_height="fill_parent"
                         android:layout_weight="1"
                         android:background="@color/lightBlue"
-                        android:onClick="unlimitedCounterAdd"
+                        android:onClick="setTScaleAdd"
                         android:text="+1"
                         android:textSize="15dp" />
 
@@ -566,12 +567,12 @@
                         android:layout_height="fill_parent"
                         android:layout_weight="1"
                         android:background="@color/lightBlue"
-                        android:onClick="unlimitedCounterSubtract"
+                        android:onClick="setTVaultSubtract"
                         android:text="-1"
                         android:textSize="15dp" />
 
                     <TextView
-                        android:id="@+id/tDisplayVault"
+                        android:id="@+id/tVaultDisplay"
                         android:layout_width="0dp"
                         android:layout_height="fill_parent"
                         android:layout_marginLeft="4dp"
@@ -589,7 +590,7 @@
                         android:layout_height="fill_parent"
                         android:layout_weight="1"
                         android:background="@color/lightBlue"
-                        android:onClick="unlimitedCounterAdd"
+                        android:onClick="setTVaultAdd"
                         android:text="+1"
                         android:textSize="15dp" />
 
@@ -674,6 +675,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
                             android:layout_marginBottom="12dp"
+                            android:onClick="setOnField"
                             android:buttonTint="@color/lightBlue"
                             android:text="On the Field"
                             android:textColor="@color/textMedium"
@@ -686,16 +688,18 @@
                             android:layout_marginBottom="12dp"
                             android:buttonTint="@color/lightBlue"
                             android:text="Parked"
+                            android:onClick="setParked"
                             android:textColor="@color/textMedium"
                             android:textSize="26dp" />
 
                         <RadioButton
-                            android:id="@+id/climbed"
+                            android:id="@+id/elevated"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="12dp"
                             android:buttonTint="@color/lightBlue"
                             android:text="Elevated"
+                            android:onClick="setElevated"
                             android:textColor="@color/textMedium"
                             android:textSize="26dp" />
 
@@ -728,7 +732,7 @@
                     android:layout_height="wrap_content"
                     android:background="@color/lightBlue"
                     android:text="Next"
-                    android:onClick="goToTeleop"
+                    android:onClick="setGoToPostMatch"
                     />
 
             </LinearLayout> <!--Next-->
