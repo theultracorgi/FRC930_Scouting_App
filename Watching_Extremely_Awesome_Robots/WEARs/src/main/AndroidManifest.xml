@@ -18,7 +18,8 @@
         </activity>
         <activity android:name=".PreMatch" />
         <activity android:name=".PostMatch" />
-        <activity android:name=".AutonTeleop"></activity>
+        <activity android:name=".AutonTeleop" />
+        <activity android:name=".Settings"></activity>
     </application>
 
 </manifest>
