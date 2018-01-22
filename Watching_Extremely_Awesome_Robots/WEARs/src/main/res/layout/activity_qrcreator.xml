@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_material">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            <LinearLayout
+                android:id="@+id/deleteBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_corners_chunk_material"
+                android:orientation="horizontal"
+                android:paddingBottom="10dp"
+                android:paddingLeft="11dp"
+                android:paddingRight="4dp"
+                android:paddingTop="10dp"
+                android:visibility="visible"
+                >
+
+            <TextView
+                android:id="@+id/neatoDeleto"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center"
+                android:layout_marginRight="8dp"
+                android:layout_weight=".7"
+                android:background="@color/white"
+                android:maxLines="1"
+                android:padding="5dp"
+                android:text="neato-deleto"
+                android:textColor="@color/textMedium"
+                android:textSize="30dp"
+                android:visibility="invisible"
+
+                />
+
+            <Button
+                android:id="@+id/deleteData"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight=".3"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:background="@drawable/blue_rounded_button"
+                android:text="Delete Data"
+                android:visibility="invisible"
+                android:onClick="setDeleteData"
+
+                />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/background_material" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:gravity="center|bottom"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/border"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/black"
+                android:padding="5dp"
+                android:layout_marginBottom="100dp"
+                android:visibility="invisible"
+
+                >
+
+            <ImageView
+                android:id="@+id/qrCode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/lightBlue"
+                android:onClick="setGenQRCode"
+
+                />
+            </LinearLayout>
+            <Button
+                android:id="@+id/genQRCode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:layout_marginRight="60dp"
+                android:background="@drawable/blue_rounded_button"
+                android:onClick="setGenQRCode"
+                android:text="Generate QR Code" />
+
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:background="@color/white" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>
+

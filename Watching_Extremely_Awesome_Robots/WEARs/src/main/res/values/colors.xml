@@ -14,6 +14,7 @@
     <color name="divider">#c2c2c2</color>
     <color name="background_material">#d6d6d6</color>
     <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
 
     <color name="textDark">#464646</color>
     <color name="textMedium">#7c7c7c</color>

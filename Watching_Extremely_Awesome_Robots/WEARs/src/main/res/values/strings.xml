@@ -3,6 +3,8 @@
 
     <string name="matchDataPreferences">matchData</string>
     <string name="stillPreferences">stillEnabled</string>
+    <string name="otherPreferences">otherPreferences</string>
+    <string name="numStoredMatches">numStoredMatches</string>
 
     <string-array name="Scouter">
         <item>Adelia Rumpel</item>

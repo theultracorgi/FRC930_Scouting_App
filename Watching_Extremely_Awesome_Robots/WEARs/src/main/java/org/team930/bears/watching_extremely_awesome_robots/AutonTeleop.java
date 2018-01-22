@@ -69,7 +69,7 @@ public class AutonTeleop extends AppCompatActivity {
         parked = findViewById(R.id.parked);
         elevated = findViewById(R.id.elevated);
 
-        goToPostMatch = (Button) findViewById(R.id.gotoPostMatch);
+        goToPostMatch = findViewById(R.id.gotoPostMatch);
 
 
     }
@@ -89,7 +89,7 @@ public class AutonTeleop extends AppCompatActivity {
     //AUTON SWITCH
     public void setASwitchSubtract(View v) {
         if (aSwitch == 0) {
-
+            //can't score -1 Power Totes
         } else {
             aSwitch -= 1;
             aSwitchDisplay.setText(Integer.toString(aSwitch));
@@ -237,17 +237,17 @@ public class AutonTeleop extends AppCompatActivity {
         String tParkedPassable = Integer.toString(tParked);
         String tElevatedPassable = Integer.toString(tElevated);
 
-        SharedPreferences.Editor SPE = matchData.edit();
+        SharedPreferences.Editor SPMD = matchData.edit();
 
-        SPE.putString("aAutoline", aAutoLinePassable);
-        SPE.putString("aSwitch", aSwitchPassable);
-        SPE.putString("aScale", aScalePassable);
-        SPE.putString("tSwitch", tSwitchPassable);
-        SPE.putString("tScale", tScalePassable);
-        SPE.putString("tVault", tVaultPassable);
-        SPE.putString("tParked", tParkedPassable);
-        SPE.putString("tElevated", tElevatedPassable);
-        SPE.commit();
+        SPMD.putString("aAutoline", aAutoLinePassable);
+        SPMD.putString("aSwitch", aSwitchPassable);
+        SPMD.putString("aScale", aScalePassable);
+        SPMD.putString("tSwitch", tSwitchPassable);
+        SPMD.putString("tScale", tScalePassable);
+        SPMD.putString("tVault", tVaultPassable);
+        SPMD.putString("tParked", tParkedPassable);
+        SPMD.putString("tElevated", tElevatedPassable);
+        SPMD.commit();
 
         Intent goToPostMatch = new Intent(AutonTeleop.this, PostMatch.class);
         startActivity(goToPostMatch);

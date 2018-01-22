@@ -1,1 +1,2 @@
 include ':WEARs'
+include ':zxing-modified', ':sample', ':library'
