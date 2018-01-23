@@ -68,6 +68,58 @@
             android:background="@color/background_material" />
 
         <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            <LinearLayout
+                android:id="@+id/deleteBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_corners_chunk_material"
+                android:orientation="horizontal"
+                android:paddingBottom="10dp"
+                android:paddingLeft="11dp"
+                android:paddingRight="4dp"
+                android:paddingTop="10dp"
+                android:visibility="invisible"
+                >
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="8dp"
+                    android:layout_weight=".7"
+                    android:background="@color/white"
+                    android:maxLines="1"
+                    android:padding="5dp"
+                    android:text="neato-deleto"
+                    android:textColor="@color/textMedium"
+                    android:textSize="30dp"
+                    android:visibility="visible"
+
+                    />
+
+                <Button
+                    android:id="@+id/deleteData"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight=".3"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:background="@drawable/blue_rounded_button"
+                    android:text="Delete Data"
+                    android:visibility="visible"
+                    android:onClick="setDeleteData"
+
+                    />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
             android:id="@+id/stillEnabler"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

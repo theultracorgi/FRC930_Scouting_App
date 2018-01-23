@@ -1,24 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_material">
-
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginLeft="2dp"
         android:layout_marginRight="2dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        >
 
-
-
-        <ImageView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:background="@color/background_material" />
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+        <Button
+            android:id="@+id/generateCSV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="60dp"
+            android:background="@drawable/blue_rounded_button"
+            android:onClick="setScanQRCode"
+            android:text="Scan QR Code" />
 
+        >
+        </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -26,35 +37,16 @@
             android:gravity="center|bottom"
             android:orientation="vertical">
 
-            <LinearLayout
-                android:id="@+id/border"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@color/black"
-                android:padding="5dp"
-                android:layout_marginBottom="100dp"
-                android:visibility="invisible"
 
-                >
-
-            <ImageView
-                android:id="@+id/qrCode"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@color/lightBlue"
-                android:onClick="setGenQRCode"
-
-                />
-            </LinearLayout>
             <Button
-                android:id="@+id/genQRCode"
+                android:id="@+id/scanQRCode"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="60dp"
                 android:layout_marginRight="60dp"
                 android:background="@drawable/blue_rounded_button"
-                android:onClick="setGenQRCode"
-                android:text="Generate QR Code" />
+                android:onClick="setScanQRCode"
+                android:text="Scan QR Code" />
 
 
             <ImageView

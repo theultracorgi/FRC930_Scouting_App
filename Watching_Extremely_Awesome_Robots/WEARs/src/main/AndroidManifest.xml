@@ -20,7 +20,8 @@
         <activity android:name=".PostMatch" />
         <activity android:name=".AutonTeleop" />
         <activity android:name=".Settings" />
-        <activity android:name=".QRCreator"></activity>
+        <activity android:name=".QRCreator" />
+        <activity android:name=".MasterScanner"></activity>
     </application>
 
 </manifest>

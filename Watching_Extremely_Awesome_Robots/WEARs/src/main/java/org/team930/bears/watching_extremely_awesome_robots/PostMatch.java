@@ -75,31 +75,32 @@ public class PostMatch extends AppCompatActivity {
         String fullMatchData = scouterIDFinal + teamNumFinal + matchNumFinal + aAutolineFinal + aSwitchFinal + aScaleFinal +
                 tSwitchFinal + tScaleFinal + tVaultFinal + tParkedFinal + tElevatedFinal + disabledFinal + commentsFinal  + "\n";
 
-        SharedPreferences.Editor SPOS = otherSettings.edit();
+
 
         switch(otherSettings.getInt(numStoredMatches, 5)){
-            case 0: SPOS.putString("match1", fullMatchData);
-                    SPOS.commit();
+            case 0: SPMD.putString("match1", fullMatchData);
+                    SPMD.commit();
                 break;
-            case 1: SPOS.putString("match2", fullMatchData);
-                SPOS.commit();
+            case 1: SPMD.putString("match2", fullMatchData);
+                SPMD.commit();
                 break;
-            case 2: SPOS.putString("match3", fullMatchData);
-                SPOS.commit();
+            case 2: SPMD.putString("match3", fullMatchData);
+                SPMD.commit();
                 break;
-            case 3: SPOS.putString("match4", fullMatchData);
-                SPOS.commit();
+            case 3: SPMD.putString("match4", fullMatchData);
+                SPMD.commit();
                 break;
-            case 4: SPOS.putString("match5", fullMatchData);
-                SPOS.commit();
+            case 4: SPMD.putString("match5", fullMatchData);
+                SPMD.commit();
                 break;
-            case 5: SPOS.putString("match6", fullMatchData);
-                SPOS.commit();
+            case 5: SPMD.putString("match6", fullMatchData);
+                SPMD.commit();
                 break;
-            default:  SPOS.putString("match6", fullMatchData);
-                SPOS.commit();
+            default:  SPMD.putString("match6", fullMatchData);
+                SPMD.commit();
 
         }
+        SharedPreferences.Editor SPOS = otherSettings.edit();
         SPOS.putInt(numStoredMatches, otherSettings.getInt(numStoredMatches, 5) + 1);
         SPOS.commit();
 
