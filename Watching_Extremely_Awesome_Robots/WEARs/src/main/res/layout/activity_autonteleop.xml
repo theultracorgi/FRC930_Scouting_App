@@ -67,6 +67,7 @@
                     android:onClick="setAutoline"
                     android:textOff="Not Crossed"
                     android:textOn="Crossed"
+                    android:textColor="@color/white"
 
                     />
 
@@ -144,6 +145,7 @@
                         android:layout_weight="1"
                         android:background="@color/lightBlue"
                         android:onClick="setASwitchSubtract"
+                        android:textColor="@color/white"
                         android:text="-1"
                         android:textSize="15dp" />
 
@@ -166,6 +168,7 @@
                         android:layout_height="fill_parent"
                         android:layout_weight="1"
                         android:background="@color/lightBlue"
+                        android:textColor="@color/white"
                         android:onClick="setASwitchAdd"
                         android:text="+1"
                         android:textSize="15dp" />
@@ -247,6 +250,7 @@
                         android:layout_weight="1"
                         android:background="@color/lightBlue"
                         android:onClick="setAScaleSubtract"
+                        android:textColor="@color/white"
                         android:text="-1"
                         android:textSize="15dp" />
 
@@ -269,6 +273,7 @@
                         android:layout_height="fill_parent"
                         android:layout_weight="1"
                         android:background="@color/lightBlue"
+                        android:textColor="@color/white"
                         android:onClick="setAScaleAdd"
                         android:text="+1"
                         android:textSize="15dp" />
@@ -360,6 +365,7 @@
                         android:layout_weight="1"
                         android:background="@color/lightBlue"
                         android:onClick="setTSwitchSubtract"
+                        android:textColor="@color/white"
                         android:text="-1"
                         android:textSize="15dp" />
 
@@ -383,6 +389,7 @@
                         android:layout_weight="1"
                         android:background="@color/lightBlue"
                         android:onClick="setTSwitchAdd"
+                        android:textColor="@color/white"
                         android:text="+1"
                         android:textSize="15dp" />
 
@@ -463,6 +470,7 @@
                         android:layout_weight="1"
                         android:background="@color/lightBlue"
                         android:onClick="setTScaleSubtract"
+                        android:textColor="@color/white"
                         android:text="-1"
                         android:textSize="15dp" />
 
@@ -486,6 +494,7 @@
                         android:layout_weight="1"
                         android:background="@color/lightBlue"
                         android:onClick="setTScaleAdd"
+                        android:textColor="@color/white"
                         android:text="+1"
                         android:textSize="15dp" />
 
@@ -568,6 +577,7 @@
                         android:layout_weight="1"
                         android:background="@color/lightBlue"
                         android:onClick="setTVaultSubtract"
+                        android:textColor="@color/white"
                         android:text="-1"
                         android:textSize="15dp" />
 
@@ -591,6 +601,7 @@
                         android:layout_weight="1"
                         android:background="@color/lightBlue"
                         android:onClick="setTVaultAdd"
+                        android:textColor="@color/white"
                         android:text="+1"
                         android:textSize="15dp" />
 
@@ -731,6 +742,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/lightBlue"
+                    android:textColor="@color/white"
                     android:text="Next"
                     android:onClick="setGoToPostMatch"
                     />

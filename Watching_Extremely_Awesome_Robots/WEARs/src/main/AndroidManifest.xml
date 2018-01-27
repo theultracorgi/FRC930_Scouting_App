@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="org.team930.bears.watching_extremely_awesome_robots">
 
     <application
@@ -8,7 +9,11 @@
         android:label="Mukwonago WEARs"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:testOnly="false"
+        android:debuggable="true"
+        tools:ignore="HardcodedDebugMode">
+
         <activity android:name=".HomeScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -16,12 +21,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name=".PreMatch" />
         <activity android:name=".PostMatch" />
         <activity android:name=".AutonTeleop" />
         <activity android:name=".Settings" />
         <activity android:name=".QRCreator" />
-        <activity android:name=".MasterScanner"></activity>
+        <activity android:name=".MasterScanner"/>
+
     </application>
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
 </manifest>

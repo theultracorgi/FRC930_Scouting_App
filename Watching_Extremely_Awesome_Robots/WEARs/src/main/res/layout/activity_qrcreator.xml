@@ -14,10 +14,13 @@
 
 
 
-        <ImageView
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:background="@color/background_material" />
+            android:layout_height="48dp"
+            android:paddingLeft="8dp"
+            android:paddingTop="4dp"
+            android:text="QR Creator"
+            android:textSize="30dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -32,7 +35,7 @@
                 android:layout_height="wrap_content"
                 android:background="@color/black"
                 android:padding="5dp"
-                android:layout_marginBottom="100dp"
+                android:layout_marginBottom="70dp"
                 android:visibility="invisible"
 
                 >
@@ -50,10 +53,11 @@
                 android:id="@+id/genQRCode"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="60dp"
-                android:layout_marginRight="60dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
                 android:background="@drawable/blue_rounded_button"
                 android:onClick="setGenQRCode"
+                android:textColor="@color/white"
                 android:text="Generate QR Code" />
 
 

@@ -46,31 +46,36 @@ public class QRCreator extends AppCompatActivity {
     }
 
     public void setGenQRCode(View v){
+        if(otherSettings.getBoolean("dataAvailable", false)) {
 
-        QRCodeWriter writer = new QRCodeWriter();
-        try{
-            BitMatrix bitMatrix = writer.encode(sendableData, BarcodeFormat.QR_CODE, 512, 512);
-            int width = bitMatrix.getWidth();
-            int height = bitMatrix.getHeight();
-            Bitmap bmp = Bitmap.createBitmap(width, height, Bitmap.Config.RGB_565);
-            for (int x  = 0; x < width; x++) {
-                for (int y = 0; y < height; y++) {
-                    bmp.setPixel(x, y, bitMatrix.get(x, y) ? Color.BLACK : Color.WHITE);
+            QRCodeWriter writer = new QRCodeWriter();
+            try {
+                BitMatrix bitMatrix = writer.encode(sendableData, BarcodeFormat.QR_CODE, 736, 736);
+                int width = bitMatrix.getWidth();
+                int height = bitMatrix.getHeight();
+                Bitmap bmp = Bitmap.createBitmap(width, height, Bitmap.Config.RGB_565);
+                for (int x = 0; x < width; x++) {
+                    for (int y = 0; y < height; y++) {
+                        bmp.setPixel(x, y, bitMatrix.get(x, y) ? Color.BLACK : Color.WHITE);
+                    }
                 }
+                ((ImageView) findViewById(R.id.qrCode)).setImageBitmap(bmp);
+            } catch (WriterException e) {
+                e.printStackTrace();
+                Toast.makeText(getApplicationContext(), "WriterException", Toast.LENGTH_LONG).show();
             }
-            ((ImageView) findViewById(R.id.qrCode)).setImageBitmap(bmp);
+
+
+            border.setVisibility(View.VISIBLE);
+
+            SharedPreferences.Editor SPOS = otherSettings.edit();
+            SPOS.putBoolean("deleteData", true);
+            SPOS.commit();
+
+        } else {
+            Toast.makeText(getApplicationContext(), "No Data", Toast.LENGTH_SHORT).show();
+
         }
-        catch (WriterException e) {
-            e.printStackTrace();
-            Toast.makeText(getApplicationContext(), "Caught WriterException !!!", Toast.LENGTH_LONG).show();
-        }
-
-
-        border.setVisibility(View.VISIBLE);
-
-        SharedPreferences.Editor SPOS = otherSettings.edit();
-        SPOS.putBoolean("deleteData", true);
-        SPOS.commit();
 
     }
 

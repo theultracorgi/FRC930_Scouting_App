@@ -56,6 +56,7 @@
                 android:layout_weight=".3"
                 android:background="@drawable/toggle_button_winloss"
                 android:checked="true"
+                android:textColor="@color/white"
                 android:textOff="Loss"
                 android:textOn="Win" />
 
@@ -100,6 +101,7 @@
                 android:layout_weight=".3"
                 android:background="@drawable/toggle_button_at"
                 android:onClick="setDisabled"
+                android:textColor="@color/white"
                 android:textOff="Not Disabled"
                 android:textOn="Disabled"
 
@@ -171,6 +173,7 @@
                     android:layout_height="wrap_content"
                     android:background="@color/lightBlue"
                     android:onClick="setSubmitData"
+                    android:textColor="@color/white"
                     android:text="Submit Data" />
             </LinearLayout>
 

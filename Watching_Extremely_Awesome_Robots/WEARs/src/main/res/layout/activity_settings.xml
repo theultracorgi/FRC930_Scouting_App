@@ -58,6 +58,7 @@
                 android:prompt="@string/scouterListPrompt"
 
 
+
                 />
 
         </LinearLayout> <!--Scouter Selection-->
@@ -111,13 +112,19 @@
                     android:background="@drawable/blue_rounded_button"
                     android:text="Delete Data"
                     android:visibility="visible"
+                    android:textColor="@color/white"
                     android:onClick="setDeleteData"
 
                     />
 
             </LinearLayout>
 
-        </LinearLayout>
+        </LinearLayout> <!--Delete le Data-->
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/background_material" />
 
         <LinearLayout
             android:id="@+id/stillEnabler"
@@ -154,6 +161,7 @@
                 android:layout_weight=".3"
                 android:background="@drawable/toggle_button_at"
                 android:onClick="setStillFRC"
+                android:textColor="@color/white"
                 android:textOff="Off"
                 android:textOn="On"
 

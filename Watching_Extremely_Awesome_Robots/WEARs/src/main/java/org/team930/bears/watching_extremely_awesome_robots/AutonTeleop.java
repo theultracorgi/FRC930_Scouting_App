@@ -102,10 +102,12 @@ public class AutonTeleop extends AppCompatActivity {
     }
 
     public void setASwitchAdd(View v) {
+        if ((aSwitch + aScale + tSwitch + tScale + tVault) >= 60) {
 
-        aSwitch += 1;
+        } else {
+            aSwitch += 1;
         aSwitchDisplay.setText(Integer.toString(aSwitch));
-
+    }
         if(aSwitch == 9 ){
             Still.start();
         }
@@ -127,12 +129,17 @@ public class AutonTeleop extends AppCompatActivity {
     }
 
     public void setAScaleAdd(View v) {
+        if ((aSwitch + aScale + tSwitch + tScale + tVault) >= 60) {
 
-        aScale += 1;
-        aScaleDisplay.setText(Integer.toString(aScale));
+        } else {
+            aScale += 1;
+            aScaleDisplay.setText(Integer.toString(aScale));
+        }
+
         if(aScale == 9 ){
             Still.start();
         }
+
 
     }
 
@@ -151,9 +158,13 @@ public class AutonTeleop extends AppCompatActivity {
     }
 
     public void setTSwitchAdd(View v) {
+        if ((aSwitch + aScale + tSwitch + tScale + tVault) >= 60) {
 
+        } else {
         tSwitch += 1;
         tSwitchDisplay.setText(Integer.toString(tSwitch));
+    }
+
         if(tSwitch == 9 ){
             Still.start();
         }
@@ -175,9 +186,12 @@ public class AutonTeleop extends AppCompatActivity {
     }
 
     public void setTScaleAdd(View v) {
+        if ((aSwitch + aScale + tSwitch + tScale + tVault) >= 60) {
 
-        tScale += 1;
-        tScaleDisplay.setText(Integer.toString(tScale));
+        } else {
+            tScale += 1;
+            tScaleDisplay.setText(Integer.toString(tScale));
+        }
         if(tScale == 9 ){
             Still.start();
         }
@@ -199,9 +213,12 @@ public class AutonTeleop extends AppCompatActivity {
     }
 
     public void setTVaultAdd(View v) {
+        if ((aSwitch + aScale + tSwitch + tScale + tVault) >= 60) {
 
-        tVault += 1;
-        tVaultDisplay.setText(Integer.toString(tVault));
+        } else {
+            tVault += 1;
+            tVaultDisplay.setText(Integer.toString(tVault));
+        }
         if(tVault == 9 ){
             Still.start();
         }
@@ -228,14 +245,14 @@ public class AutonTeleop extends AppCompatActivity {
 
     public void setGoToPostMatch(View v) {
 
-        String aAutoLinePassable = Integer.toString(aAutoLine);
-        String aSwitchPassable = Integer.toString(aSwitch);
-        String aScalePassable = Integer.toString(aScale);
-        String tSwitchPassable = Integer.toString(tSwitch);
-        String tScalePassable = Integer.toString(tScale);
-        String tVaultPassable = Integer.toString(tVault);
-        String tParkedPassable = Integer.toString(tParked);
-        String tElevatedPassable = Integer.toString(tElevated);
+        String aAutoLinePassable = Integer.toString(aAutoLine) + ",";
+        String aSwitchPassable = Integer.toString(aSwitch) + ",";
+        String aScalePassable = Integer.toString(aScale) + ",";
+        String tSwitchPassable = Integer.toString(tSwitch) + ",";
+        String tScalePassable = Integer.toString(tScale) + ",";
+        String tVaultPassable = Integer.toString(tVault) + ",";
+        String tParkedPassable = Integer.toString(tParked) + ",";
+        String tElevatedPassable = Integer.toString(tElevated) + ",";
 
         SharedPreferences.Editor SPMD = matchData.edit();
 

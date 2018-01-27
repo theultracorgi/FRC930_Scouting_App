@@ -18,12 +18,12 @@
         <item>Audrey Mayer</item>
         <item>Devin Milligan</item>
         <item>Dominic Falasco</item>
-        <item>Domonick Eissert</item>
+        <item>Dominick Eisert</item>
         <item>Sprinkles</item>
         <item>Emily Zaddack</item>
         <item>Ethan Zimmer</item>
-        <item>Jack McWing</item>
-        <item>Jacob D'Amour</item>
+        <item>Jack McEwing</item>
+        <item>Jacob D\'Amour</item>
         <item>Jacob Powell</item>
         <item>Jacob Wise</item>
         <item>Jerrod Kau</item>
@@ -43,6 +43,7 @@
         <item>Nathan Rome</item>
         <item>Nathaniel Krueger</item>
         <item>Nicholas Natrop</item>
+        <item>Nick Fillipo</item>
         <item>Paul Rinaldi</item>
         <item>Robert Schiete</item>
         <item>Sam Blessing</item>
@@ -57,7 +58,6 @@
         <item>Zach Ackermann</item>
         <item>Your Boi Zach From Team 930</item>
     </string-array>
-
     <string name="scouterListPrompt">Hu u Be?</string>
 
 </resources>

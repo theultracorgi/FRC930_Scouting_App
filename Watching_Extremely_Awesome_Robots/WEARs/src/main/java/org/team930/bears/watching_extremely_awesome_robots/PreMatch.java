@@ -26,6 +26,7 @@ public class PreMatch extends AppCompatActivity {
         stillPreferences = getString(R.string.stillPreferences);
         matchDataPreferences = getString(R.string.matchDataPreferences);
         otherPreferences = getString(R.string.otherPreferences);
+        alliance = 'b';
 
         stillEnabled = getSharedPreferences(stillPreferences, 0);
         matchData = getSharedPreferences(matchDataPreferences, 0);
@@ -53,8 +54,8 @@ public class PreMatch extends AppCompatActivity {
             alliance = 'b';
         }
 
-        String teamNumPassable = teamNum.getText().toString();
-        String matchNumPassable = matchNum.getText().toString() + alliance;
+        String teamNumPassable = teamNum.getText().toString()  + ",";
+        String matchNumPassable = matchNum.getText().toString() + alliance  + ",";
 
         SharedPreferences.Editor SPMD = matchData.edit();
 

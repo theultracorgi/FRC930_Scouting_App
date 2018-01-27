@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 
 public class HomeScreen extends AppCompatActivity {
-    Button goToPreMatch, goToGenQR, goToSettings;
+    Button goToPreMatch, goToGenQR, goToSettings, goToMasterScanner;
 
     SharedPreferences otherSettings;
 
@@ -38,6 +38,7 @@ public class HomeScreen extends AppCompatActivity {
         goToPreMatch = findViewById(R.id.goToPreMatch);
         goToGenQR = findViewById(R.id.goToGenQR);
         goToSettings = findViewById(R.id.goToSettings);
+        goToMasterScanner = findViewById(R.id.goToMaster);
 
 
     }
@@ -64,6 +65,13 @@ public class HomeScreen extends AppCompatActivity {
     public void setGoToSettings(View v) {
 
         Intent nextScreen = new Intent(HomeScreen.this, Settings.class);
+        startActivity(nextScreen);
+
+    }
+
+    public void setGoToMasterScanner(View v) {
+
+        Intent nextScreen = new Intent(HomeScreen.this, MasterScanner.class);
         startActivity(nextScreen);
 
     }
