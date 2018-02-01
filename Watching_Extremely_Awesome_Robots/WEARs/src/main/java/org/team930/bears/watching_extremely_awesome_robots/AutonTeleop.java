@@ -17,8 +17,10 @@ public class AutonTeleop extends AppCompatActivity {
     TextView aSwitchDisplay, aScaleDisplay, tSwitchDisplay, tScaleDisplay, tVaultDisplay;
     ToggleButton autoline;
     RadioButton onField, parked, elevated;
+
     Integer aAutoLine, aSwitch, aScale, tSwitch, tScale, tVault, tParked, tElevated;
     String matchDataPreferences;
+
     SharedPreferences matchData;
     MediaPlayer Still;
 
@@ -31,7 +33,6 @@ public class AutonTeleop extends AppCompatActivity {
         Still = MediaPlayer.create(this, R.raw.ohnine_playa);
 
         matchDataPreferences = getString(R.string.matchDataPreferences);
-
         matchData = getSharedPreferences(matchDataPreferences, 0);
 
         aAutoLine = 0; //binary

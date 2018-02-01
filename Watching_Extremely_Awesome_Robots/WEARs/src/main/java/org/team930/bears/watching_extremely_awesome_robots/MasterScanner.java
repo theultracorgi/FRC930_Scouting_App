@@ -7,56 +7,62 @@ import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-import com.google.zxing.integration.android.IntentIntegrator;
-import com.google.zxing.integration.android.IntentResult;
-
 
 public class MasterScanner extends AppCompatActivity {
     Button generateCSV, scanQRCode;
-    String[] matchDataArray;
-    SharedPreferences otherSettings;
+    TextView numDataSets;
+
     String otherPreferences;
 
-
-
-    FileOutputStream fWriter;
-    File findDir, directory, fileName;
+    SharedPreferences otherSettings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_master_scanner);
 
+        otherPreferences = getString(R.string.otherPreferences);
+        otherSettings = getSharedPreferences(otherPreferences, 0);
 
-
-        matchDataArray = new String[6];
 
         generateCSV = findViewById(R.id.generateCSV);
         scanQRCode = findViewById(R.id.scanQRCode);
+        numDataSets = findViewById(R.id.numDataSets);
 
-        otherPreferences = getString(R.string.otherPreferences);
 
-        otherSettings = getSharedPreferences(otherPreferences, 0);
+        if (otherSettings.getInt("scannedID", 6) == 6) {
+            numDataSets.setTextSize(45);
+            numDataSets.setText("Generate A CSV");
+            scanQRCode.setVisibility(View.INVISIBLE);
+
+        } else {
+            numDataSets.setTextSize(100);
+            numDataSets.setText(Integer.toString(otherSettings.getInt("scannedID", 6)));
+
+        }
 
         if (otherSettings.getInt("scannedID", 0) == 0) {
             SharedPreferences.Editor SPOS = otherSettings.edit();
 
             SPOS.putInt("scannedID", 0);
             SPOS.commit();
-
         }
 
-        if(otherSettings.getBoolean("csVisible", false)){
+        if (otherSettings.getBoolean("csVisible", false)) {
             generateCSV.setVisibility(View.VISIBLE);
         }
+
 
     }
 
@@ -71,7 +77,7 @@ public class MasterScanner extends AppCompatActivity {
             dir.mkdirs();
             File file = new File(dir, "MatchData.csv");
 
-            if(file.exists()){
+            if (file.exists()) {
                 file.delete();
             } else {
                 file.createNewFile();
@@ -82,10 +88,10 @@ public class MasterScanner extends AppCompatActivity {
             f.write(fullCSVExport.getBytes());
             f.flush();
             f.close();
-        } catch(FileNotFoundException e) {
+        } catch (FileNotFoundException e) {
             Toast.makeText(this, "FileNotFound", Toast.LENGTH_SHORT).show();
 
-        } catch(IOException e ) {
+        } catch (IOException e) {
 
             Toast.makeText(this, "IO", Toast.LENGTH_SHORT).show();
         }
@@ -109,37 +115,52 @@ public class MasterScanner extends AppCompatActivity {
 
             SharedPreferences.Editor SPOS = otherSettings.edit();
 
-            switch(otherSettings.getInt("scannedID", 5)){
-                case 0: SPOS.putString("csvMatch1", scanResult.getContents());
+            switch (otherSettings.getInt("scannedID", 5)) {
+                case 0:
+                    SPOS.putString("csvMatch1", scanResult.getContents());
                     SPOS.commit();
                     break;
-                case 1: SPOS.putString("csvMatch2", scanResult.getContents());
+                case 1:
+                    SPOS.putString("csvMatch2", scanResult.getContents());
                     SPOS.commit();
                     break;
-                case 2: SPOS.putString("csvMatch3", scanResult.getContents());
+                case 2:
+                    SPOS.putString("csvMatch3", scanResult.getContents());
                     SPOS.commit();
                     break;
-                case 3: SPOS.putString("csvMatch4", scanResult.getContents());
+                case 3:
+                    SPOS.putString("csvMatch4", scanResult.getContents());
                     SPOS.commit();
                     break;
-                case 4: SPOS.putString("csvMatch5", scanResult.getContents());
+                case 4:
+                    SPOS.putString("csvMatch5", scanResult.getContents());
                     SPOS.commit();
                     break;
-                case 5: SPOS.putString("csvMatch6", scanResult.getContents());
+                case 5:
+                    SPOS.putString("csvMatch6", scanResult.getContents());
                     SPOS.commit();
                     break;
-                default:  SPOS.putString("csvMatch6", scanResult.getContents());
+                default:
+                    SPOS.putString("csvMatch6", scanResult.getContents());
                     SPOS.commit();
 
             }
+
 
             SPOS.putInt("scannedID", otherSettings.getInt("scannedID", 5) + 1);
             SPOS.putBoolean("deleteData", true);
             SPOS.putBoolean("csVisible", true);
             SPOS.commit();
 
-            if(otherSettings.getInt("scannedID", 6) == 6) {
-                Toast.makeText(this, "Generate a CSV homie", Toast.LENGTH_SHORT).show();
+
+            if (otherSettings.getInt("scannedID", 6) == 6) {
+                numDataSets.setTextSize(45);
+                numDataSets.setText("Generate A CSV");
+                scanQRCode.setVisibility(View.INVISIBLE);
+
+
+            } else {
+                numDataSets.setText(Integer.toString(otherSettings.getInt("scannedID", 6)));
             }
 
         }

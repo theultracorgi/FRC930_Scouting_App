@@ -6,11 +6,16 @@ import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import static android.app.AlertDialog.THEME_HOLO_LIGHT;
@@ -20,30 +25,42 @@ public class Settings extends AppCompatActivity {
     Spinner scouterList;
     LinearLayout stillEnabler, deleteBar;
     ToggleButton stillFRC;
-    Button deleteData;
-    ContextThemeWrapper ctw;
-    AlertDialog.Builder builder;
+    Button deleteData, submitPassword;
+    EditText password;
+    TextView revokeStill;
+    ImageView disappear;
 
+    Integer previousAttempt, adminPassword;
     String stillPreferences, matchDataPreferences, otherPreferences, numMatchesStored;
 
     SharedPreferences matchData, stillEnabled, otherSettings;
     MediaPlayer Still;
+    ContextThemeWrapper ctw;
+    AlertDialog.Builder delete, adminNow, noStill;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-        ctw = new ContextThemeWrapper(this, THEME_HOLO_LIGHT);
-        builder = new AlertDialog.Builder(ctw);
+        previousAttempt = 0;
+        adminPassword = getResources().getInteger(R.integer.adminPassword);
 
-        matchDataPreferences = getString(R.string.matchDataPreferences);
-        stillPreferences = getString(R.string.stillPreferences);
-        otherPreferences = getString(R.string.otherPreferences);
+        ctw = new ContextThemeWrapper(this, THEME_HOLO_LIGHT);
+        adminNow = new AlertDialog.Builder(ctw);
+        delete = new AlertDialog.Builder(ctw);
+        noStill = new AlertDialog.Builder(ctw);
+
         numMatchesStored = getString(R.string.numStoredMatches);
 
+        matchDataPreferences = getString(R.string.matchDataPreferences);
         matchData = getSharedPreferences(matchDataPreferences, 0);
+
+        stillPreferences = getString(R.string.stillPreferences);
         stillEnabled = getSharedPreferences(stillPreferences, 0);
+
+        otherPreferences = getString(R.string.otherPreferences);
         otherSettings = getSharedPreferences(otherPreferences, 0);
 
         Still = MediaPlayer.create(this, R.raw.still_frc_mixdown);
@@ -54,6 +71,10 @@ public class Settings extends AppCompatActivity {
         scouterList = findViewById(R.id.scouterList);
         deleteData = findViewById(R.id.deleteData);
         deleteBar = findViewById(R.id.deleteBar);
+        submitPassword = findViewById(R.id.submitPassword);
+        password = findViewById(R.id.password);
+        revokeStill = findViewById(R.id.revokeStill);
+        disappear = findViewById(R.id.disappearSettings);
 
         scouterList.setSelection(otherSettings.getInt("scouterIDNum", 0));
 
@@ -63,7 +84,55 @@ public class Settings extends AppCompatActivity {
         if (otherSettings.getBoolean("deleteData", false)) {
             deleteBar.setVisibility(View.VISIBLE);
         }
+        if(stillEnabled.getBoolean("stillEnabled", false) && otherSettings.getBoolean("deleteData", false) == false) {
+            disappear.setVisibility(View.GONE);
+        }
+        }
 
+    public void setSubmitPassword(View v) {
+        if(password.getText().toString().length() == 0 || !TextUtils.isDigitsOnly(password.getText().toString())) {
+
+        } else {
+            SharedPreferences.Editor SPOS = otherSettings.edit();
+            if (otherSettings.getBoolean("admin", false)) {
+
+                adminNow.setTitle("You are already Admin!");
+                adminNow.setCancelable(true);
+                adminNow.setNeutralButton(
+                        "OK",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+                AlertDialog alert = adminNow.create();
+                alert.show();
+
+
+
+            } else if (Integer.parseInt(password.getText().toString()) == adminPassword ) {
+
+                adminNow.setTitle("You are now Admin!");
+                adminNow.setCancelable(true);
+                adminNow.setNeutralButton(
+                        "Yay!",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+                AlertDialog alert = adminNow.create();
+                alert.show();
+
+                SPOS.putBoolean("admin", true);
+                SPOS.commit();
+
+
+            } else if (Integer.parseInt(password.getText().toString()) != adminPassword && Integer.parseInt(password.getText().toString()) != previousAttempt ) {
+                Toast.makeText(this, "Password is Incorrect", Toast.LENGTH_SHORT).show();
+                previousAttempt = Integer.parseInt(password.getText().toString());
+            }
+        }
     }
 
     public void setStillFRC(View v) {
@@ -79,12 +148,12 @@ public class Settings extends AppCompatActivity {
 
     public void setDeleteData(View v) {
 
-        builder.setTitle("Delete Data");
-        builder.setMessage("This will delete all match data you have on the device");
-        builder.setCancelable(true);
+        delete.setTitle("Delete Data");
+        delete.setMessage("This will delete all match data you have on the device");
+        delete.setCancelable(true);
 
 
-        builder.setPositiveButton(
+        delete.setPositiveButton(
                 "Yes",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
@@ -131,11 +200,12 @@ public class Settings extends AppCompatActivity {
 
                         SPMD.commit();
 
+                        Settings.this.recreate();
 
                     }
                 });
 
-        builder.setNegativeButton(
+        delete.setNegativeButton(
                 "No",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
@@ -143,20 +213,51 @@ public class Settings extends AppCompatActivity {
                     }
                 });
 
-        AlertDialog alert = builder.create();
+        AlertDialog alert = delete.create();
         alert.show();
 
+    }
 
+    public void setRevokeStill(View v){
+        if (stillEnabled.getBoolean("stillEnabled", false)) {
 
+            noStill.setTitle("We're sorry to see you go");
+            noStill.setMessage("Are you sure you don't want to listen to our song?");
+            noStill.setCancelable(true);
+            noStill.setPositiveButton(
+                    "Yes",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
 
+                            SharedPreferences.Editor SPSE = stillEnabled.edit();
+                            SPSE.putBoolean("stillEnabled", false);
+                            SPSE.commit();
+
+                            Settings.this.recreate();
+
+                        }
+                    });
+
+            noStill.setNegativeButton(
+                    "No",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    });
+
+            AlertDialog alert = noStill.create();
+            alert.show();
+
+        } else {
+
+        }
     }
 
     protected void onStop() {
         // call the superclass method first
         super.onStop();
-
-
-
 
         SharedPreferences.Editor SPMD = matchData.edit();
 
@@ -376,6 +477,8 @@ public class Settings extends AppCompatActivity {
 
 
     }
+
+
 
 }
 

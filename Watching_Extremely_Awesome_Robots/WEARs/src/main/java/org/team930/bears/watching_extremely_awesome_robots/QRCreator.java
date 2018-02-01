@@ -1,55 +1,81 @@
 package org.team930.bears.watching_extremely_awesome_robots;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
+
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.WriterException;
-import com.google.zxing.qrcode.QRCodeWriter;
 import com.google.zxing.common.BitMatrix;
+import com.google.zxing.qrcode.QRCodeWriter;
+
+import static android.app.AlertDialog.THEME_HOLO_LIGHT;
 
 public class QRCreator extends AppCompatActivity {
 
     Button genQRCode;
-    String otherPreferences, matchDataPreferences, sendableData;
     LinearLayout border;
-    SharedPreferences otherSettings, matchData;
+    ImageView qrCode;
 
+    boolean showToast;
+    String otherPreferences, matchDataPreferences, sendableData, numStoredMatches;
+
+    SharedPreferences otherSettings, matchData;
+    ContextThemeWrapper ctw;
+    AlertDialog.Builder builder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_qrcreator);
 
+        showToast = true;
+        ctw = new ContextThemeWrapper(this, THEME_HOLO_LIGHT);
+        builder = new AlertDialog.Builder(ctw);
+
+        numStoredMatches = getString(R.string.numStoredMatches);
+
+        otherPreferences = getString(R.string.otherPreferences);
+        otherSettings = getSharedPreferences(otherPreferences, 0);
 
         matchDataPreferences = getString(R.string.matchDataPreferences);
-        otherPreferences = getString(R.string.otherPreferences);
-
-        otherSettings = getSharedPreferences(otherPreferences, 0);
         matchData = getSharedPreferences(matchDataPreferences, 0);
 
-         sendableData = matchData.getString("match1", "") + matchData.getString("match2", "") +
-                 matchData.getString("match3", "") + matchData.getString("match4", "") +
-                 matchData.getString("match5", "") + matchData.getString("match6", "");
-
-
         genQRCode = findViewById(R.id.genQRCode);
-
         border = findViewById(R.id.border);
+        qrCode = findViewById(R.id.qrCode);
+
+        sendableData = matchData.getString("match1", "") + matchData.getString("match2", "") +
+                matchData.getString("match3", "") + matchData.getString("match4", "") +
+                matchData.getString("match5", "") + matchData.getString("match6", "");
+
+
+        if (otherSettings.getInt(numStoredMatches, 0) == 0) {
+            qrCode.setBackgroundResource(R.drawable.bad);
+
+        } else {
+            qrCode.setBackgroundResource(R.drawable.good);
+        }
     }
 
-    public void setGenQRCode(View v){
-        if(otherSettings.getBoolean("dataAvailable", false)) {
+    public void setGenQRCode(View v) {
+
+        if (otherSettings.getInt(numStoredMatches, 0) != 0) {
 
             QRCodeWriter writer = new QRCodeWriter();
             try {
+
+
                 BitMatrix bitMatrix = writer.encode(sendableData, BarcodeFormat.QR_CODE, 736, 736);
                 int width = bitMatrix.getWidth();
                 int height = bitMatrix.getHeight();
@@ -59,7 +85,7 @@ public class QRCreator extends AppCompatActivity {
                         bmp.setPixel(x, y, bitMatrix.get(x, y) ? Color.BLACK : Color.WHITE);
                     }
                 }
-                ((ImageView) findViewById(R.id.qrCode)).setImageBitmap(bmp);
+                qrCode.setImageBitmap(bmp);
             } catch (WriterException e) {
                 e.printStackTrace();
                 Toast.makeText(getApplicationContext(), "WriterException", Toast.LENGTH_LONG).show();
@@ -72,8 +98,11 @@ public class QRCreator extends AppCompatActivity {
             SPOS.putBoolean("deleteData", true);
             SPOS.commit();
 
-        } else {
+        } else if (showToast) {
             Toast.makeText(getApplicationContext(), "No Data", Toast.LENGTH_SHORT).show();
+            showToast = false;
+
+        } else {
 
         }
 

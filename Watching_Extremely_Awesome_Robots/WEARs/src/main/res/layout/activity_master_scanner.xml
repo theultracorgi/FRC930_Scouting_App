@@ -23,13 +23,6 @@
             android:textSize="30dp" />
 
 
-
-
-
-
-
-
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -37,20 +30,34 @@
             android:gravity="center|bottom"
             android:orientation="vertical">
 
+
+            <TextView
+                android:id="@+id/numDataSets"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textAlignment="center"
+                android:textSize="100dp"
+
+                /> <!--Num Data Sets-->
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:background="@color/white" />
+
             <Button
                 android:id="@+id/generateCSV"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="32dp"
                 android:layout_marginLeft="50dp"
                 android:layout_marginRight="50dp"
-                android:layout_marginBottom="32dp"
                 android:background="@drawable/blue_rounded_button"
                 android:onClick="setGenerateCSV"
                 android:text="Generate CSV File"
                 android:textColor="@color/white"
-                android:visibility="invisible"
-                />
-
+                android:visibility="invisible" /> <!--Generate CSV Button-->
 
             <Button
                 android:id="@+id/scanQRCode"
@@ -60,9 +67,8 @@
                 android:layout_marginRight="50dp"
                 android:background="@drawable/blue_rounded_button"
                 android:onClick="setScanQRCode"
-                android:textColor="@color/white"
-                android:text="Scan QR Code" />
-
+                android:text="Scan QR Code"
+                android:textColor="@color/white" /> <!--Scan Code Button-->
 
             <ImageView
                 android:layout_width="match_parent"

@@ -42,6 +42,7 @@
                 android:layout_marginTop="13dp"
                 android:hint="Team Number"
                 android:inputType="number"
+                android:maxLength="4"
                 android:shadowColor="#FF3297EA"
                 android:textColor="#000000"
                 android:textSize="22dp" />
@@ -63,6 +64,7 @@
                 android:layout_marginTop="5dp"
                 android:hint="Match Number"
                 android:inputType="number"
+                android:maxLength="3"
                 android:shadowColor="#FF3297EA"
                 android:textColor="#000000"
                 android:textSize="22dp" />

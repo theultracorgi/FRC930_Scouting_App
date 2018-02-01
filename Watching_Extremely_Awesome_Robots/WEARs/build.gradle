@@ -4,7 +4,7 @@ android {
     signingConfigs {
         team930 {
             keyAlias 'team930'
-            keyPassword '4786'
+            keyPassword '4786fear'
         }
     }
     compileSdkVersion 26
@@ -12,15 +12,18 @@ android {
     defaultConfig {
         applicationId "org.team930.bears.watching_extremely_awesome_robots"
         minSdkVersion 21
-        targetSdkVersion 24
-        versionCode 1
-        versionName "1.0"
+        targetSdkVersion 26
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         Final {
             debuggable true
             minifyEnabled false
+            signingConfig signingConfigs.team930
+            versionNameSuffix '1.0,'
+        }
+        release {
+            signingConfig signingConfigs.team930
         }
     }
     productFlavors {

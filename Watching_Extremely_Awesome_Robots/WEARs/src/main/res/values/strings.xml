@@ -59,5 +59,7 @@
         <item>Your Boi Zach From Team 930</item>
     </string-array>
     <string name="scouterListPrompt">Hu u Be?</string>
+    <integer name="adminPassword">478609</integer>
+    <integer name="maxMatches">5</integer>
 
 </resources>

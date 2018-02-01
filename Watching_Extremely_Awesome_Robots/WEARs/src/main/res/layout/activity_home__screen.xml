@@ -14,12 +14,15 @@
         android:orientation="vertical"
         >
         <TextView
+            android:id="@+id/revokeAdmin"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:paddingLeft="8dp"
             android:paddingTop="4dp"
             android:text="Main Menu"
-            android:textSize="30dp" />
+            android:textSize="30dp"
+            android:onClick="setRevokeAdmin"
+            />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -114,6 +117,7 @@
             android:background="@color/background_material" />
 
         <LinearLayout
+            android:id="@+id/masterScanner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/rounded_corners_chunk_material"
@@ -121,7 +125,9 @@
             android:paddingBottom="10dp"
             android:paddingLeft="11dp"
             android:paddingRight="4dp"
-            android:paddingTop="10dp">
+            android:paddingTop="10dp"
+            android:visibility="gone"
+            >
 
             <TextView
                 android:layout_width="0dp"
@@ -148,13 +154,12 @@
                 android:textColor="@color/white"
                 android:text=">"
                 android:textSize="30dp"
-
-
                 />
 
         </LinearLayout> <!--Master-->
 
         <ImageView
+            android:id="@+id/disappearHomeScreen"
             android:layout_width="match_parent"
             android:layout_height="2dp"
             android:background="@color/background_material" />
@@ -189,7 +194,7 @@
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
                 android:layout_weight=".25"
-                android:background="@color/lighterBlue"
+                android:background="@color/lightBlue"
                 android:onClick="setGoToSettings"
                 android:textColor="@color/white"
                 android:text=">"
@@ -204,6 +209,7 @@
             android:layout_width="match_parent"
             android:layout_height="2dp"
             android:background="@color/background_material" />
+
 
     </LinearLayout>
 
