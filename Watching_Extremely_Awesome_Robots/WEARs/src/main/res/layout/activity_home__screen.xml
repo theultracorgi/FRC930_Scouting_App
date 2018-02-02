@@ -210,7 +210,6 @@
             android:layout_height="2dp"
             android:background="@color/background_material" />
 
-
     </LinearLayout>
 
 </RelativeLayout>
