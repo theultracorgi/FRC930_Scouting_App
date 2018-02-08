@@ -18,14 +18,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import java.util.Timer;
+
 import static android.app.AlertDialog.THEME_HOLO_LIGHT;
 
 public class Settings extends AppCompatActivity {
 
     Spinner scouterList;
-    LinearLayout stillEnabler, deleteBar;
+    LinearLayout stillEnabler, deleteBar, nerdStatsLayout;
     ToggleButton stillFRC;
-    Button deleteData, submitPassword;
+    Button deleteData, submitPassword, statsForNerds;
     EditText password;
     TextView revokeStill;
     ImageView disappear;
@@ -36,13 +38,15 @@ public class Settings extends AppCompatActivity {
     SharedPreferences matchData, stillEnabled, otherSettings;
     MediaPlayer Still;
     ContextThemeWrapper ctw;
-    AlertDialog.Builder delete, adminNow, noStill;
+    AlertDialog.Builder delete, adminNow, noStill, nerdStats;
+    Thread timer;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+
 
         previousAttempt = 0;
         adminPassword = getResources().getInteger(R.integer.adminPassword);
@@ -51,6 +55,7 @@ public class Settings extends AppCompatActivity {
         adminNow = new AlertDialog.Builder(ctw);
         delete = new AlertDialog.Builder(ctw);
         noStill = new AlertDialog.Builder(ctw);
+        nerdStats = new AlertDialog.Builder(ctw);
 
         numMatchesStored = getString(R.string.numStoredMatches);
 
@@ -75,6 +80,10 @@ public class Settings extends AppCompatActivity {
         password = findViewById(R.id.password);
         revokeStill = findViewById(R.id.revokeStill);
         disappear = findViewById(R.id.disappearSettings);
+        nerdStatsLayout = findViewById(R.id.nerdStatsLayout);
+        statsForNerds = findViewById(R.id.statsForNerds);
+
+
 
         scouterList.setSelection(otherSettings.getInt("scouterIDNum", 0));
 
@@ -86,6 +95,9 @@ public class Settings extends AppCompatActivity {
         }
         if(stillEnabled.getBoolean("stillEnabled", false) && otherSettings.getBoolean("deleteData", false) == false) {
             disappear.setVisibility(View.GONE);
+        }
+        if(otherSettings.getBoolean("admin", false)) {
+            nerdStatsLayout.setVisibility(View.VISIBLE);
         }
         }
 
@@ -253,6 +265,30 @@ public class Settings extends AppCompatActivity {
         } else {
 
         }
+    }
+
+    public void setStatsForNerds(View v) {
+
+
+            nerdStats.setTitle("Stats For Nerds");
+            nerdStats.setMessage("CSVs Created: " + otherSettings.getInt("csvCreated", 0) + "\nQR Codes Scanned: " + otherSettings.getInt("qrScanned", 0));
+            nerdStats.setCancelable(true);
+            nerdStats.setNeutralButton(
+                    "Yeah Playa",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+
+                            Settings.this.recreate();
+
+                        }
+                    });
+
+
+
+            AlertDialog alert = nerdStats.create();
+            alert.show();
+
     }
 
     protected void onStop() {
@@ -468,6 +504,7 @@ public class Settings extends AppCompatActivity {
 
 
         }
+        SPMD.putString("scouterID", matchData.getString("scouterID", "Low'a") + ",");
 
         SharedPreferences.Editor SPOS = otherSettings.edit();
 

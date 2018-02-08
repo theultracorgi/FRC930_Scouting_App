@@ -10,19 +10,27 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ToggleButton;
+
+import java.util.Timer;
 
 public class AutonTeleop extends AppCompatActivity {
     Button aSwitchSubtract, aSwitchAdd, aScaleSubtract, aScaleAdd, tSwitchSubtract, tSwitchAdd, tScaleSubtract, tScaleAdd, tVaultSubtract, tVaultAdd, goToPostMatch;
     TextView aSwitchDisplay, aScaleDisplay, tSwitchDisplay, tScaleDisplay, tVaultDisplay;
-    ToggleButton autoline;
+    ToggleButton autoline, intakeTimer;
     RadioButton onField, parked, elevated;
 
-    Integer aAutoLine, aSwitch, aScale, tSwitch, tScale, tVault, tParked, tElevated;
+    Integer aAutoLine, aSwitch, aScale, tSwitch, tScale, tVault, tParked, tElevated, time;
+
+    boolean timerOn;
+    int[] intakeTimes;
     String matchDataPreferences;
+
 
     SharedPreferences matchData;
     MediaPlayer Still;
+    Timer Timer;
 
 
     @Override
@@ -30,6 +38,7 @@ public class AutonTeleop extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_autonteleop);
 
+        Timer = new Timer();
         Still = MediaPlayer.create(this, R.raw.ohnine_playa);
 
         matchDataPreferences = getString(R.string.matchDataPreferences);
@@ -41,8 +50,12 @@ public class AutonTeleop extends AppCompatActivity {
         tSwitch = 0;
         tScale = 0;
         tVault = 0;
+        timerOn = false;
+        time = 0;
         tParked = 0; //binary
         tElevated = 0; //binary
+
+        intakeTimes = new int[100];
 
         autoline = findViewById(R.id.autoline);
 
@@ -66,15 +79,32 @@ public class AutonTeleop extends AppCompatActivity {
         tVaultDisplay = findViewById(R.id.tVaultDisplay);
         tVaultAdd = findViewById(R.id.tVaultAdd);
 
+        intakeTimer = findViewById(R.id.intakeTimer);
+
         onField = findViewById(R.id.onField);
         parked = findViewById(R.id.parked);
         elevated = findViewById(R.id.elevated);
 
         goToPostMatch = findViewById(R.id.gotoPostMatch);
 
+        main();
 
     }
 
+    public void main() {
+        while(timerOn) {
+
+            try {
+                Timer.wait(10);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+                Toast.makeText(this, "IE", Toast.LENGTH_SHORT).show();
+            }
+
+
+        }
+
+    }
     //AUTON AUTOLINE
     public void setAutoline(View v) {
 
@@ -224,6 +254,10 @@ public class AutonTeleop extends AppCompatActivity {
             Still.start();
         }
 
+    }
+
+    public void setIntakeTimer(View v ) {
+        timerOn = !timerOn;
     }
 
     public void setOnField(View v) {

@@ -40,6 +40,7 @@ public class PreMatch extends AppCompatActivity {
         alliance = 'b';
         stillCount = 0;
 
+
         stillPreferences = getString(R.string.stillPreferences);
         stillEnabled = getSharedPreferences(stillPreferences, 0);
 
@@ -65,6 +66,7 @@ public class PreMatch extends AppCompatActivity {
     public void setGoToAuton(View v) {
 
         if((teamNum.getText().toString()).length() ==0 || (matchNum.getText().toString()).length() ==0 ) {
+
             builder.setTitle("Fill out all Fields");
             builder.setCancelable(true);
             builder.setNeutralButton(
@@ -78,8 +80,19 @@ public class PreMatch extends AppCompatActivity {
             alert.show();
 
 
-
-        } else {
+        } else if(Integer.parseInt(teamNum.getText().toString()) ==0 || Integer.parseInt(matchNum.getText().toString()) ==0) {
+            builder.setTitle("Give Us Valid Values");
+            builder.setCancelable(true);
+            builder.setNeutralButton(
+                    "OK",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    });
+            AlertDialog alert = builder.create();
+            alert.show();
+        }else {
             if (allianceColor.isChecked()) {
                 alliance = 'r';
             } else {

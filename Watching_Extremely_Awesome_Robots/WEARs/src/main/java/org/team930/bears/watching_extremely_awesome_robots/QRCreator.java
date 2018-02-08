@@ -74,8 +74,7 @@ public class QRCreator extends AppCompatActivity {
 
             QRCodeWriter writer = new QRCodeWriter();
             try {
-
-
+                //QR Code generation {
                 BitMatrix bitMatrix = writer.encode(sendableData, BarcodeFormat.QR_CODE, 736, 736);
                 int width = bitMatrix.getWidth();
                 int height = bitMatrix.getHeight();
@@ -90,13 +89,12 @@ public class QRCreator extends AppCompatActivity {
                 e.printStackTrace();
                 Toast.makeText(getApplicationContext(), "WriterException", Toast.LENGTH_LONG).show();
             }
-
-
             border.setVisibility(View.VISIBLE);
 
             SharedPreferences.Editor SPOS = otherSettings.edit();
             SPOS.putBoolean("deleteData", true);
             SPOS.commit();
+            //QR Code Generation}
 
         } else if (showToast) {
             Toast.makeText(getApplicationContext(), "No Data", Toast.LENGTH_SHORT).show();

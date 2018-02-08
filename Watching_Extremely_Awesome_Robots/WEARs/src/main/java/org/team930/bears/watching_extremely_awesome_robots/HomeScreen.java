@@ -65,8 +65,14 @@ public class HomeScreen extends AppCompatActivity {
     public void setGoToPreMatch(View v) {
 
         if(otherSettings.getInt(numStoredMatches, maxMatches) >= maxMatches) { //
-            builder.setTitle("All your data are belong to us.");
-            builder.setMessage("You need to generate a QR code and delete your data to continue scouting.");
+
+            if(otherSettings.getBoolean("deleteData", false)) {
+                builder.setTitle("Delete Your Data");
+                builder.setMessage("You need to delete your data to continue scouting.");
+            } else {
+                builder.setTitle("All Your Data Are Belong To Us.");
+                builder.setMessage("You need to generate a QR code to continue scouting.");
+            }
             builder.setCancelable(true);
             builder.setNeutralButton(
                     "OK",
@@ -85,6 +91,8 @@ public class HomeScreen extends AppCompatActivity {
     }
 
     public void setGoToGenQR(View v) {
+
+
 
         Intent nextScreen = new Intent(HomeScreen.this, QRCreator.class);
         startActivity(nextScreen);

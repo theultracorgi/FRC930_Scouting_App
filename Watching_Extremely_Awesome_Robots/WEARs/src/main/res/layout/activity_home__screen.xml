@@ -22,7 +22,7 @@
             android:text="Main Menu"
             android:textSize="30dp"
             android:onClick="setRevokeAdmin"
-            />
+            /> <!--Main Menu-->
 
         <LinearLayout
             android:layout_width="match_parent"

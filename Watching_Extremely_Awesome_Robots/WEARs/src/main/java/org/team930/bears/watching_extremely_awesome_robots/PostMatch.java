@@ -62,7 +62,7 @@ public class PostMatch extends AppCompatActivity {
 
     public void setSubmitData(View v) {
 
-        if ((comments.getText().toString()).length() <= 10) {
+        if ((comments.getText().toString()).length() <= 10 || !comments.getText().toString().contains(" ")) {
 
             moreComments.setTitle("Make more comments");
             moreComments.setCancelable(true);
@@ -77,7 +77,7 @@ public class PostMatch extends AppCompatActivity {
             alert.show();
 
 
-        } else  {
+        } else {
 
             submit.setTitle("Submit Match Data");
             submit.setMessage("Are you sure you want to submit this data?");

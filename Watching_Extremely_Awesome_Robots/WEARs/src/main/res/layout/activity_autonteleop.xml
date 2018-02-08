@@ -616,6 +616,52 @@
                 android:background="@color/background_material" />
 
             <LinearLayout
+                android:id="@+id/tIntakeTimer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_corners_chunk_material"
+                android:orientation="horizontal"
+                android:paddingBottom="10dp"
+                android:paddingLeft="11dp"
+                android:paddingRight="4dp"
+                android:paddingTop="10dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="8dp"
+                    android:layout_weight=".7"
+                    android:background="@color/white"
+                    android:maxLines="1"
+                    android:padding="5dp"
+                    android:text="Intake Timer"
+                    android:textColor="@color/textMedium"
+                    android:textSize="30dp"
+
+                    />
+
+                <ToggleButton
+                    android:id="@+id/intakeTimer"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight=".3"
+                    android:background="@drawable/toggle_button_at"
+                    android:onClick="setIntakeTimer"
+                    android:textOff="Not Timing"
+                    android:textOn="Timing"
+                    android:textColor="@color/white"
+
+                    />
+
+            </LinearLayout> <!--Intake Timer-->
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/background_material" />
+
+            <LinearLayout
                 android:id="@+id/endgame"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
