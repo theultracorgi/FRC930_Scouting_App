@@ -24,7 +24,6 @@
             android:textSize="30dp" />
 
         <LinearLayout
-            android:id="@+id/matchResultCluster"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/rounded_corners_chunk_material"
@@ -44,6 +43,7 @@
                 android:maxLines="1"
                 android:padding="5dp"
                 android:text="Match Result"
+                android:textStyle="italic"
                 android:textColor="@color/textMedium"
                 android:textSize="30dp"
 
@@ -69,7 +69,6 @@
             android:background="@color/background_material" />
 
         <LinearLayout
-            android:id="@+id/tDisabled"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/rounded_corners_chunk_material"
@@ -89,6 +88,7 @@
                 android:maxLines="1"
                 android:padding="5dp"
                 android:text="Disabled"
+                android:textStyle="italic"
                 android:textColor="@color/textMedium"
                 android:textSize="30dp"
 
@@ -135,6 +135,7 @@
                 android:paddingLeft="11dp"
                 android:paddingRight="5dp"
                 android:text="Comments"
+                android:textStyle="italic"
                 android:textColor="@color/textMedium"
                 android:textSize="30dp"
 
@@ -145,6 +146,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Very fast, bad drivers, fast cube intake, a nice haiku, etc."
+                android:maxHeight="120dp"
                 android:padding="16dp" />
 
         </LinearLayout> <!--Comments-->

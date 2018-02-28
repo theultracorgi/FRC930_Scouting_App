@@ -85,7 +85,7 @@ public class HomeScreen extends AppCompatActivity {
             alert.show();
 
         } else {
-            Intent nextScreen = new Intent(HomeScreen.this, PreMatch.class);
+            Intent nextScreen = new Intent(this, PreMatch.class);
             startActivity(nextScreen);
         }
     }
@@ -111,6 +111,7 @@ public class HomeScreen extends AppCompatActivity {
         startActivity(nextScreen);
 
     }
+
     public void setRevokeAdmin(View v) {
         if (otherSettings.getBoolean("admin", false) == true) {
 

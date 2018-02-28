@@ -1,8 +1,10 @@
 package org.team930.bears.watching_extremely_awesome_robots;
 
-import android.Manifest;
+
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaScannerConnection;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
@@ -21,14 +23,18 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 
+
 public class MasterScanner extends AppCompatActivity {
     Button generateCSV, scanQRCode;
     TextView numDataSets;
 
     String otherPreferences;
-    boolean showToast;
+
 
     SharedPreferences otherSettings;
+    FileOutputStream fos;
+    File path, dir, file;
+    Toast csvCreated;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,8 +43,6 @@ public class MasterScanner extends AppCompatActivity {
 
         otherPreferences = getString(R.string.otherPreferences);
         otherSettings = getSharedPreferences(otherPreferences, 0);
-
-        showToast = true;
 
         generateCSV = findViewById(R.id.generateCSV);
         scanQRCode = findViewById(R.id.scanQRCode);
@@ -81,36 +85,41 @@ public class MasterScanner extends AppCompatActivity {
                 otherSettings.getString("csvMatch3", "") + otherSettings.getString("csvMatch4", "") +
                 otherSettings.getString("csvMatch5", "") + otherSettings.getString("csvMatch6", "");
         try {
-            File sdCard = Environment.getExternalStorageDirectory();
-            File dir = new File(sdCard.getAbsolutePath() + "/FRCMATCHDATA");
+            path = Environment.getExternalStorageDirectory();
+            dir = new File(path.getAbsolutePath() + "/FRCMATCHDATA");
             dir.mkdirs();
-            File file = new File(dir, "MatchData.csv");
+
+
+
+
+            file = new File(dir, "MatchData.xlsx");
+
 
             if (file.exists()) {
-                file.delete();
+                fos = new FileOutputStream(file, true);
+                fos.write(fullCSVExport.getBytes());
             } else {
+                fos = new FileOutputStream(file);
                 file.createNewFile();
+                fos.write(fullCSVExport.getBytes());
+
             }
+            fos.flush();
+            fos.close();
 
-            FileOutputStream f = new FileOutputStream(file);
+            file.setExecutable(true);
+            file.setReadable(true);
+            file.setWritable(true);
 
-            f.write(fullCSVExport.getBytes());
-            f.flush();
-            f.close();
-            SharedPreferences.Editor SPOS = otherSettings.edit();
-            SPOS.putInt("csvCreated", otherSettings.getInt("csvCreated", 0) + 1);
-            SPOS.commit();
+            MediaScannerConnection.scanFile(this, new String[] {file.toString()}, null, null);
         } catch (FileNotFoundException e) {
             Toast.makeText(this, "FileNotFound", Toast.LENGTH_SHORT).show();
 
         } catch (IOException e) {
 
-            Toast.makeText(this, "IO", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "IOException", Toast.LENGTH_SHORT).show();
         }
-        if(showToast) {
-            Toast.makeText(this, "CSV created, playa", Toast.LENGTH_SHORT).show();
-            showToast = false;
-        }
+
 
     }
 
@@ -176,8 +185,6 @@ public class MasterScanner extends AppCompatActivity {
             } else {
                 numDataSets.setText(Integer.toString(otherSettings.getInt("scannedID", 6)));
             }
-
         }
-
     }
 }

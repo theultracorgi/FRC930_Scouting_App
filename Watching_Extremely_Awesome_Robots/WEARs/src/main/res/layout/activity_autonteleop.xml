@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -13,7 +12,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        tools:ignore="UselessParent">
+        tools:ignore="UselessParent"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -53,6 +53,7 @@
                     android:maxLines="1"
                     android:padding="5dp"
                     android:text="AutoLine"
+                    android:textStyle="italic"
                     android:textColor="@color/textMedium"
                     android:textSize="30dp"
 
@@ -65,9 +66,9 @@
                     android:layout_weight=".3"
                     android:background="@drawable/toggle_button_at"
                     android:onClick="setAutoline"
+                    android:textColor="@color/white"
                     android:textOff="Not Crossed"
                     android:textOn="Crossed"
-                    android:textColor="@color/white"
 
                     />
 
@@ -75,7 +76,7 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="2dp"
                 android:background="@color/background_material" />
 
             <LinearLayout
@@ -105,7 +106,8 @@
                         android:background="@color/white"
                         android:paddingLeft="5dp"
                         android:paddingRight="15dp"
-                        android:text="Cubes on Switch"
+                        android:text="Switch"
+                        android:textStyle="italic"
                         android:textColor="@color/textMedium"
                         android:textSize="30dp"
 
@@ -125,10 +127,71 @@
 
                 </LinearLayout>
 
-                <Space
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight=".0" />
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginRight="4dp"
+                        android:layout_weight="2"
+                        android:background="@color/white"
+                        android:gravity="left|center"
+                        android:text="Attempts"
+                        android:textSize="25dp"
+                        tools:ignore="HardcodedText,SpUsage" />
+
+                    <Button
+                        android:id="@+id/aSwitchSubtractA"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:background="@color/lightBlue"
+                        android:onClick="setASwitchSubtractA"
+                        android:text="-1"
+                        android:textColor="@color/white"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/aSwitchDisplayA"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginRight="4dp"
+                        android:layout_weight="1"
+                        android:background="#D7DDEA"
+                        android:gravity="center"
+                        android:text="0"
+                        android:textSize="32dp"
+                        tools:ignore="HardcodedText,SpUsage" />
+
+                    <Button
+                        android:id="@+id/aSwitchAddA"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:background="@color/lightBlue"
+                        android:onClick="setASwitchAddA"
+                        android:text="+1"
+                        android:textColor="@color/white"
+                        android:textSize="15dp" />
+
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="3dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:background="@color/white" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -138,39 +201,51 @@
                     android:paddingLeft="15dp"
                     android:paddingRight="15dp">
 
-                    <Button
-                        android:id="@+id/aSwitchSubtract"
-                        android:layout_width="0dp"
-                        android:layout_height="fill_parent"
-                        android:layout_weight="1"
-                        android:background="@color/lightBlue"
-                        android:onClick="setASwitchSubtract"
-                        android:textColor="@color/white"
-                        android:text="-1"
-                        android:textSize="15dp" />
-
                     <TextView
-                        android:id="@+id/aSwitchDisplay"
                         android:layout_width="0dp"
                         android:layout_height="fill_parent"
                         android:layout_marginLeft="4dp"
                         android:layout_marginRight="4dp"
                         android:layout_weight="2"
-                        android:background="#D7DDEA"
-                        android:gravity="center"
-                        android:text="0"
-                        android:textSize="37dp"
+                        android:background="@color/white"
+                        android:gravity="left|center"
+                        android:text="Scored"
+                        android:textSize="25dp"
                         tools:ignore="HardcodedText,SpUsage" />
 
                     <Button
-                        android:id="@+id/aSwitchAdd"
+                        android:id="@+id/aSwitchSubtractS"
                         android:layout_width="0dp"
                         android:layout_height="fill_parent"
                         android:layout_weight="1"
                         android:background="@color/lightBlue"
+                        android:onClick="setASwitchSubtractS"
+                        android:text="-1"
                         android:textColor="@color/white"
-                        android:onClick="setASwitchAdd"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/aSwitchDisplayS"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginRight="4dp"
+                        android:layout_weight="1"
+                        android:background="#D7DDEA"
+                        android:gravity="center"
+                        android:text="0"
+                        android:textSize="32dp"
+                        tools:ignore="HardcodedText,SpUsage" />
+
+                    <Button
+                        android:id="@+id/aSwitchAddS"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:background="@color/lightBlue"
+                        android:onClick="setASwitchAddS"
                         android:text="+1"
+                        android:textColor="@color/white"
                         android:textSize="15dp" />
 
 
@@ -180,7 +255,7 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="2dp"
                 android:background="@color/background_material" />
 
             <LinearLayout
@@ -210,7 +285,8 @@
                         android:background="@color/white"
                         android:paddingLeft="5dp"
                         android:paddingRight="15dp"
-                        android:text="Cubes on Scale"
+                        android:text="Scale"
+                        android:textStyle="italic"
                         android:textColor="@color/textMedium"
                         android:textSize="30dp"
 
@@ -230,10 +306,71 @@
 
                 </LinearLayout>
 
-                <Space
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight=".0" />
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginRight="4dp"
+                        android:layout_weight="2"
+                        android:background="@color/white"
+                        android:gravity="left|center"
+                        android:text="Attempts"
+                        android:textSize="25dp"
+                        tools:ignore="HardcodedText,SpUsage" />
+
+                    <Button
+                        android:id="@+id/aScaleSubtractA"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:background="@color/lightBlue"
+                        android:onClick="setAScaleSubtractA"
+                        android:text="-1"
+                        android:textColor="@color/white"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/aScaleDisplayA"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginRight="4dp"
+                        android:layout_weight="1"
+                        android:background="#D7DDEA"
+                        android:gravity="center"
+                        android:text="0"
+                        android:textSize="32dp"
+                        tools:ignore="HardcodedText,SpUsage" />
+
+                    <Button
+                        android:id="@+id/aScaleAddA"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:background="@color/lightBlue"
+                        android:onClick="setAScaleAddA"
+                        android:text="+1"
+                        android:textColor="@color/white"
+                        android:textSize="15dp" />
+
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="3dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:background="@color/white" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -243,39 +380,51 @@
                     android:paddingLeft="15dp"
                     android:paddingRight="15dp">
 
-                    <Button
-                        android:id="@+id/aScaleSubtract"
-                        android:layout_width="0dp"
-                        android:layout_height="fill_parent"
-                        android:layout_weight="1"
-                        android:background="@color/lightBlue"
-                        android:onClick="setAScaleSubtract"
-                        android:textColor="@color/white"
-                        android:text="-1"
-                        android:textSize="15dp" />
-
                     <TextView
-                        android:id="@+id/aScaleDisplay"
                         android:layout_width="0dp"
                         android:layout_height="fill_parent"
                         android:layout_marginLeft="4dp"
                         android:layout_marginRight="4dp"
                         android:layout_weight="2"
-                        android:background="#D7DDEA"
-                        android:gravity="center"
-                        android:text="0"
-                        android:textSize="37dp"
+                        android:background="@color/white"
+                        android:gravity="left|center"
+                        android:text="Scored"
+                        android:textSize="25dp"
                         tools:ignore="HardcodedText,SpUsage" />
 
                     <Button
-                        android:id="@+id/aScaleAdd"
+                        android:id="@+id/aScaleSubtractS"
                         android:layout_width="0dp"
                         android:layout_height="fill_parent"
                         android:layout_weight="1"
                         android:background="@color/lightBlue"
+                        android:onClick="setAScaleSubtractS"
+                        android:text="-1"
                         android:textColor="@color/white"
-                        android:onClick="setAScaleAdd"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/aScaleDisplayS"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginRight="4dp"
+                        android:layout_weight="1"
+                        android:background="#D7DDEA"
+                        android:gravity="center"
+                        android:text="0"
+                        android:textSize="32dp"
+                        tools:ignore="HardcodedText,SpUsage" />
+
+                    <Button
+                        android:id="@+id/aScaleAddS"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:background="@color/lightBlue"
+                        android:onClick="setAScaleAddS"
                         android:text="+1"
+                        android:textColor="@color/white"
                         android:textSize="15dp" />
 
 
@@ -285,7 +434,7 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="2dp"
                 android:background="@color/background_material" />
 
             <!--TELEOPERATED-->
@@ -325,7 +474,8 @@
                         android:background="@color/white"
                         android:paddingLeft="5dp"
                         android:paddingRight="15dp"
-                        android:text="Cubes on Switch"
+                        android:text="Switch"
+                        android:textStyle="italic"
                         android:textColor="@color/textMedium"
                         android:textSize="30dp"
 
@@ -345,10 +495,71 @@
 
                 </LinearLayout>
 
-                <Space
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight=".0" />
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginRight="4dp"
+                        android:layout_weight="2"
+                        android:background="@color/white"
+                        android:gravity="left|center"
+                        android:text="Attempts"
+                        android:textSize="25dp"
+                        tools:ignore="HardcodedText,SpUsage" />
+
+                    <Button
+                        android:id="@+id/tSwitchSubtractA"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:background="@color/lightBlue"
+                        android:onClick="setTSwitchSubtractA"
+                        android:text="-1"
+                        android:textColor="@color/white"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/tSwitchDisplayA"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginRight="4dp"
+                        android:layout_weight="1"
+                        android:background="#D7DDEA"
+                        android:gravity="center"
+                        android:text="0"
+                        android:textSize="32dp"
+                        tools:ignore="HardcodedText,SpUsage" />
+
+                    <Button
+                        android:id="@+id/tSwitchAddA"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:background="@color/lightBlue"
+                        android:onClick="setTSwitchAddA"
+                        android:text="+1"
+                        android:textColor="@color/white"
+                        android:textSize="15dp" />
+
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="3dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:background="@color/white" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -358,39 +569,51 @@
                     android:paddingLeft="15dp"
                     android:paddingRight="15dp">
 
-                    <Button
-                        android:id="@+id/tSwitchSubtract"
-                        android:layout_width="0dp"
-                        android:layout_height="fill_parent"
-                        android:layout_weight="1"
-                        android:background="@color/lightBlue"
-                        android:onClick="setTSwitchSubtract"
-                        android:textColor="@color/white"
-                        android:text="-1"
-                        android:textSize="15dp" />
-
                     <TextView
-                        android:id="@+id/tSwitchDisplay"
                         android:layout_width="0dp"
                         android:layout_height="fill_parent"
                         android:layout_marginLeft="4dp"
                         android:layout_marginRight="4dp"
                         android:layout_weight="2"
-                        android:background="#D7DDEA"
-                        android:gravity="center"
-                        android:text="0"
-                        android:textSize="37dp"
+                        android:background="@color/white"
+                        android:gravity="left|center"
+                        android:text="Scored"
+                        android:textSize="25dp"
                         tools:ignore="HardcodedText,SpUsage" />
 
                     <Button
-                        android:id="@+id/tSwitchAdd"
+                        android:id="@+id/tSwitchSubtractS"
                         android:layout_width="0dp"
                         android:layout_height="fill_parent"
                         android:layout_weight="1"
                         android:background="@color/lightBlue"
-                        android:onClick="setTSwitchAdd"
+                        android:onClick="setTSwitchSubtractS"
+                        android:text="-1"
                         android:textColor="@color/white"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/tSwitchDisplayS"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginRight="4dp"
+                        android:layout_weight="1"
+                        android:background="#D7DDEA"
+                        android:gravity="center"
+                        android:text="0"
+                        android:textSize="32dp"
+                        tools:ignore="HardcodedText,SpUsage" />
+
+                    <Button
+                        android:id="@+id/tSwitchAddS"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:background="@color/lightBlue"
+                        android:onClick="setTSwitchAddS"
                         android:text="+1"
+                        android:textColor="@color/white"
                         android:textSize="15dp" />
 
 
@@ -400,7 +623,7 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="2dp"
                 android:background="@color/background_material" />
 
             <LinearLayout
@@ -430,7 +653,8 @@
                         android:background="@color/white"
                         android:paddingLeft="5dp"
                         android:paddingRight="15dp"
-                        android:text="Cubes on Scale"
+                        android:text="Scale"
+                        android:textStyle="italic"
                         android:textColor="@color/textMedium"
                         android:textSize="30dp"
 
@@ -450,10 +674,71 @@
 
                 </LinearLayout>
 
-                <Space
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight=".0" />
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginRight="4dp"
+                        android:layout_weight="2"
+                        android:background="@color/white"
+                        android:gravity="left|center"
+                        android:text="Attempts"
+                        android:textSize="25dp"
+                        tools:ignore="HardcodedText,SpUsage" />
+
+                    <Button
+                        android:id="@+id/tScaleSubtractA"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:background="@color/lightBlue"
+                        android:onClick="setTScaleSubtractA"
+                        android:text="-1"
+                        android:textColor="@color/white"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/tScaleDisplayA"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginRight="4dp"
+                        android:layout_weight="1"
+                        android:background="#D7DDEA"
+                        android:gravity="center"
+                        android:text="0"
+                        android:textSize="32dp"
+                        tools:ignore="HardcodedText,SpUsage" />
+
+                    <Button
+                        android:id="@+id/tScaleAddA"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:background="@color/lightBlue"
+                        android:onClick="setTScaleAddA"
+                        android:text="+1"
+                        android:textColor="@color/white"
+                        android:textSize="15dp" />
+
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="3dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:background="@color/white" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -463,39 +748,51 @@
                     android:paddingLeft="15dp"
                     android:paddingRight="15dp">
 
-                    <Button
-                        android:id="@+id/tScaleSubtract"
-                        android:layout_width="0dp"
-                        android:layout_height="fill_parent"
-                        android:layout_weight="1"
-                        android:background="@color/lightBlue"
-                        android:onClick="setTScaleSubtract"
-                        android:textColor="@color/white"
-                        android:text="-1"
-                        android:textSize="15dp" />
-
                     <TextView
-                        android:id="@+id/tScaleDisplay"
                         android:layout_width="0dp"
                         android:layout_height="fill_parent"
                         android:layout_marginLeft="4dp"
                         android:layout_marginRight="4dp"
                         android:layout_weight="2"
-                        android:background="#D7DDEA"
-                        android:gravity="center"
-                        android:text="0"
-                        android:textSize="37dp"
+                        android:background="@color/white"
+                        android:gravity="left|center"
+                        android:text="Scored"
+                        android:textSize="25dp"
                         tools:ignore="HardcodedText,SpUsage" />
 
                     <Button
-                        android:id="@+id/tScaleAdd"
+                        android:id="@+id/tScaleSubtractS"
                         android:layout_width="0dp"
                         android:layout_height="fill_parent"
                         android:layout_weight="1"
                         android:background="@color/lightBlue"
-                        android:onClick="setTScaleAdd"
+                        android:onClick="setTScaleSubtractS"
+                        android:text="-1"
                         android:textColor="@color/white"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/tScaleDisplayS"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginRight="4dp"
+                        android:layout_weight="1"
+                        android:background="#D7DDEA"
+                        android:gravity="center"
+                        android:text="0"
+                        android:textSize="32dp"
+                        tools:ignore="HardcodedText,SpUsage" />
+
+                    <Button
+                        android:id="@+id/tScaleAddS"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:background="@color/lightBlue"
+                        android:onClick="setTScaleAddS"
                         android:text="+1"
+                        android:textColor="@color/white"
                         android:textSize="15dp" />
 
 
@@ -505,11 +802,11 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="2dp"
                 android:background="@color/background_material" />
 
             <LinearLayout
-                android:id="@+id/vault"
+                android:id="@+id/tVault"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded_corners_chunk_material"
@@ -535,7 +832,8 @@
                         android:background="@color/white"
                         android:paddingLeft="5dp"
                         android:paddingRight="15dp"
-                        android:text="Cubes in Vault"
+                        android:text="Vault"
+                        android:textStyle="italic"
                         android:textColor="@color/textMedium"
                         android:textSize="30dp"
 
@@ -555,12 +853,13 @@
 
                 </LinearLayout>
 
-
-
-                <Space
+                <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight=".0" />
+                    android:layout_height="3dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:background="@color/white" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -570,41 +869,52 @@
                     android:paddingLeft="15dp"
                     android:paddingRight="15dp">
 
-                    <Button
-                        android:id="@+id/tVaultSubtract"
-                        android:layout_width="0dp"
-                        android:layout_height="fill_parent"
-                        android:layout_weight="1"
-                        android:background="@color/lightBlue"
-                        android:onClick="setTVaultSubtract"
-                        android:textColor="@color/white"
-                        android:text="-1"
-                        android:textSize="15dp" />
-
                     <TextView
-                        android:id="@+id/tVaultDisplay"
                         android:layout_width="0dp"
                         android:layout_height="fill_parent"
                         android:layout_marginLeft="4dp"
                         android:layout_marginRight="4dp"
                         android:layout_weight="2"
-                        android:background="#D7DDEA"
-                        android:gravity="center"
-                        android:text="0"
-                        android:textSize="37dp"
+                        android:background="@color/white"
+                        android:gravity="left|center"
+                        android:text="Scored"
+                        android:textSize="25dp"
                         tools:ignore="HardcodedText,SpUsage" />
 
                     <Button
-                        android:id="@+id/tVaultAdd"
+                        android:id="@+id/tVaultSubtractS"
                         android:layout_width="0dp"
                         android:layout_height="fill_parent"
                         android:layout_weight="1"
                         android:background="@color/lightBlue"
-                        android:onClick="setTVaultAdd"
+                        android:onClick="setTVaultSubtractS"
+                        android:text="-1"
                         android:textColor="@color/white"
-                        android:text="+1"
                         android:textSize="15dp" />
 
+                    <TextView
+                        android:id="@+id/tVaultDisplayS"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginRight="4dp"
+                        android:layout_weight="1"
+                        android:background="#D7DDEA"
+                        android:gravity="center"
+                        android:text="0"
+                        android:textSize="32dp"
+                        tools:ignore="HardcodedText,SpUsage" />
+
+                    <Button
+                        android:id="@+id/tVaultAddS"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:background="@color/lightBlue"
+                        android:onClick="setTVaultAddS"
+                        android:text="+1"
+                        android:textColor="@color/white"
+                        android:textSize="15dp" />
 
                 </LinearLayout>
 
@@ -612,53 +922,7 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/background_material" />
-
-            <LinearLayout
-                android:id="@+id/tIntakeTimer"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/rounded_corners_chunk_material"
-                android:orientation="horizontal"
-                android:paddingBottom="10dp"
-                android:paddingLeft="11dp"
-                android:paddingRight="4dp"
-                android:paddingTop="10dp">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="fill_parent"
-                    android:layout_gravity="center"
-                    android:layout_marginRight="8dp"
-                    android:layout_weight=".7"
-                    android:background="@color/white"
-                    android:maxLines="1"
-                    android:padding="5dp"
-                    android:text="Intake Timer"
-                    android:textColor="@color/textMedium"
-                    android:textSize="30dp"
-
-                    />
-
-                <ToggleButton
-                    android:id="@+id/intakeTimer"
-                    android:layout_width="0dp"
-                    android:layout_height="fill_parent"
-                    android:layout_weight=".3"
-                    android:background="@drawable/toggle_button_at"
-                    android:onClick="setIntakeTimer"
-                    android:textOff="Not Timing"
-                    android:textOn="Timing"
-                    android:textColor="@color/white"
-
-                    />
-
-            </LinearLayout> <!--Intake Timer-->
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="2dp"
                 android:background="@color/background_material" />
 
             <LinearLayout
@@ -675,10 +939,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="2dp"
                     android:orientation="horizontal"
-                    android:paddingLeft="12dp"
-                    android:paddingRight="15dp"
                     android:paddingBottom="2dp"
-                    >
+                    android:paddingLeft="12dp"
+                    android:paddingRight="15dp">
 
                     <TextView
                         android:layout_width="0dp"
@@ -687,7 +950,8 @@
                         android:background="@color/white"
                         android:paddingLeft="5dp"
                         android:paddingRight="15dp"
-                        android:text="Endgame State"
+                        android:text="Endgame"
+                        android:textStyle="italic"
                         android:textColor="@color/textMedium"
                         android:textSize="30dp" />
 
@@ -705,21 +969,11 @@
 
                 </LinearLayout>
 
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:background="@color/lighterBlue"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginLeft="19dp"
-                    android:layout_marginRight="18dp"
-                    />
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:paddingLeft="15dp"
-                    >
+                    android:paddingLeft="15dp">
 
                     <RadioGroup
                         android:layout_width="match_parent"
@@ -730,10 +984,10 @@
                             android:id="@+id/onField"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
                             android:layout_marginBottom="12dp"
-                            android:onClick="setOnField"
+                            android:layout_marginTop="8dp"
                             android:buttonTint="@color/lightBlue"
+                            android:onClick="setOnField"
                             android:text="On the Field"
                             android:textColor="@color/textMedium"
                             android:textSize="26dp" />
@@ -744,8 +998,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="12dp"
                             android:buttonTint="@color/lightBlue"
-                            android:text="Parked"
                             android:onClick="setParked"
+                            android:text="Parked"
                             android:textColor="@color/textMedium"
                             android:textSize="26dp" />
 
@@ -755,8 +1009,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="12dp"
                             android:buttonTint="@color/lightBlue"
-                            android:text="Elevated"
                             android:onClick="setElevated"
+                            android:text="Elevated"
                             android:textColor="@color/textMedium"
                             android:textSize="26dp" />
 
@@ -788,10 +1042,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/lightBlue"
-                    android:textColor="@color/white"
-                    android:text="Next"
                     android:onClick="setGoToPostMatch"
-                    />
+                    android:text="Next"
+                    android:textColor="@color/white" />
 
             </LinearLayout> <!--Next-->
 
