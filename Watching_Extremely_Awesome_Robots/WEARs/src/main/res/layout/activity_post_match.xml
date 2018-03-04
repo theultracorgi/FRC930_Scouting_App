@@ -147,6 +147,9 @@
                 android:layout_height="wrap_content"
                 android:hint="Very fast, bad drivers, fast cube intake, a nice haiku, etc."
                 android:maxHeight="120dp"
+                android:maxLines="1"
+                android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890. "
+                android:maxLength="300"
                 android:padding="16dp" />
 
         </LinearLayout> <!--Comments-->

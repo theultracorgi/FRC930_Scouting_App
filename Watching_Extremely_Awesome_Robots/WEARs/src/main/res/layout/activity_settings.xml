@@ -6,6 +6,9 @@
     android:layout_height="match_parent"
     android:background="@color/background_material">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
 
     <LinearLayout
@@ -91,7 +94,7 @@
                 android:layout_marginRight="8dp"
                 android:layout_weight=".7"
                 android:background="@color/white"
-                android:text="Scored Adds Attempt"
+                android:text="+1S = +1A"
                 android:textSize="30dp"
                 android:textStyle="italic"
                 android:padding="5dp"
@@ -112,7 +115,7 @@
 
                 />
 
-        </LinearLayout> <!--Admin-->
+        </LinearLayout> <!--Scored Adds Attempt-->
 
         <ImageView
             android:layout_width="match_parent"
@@ -339,6 +342,6 @@
 
     </LinearLayout>
 
-
+    </ScrollView>
 </RelativeLayout>
 

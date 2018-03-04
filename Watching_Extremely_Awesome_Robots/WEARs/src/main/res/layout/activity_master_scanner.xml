@@ -55,7 +55,7 @@
                 android:layout_marginRight="50dp"
                 android:background="@drawable/blue_rounded_button"
                 android:onClick="setGenerateCSV"
-                android:text="Generate CSV File"
+                android:text="Generate .XLSX File"
                 android:textColor="@color/white"
                 android:visibility="invisible" /> <!--Generate CSV Button-->
 

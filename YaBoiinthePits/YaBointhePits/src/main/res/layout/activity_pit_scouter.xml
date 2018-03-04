@@ -1,0 +1,1342 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_material">
+
+
+    <ScrollView
+        android:id="@+id/titleWindow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        tools:ignore="UselessParent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:orientation="vertical">
+
+            <!--AUTONOMOUS-->
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:paddingLeft="8dp"
+                android:paddingTop="4dp"
+                android:text="Autonomous"
+                android:textSize="30dp" />
+
+
+            <LinearLayout
+                android:id="@+id/intakeType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_corners_chunk_material"
+                android:orientation="vertical"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
+                    android:orientation="horizontal"
+                    android:paddingBottom="2dp"
+                    android:paddingLeft="12dp"
+                    android:paddingRight="15dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".75"
+                        android:background="@color/white"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="15dp"
+                        android:text="Intake Capability"
+                        android:textColor="@color/textMedium"
+                        android:textSize="30dp"
+                        android:textStyle="italic" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_marginRight="8dp"
+                        android:layout_weight=".25"
+                        android:background="@color/white"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="15dp"
+                        android:text=""
+                        android:textColor="#ffffff"
+                        android:textSize="25dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="15dp">
+
+                    <RadioGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:checkedButton="@id/portalExchange">
+
+                        <RadioButton
+                            android:id="@+id/portalExchange"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="12dp"
+                            android:layout_marginTop="8dp"
+                            android:buttonTint="@color/lightBlue"
+                            android:onClick="setPortalExchange"
+                            android:text="Portal/Exchange Only"
+                            android:textColor="@color/textMedium"
+                            android:textSize="26dp" />
+
+                        <RadioButton
+                            android:id="@+id/ground"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="12dp"
+                            android:buttonTint="@color/lightBlue"
+                            android:onClick="setGround"
+                            android:text="Ground Intake"
+                            android:textColor="@color/textMedium"
+                            android:textSize="26dp" />
+
+                    </RadioGroup>
+
+                </LinearLayout>
+
+            </LinearLayout> <!--Intake Capabilities-->
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/background_material" />
+
+            <LinearLayout
+                android:id="@+id/outputCapability"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_corners_chunk_material"
+                android:orientation="vertical"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
+                    android:orientation="horizontal"
+                    android:paddingBottom="2dp"
+                    android:paddingLeft="12dp"
+                    android:paddingRight="15dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".75"
+                        android:background="@color/white"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="15dp"
+                        android:text="Placing Capability"
+                        android:textColor="@color/textMedium"
+                        android:textSize="30dp"
+                        android:textStyle="italic" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_marginRight="8dp"
+                        android:layout_weight=".25"
+                        android:background="@color/white"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="15dp"
+                        android:text=""
+                        android:textColor="#ffffff"
+                        android:textSize="25dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingLeft="15dp">
+
+                    <CheckBox
+                        android:id="@+id/cExchange"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="12dp"
+                        android:layout_marginTop="8dp"
+                        android:buttonTint="@color/lightBlue"
+                        android:onClick="setCExchange"
+                        android:text="Exchange"
+                        android:textColor="@color/textMedium"
+                        android:textSize="26dp" />
+
+                    <CheckBox
+                        android:id="@+id/cSwitch"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="12dp"
+                        android:buttonTint="@color/lightBlue"
+                        android:onClick="setCSwitch"
+                        android:text="Switch"
+                        android:textColor="@color/textMedium"
+                        android:textSize="26dp" />
+
+                    <CheckBox
+                        android:id="@+id/cScale"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="12dp"
+                        android:buttonTint="@color/lightBlue"
+                        android:onClick="setCScale"
+                        android:text="Scale"
+                        android:textColor="@color/textMedium"
+                        android:textSize="26dp" />
+
+                </LinearLayout>
+
+            </LinearLayout> <!--Output Capabilities-->
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/background_material" />
+
+            <LinearLayout
+                android:id="@+id/outputType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_corners_chunk_material"
+                android:orientation="vertical"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
+                    android:orientation="horizontal"
+                    android:paddingBottom="2dp"
+                    android:paddingLeft="12dp"
+                    android:paddingRight="15dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".75"
+                        android:background="@color/white"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="15dp"
+                        android:text="Output Type"
+                        android:textColor="@color/textMedium"
+                        android:textSize="30dp"
+                        android:textStyle="italic" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_marginRight="8dp"
+                        android:layout_weight=".25"
+                        android:background="@color/white"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="15dp"
+                        android:text=""
+                        android:textColor="#ffffff"
+                        android:textSize="25dp" />
+
+              </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="15dp">
+
+                    <RadioGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:checkedButton="@id/place">
+
+                    <RadioButton
+                        android:id="@+id/launch"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="12dp"
+                        android:layout_marginTop="8dp"
+                        android:buttonTint="@color/lightBlue"
+                        android:onClick="setLaunch"
+                        android:text="Launch"
+                        android:textColor="@color/textMedium"
+                        android:textSize="26dp" />
+
+                    <RadioButton
+                        android:id="@+id/drop"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="12dp"
+                        android:buttonTint="@color/lightBlue"
+                        android:onClick="setDrop"
+                        android:text="Drop"
+                        android:textColor="@color/textMedium"
+                        android:textSize="26dp" />
+
+                    <RadioButton
+                        android:id="@+id/place"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="12dp"
+                        android:layout_marginTop="8dp"
+                        android:buttonTint="@color/lightBlue"
+                        android:onClick="setPlace"
+                        android:text="Place"
+                        android:textColor="@color/textMedium"
+                        android:textSize="26dp" />
+
+                </RadioGroup>
+
+                </LinearLayout>
+
+
+
+
+
+            <LinearLayout
+                android:id="@+id/aAutoLine"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_corners_chunk_material"
+                android:orientation="horizontal"
+                android:paddingBottom="10dp"
+                android:paddingLeft="11dp"
+                android:paddingRight="4dp"
+                android:paddingTop="10dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="8dp"
+                    android:layout_weight=".7"
+                    android:background="@color/white"
+                    android:maxLines="1"
+                    android:padding="5dp"
+                    android:text="AutoLine"
+                    android:textColor="@color/textMedium"
+                    android:textSize="30dp"
+                    android:textStyle="italic"
+
+                    />
+
+                <ToggleButton
+                    android:id="@+id/autoline"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight=".3"
+                    android:background="@drawable/toggle_button_at"
+                    android:onClick="setAutoline"
+                    android:textColor="@color/white"
+                    android:textOff="Not Crossed"
+                    android:textOn="Crossed"
+
+                    />
+
+            </LinearLayout> <!--AutoLine-->
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/background_material" />
+
+            <LinearLayout
+                android:id="@+id/aSwitch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_corners_chunk_material"
+                android:orientation="vertical"
+                android:paddingBottom="10dp"
+                android:paddingTop="5dp"
+
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".8"
+                    android:orientation="horizontal"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="11dp"
+                    android:paddingRight="10dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".75"
+                        android:background="@color/white"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="15dp"
+                        android:text="Switch"
+                        android:textColor="@color/textMedium"
+                        android:textSize="30dp"
+                        android:textStyle="italic"
+
+                        />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_marginRight="8dp"
+                        android:layout_weight=".25"
+                        android:background="@color/white"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="15dp"
+                        android:text=""
+                        android:textColor="#ffffff"
+                        android:textSize="25dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginRight="4dp"
+                        android:layout_weight="2"
+                        android:background="@color/white"
+                        android:gravity="left|center"
+                        android:text="Attempts"
+                        android:textSize="25dp"
+                        tools:ignore="HardcodedText,SpUsage" />
+
+                    <Button
+                        android:id="@+id/aSwitchSubtractA"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:background="@color/lightBlue"
+                        android:onClick="setASwitchSubtractA"
+                        android:text="-1"
+                        android:textColor="@color/white"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/aSwitchDisplayA"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginRight="4dp"
+                        android:layout_weight="1"
+                        android:background="#D7DDEA"
+                        android:gravity="center"
+                        android:text="0"
+                        android:textSize="32dp"
+                        tools:ignore="HardcodedText,SpUsage" />
+
+                    <Button
+                        android:id="@+id/aSwitchAddA"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:background="@color/lightBlue"
+                        android:onClick="setASwitchAddA"
+                        android:text="+1"
+                        android:textColor="@color/white"
+                        android:textSize="15dp" />
+
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="3dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:background="@color/white" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginRight="4dp"
+                        android:layout_weight="2"
+                        android:background="@color/white"
+                        android:gravity="left|center"
+                        android:text="Scored"
+                        android:textSize="25dp"
+                        tools:ignore="HardcodedText,SpUsage" />
+
+                    <Button
+                        android:id="@+id/aSwitchSubtractS"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:background="@color/lightBlue"
+                        android:onClick="setASwitchSubtractS"
+                        android:text="-1"
+                        android:textColor="@color/white"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/aSwitchDisplayS"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginRight="4dp"
+                        android:layout_weight="1"
+                        android:background="#D7DDEA"
+                        android:gravity="center"
+                        android:text="0"
+                        android:textSize="32dp"
+                        tools:ignore="HardcodedText,SpUsage" />
+
+                    <Button
+                        android:id="@+id/aSwitchAddS"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:background="@color/lightBlue"
+                        android:onClick="setASwitchAddS"
+                        android:text="+1"
+                        android:textColor="@color/white"
+                        android:textSize="15dp" />
+
+
+                </LinearLayout>
+
+            </LinearLayout> <!--Autonomous Switch-->
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/background_material" />
+
+            <LinearLayout
+                android:id="@+id/aScale"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_corners_chunk_material"
+                android:orientation="vertical"
+                android:paddingBottom="10dp"
+                android:paddingTop="5dp"
+
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".8"
+                    android:orientation="horizontal"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="11dp"
+                    android:paddingRight="10dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".75"
+                        android:background="@color/white"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="15dp"
+                        android:text="Scale"
+                        android:textColor="@color/textMedium"
+                        android:textSize="30dp"
+                        android:textStyle="italic"
+
+                        />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_marginRight="8dp"
+                        android:layout_weight=".25"
+                        android:background="@color/white"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="15dp"
+                        android:text=""
+                        android:textColor="#ffffff"
+                        android:textSize="25dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginRight="4dp"
+                        android:layout_weight="2"
+                        android:background="@color/white"
+                        android:gravity="left|center"
+                        android:text="Attempts"
+                        android:textSize="25dp"
+                        tools:ignore="HardcodedText,SpUsage" />
+
+                    <Button
+                        android:id="@+id/aScaleSubtractA"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:background="@color/lightBlue"
+                        android:onClick="setAScaleSubtractA"
+                        android:text="-1"
+                        android:textColor="@color/white"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/aScaleDisplayA"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginRight="4dp"
+                        android:layout_weight="1"
+                        android:background="#D7DDEA"
+                        android:gravity="center"
+                        android:text="0"
+                        android:textSize="32dp"
+                        tools:ignore="HardcodedText,SpUsage" />
+
+                    <Button
+                        android:id="@+id/aScaleAddA"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:background="@color/lightBlue"
+                        android:onClick="setAScaleAddA"
+                        android:text="+1"
+                        android:textColor="@color/white"
+                        android:textSize="15dp" />
+
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="3dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:background="@color/white" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginRight="4dp"
+                        android:layout_weight="2"
+                        android:background="@color/white"
+                        android:gravity="left|center"
+                        android:text="Scored"
+                        android:textSize="25dp"
+                        tools:ignore="HardcodedText,SpUsage" />
+
+                    <Button
+                        android:id="@+id/aScaleSubtractS"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:background="@color/lightBlue"
+                        android:onClick="setAScaleSubtractS"
+                        android:text="-1"
+                        android:textColor="@color/white"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/aScaleDisplayS"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginRight="4dp"
+                        android:layout_weight="1"
+                        android:background="#D7DDEA"
+                        android:gravity="center"
+                        android:text="0"
+                        android:textSize="32dp"
+                        tools:ignore="HardcodedText,SpUsage" />
+
+                    <Button
+                        android:id="@+id/aScaleAddS"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:background="@color/lightBlue"
+                        android:onClick="setAScaleAddS"
+                        android:text="+1"
+                        android:textColor="@color/white"
+                        android:textSize="15dp" />
+
+
+                </LinearLayout>
+
+            </LinearLayout> <!--Autonomous Scale-->
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/background_material" />
+
+            <!--TELEOPERATED-->
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:paddingLeft="8dp"
+                android:paddingTop="4dp"
+                android:text="Teleop"
+                android:textSize="30dp" />
+
+            <LinearLayout
+                android:id="@+id/tSwitch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_corners_chunk_material"
+                android:orientation="vertical"
+                android:paddingBottom="10dp"
+                android:paddingTop="5dp"
+
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".8"
+                    android:orientation="horizontal"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="11dp"
+                    android:paddingRight="10dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".75"
+                        android:background="@color/white"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="15dp"
+                        android:text="Switch"
+                        android:textColor="@color/textMedium"
+                        android:textSize="30dp"
+                        android:textStyle="italic"
+
+                        />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_marginRight="8dp"
+                        android:layout_weight=".25"
+                        android:background="@color/white"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="15dp"
+                        android:text=""
+                        android:textColor="#ffffff"
+                        android:textSize="25dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginRight="4dp"
+                        android:layout_weight="2"
+                        android:background="@color/white"
+                        android:gravity="left|center"
+                        android:text="Attempts"
+                        android:textSize="25dp"
+                        tools:ignore="HardcodedText,SpUsage" />
+
+                    <Button
+                        android:id="@+id/tSwitchSubtractA"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:background="@color/lightBlue"
+                        android:onClick="setTSwitchSubtractA"
+                        android:text="-1"
+                        android:textColor="@color/white"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/tSwitchDisplayA"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginRight="4dp"
+                        android:layout_weight="1"
+                        android:background="#D7DDEA"
+                        android:gravity="center"
+                        android:text="0"
+                        android:textSize="32dp"
+                        tools:ignore="HardcodedText,SpUsage" />
+
+                    <Button
+                        android:id="@+id/tSwitchAddA"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:background="@color/lightBlue"
+                        android:onClick="setTSwitchAddA"
+                        android:text="+1"
+                        android:textColor="@color/white"
+                        android:textSize="15dp" />
+
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="3dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:background="@color/white" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginRight="4dp"
+                        android:layout_weight="2"
+                        android:background="@color/white"
+                        android:gravity="left|center"
+                        android:text="Scored"
+                        android:textSize="25dp"
+                        tools:ignore="HardcodedText,SpUsage" />
+
+                    <Button
+                        android:id="@+id/tSwitchSubtractS"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:background="@color/lightBlue"
+                        android:onClick="setTSwitchSubtractS"
+                        android:text="-1"
+                        android:textColor="@color/white"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/tSwitchDisplayS"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginRight="4dp"
+                        android:layout_weight="1"
+                        android:background="#D7DDEA"
+                        android:gravity="center"
+                        android:text="0"
+                        android:textSize="32dp"
+                        tools:ignore="HardcodedText,SpUsage" />
+
+                    <Button
+                        android:id="@+id/tSwitchAddS"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:background="@color/lightBlue"
+                        android:onClick="setTSwitchAddS"
+                        android:text="+1"
+                        android:textColor="@color/white"
+                        android:textSize="15dp" />
+
+
+                </LinearLayout>
+
+            </LinearLayout> <!--Teleop Switch-->
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/background_material" />
+
+            <LinearLayout
+                android:id="@+id/tScale"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_corners_chunk_material"
+                android:orientation="vertical"
+                android:paddingBottom="10dp"
+                android:paddingTop="5dp"
+
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".8"
+                    android:orientation="horizontal"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="11dp"
+                    android:paddingRight="10dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".75"
+                        android:background="@color/white"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="15dp"
+                        android:text="Scale"
+                        android:textColor="@color/textMedium"
+                        android:textSize="30dp"
+                        android:textStyle="italic"
+
+                        />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_marginRight="8dp"
+                        android:layout_weight=".25"
+                        android:background="@color/white"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="15dp"
+                        android:text=""
+                        android:textColor="#ffffff"
+                        android:textSize="25dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginRight="4dp"
+                        android:layout_weight="2"
+                        android:background="@color/white"
+                        android:gravity="left|center"
+                        android:text="Attempts"
+                        android:textSize="25dp"
+                        tools:ignore="HardcodedText,SpUsage" />
+
+                    <Button
+                        android:id="@+id/tScaleSubtractA"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:background="@color/lightBlue"
+                        android:onClick="setTScaleSubtractA"
+                        android:text="-1"
+                        android:textColor="@color/white"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/tScaleDisplayA"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginRight="4dp"
+                        android:layout_weight="1"
+                        android:background="#D7DDEA"
+                        android:gravity="center"
+                        android:text="0"
+                        android:textSize="32dp"
+                        tools:ignore="HardcodedText,SpUsage" />
+
+                    <Button
+                        android:id="@+id/tScaleAddA"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:background="@color/lightBlue"
+                        android:onClick="setTScaleAddA"
+                        android:text="+1"
+                        android:textColor="@color/white"
+                        android:textSize="15dp" />
+
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="3dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:background="@color/white" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginRight="4dp"
+                        android:layout_weight="2"
+                        android:background="@color/white"
+                        android:gravity="left|center"
+                        android:text="Scored"
+                        android:textSize="25dp"
+                        tools:ignore="HardcodedText,SpUsage" />
+
+                    <Button
+                        android:id="@+id/tScaleSubtractS"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:background="@color/lightBlue"
+                        android:onClick="setTScaleSubtractS"
+                        android:text="-1"
+                        android:textColor="@color/white"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/tScaleDisplayS"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginRight="4dp"
+                        android:layout_weight="1"
+                        android:background="#D7DDEA"
+                        android:gravity="center"
+                        android:text="0"
+                        android:textSize="32dp"
+                        tools:ignore="HardcodedText,SpUsage" />
+
+                    <Button
+                        android:id="@+id/tScaleAddS"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:background="@color/lightBlue"
+                        android:onClick="setTScaleAddS"
+                        android:text="+1"
+                        android:textColor="@color/white"
+                        android:textSize="15dp" />
+
+
+                </LinearLayout>
+
+            </LinearLayout> <!--Teleop Scale-->
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/background_material" />
+
+            <LinearLayout
+                android:id="@+id/tVault"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_corners_chunk_material"
+                android:orientation="vertical"
+                android:paddingBottom="10dp"
+                android:paddingTop="5dp"
+
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".8"
+                    android:orientation="horizontal"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="11dp"
+                    android:paddingRight="10dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".75"
+                        android:background="@color/white"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="15dp"
+                        android:text="Vault"
+                        android:textColor="@color/textMedium"
+                        android:textSize="30dp"
+                        android:textStyle="italic"
+
+                        />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_marginRight="8dp"
+                        android:layout_weight=".25"
+                        android:background="@color/white"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="15dp"
+                        android:text=""
+                        android:textColor="#ffffff"
+                        android:textSize="25dp" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="3dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:background="@color/white" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginRight="4dp"
+                        android:layout_weight="2"
+                        android:background="@color/white"
+                        android:gravity="left|center"
+                        android:text="Scored"
+                        android:textSize="25dp"
+                        tools:ignore="HardcodedText,SpUsage" />
+
+                    <Button
+                        android:id="@+id/tVaultSubtractS"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:background="@color/lightBlue"
+                        android:onClick="setTVaultSubtractS"
+                        android:text="-1"
+                        android:textColor="@color/white"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/tVaultDisplayS"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginRight="4dp"
+                        android:layout_weight="1"
+                        android:background="#D7DDEA"
+                        android:gravity="center"
+                        android:text="0"
+                        android:textSize="32dp"
+                        tools:ignore="HardcodedText,SpUsage" />
+
+                    <Button
+                        android:id="@+id/tVaultAddS"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:background="@color/lightBlue"
+                        android:onClick="setTVaultAddS"
+                        android:text="+1"
+                        android:textColor="@color/white"
+                        android:textSize="15dp" />
+
+                </LinearLayout>
+
+            </LinearLayout> <!--Teleop Vault-->
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/background_material" />
+
+            <LinearLayout
+                android:id="@+id/endgame"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_corners_chunk_material"
+                android:orientation="vertical"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
+                    android:orientation="horizontal"
+                    android:paddingBottom="2dp"
+                    android:paddingLeft="12dp"
+                    android:paddingRight="15dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".75"
+                        android:background="@color/white"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="15dp"
+                        android:text="Endgame"
+                        android:textColor="@color/textMedium"
+                        android:textSize="30dp"
+                        android:textStyle="italic" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_marginRight="8dp"
+                        android:layout_weight=".25"
+                        android:background="@color/white"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="15dp"
+                        android:text=""
+                        android:textColor="#ffffff"
+                        android:textSize="25dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="15dp">
+
+                    <RadioGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:checkedButton="@id/onField">
+
+                        <RadioButton
+                            android:id="@+id/onField"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="12dp"
+                            android:layout_marginTop="8dp"
+                            android:buttonTint="@color/lightBlue"
+                            android:onClick="setOnField"
+                            android:text="On the Field"
+                            android:textColor="@color/textMedium"
+                            android:textSize="26dp" />
+
+                        <RadioButton
+                            android:id="@+id/parked"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="12dp"
+                            android:buttonTint="@color/lightBlue"
+                            android:onClick="setParked"
+                            android:text="Parked"
+                            android:textColor="@color/textMedium"
+                            android:textSize="26dp" />
+
+                        <RadioButton
+                            android:id="@+id/elevated"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="12dp"
+                            android:buttonTint="@color/lightBlue"
+                            android:onClick="setElevated"
+                            android:text="Elevated"
+                            android:textColor="@color/textMedium"
+                            android:textSize="26dp" />
+
+
+                    </RadioGroup>
+
+                </LinearLayout>
+
+            </LinearLayout> <!--Teleop Endgame Condition-->
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="24dp"
+                android:background="@color/background_material" />
+
+            <LinearLayout
+                android:id="@+id/tNext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_corners_chunk_material"
+                android:orientation="horizontal"
+                android:paddingBottom="10dp"
+                android:paddingLeft="4dp"
+                android:paddingRight="4dp"
+                android:paddingTop="10dp">
+
+                <Button
+                    android:id="@+id/gotoPostMatch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/lightBlue"
+                    android:onClick="setGoToPostMatch"
+                    android:text="Next"
+                    android:textColor="@color/white" />
+
+            </LinearLayout> <!--Next-->
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="8dp"
+                android:background="@color/background_material" />
+
+        </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>
+

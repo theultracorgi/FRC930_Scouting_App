@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimaryDark">#1565C0</color>
+    <color name="colorAccent">#01579B</color>
+    <color name="colorPrimary">#1565C0</color>
+    <!--forced-->
+
+    <color name="darkBlue">#0D47A1</color>
+    <color name="mediumBlue">#1976D2</color>
+    <color name="lightBlue">#2196F3</color>
+    <color name="lighterBlue">#64B5F6</color>
+
+    <color name="divider">#c2c2c2</color>
+    <color name="background_material">#d6d6d6</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+
+    <color name="textDark">#464646</color>
+    <color name="textMedium">#7c7c7c</color>
+    <color name="textLight">#b6b6b6</color>
+    <color name="textWhite">#ffffff</color>
+
+    <color name="allianceRed">#fa2d2d</color>
+    <color name="allianceBlue">#FF3366FF</color>
+
+    <color name="allianceLoss">#fa2d2d</color>
+    <color name="allianceWin">#18ff23</color>
+
+    <color name="stillGreen">#006e05</color>
+
+</resources>

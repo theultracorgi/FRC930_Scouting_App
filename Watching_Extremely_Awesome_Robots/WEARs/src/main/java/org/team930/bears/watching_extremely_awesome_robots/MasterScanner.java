@@ -1,14 +1,16 @@
 package org.team930.bears.watching_extremely_awesome_robots;
 
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaScannerConnection;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
+import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -22,6 +24,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+import static android.app.AlertDialog.THEME_HOLO_LIGHT;
 
 
 public class MasterScanner extends AppCompatActivity {
@@ -34,12 +37,17 @@ public class MasterScanner extends AppCompatActivity {
     SharedPreferences otherSettings;
     FileOutputStream fos;
     File path, dir, file;
-    Toast csvCreated;
+    ContextThemeWrapper ctw;
+    AlertDialog.Builder csvCreated;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_master_scanner);
+
+
+        ctw = new ContextThemeWrapper(this, THEME_HOLO_LIGHT);
+        csvCreated = new AlertDialog.Builder(ctw);
 
         otherPreferences = getString(R.string.otherPreferences);
         otherSettings = getSharedPreferences(otherPreferences, 0);
@@ -110,6 +118,18 @@ public class MasterScanner extends AppCompatActivity {
             file.setExecutable(true);
             file.setReadable(true);
             file.setWritable(true);
+
+            csvCreated.setTitle("Data Added Successfully");
+            csvCreated.setCancelable(true);
+            csvCreated.setNeutralButton(
+                    "OK",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    });
+            AlertDialog alert = csvCreated.create();
+            alert.show();
 
             MediaScannerConnection.scanFile(this, new String[] {file.toString()}, null, null);
         } catch (FileNotFoundException e) {

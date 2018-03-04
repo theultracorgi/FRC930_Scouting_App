@@ -308,24 +308,25 @@ public class AutonTeleop extends AppCompatActivity {
     //PASSABLE STRING CREATION
 
         //AUTOLINE
-        String aAutoLinePassable = Integer.toString(aAutoLine) + ",";
+        String aAutoLinePassable = Integer.toString(aAutoLine);
 
         //ATTEMPTS
-        String aSwitchAttemptsPassable = Integer.toString(aSwitchAttempts) + ",";
-        String aScaleAttemptsPassable = Integer.toString(aScaleAttempts) + ",";
-        String tSwitchAttemptsPassable = Integer.toString(tSwitchAttempts) + ",";
-        String tScaleAttemptsPassable = Integer.toString(tScaleAttempts) + ",";
+        String aSwitchAttemptsPassable = Integer.toString(aSwitchAttempts);
+        String aScaleAttemptsPassable = Integer.toString(aScaleAttempts);
+        String tSwitchAttemptsPassable = Integer.toString(tSwitchAttempts);
+        String tScaleAttemptsPassable = Integer.toString(tScaleAttempts);
 
         //SCORED
-        String aSwitchScoredPassable = Integer.toString(aSwitchScored) + ",";
-        String aScaleScoredPassable = Integer.toString(aScaleScored) + ",";
-        String tSwitchScoredPassable = Integer.toString(tSwitchScored) + ",";
-        String tScaleScoredPassable = Integer.toString(tScaleScored) + ",";
-        String tVaultScoredPassable = Integer.toString(tVaultScored) + ",";
+        String aSwitchScoredPassable = Integer.toString(aSwitchScored);
+        String aScaleScoredPassable = Integer.toString(aScaleScored);
+        String tSwitchScoredPassable = Integer.toString(tSwitchScored);
+        String tScaleScoredPassable = Integer.toString(tScaleScored);
+        String tVaultScoredPassable = Integer.toString(tVaultScored);
+
 
         //ENDGAME
-        String tParkedPassable = Integer.toString(tParked) + ",";
-        String tElevatedPassable = Integer.toString(tElevated) + ",";
+        String tParkedPassable = Integer.toString(tParked);
+        String tElevatedPassable = Integer.toString(tElevated);
 
     //SAVING PASSABLES
         SharedPreferences.Editor SPMD = matchData.edit();

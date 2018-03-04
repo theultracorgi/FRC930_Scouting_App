@@ -1,0 +1,73 @@
+<resources>
+    <string name="app_name">Ya Boi In the Pits</string>
+
+    <string name="matchDataPreferences">matchData</string>
+    <string name="stillPreferences">stillEnabled</string>
+    <string name="otherPreferences">otherPreferences</string>
+    <string name="numStoredMatches">numStoredMatches</string>
+
+    <string-array name="Scouter">
+        <item>Adelia Rumpel</item>
+        <item>AJ Magesto</item>
+        <item>Alayna Sikac</item>
+        <item>Alex Beschta</item>
+        <item>Alex Jensen</item>
+        <item>Allison Willhite</item>
+        <item>Andrew Ocampo</item>
+        <item>Anna Andler</item>
+        <item>Audrey Mayer</item>
+        <item>Devin Milligan</item>
+        <item>Dominic Falasco</item>
+        <item>Dominick Eisert</item>
+        <item>Sprinkles</item>
+        <item>Emily Zaddack</item>
+        <item>Ethan Zimmer</item>
+        <item>Jack McEwing</item>
+        <item>Jacob D\'Amour</item>
+        <item>Jacob Powell</item>
+        <item>Jacob Wise</item>
+        <item>Jerrod Kau</item>
+        <item>Jordan Wells</item>
+        <item>Josh Valin</item>
+        <item>Karl Knueppel</item>
+        <item>Karsten Howland</item>
+        <item>KennyG23</item>
+        <item>Kenny Schroeder</item>
+        <item>Kyle Senebouttarath</item>
+        <item>Mark Menning</item>
+        <item>Matt Ryczek</item>
+        <item>Safety Captain</item>
+        <item>Mir.i.am</item>
+        <item>Nate Brome</item>
+        <item>Nathan Kitzman</item>
+        <item>Nathan Rome</item>
+        <item>Nathaniel Krueger</item>
+        <item>Nicholas Natrop</item>
+        <item>Nick Fillipo</item>
+        <item>Paul Rinaldi</item>
+        <item>Robert Schiete</item>
+        <item>Sam Blessing</item>
+        <item>Sam Grochowski</item>
+        <item>Samantha Murphy</item>
+        <item>Seth Skarphol</item>
+        <item>Teagan Swift</item>
+        <item>Travis Groshek</item>
+        <item>Trenton Bowser</item>
+        <item>Victor Krieg</item>
+        <item>Victoria Poje</item>
+        <item>Zach Ackermann</item>
+        <item>Your Boi Zach From Team 930</item>
+    </string-array>
+
+    <string-array name="cubeDestination">
+        <item>Select A Destination</item>
+        <item>Switch</item>
+        <item>Scale</item>
+        <item>Vault</item>
+    </string-array>
+
+    <string name="scouterListPrompt">Hu u Be?</string>
+    <integer name="adminPassword">478609</integer>
+    <integer name="maxMatches">6</integer>
+
+</resources>

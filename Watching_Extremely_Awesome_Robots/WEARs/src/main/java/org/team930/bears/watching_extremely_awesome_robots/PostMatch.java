@@ -21,7 +21,7 @@ public class PostMatch extends AppCompatActivity {
 
     Integer mDisabled;
     String matchDataPreferences, otherPreferences, numStoredMatches;
-    String scouterIDFinal, teamNumFinal, matchNumFinal, aAutolineFinal, aSwitchAttemptsFinal, aScaleAttemptsFinal, tSwitchAttemptsFinal, tScaleAttemptsFinal, aSwitchScoredFinal, aScaleScoredFinal, tSwitchScoredFinal, tScaleScoredFinal, tVaultScoredFinal, tParkedFinal, tElevatedFinal, disabledFinal, commentsFinal;
+    String scouterIDFinal, teamNumFinal, matchNumFinal, aAutolineFinal, aSwitchAttemptsFinal, aScaleAttemptsFinal, tSwitchAttemptsFinal, tScaleAttemptsFinal, aSwitchScoredFinal, aScaleScoredFinal, tSwitchScoredFinal, tScaleScoredFinal, tVaultScoredFinal, tParkedFinal, tElevatedFinal, disabledFinal, commentsFinal, aSwitchAccuracy, aScaleAccuracy, tSwitchAccuracy, tScaleAccuracy;
 
     AlertDialog.Builder submit, moreComments;
     ContextThemeWrapper ctw;
@@ -91,38 +91,67 @@ public class PostMatch extends AppCompatActivity {
                             dialog.cancel();
                             SharedPreferences.Editor SPMD = matchData.edit();
 
-                            String disabledPassable = Integer.toString(mDisabled) + ",";
-                            String commentsPassable = comments.getText().toString() + ",";
+                            String disabledPassable = Integer.toString(mDisabled);
+                            String commentsPassable = comments.getText().toString();
 
                             SPMD.putString("disabled", disabledPassable);
                             SPMD.putString("comments", commentsPassable);
                             SPMD.commit();
 
-                            scouterIDFinal = matchData.getString("scouterID", "Low'a,");
-                            teamNumFinal = matchData.getString("teamNum", "420,");
+                            scouterIDFinal = matchData.getString("scouterID", "Low'a");
+                            teamNumFinal = matchData.getString("teamNum", "420");
                             matchNumFinal = matchData.getString("matchNum", "The muthaFLowers D-O double G");
 
-                            aAutolineFinal = matchData.getString("aAutoline", "0,");
-                            aSwitchAttemptsFinal = matchData.getString("aSwitchAttempts", "0,");
-                            aScaleAttemptsFinal = matchData.getString("aScaleAttempts", "0,");
-                            tSwitchAttemptsFinal = matchData.getString("tSwitchAttempts", "0,");
-                            tScaleAttemptsFinal = matchData.getString("tScaleAttempts", "0,");
+                            aAutolineFinal = matchData.getString("aAutoline", "0");
+                            aSwitchAttemptsFinal = matchData.getString("aSwitchAttempts", "0");
+                            aScaleAttemptsFinal = matchData.getString("aScaleAttempts", "0");
+                            tSwitchAttemptsFinal = matchData.getString("tSwitchAttempts", "0");
+                            tScaleAttemptsFinal = matchData.getString("tScaleAttempts", "0");
 
-                            aSwitchScoredFinal = matchData.getString("aSwitchScored", "0,");
-                            aScaleScoredFinal = matchData.getString("aScaleScored", "0,");
-                            tSwitchScoredFinal = matchData.getString("tSwitchScored", "0,");
-                            tScaleScoredFinal = matchData.getString("tScaleScored", "0,");
-                            tVaultScoredFinal = matchData.getString("tVaultScored", "0,");
+                            aSwitchScoredFinal = matchData.getString("aSwitchScored", "0");
+                            aScaleScoredFinal = matchData.getString("aScaleScored", "0");
+                            tSwitchScoredFinal = matchData.getString("tSwitchScored", "0");
+                            tScaleScoredFinal = matchData.getString("tScaleScored", "0");
+                            tVaultScoredFinal = matchData.getString("tVaultScored", "0");
 
-                            tParkedFinal = matchData.getString("tParked", "0,");
-                            tElevatedFinal = matchData.getString("tElevated", "0,");
 
-                            disabledFinal = matchData.getString("disabled", "0,");
-                            commentsFinal = matchData.getString("comments", "you no maka da comments, you suffer da consequence\n");
+                            if(Integer.parseInt(aSwitchAttemptsFinal) != 0) {
+                                aSwitchAccuracy = Integer.toString(Integer.parseInt(aSwitchScoredFinal) / Integer.parseInt(aSwitchAttemptsFinal));
+                            } else {
+                                aSwitchAccuracy = "N/A";
+                            }
 
-                            String fullMatchData = scouterIDFinal + teamNumFinal + matchNumFinal + aAutolineFinal + aSwitchAttemptsFinal + aScaleAttemptsFinal +
-                                    tSwitchAttemptsFinal + tScaleAttemptsFinal + aSwitchScoredFinal + aScaleScoredFinal +
-                                    tSwitchScoredFinal + tScaleScoredFinal + tVaultScoredFinal + tParkedFinal + tElevatedFinal + disabledFinal + commentsFinal + "\n";
+                            if(Integer.parseInt(aScaleAttemptsFinal) !=0) {
+                                aScaleAccuracy = Integer.toString(Integer.parseInt(aScaleScoredFinal) / Integer.parseInt(aScaleAttemptsFinal));
+                            } else {
+                                aScaleAccuracy = "N/A";
+                            }
+
+                            if(Integer.parseInt(tSwitchAttemptsFinal) != 0) {
+                                tSwitchAccuracy = Integer.toString(Integer.parseInt(tSwitchScoredFinal) / Integer.parseInt(tSwitchAttemptsFinal));
+                            } else {
+                                tSwitchAccuracy = "N/A";
+                            }
+
+                            if(Integer.parseInt(tScaleAttemptsFinal) !=0) {
+                                tScaleAccuracy = Integer.toString(Integer.parseInt(tScaleScoredFinal) / Integer.parseInt(tScaleAttemptsFinal));
+                            } else {
+                                tScaleAccuracy = "N/A";
+                            }
+
+
+                            tParkedFinal = matchData.getString("tParked", "0");
+                            tElevatedFinal = matchData.getString("tElevated", "0");
+
+                            disabledFinal = matchData.getString("disabled", "0");
+                            commentsFinal = matchData.getString("comments", "you no maka da comments, you suffer da consequence");
+
+                            String fullMatchData = scouterIDFinal + "," + teamNumFinal + "," + matchNumFinal + "," + aAutolineFinal + "," +
+                                    aSwitchScoredFinal + "," + aSwitchAccuracy + "," +
+                                    aScaleScoredFinal + "," + aScaleAccuracy + "," +
+                                    tSwitchScoredFinal + "," + tSwitchAccuracy + "," +
+                                    tScaleScoredFinal + "," + tScaleAccuracy + "," +
+                                    tVaultScoredFinal + "," + tParkedFinal + "," + tElevatedFinal + "," + disabledFinal + "," + commentsFinal + "\n";
 
 
                             switch (otherSettings.getInt(numStoredMatches, 5)) {

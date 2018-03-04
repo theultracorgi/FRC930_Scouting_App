@@ -519,7 +519,7 @@ public class Settings extends AppCompatActivity {
 
 
         }
-        SPMD.putString("scouterID", matchData.getString("scouterID", "Low'a") + ",");
+        SPMD.putString("scouterID", matchData.getString("scouterID", "Low'a"));
 
         SharedPreferences.Editor SPOS = otherSettings.edit();
 
