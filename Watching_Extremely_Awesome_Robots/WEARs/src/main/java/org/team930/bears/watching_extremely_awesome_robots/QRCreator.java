@@ -61,10 +61,10 @@ public class QRCreator extends AppCompatActivity {
 
 
         if (otherSettings.getInt(numStoredMatches, 0) == 0) {
-            qrCode.setBackgroundResource(R.drawable.bad);
+            qrCode.setBackground(getDrawable(R.drawable.bad));
 
         } else {
-            qrCode.setBackgroundResource(R.drawable.good);
+            qrCode.setBackground(getDrawable(R.drawable.good));
         }
     }
 
@@ -81,15 +81,17 @@ public class QRCreator extends AppCompatActivity {
                 Bitmap bmp = Bitmap.createBitmap(width, height, Bitmap.Config.RGB_565);
                 for (int x = 0; x < width; x++) {
                     for (int y = 0; y < height; y++) {
-                        bmp.setPixel(x, y, bitMatrix.get(x, y) ? Color.BLACK : Color.WHITE);
+                        bmp.setPixel(x, y, bitMatrix.get(x, y) ? Color.rgb(1, 9,84) : Color.WHITE);
                     }
                 }
+                qrCode.setBackground(getDrawable(R.color.white));
                 qrCode.setImageBitmap(bmp);
             } catch (WriterException e) {
                 e.printStackTrace();
                 Toast.makeText(getApplicationContext(), "WriterException", Toast.LENGTH_LONG).show();
             }
             border.setVisibility(View.VISIBLE);
+            genQRCode.setVisibility(View.INVISIBLE);
 
             SharedPreferences.Editor SPOS = otherSettings.edit();
             SPOS.putBoolean("deleteData", true);

@@ -23,11 +23,11 @@ public class HomeScreen extends AppCompatActivity {
     LinearLayout masterScanner;
     ImageView disappear;
 
-    String otherPreferences, numStoredMatches;
+    String otherPreferences, numStoredMatches, matchDataPreferences;
     Integer maxMatches;
     boolean showToast;
 
-    SharedPreferences otherSettings;
+    SharedPreferences otherSettings, matchData;
     ContextThemeWrapper ctw;
     AlertDialog.Builder builder;
 
@@ -45,6 +45,9 @@ public class HomeScreen extends AppCompatActivity {
 
         otherPreferences = getString(R.string.otherPreferences);
         otherSettings = getSharedPreferences(otherPreferences, 0);
+
+        matchDataPreferences = getString(R.string.matchDataPreferences);
+        matchData = getSharedPreferences(matchDataPreferences,0);
 
         masterScanner = findViewById(R.id.masterScanner);
 

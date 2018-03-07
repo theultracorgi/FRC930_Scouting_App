@@ -18,19 +18,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
-import java.util.Timer;
-
 import static android.app.AlertDialog.THEME_HOLO_LIGHT;
 
 public class Settings extends AppCompatActivity {
 
     Spinner scouterList;
-    LinearLayout stillEnabler, deleteBar, nerdStatsLayout;
+    LinearLayout stillEnabler, deleteBar, nerdStatsLayout, adminUnlock;
     ToggleButton stillFRC, scoredAddsAttempt;
     Button deleteData, submitPassword, statsForNerds;
     EditText password;
     TextView revokeStill;
-    ImageView disappear;
+    ImageView disappearStill, disappearAdmin, disappearDelete, disappearStats;
 
     Integer previousAttempt, adminPassword;
     String stillPreferences, matchDataPreferences, otherPreferences, numMatchesStored;
@@ -39,7 +37,6 @@ public class Settings extends AppCompatActivity {
     MediaPlayer Still;
     ContextThemeWrapper ctw;
     AlertDialog.Builder delete, adminNow, noStill, nerdStats;
-
 
 
     @Override
@@ -74,76 +71,74 @@ public class Settings extends AppCompatActivity {
         stillEnabler = findViewById(R.id.stillEnabler);
         stillFRC = findViewById(R.id.stillFRC);
         scouterList = findViewById(R.id.scouterList);
+        adminUnlock = findViewById(R.id.adminUnlock);
         deleteData = findViewById(R.id.deleteData);
         deleteBar = findViewById(R.id.deleteBar);
         submitPassword = findViewById(R.id.submitPassword);
         password = findViewById(R.id.password);
         revokeStill = findViewById(R.id.revokeStill);
-        disappear = findViewById(R.id.disappearSettings);
+        disappearStill = findViewById(R.id.disappearStatsForNerds);
+        disappearAdmin = findViewById(R.id.disappearAdmin);
+        disappearDelete = findViewById(R.id.disappearDelete);
+        disappearStats = findViewById(R.id.disappearStatsForNerds);
         nerdStatsLayout = findViewById(R.id.nerdStatsLayout);
         statsForNerds = findViewById(R.id.statsForNerds);
         scoredAddsAttempt = findViewById(R.id.scoredAddsAttempt);
 
-        scoredAddsAttempt.setChecked( otherSettings.getBoolean("scoredAddsAttempt", false));
-
+        scoredAddsAttempt.setChecked(otherSettings.getBoolean("scoredAddsAttempt", false));
 
 
         scouterList.setSelection(otherSettings.getInt("scouterIDNum", 0));
 
         if (stillEnabled.getBoolean("stillEnabled", false)) {
             stillEnabler.setVisibility(View.VISIBLE);
-        }
-        if (otherSettings.getBoolean("deleteData", false)) {
-            deleteBar.setVisibility(View.VISIBLE);
-        }
-        if(stillEnabled.getBoolean("stillEnabled", false) && otherSettings.getBoolean("deleteData", false) == false) {
-            disappear.setVisibility(View.GONE);
-        }
-        if(otherSettings.getBoolean("admin", false)) {
-            nerdStatsLayout.setVisibility(View.VISIBLE);
-        }
+            disappearStill.setVisibility(View.VISIBLE);
+        } else {
+            stillEnabler.setVisibility(View.GONE);
+            disappearStill.setVisibility(View.GONE);
         }
 
+        if (otherSettings.getBoolean("deleteData", false)) {
+            deleteBar.setVisibility(View.VISIBLE);
+            disappearDelete.setVisibility(View.VISIBLE);
+        } else {
+            deleteBar.setVisibility(View.GONE);
+            disappearDelete.setVisibility(View.GONE);
+        }
+
+        if (otherSettings.getBoolean("admin", false)) {
+            nerdStatsLayout.setVisibility(View.VISIBLE);
+            disappearStats.setVisibility(View.VISIBLE);
+            disappearAdmin.setVisibility(View.GONE);
+            adminUnlock.setVisibility(View.GONE);
+        } else {
+            nerdStatsLayout.setVisibility(View.GONE);
+            disappearStats.setVisibility(View.GONE);
+            disappearAdmin.setVisibility(View.VISIBLE);
+            adminUnlock.setVisibility(View.VISIBLE);
+        }
+    }
+
     public void setSubmitPassword(View v) {
-        if(password.getText().toString().length() == 0 || !TextUtils.isDigitsOnly(password.getText().toString())) {
+        if (password.getText().toString().length() == 0 || !TextUtils.isDigitsOnly(password.getText().toString())) {
 
         } else {
             SharedPreferences.Editor SPOS = otherSettings.edit();
-            if (otherSettings.getBoolean("admin", false)) {
+             if (Integer.parseInt(password.getText().toString()) == adminPassword) {
 
-                adminNow.setTitle("You are already Admin!");
-                adminNow.setCancelable(true);
-                adminNow.setNeutralButton(
-                        "OK",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                dialog.cancel();
-                            }
-                        });
-                AlertDialog alert = adminNow.create();
-                alert.show();
+               Toast.makeText(this, "You are now Admin!", Toast.LENGTH_SHORT).show();
 
-
-
-            } else if (Integer.parseInt(password.getText().toString()) == adminPassword ) {
-
-                adminNow.setTitle("You are now Admin!");
-                adminNow.setCancelable(true);
-                adminNow.setNeutralButton(
-                        "Yay!",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                dialog.cancel();
-                            }
-                        });
-                AlertDialog alert = adminNow.create();
-                alert.show();
+                disappearAdmin.setVisibility(View.GONE);
+                adminUnlock.setVisibility(View.GONE);
+                nerdStatsLayout.setVisibility(View.VISIBLE);
+                disappearStats.setVisibility(View.VISIBLE);
 
                 SPOS.putBoolean("admin", true);
                 SPOS.commit();
+                this.recreate();
 
 
-            } else if (Integer.parseInt(password.getText().toString()) != adminPassword && Integer.parseInt(password.getText().toString()) != previousAttempt ) {
+            } else if (Integer.parseInt(password.getText().toString()) != adminPassword && Integer.parseInt(password.getText().toString()) != previousAttempt) {
                 Toast.makeText(this, "Password is Incorrect", Toast.LENGTH_SHORT).show();
                 previousAttempt = Integer.parseInt(password.getText().toString());
             }
@@ -153,7 +148,7 @@ public class Settings extends AppCompatActivity {
     public void setScoredAddsAttempt(View v) {
         SharedPreferences.Editor SPOS = otherSettings.edit();
 
-        if(scoredAddsAttempt.isChecked()) {
+        if (scoredAddsAttempt.isChecked()) {
             SPOS.putBoolean("scoredAddsAttempt", true);
 
         } else {
@@ -245,7 +240,7 @@ public class Settings extends AppCompatActivity {
 
     }
 
-    public void setRevokeStill(View v){
+    public void setRevokeStill(View v) {
         if (stillEnabled.getBoolean("stillEnabled", false)) {
 
             noStill.setTitle("We're sorry to see you go");
@@ -285,24 +280,23 @@ public class Settings extends AppCompatActivity {
     public void setStatsForNerds(View v) {
 
 
-            nerdStats.setTitle("Stats For Nerds");
-            nerdStats.setMessage("CSVs Created: " + otherSettings.getInt("csvCreated", 0) + "\nQR Codes Scanned: " + otherSettings.getInt("qrScanned", 0));
-            nerdStats.setCancelable(true);
-            nerdStats.setNeutralButton(
-                    "Yeah Playa",
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            dialog.cancel();
+        nerdStats.setTitle("Stats For Nerds");
+        nerdStats.setMessage("CSVs Created: " + otherSettings.getInt("csvCreated", 0) + "\nQR Codes Scanned: " + otherSettings.getInt("qrScanned", 0));
+        nerdStats.setCancelable(true);
+        nerdStats.setNeutralButton(
+                "Yeah Playa",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
 
-                            Settings.this.recreate();
+                        Settings.this.recreate();
 
-                        }
-                    });
+                    }
+                });
 
 
-
-            AlertDialog alert = nerdStats.create();
-            alert.show();
+        AlertDialog alert = nerdStats.create();
+        alert.show();
 
     }
 
@@ -529,7 +523,6 @@ public class Settings extends AppCompatActivity {
 
 
     }
-
 
 
 }

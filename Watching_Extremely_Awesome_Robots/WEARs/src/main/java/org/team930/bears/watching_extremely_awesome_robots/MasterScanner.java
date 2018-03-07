@@ -57,16 +57,6 @@ public class MasterScanner extends AppCompatActivity {
         numDataSets = findViewById(R.id.numDataSets);
 
 
-        if (otherSettings.getInt("scannedID", 6) == 6) {
-            numDataSets.setTextSize(45);
-            numDataSets.setText("Generate A CSV");
-            scanQRCode.setVisibility(View.INVISIBLE);
-
-        } else {
-            numDataSets.setTextSize(100);
-            numDataSets.setText(Integer.toString(otherSettings.getInt("scannedID", 6)));
-
-        }
 
         if (otherSettings.getInt("scannedID", 0) == 0) {
             SharedPreferences.Editor SPOS = otherSettings.edit();
@@ -79,6 +69,16 @@ public class MasterScanner extends AppCompatActivity {
             generateCSV.setVisibility(View.VISIBLE);
         }
 
+        if (otherSettings.getInt("scannedID", 6) == 6) {
+            numDataSets.setTextSize(45);
+            numDataSets.setText("Generate A CSV");
+            scanQRCode.setVisibility(View.INVISIBLE);
+
+        } else {
+            numDataSets.setTextSize(100);
+            numDataSets.setText(Integer.toString(otherSettings.getInt("scannedID", 6)));
+
+        }
 
     }
 

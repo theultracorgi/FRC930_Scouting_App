@@ -189,6 +189,26 @@ public class PostMatch extends AppCompatActivity {
                             SPOS.putInt(numStoredMatches, otherSettings.getInt(numStoredMatches, 5) + 1);
                             SPOS.commit();
 
+                            SPMD.putString("aAutoline", "0");
+
+                            //ATTEMPTS
+                            SPMD.putString("aSwitchAttempts", "0");
+                            SPMD.putString("aScaleAttempts", "0");
+                            SPMD.putString("tSwitchAttempts", "0");
+                            SPMD.putString("tScaleAttempts", "0");
+
+                            //SCORED
+                            SPMD.putString("aSwitchScored", "0");
+                            SPMD.putString("aScaleScored", "0");
+                            SPMD.putString("tSwitchScored", "0");
+                            SPMD.putString("tScaleScored", "0");
+                            SPMD.putString("tVaultScored", "0");
+
+                            //ENDGAME
+                            SPMD.putString("tParked", "0");
+                            SPMD.putString("tElevated", "0");
+
+                            SPMD.commit();
 
                             Intent submitData = new Intent(PostMatch.this, HomeScreen.class);
                             startActivity(submitData);

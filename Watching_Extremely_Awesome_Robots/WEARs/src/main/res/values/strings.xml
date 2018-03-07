@@ -59,14 +59,7 @@
         <item>Your Boi Zach From Team 930</item>
     </string-array>
 
-    <string-array name="cubeDestination">
-        <item>Select A Destination</item>
-        <item>Switch</item>
-        <item>Scale</item>
-        <item>Vault</item>
-    </string-array>
-
-    <string name="scouterListPrompt">Hu u Be?</string>
+    <string name="scouterListPrompt">Man\'s Got Name</string>
     <integer name="adminPassword">478609</integer>
     <integer name="maxMatches">6</integer>
 

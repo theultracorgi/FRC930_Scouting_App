@@ -64,7 +64,7 @@
                     android:layout_width="0dp"
                     android:layout_height="fill_parent"
                     android:layout_weight=".3"
-                    android:background="@drawable/toggle_button_at"
+                    android:background="@drawable/toggle_button_at_no_round"
                     android:onClick="setAutoline"
                     android:textColor="@color/white"
                     android:textOff="Not Crossed"

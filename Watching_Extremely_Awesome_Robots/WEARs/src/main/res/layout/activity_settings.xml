@@ -110,8 +110,8 @@
                 android:background="@drawable/toggle_button_at"
                 android:onClick="setScoredAddsAttempt"
                 android:textColor="@color/white"
-                android:textOff="No"
-                android:textOn="Yes"
+                android:textOff="Off"
+                android:textOn="On"
 
                 />
 
@@ -167,9 +167,12 @@
         </LinearLayout> <!--Admin-->
 
         <ImageView
+            android:id="@+id/disappearAdmin"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/background_material" />
+            android:background="@color/background_material"
+            android:visibility="gone"
+            />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -226,10 +229,11 @@
         </LinearLayout> <!--Stats For Nerds-->
 
         <ImageView
-            android:id="@+id/disappearSettings"
+            android:id="@+id/disappearStatsForNerds"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@color/background_material"
+            android:visibility="gone"
             />
 
         <LinearLayout
@@ -287,9 +291,11 @@
         </LinearLayout> <!--Delete le Data-->
 
         <ImageView
+            android:id="@+id/disappearDelete"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@color/background_material"
+            android:visibility="gone"
             />
 
         <LinearLayout
@@ -336,9 +342,12 @@
         </LinearLayout> <!--STILL-->
 
         <ImageView
+            android:id="@+id/disappearStill"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/background_material" />
+            android:background="@color/background_material"
+            android:visibility="gone"
+            />
 
     </LinearLayout>
 
