@@ -14,7 +14,7 @@ android {
         minSdkVersion 21
         targetSdkVersion 26
         versionCode 0
-        versionName "1.0.0"
+        versionName "1.1.5"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -22,7 +22,7 @@ android {
             debuggable true
             minifyEnabled false
             signingConfig signingConfigs.team930
-            versionNameSuffix '1.0,'
+            versionNameSuffix '1.1,'
         }
         release {
             signingConfig signingConfigs.team930
