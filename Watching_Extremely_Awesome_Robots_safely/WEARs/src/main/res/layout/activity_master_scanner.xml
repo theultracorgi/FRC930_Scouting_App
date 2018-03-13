@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_material"
+    android:screenOrientation="portrait"
+    tools:ignore="Overdraw">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:orientation="vertical"
+            tools:ignore="UselessParent">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:paddingLeft="8dp"
+                android:paddingTop="4dp"
+                android:text="Master Scanner"
+                android:textSize="30dp"
+                tools:ignore="HardcodedText,RtlHardcoded,RtlSymmetry,SpUsage" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:gravity="center|bottom"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:id="@+id/numDataSets"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textAlignment="center"
+                    android:textSize="100dp"
+
+                    tools:ignore="HardcodedText,SpUsage" /> <!--Num Data Sets-->
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="90dp"
+                    android:background="@color/white"
+                    tools:ignore="ContentDescription" />
+
+                <Button
+                    android:id="@+id/generateCSV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="32dp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginRight="50dp"
+                    android:background="@drawable/blue_rounded_button"
+                    android:onClick="setGenerateCSV"
+                    android:text="Generate .XLSX File"
+                    android:textColor="@color/white"
+                    android:visibility="invisible"
+                    tools:ignore="HardcodedText" /> <!--Generate CSV Button-->
+
+                <Button
+                    android:id="@+id/scanQRCode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginRight="50dp"
+                    android:background="@drawable/blue_rounded_button"
+                    android:onClick="setScanQRCode"
+                    android:text="Scan QR Code"
+                    android:textColor="@color/white"
+                    tools:ignore="HardcodedText" /> <!--Scan Code Button-->
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:background="@color/white"
+                    tools:ignore="ContentDescription" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+</RelativeLayout>
+

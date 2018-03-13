@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_material"
+    android:screenOrientation="portrait"
+    tools:ignore="Overdraw">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="UselessParent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:orientation="vertical"
+            tools:ignore="UselessParent">
+
+            <TextView
+                android:id="@+id/revokeAdmin"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:onClick="setRevokeAdmin"
+                android:paddingLeft="8dp"
+                android:paddingTop="4dp"
+                android:text="Main Menu"
+                android:textSize="30dp"
+                tools:ignore="HardcodedText,RtlHardcoded,RtlSymmetry,SpUsage" /> <!--Main Menu-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_corners_chunk_material"
+                android:orientation="horizontal"
+                android:paddingBottom="10dp"
+                android:paddingLeft="11dp"
+                android:paddingRight="4dp"
+                android:paddingTop="10dp"
+                tools:ignore="RtlHardcoded">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="8dp"
+                    android:layout_weight=".75"
+                    android:background="@color/white"
+                    android:maxLines="1"
+                    android:padding="5dp"
+                    android:text="Match Scouter"
+                    android:textColor="@color/textMedium"
+                    android:textSize="30dp"
+                    android:textStyle="italic"
+
+                    tools:ignore="HardcodedText,SpUsage" />
+
+                <Button
+                    android:id="@+id/goToPreMatch"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight=".25"
+                    android:background="@color/darkBlue"
+                    android:onClick="setGoToPreMatch"
+                    android:text=">"
+                    android:textColor="@color/white"
+                    android:textSize="30dp"
+
+
+                    tools:ignore="HardcodedText,SpUsage" />
+
+            </LinearLayout> <!--Match Scouter-->
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/background_material"
+                tools:ignore="ContentDescription" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_corners_chunk_material"
+                android:orientation="horizontal"
+                android:paddingBottom="10dp"
+                android:paddingLeft="11dp"
+                android:paddingRight="4dp"
+                android:paddingTop="10dp"
+                tools:ignore="RtlHardcoded">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="8dp"
+                    android:layout_weight=".75"
+                    android:background="@color/white"
+                    android:maxLines="1"
+                    android:padding="5dp"
+                    android:text="Generate QR"
+                    android:textColor="@color/textMedium"
+                    android:textSize="30dp"
+                    android:textStyle="italic"
+
+                    tools:ignore="HardcodedText,SpUsage" />
+
+                <Button
+                    android:id="@+id/goToGenQR"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight=".25"
+                    android:background="@color/mediumBlue"
+                    android:onClick="setGoToGenQR"
+                    android:text=">"
+                    android:textColor="@color/white"
+                    android:textSize="30dp"
+
+
+                    tools:ignore="HardcodedText,SpUsage" />
+
+            </LinearLayout> <!--Generate QR Code-->
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/background_material"
+                tools:ignore="ContentDescription" />
+
+            <LinearLayout
+                android:id="@+id/masterScanner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_corners_chunk_material"
+                android:orientation="horizontal"
+                android:paddingBottom="10dp"
+                android:paddingLeft="11dp"
+                android:paddingRight="4dp"
+                android:paddingTop="10dp"
+                android:visibility="gone"
+                tools:ignore="RtlHardcoded">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="8dp"
+                    android:layout_weight=".75"
+                    android:background="@color/white"
+                    android:maxLines="1"
+                    android:padding="5dp"
+                    android:text="Master Scouter"
+                    android:textColor="@color/textMedium"
+                    android:textSize="30dp"
+                    android:textStyle="italic"
+
+                    tools:ignore="HardcodedText,SpUsage" />
+
+                <Button
+                    android:id="@+id/goToMaster"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight=".25"
+                    android:background="@color/lightBlue"
+                    android:onClick="setGoToMasterScanner"
+                    android:text=">"
+                    android:textColor="@color/white"
+                    android:textSize="30dp"
+                    tools:ignore="HardcodedText,SpUsage" />
+
+            </LinearLayout> <!--Master-->
+
+            <ImageView
+                android:id="@+id/disappearHomeScreen"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/background_material"
+                tools:ignore="ContentDescription" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_corners_chunk_material"
+                android:orientation="horizontal"
+                android:paddingBottom="10dp"
+                android:paddingLeft="11dp"
+                android:paddingRight="4dp"
+                android:paddingTop="10dp"
+                tools:ignore="RtlHardcoded">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="8dp"
+                    android:layout_weight=".75"
+                    android:background="@color/white"
+                    android:maxLines="1"
+                    android:padding="5dp"
+                    android:text="Settings"
+                    android:textColor="@color/textMedium"
+                    android:textSize="30dp"
+                    android:textStyle="italic"
+
+                    tools:ignore="HardcodedText,SpUsage" />
+
+                <Button
+                    android:id="@+id/goToSettings"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight=".25"
+                    android:background="@color/lightBlue"
+                    android:onClick="setGoToSettings"
+                    android:text=">"
+                    android:textColor="@color/white"
+                    android:textSize="30dp"
+
+
+                    tools:ignore="HardcodedText,SpUsage" />
+
+            </LinearLayout> <!--Settings-->
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/background_material"
+                tools:ignore="ContentDescription" />
+
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>
+

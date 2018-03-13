@@ -1,6 +1,0 @@
-EACH ITEM = 4dp left right
-SUBITEM = 6dp bottom of top subitems
-Image divider = 8dp top/bottom
-
-VERTICAL MARGINS ONLY ON DIVIDERS AND LAYOUTS
-MARGIN BETWEEN HORIZONTAL ITEMS: 8dp on left side of items EX rightmost item

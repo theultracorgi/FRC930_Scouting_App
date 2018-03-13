@@ -1,0 +1,40 @@
+apply plugin: 'com.android.application'
+
+android {
+    signingConfigs {
+        team930 {
+            keyAlias 'team930'
+            keyPassword '4786fear'
+        }
+    }
+    compileSdkVersion 26
+    buildToolsVersion '26.0.2'
+    defaultConfig {
+        applicationId "org.team930.bears.wearstime"
+        minSdkVersion 21
+        //noinspection OldTargetApi
+        targetSdkVersion 26
+        versionCode 0
+        versionName "1.2.5"
+        multiDexEnabled true
+    }
+    buildTypes {
+        release {
+            signingConfig signingConfigs.team930
+            versionNameSuffix '1.2'
+        }
+    }
+    productFlavors {
+    }
+
+
+    dependencies {
+        compile fileTree(dir: 'libs', include: ['*.jar'])
+        compile 'com.android.support:appcompat-v7:26.0.0'
+        compile 'com.android.support:multidex:1.0.1'
+
+        compile 'com.journeyapps:zxing-android-embedded:3.5.0'
+        compile 'com.google.zxing:core:3.2.0'
+
+    }
+}
