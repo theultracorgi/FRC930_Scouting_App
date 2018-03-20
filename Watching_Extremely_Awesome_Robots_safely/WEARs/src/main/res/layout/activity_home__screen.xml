@@ -18,7 +18,7 @@
             android:layout_marginLeft="2dp"
             android:layout_marginRight="2dp"
             android:orientation="vertical"
-            tools:ignore="UselessParent">
+            tools:ignore="ScrollViewSize,UselessParent">
 
             <TextView
                 android:id="@+id/revokeAdmin"
@@ -177,6 +177,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
                 android:background="@color/background_material"
+                android:visibility="gone"
+
                 tools:ignore="ContentDescription" />
 
             <LinearLayout

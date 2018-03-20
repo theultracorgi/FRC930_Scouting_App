@@ -13,8 +13,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ToggleButton;
 
-import org.team930.bears.wearstime.R;
-
 import java.util.Locale;
 
 import static android.app.AlertDialog.THEME_HOLO_LIGHT;
@@ -209,7 +207,7 @@ public class PostMatch extends AppCompatActivity {
                             SPMD.putString("aAutoline", "0");
 
                             SPMD.putString("aSwitchAttempts", "0");
-                            SPMD.putString("aScaleScored", "0");
+                            SPMD.putString("aScaleAttempts", "0");
                             SPMD.putString("tSwitchAttempts", "0");
                             SPMD.putString("tScaleAttempts", "0");
                             SPMD.putString("tOSwitchAttempts", "0");

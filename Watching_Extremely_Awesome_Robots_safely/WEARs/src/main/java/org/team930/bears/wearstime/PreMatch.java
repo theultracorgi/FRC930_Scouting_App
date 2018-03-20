@@ -13,7 +13,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
-import org.team930.bears.wearstime.R;
 
 import static android.app.AlertDialog.THEME_HOLO_LIGHT;
 

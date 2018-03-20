@@ -19,7 +19,6 @@ import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
 
-import org.team930.bears.wearstime.R;
 
 import static android.app.AlertDialog.THEME_HOLO_LIGHT;
 
@@ -65,10 +64,10 @@ public class QRCreator extends AppCompatActivity {
 
 
         if (otherSettings.getInt(numStoredMatches, 0) == 0) {
-            qrCode.setBackground(getDrawable(R.drawable.bad));
+            qrCode.setBackgroundDrawable(getResources().getDrawable(R.drawable.bad));
 
         } else {
-            qrCode.setBackground(getDrawable(R.drawable.good));
+            qrCode.setBackgroundDrawable(getResources().getDrawable(R.drawable.good));
         }
     }
 
@@ -88,12 +87,13 @@ public class QRCreator extends AppCompatActivity {
                         bmp.setPixel(x, y, bitMatrix.get(x, y) ? Color.rgb(1, 9,84) : Color.WHITE);
                     }
                 }
-                qrCode.setBackground(getDrawable(R.color.white));
+                qrCode.setBackgroundDrawable(getResources().getDrawable(R.color.white));
                 qrCode.setImageBitmap(bmp);
             } catch (WriterException e) {
                 e.printStackTrace();
                 Toast.makeText(getApplicationContext(), "WriterException", Toast.LENGTH_LONG).show();
             }
+
             border.setVisibility(View.VISIBLE);
             genQRCode.setVisibility(View.INVISIBLE);
 
@@ -111,6 +111,5 @@ public class QRCreator extends AppCompatActivity {
         }
 
     }
-
 
 }

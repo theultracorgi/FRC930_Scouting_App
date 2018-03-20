@@ -21,7 +21,6 @@ import android.widget.Toast;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
-import org.team930.bears.wearstime.R;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -37,8 +36,8 @@ public class MasterScanner extends AppCompatActivity {
     Button generateCSV, scanQRCode;
     TextView numDataSets;
 
-    String otherPreferences;
-
+    String otherPreferences, prevScan;
+    byte[] fullCSVExport;
 
     SharedPreferences otherSettings;
     FileOutputStream fos;
@@ -51,7 +50,7 @@ public class MasterScanner extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_master_scanner);
-        setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
 
         ctw = new ContextThemeWrapper(this, THEME_HOLO_LIGHT);
@@ -60,19 +59,16 @@ public class MasterScanner extends AppCompatActivity {
         otherPreferences = getString(R.string.otherPreferences);
         otherSettings = getSharedPreferences(otherPreferences, 0);
 
-
-
         generateCSV = findViewById(R.id.generateCSV);
         scanQRCode = findViewById(R.id.scanQRCode);
         numDataSets = findViewById(R.id.numDataSets);
 
+        prevScan = null;
+
         SharedPreferences.Editor SPOS = otherSettings.edit();
 
-        changeButtonTextOnBoolean(generateCSV,otherSettings.getBoolean("hasPerms", false), "Generate .XLSX File" , "Give Me Permissions");
 
         if (otherSettings.getInt("scannedID", 0) == 0) {
-
-
             SPOS.putInt("scannedID", 0);
             SPOS.apply();
         }
@@ -80,42 +76,21 @@ public class MasterScanner extends AppCompatActivity {
         if (otherSettings.getBoolean("csVisible", false)) {
             generateCSV.setVisibility(View.VISIBLE);
         }
+        numDataSets.setText(String.format(Locale.ENGLISH, "%d", otherSettings.getInt("scannedID", 6)));
 
-        if (otherSettings.getInt("scannedID", 6) == 6) {
-            numDataSets.setTextSize(45);
-            numDataSets.setText("Generate A CSV");
-            scanQRCode.setVisibility(View.INVISIBLE);
-
-        } else {
-            numDataSets.setTextSize(100);
-            numDataSets.setText(String.format(Locale.ENGLISH, "%d", otherSettings.getInt("scannedID", 6)));
-
-        }
 
     }
 
     public void setGenerateCSV(View v) {
 
-        SharedPreferences.Editor SPOS = otherSettings.edit();
-        if(checkWriteExternalPermission()) {
-            SPOS.putBoolean("hasPerms", true);
-            SPOS.apply();
-            generateCSV.setText("Generate .XLSX File");
-        } else {
-            SPOS.putBoolean("hasPerms", false);
-            SPOS.apply();
-        }
 
-        if (!otherSettings.getBoolean("hasPerms", false)) {
+        if (!checkWriteExternalPermission()) {
 
             requestPermissions(new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
             requestPermissions(new String[]{android.Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
 
         } else {
 
-            String fullCSVExport = otherSettings.getString("csvMatch1", "") + otherSettings.getString("csvMatch2", "") +
-                    otherSettings.getString("csvMatch3", "") + otherSettings.getString("csvMatch4", "") +
-                    otherSettings.getString("csvMatch5", "") + otherSettings.getString("csvMatch6", "");
             try {
                 path = Environment.getExternalStorageDirectory();
                 dir = new File(path.getAbsolutePath() + "/FRCMATCHDATA");
@@ -123,20 +98,21 @@ public class MasterScanner extends AppCompatActivity {
                 dir.mkdirs();
 
 
-                file = new File(dir, "MatchData.xlsx");
+                file = new File(dir, "MatchData.txt");
 
+                file.setWritable(true);
+                file.setReadable(true);
+                file.setExecutable(true);
 
                 if (file.exists()) {
-                    fos = new FileOutputStream(file, true);
-                    fos.write(fullCSVExport.getBytes());
-                } else {
-                    fos = new FileOutputStream(file);
+                    file.delete();
                     //noinspection ResultOfMethodCallIgnored
-                    file.createNewFile();
-                    fos.write(fullCSVExport.getBytes());
-
                 }
-                fos.flush();
+                file.createNewFile();
+                fos = new FileOutputStream(file);
+
+                fullCSVExport = otherSettings.getString("scannedMatches", "No Data").getBytes();
+                fos.write(fullCSVExport);
                 fos.close();
 
                 csvCreated.setTitle("Data Added Successfully");
@@ -152,6 +128,7 @@ public class MasterScanner extends AppCompatActivity {
                 alert.show();
 
                 MediaScannerConnection.scanFile(this, new String[]{file.toString()}, null, null);
+
             } catch (FileNotFoundException e) {
                 Toast.makeText(this, "FileNotFound", Toast.LENGTH_SHORT).show();
 
@@ -173,59 +150,30 @@ public class MasterScanner extends AppCompatActivity {
 
         generateCSV.setVisibility(View.VISIBLE);
 
-
         IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
-        if (scanResult != null) {
+        if (resultCode == RESULT_CANCELED){
+            Toast.makeText(this, "Scan Cancelled" , Toast.LENGTH_SHORT).show();
+
+        }  else if (scanResult != null) {
             // handle scan result
+
+
             SharedPreferences.Editor SPOS = otherSettings.edit();
 
-            switch (otherSettings.getInt("scannedID", 5)) {
-                case 0:
-                    SPOS.putString("csvMatch1", scanResult.getContents());
-                    SPOS.apply();
-                    break;
-                case 1:
-                    SPOS.putString("csvMatch2", scanResult.getContents());
-                    SPOS.apply();
-                    break;
-                case 2:
-                    SPOS.putString("csvMatch3", scanResult.getContents());
-                    SPOS.apply();
-                    break;
-                case 3:
-                    SPOS.putString("csvMatch4", scanResult.getContents());
-                    SPOS.apply();
-                    break;
-                case 4:
-                    SPOS.putString("csvMatch5", scanResult.getContents());
-                    SPOS.apply();
-                    break;
-                case 5:
-                    SPOS.putString("csvMatch6", scanResult.getContents());
-                    SPOS.apply();
-                    break;
-                default:
-                    SPOS.putString("csvMatch6", scanResult.getContents());
-                    SPOS.apply();
-            }
-
-            SPOS.putInt("qrScanned", otherSettings.getInt("qrScanned", 0) + 1);
+            SPOS.putString("scannedMatches", otherSettings.getString("scannedMatches", "") + scanResult.getContents());
             SPOS.apply();
+            SPOS.putInt("qrScanned", otherSettings.getInt("qrScanned", 0) + 1);
             SPOS.putInt("scannedID", otherSettings.getInt("scannedID", 5) + 1);
             SPOS.putBoolean("deleteData", true);
             SPOS.putBoolean("csVisible", true);
             SPOS.apply();
 
+            prevScan = scanResult.getContents();
+            numDataSets.setText(String.format(Locale.ENGLISH, "%d", otherSettings.getInt("scannedID", 6)));
 
-            if (otherSettings.getInt("scannedID", 6) == 6) {
-                numDataSets.setTextSize(45);
-                numDataSets.setText("Generate A CSV");
-                scanQRCode.setVisibility(View.INVISIBLE);
+        } else {
+            Toast.makeText(this, "Null Scan" , Toast.LENGTH_SHORT).show();
 
-
-            } else {
-                numDataSets.setText(String.format(Locale.ENGLISH, "%d", otherSettings.getInt("scannedID", 6)));
-            }
         }
     }
 
@@ -238,7 +186,7 @@ public class MasterScanner extends AppCompatActivity {
 
         boolean permsGranted;
 
-        if(write == PackageManager.PERMISSION_GRANTED && read == PackageManager.PERMISSION_GRANTED) {
+        if (write == PackageManager.PERMISSION_GRANTED && read == PackageManager.PERMISSION_GRANTED) {
             permsGranted = true;
         } else {
             permsGranted = false;
@@ -249,11 +197,4 @@ public class MasterScanner extends AppCompatActivity {
 
     }
 
-    public void changeButtonTextOnBoolean(Button textApplication, boolean test, String trueText, String falseText){
-        if(test){
-            textApplication.setText(trueText);
-        } else {
-            textApplication.setText(falseText);
-        }
-    }
 }

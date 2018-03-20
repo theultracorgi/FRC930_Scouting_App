@@ -29,6 +29,7 @@
                 android:text="Easy Stuff"
                 android:textSize="30dp" /> <!--Height/Weight-->
 
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -39,6 +40,49 @@
                 android:paddingRight="4dp"
                 android:paddingTop="10dp">
 
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="8dp"
+                    android:layout_weight=".7"
+                    android:background="@color/white"
+                    android:maxLines="1"
+                    android:padding="5dp"
+                    android:text="Team Num"
+                    android:textColor="@color/textMedium"
+                    android:textSize="30dp"
+                    android:textStyle="italic"
+
+                    />
+
+                <EditText
+                    android:id="@+id/teamNum"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight=".3"
+                    android:background="@color/white"
+                    android:hint="###"
+                    android:inputType="numberDecimal"
+                    android:maxLength="4"
+                    />
+
+            </LinearLayout> <!--Team Number-->
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/background_material" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_corners_chunk_material"
+                android:orientation="horizontal"
+                android:paddingBottom="10dp"
+                android:paddingLeft="11dp"
+                android:paddingRight="4dp"
+                android:paddingTop="10dp">
 
 
                 <TextView
@@ -63,8 +107,8 @@
                     android:layout_height="fill_parent"
                     android:layout_weight=".3"
                     android:background="@color/white"
-                    android:inputType="numberDecimal"
                     android:hint="Weight"
+                    android:inputType="numberDecimal"
 
                     />
 
@@ -84,7 +128,6 @@
                 android:paddingLeft="11dp"
                 android:paddingRight="4dp"
                 android:paddingTop="10dp">
-
 
 
                 <TextView
@@ -109,8 +152,8 @@
                     android:layout_height="fill_parent"
                     android:layout_weight=".3"
                     android:background="@color/white"
-                    android:inputType="numberDecimal"
                     android:hint="Height"
+                    android:inputType="numberDecimal"
 
                     />
 
@@ -139,26 +182,17 @@
                 android:paddingBottom="10dp"
                 android:paddingTop="10dp">
 
-                <LinearLayout
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="2dp"
-                    android:orientation="horizontal"
-                    android:paddingBottom="2dp"
-                    android:paddingLeft="12dp"
-                    android:paddingRight="15dp">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight=".75"
-                        android:background="@color/white"
-                        android:paddingLeft="5dp"
-                        android:paddingRight="15dp"
-                        android:text="Intake Capability"
-                        android:textColor="@color/textMedium"
-                        android:textSize="30dp"
-                        android:textStyle="italic" />
+                    android:layout_weight=".75"
+                    android:background="@color/white"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="15dp"
+                    android:text="Intake Capability"
+                    android:textColor="@color/textMedium"
+                    android:textSize="30dp"
+                    android:textStyle="italic" />
 
 
                 <LinearLayout
@@ -170,14 +204,26 @@
                     <RadioGroup
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:checkedButton="@id/portalExchange">
+                        android:checkedButton="@id/noIntake">
+
+
+                        <RadioButton
+                            android:id="@+id/noIntake"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="12dp"
+                            android:layout_marginTop="8dp"
+                            android:buttonTint="@color/lightBlue"
+                            android:onClick="setNoIntake"
+                            android:text="No Intake"
+                            android:textColor="@color/textMedium"
+                            android:textSize="26dp" />
 
                         <RadioButton
                             android:id="@+id/portalExchange"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="12dp"
-                            android:layout_marginTop="8dp"
                             android:buttonTint="@color/lightBlue"
                             android:onClick="setPortalExchange"
                             android:text="Portal/Exchange Only"
@@ -197,10 +243,10 @@
 
                     </RadioGroup>
 
+
                 </LinearLayout>
 
             </LinearLayout> <!--Intake Capabilities-->
-            </LinearLayout>
 
             <ImageView
                 android:layout_width="match_parent"
@@ -387,6 +433,119 @@
                             android:buttonTint="@color/lightBlue"
                             android:onClick="setPlace"
                             android:text="Place"
+                            android:textColor="@color/textMedium"
+                            android:textSize="26dp" />
+
+                    </RadioGroup>
+
+                </LinearLayout>
+
+
+            </LinearLayout> <!--Output Type-->
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/background_material" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_corners_chunk_material"
+                android:orientation="vertical"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
+                    android:orientation="horizontal"
+                    android:paddingBottom="2dp"
+                    android:paddingLeft="12dp"
+                    android:paddingRight="15dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".75"
+                        android:background="@color/white"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="15dp"
+                        android:text="Endgame"
+                        android:textColor="@color/textMedium"
+                        android:textSize="30dp"
+                        android:textStyle="italic" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_marginRight="8dp"
+                        android:layout_weight=".25"
+                        android:background="@color/white"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="15dp"
+                        android:text=""
+                        android:textColor="#ffffff"
+                        android:textSize="25dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="15dp">
+
+                    <RadioGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:checkedButton="@id/park">
+
+                        <RadioButton
+                            android:id="@+id/park"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="12dp"
+                            android:layout_marginTop="8dp"
+                            android:buttonTint="@color/lightBlue"
+                            android:onClick="setPark"
+                            android:text="park"
+                            android:textColor="@color/textMedium"
+                            android:textSize="26dp" />
+
+                        <RadioButton
+                            android:id="@+id/climb"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="12dp"
+                            android:buttonTint="@color/lightBlue"
+                            android:onClick="setClimb"
+                            android:text="Climb"
+                            android:textColor="@color/textMedium"
+                            android:textSize="26dp" />
+
+                        <RadioButton
+                            android:id="@+id/bar"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="12dp"
+                            android:layout_marginTop="8dp"
+                            android:buttonTint="@color/lightBlue"
+                            android:onClick="setBar"
+                            android:text="Bar"
+                            android:textColor="@color/textMedium"
+                            android:textSize="26dp" />
+
+                        <RadioButton
+                            android:id="@+id/ramp"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="12dp"
+                            android:layout_marginTop="8dp"
+                            android:buttonTint="@color/lightBlue"
+                            android:onClick="setRamp"
+                            android:text="Ramp"
                             android:textColor="@color/textMedium"
                             android:textSize="26dp" />
 
@@ -1248,7 +1407,6 @@
                 android:background="@color/background_material" />
 
             <LinearLayout
-                android:id="@+id/tNext"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded_corners_chunk_material"
@@ -1259,12 +1417,11 @@
                 android:paddingTop="10dp">
 
                 <Button
-                    android:id="@+id/gotoPostMatch"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/lightBlue"
-                    android:onClick="setGoToPostMatch"
-                    android:text="Next"
+                    android:onClick="setSubmitData"
+                    android:text="Submit Data"
                     android:textColor="@color/white" />
 
             </LinearLayout> <!--Next-->

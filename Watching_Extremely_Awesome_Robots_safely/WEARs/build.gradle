@@ -1,6 +1,6 @@
 apply plugin: 'com.android.application'
-
 android {
+    flavorDimensions "default"
     signingConfigs {
         team930 {
             keyAlias 'team930'
@@ -11,12 +11,13 @@ android {
     buildToolsVersion '26.0.2'
     defaultConfig {
         applicationId "org.team930.bears.wearstime"
-        minSdkVersion 21
+        minSdkVersion 19
         //noinspection OldTargetApi
         targetSdkVersion 26
         versionCode 0
         versionName "1.2.5"
         multiDexEnabled true
+        signingConfig signingConfigs.team930
     }
     buildTypes {
         release {
@@ -25,16 +26,40 @@ android {
         }
     }
     productFlavors {
+        f125 {
+            minSdkVersion 19
+            applicationId 'org.team930.bears.wearstime'
+            signingConfig signingConfigs.team930
+            targetSdkVersion 26
+            versionCode 0
+            versionName '1.2.5'
+            versionNameSuffix '1.2'
+
+        }
+        f128 {
+            signingConfig signingConfigs.team930
+            minSdkVersion 19
+            applicationId 'org.team930.bears.wearstime'
+            targetSdkVersion 26
+            versionCode 0
+            versionName '1.2.8'
+            versionNameSuffix '1.2'
+        }
     }
 
 
     dependencies {
         compile fileTree(dir: 'libs', include: ['*.jar'])
-        compile 'com.android.support:appcompat-v7:26.0.0'
-        compile 'com.android.support:multidex:1.0.1'
+        //noinspection GradleDependency
+        compile 'com.android.support:appcompat-v7:26.1.0'
+        //noinspection GradleDependency
+        compile 'com.android.support:multidex:1.0.3'
 
         compile 'com.journeyapps:zxing-android-embedded:3.5.0'
-        compile 'com.google.zxing:core:3.2.0'
+        //noinspection GradleDependency
+        compile 'com.google.zxing:core:3.3.0'
 
     }
+}
+dependencies {
 }

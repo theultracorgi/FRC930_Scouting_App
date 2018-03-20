@@ -19,8 +19,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
-import org.team930.bears.wearstime.R;
-
 import static android.app.AlertDialog.THEME_HOLO_LIGHT;
 
 @SuppressWarnings("ALL")
@@ -190,12 +188,7 @@ public class Settings extends AppCompatActivity {
                         SPOS.putBoolean("deleteData", false);
                         SPOS.putInt(numMatchesStored, 0);
 
-                        SPOS.putString("csvMatch1", "");
-                        SPOS.putString("csvMatch2", "");
-                        SPOS.putString("csvMatch3", "");
-                        SPOS.putString("csvMatch4", "");
-                        SPOS.putString("csvMatch5", "");
-                        SPOS.putString("csvMatch6", "");
+                        SPOS.putString("scannedMatches", "");
                         SPOS.putInt("scannedID", 0);
                         SPOS.putBoolean("csVisible", false);
 
@@ -326,208 +319,429 @@ public class Settings extends AppCompatActivity {
         switch (scouterList.getSelectedItemPosition()) {
             case 0:
                 SPMD.putString("scouterID", "ARr005");
-
+                SPMD.apply();
                 break;
             case 1:
                 SPMD.putString("scouterID", "AMk003");
-
+                SPMD.apply();
                 break;
             case 2:
                 SPMD.putString("scouterID", "ASr006");
-
+                SPMD.apply();
                 break;
             case 3:
                 SPMD.putString("scouterID", "ABr001");
-
+                SPMD.apply();
                 break;
             case 4:
                 SPMD.putString("scouterID", "AJu002");
-
+                SPMD.apply();
                 break;
             case 5:
                 SPMD.putString("scouterID", "AWk007");
-
+                SPMD.apply();
                 break;
             case 6:
                 SPMD.putString("scouterID", "AOk004");
-
+                SPMD.apply();
                 break;
             case 7:
                 SPMD.putString("scouterID", "AAx000");
-
+                SPMD.apply();
                 break;
             case 8:
                 SPMD.putString("scouterID", "Low'a");
-
+                SPMD.apply();
                 break;
             case 9:
                 SPMD.putString("scouterID", "DMb010");
-
+                SPMD.apply();
                 break;
             case 10:
                 SPMD.putString("scouterID", "Low'a");
-
+                SPMD.apply();
                 break;
             case 11:
                 SPMD.putString("scouterID", "DEu009");
-
+                SPMD.apply();
                 break;
             case 12:
                 SPMD.putString("scouterID", "EEx011");
-
+                SPMD.apply();
                 break;
             case 13:
                 SPMD.putString("scouterID", "EZu013");
-
+                SPMD.apply();
                 break;
             case 14:
                 SPMD.putString("scouterID", "EZr012");
-
+                SPMD.apply();
                 break;
             case 15:
                 SPMD.putString("scouterID", "JMr017");
-
+                SPMD.apply();
                 break;
             case 16:
                 SPMD.putString("scouterID", "JDk015");
-
+                SPMD.apply();
                 break;
             case 17:
                 SPMD.putString("scouterID", "JPx018");
-
+                SPMD.apply();
                 break;
             case 18:
                 SPMD.putString("scouterID", "JWr021");
-
+                SPMD.apply();
                 break;
             case 19:
                 SPMD.putString("scouterID", "JKw016");
-
+                SPMD.apply();
                 break;
             case 20:
                 SPMD.putString("scouterID", "JWr020");
-
+                SPMD.apply();
                 break;
             case 21:
                 SPMD.putString("scouterID", "JVb019");
-
+                SPMD.apply();
                 break;
             case 22:
                 SPMD.putString("scouterID", "KKr022");
-
+                SPMD.apply();
                 break;
             case 23:
                 SPMD.putString("scouterID", "Low'a");
-
+                SPMD.apply();
                 break;
             case 24:
                 SPMD.putString("scouterID", "KMx023");
-
+                SPMD.apply();
                 break;
             case 25:
                 SPMD.putString("scouterID", "KSk024");
-
+                SPMD.apply();
                 break;
             case 26:
                 SPMD.putString("scouterID", "KSu025");
-
+                SPMD.apply();
                 break;
             case 27:
                 SPMD.putString("scouterID", "MMr028");
-
+                SPMD.apply();
                 break;
             case 28:
                 SPMD.putString("scouterID", "MRk029");
-
+                SPMD.apply();
                 break;
             case 29:
                 SPMD.putString("scouterID", "MRb030");
-
+                SPMD.apply();
                 break;
             case 30:
                 SPMD.putString("scouterID", "MHb027");
-
+                SPMD.apply();
                 break;
             case 31:
                 SPMD.putString("scouterID", "NBr031");
-
+                SPMD.apply();
                 break;
             case 32:
                 SPMD.putString("scouterID", "NKk032");
-
+                SPMD.apply();
                 break;
             case 33:
                 SPMD.putString("scouterID", "NRr034");
-
+                SPMD.apply();
                 break;
             case 34:
                 SPMD.putString("scouterID", "SUPAHOTFIREx048");
-
+                SPMD.apply();
                 break;
             case 35:
                 SPMD.putString("scouterID", "NNb033");
-
+                SPMD.apply();
                 break;
             case 36:
                 SPMD.putString("scouterID", "NFx047");
-
+                SPMD.apply();
                 break;
             case 37:
                 SPMD.putString("scouterID", "PRo036");
-
+                SPMD.apply();
                 break;
             case 38:
                 SPMD.putString("scouterID", "SRr039");
-
+                SPMD.apply();
                 break;
             case 39:
                 SPMD.putString("scouterID", "SBr037");
-
+                SPMD.apply();
                 break;
             case 40:
                 SPMD.putString("scouterID", "SGi038");
-
+                SPMD.apply();
                 break;
             case 41:
                 SPMD.putString("scouterID", "Low'a");
-
+                SPMD.apply();
                 break;
             case 42:
                 SPMD.putString("scouterID", "SSk040");
-
+                SPMD.apply();
                 break;
             case 43:
                 SPMD.putString("scouterID", "TSr043");
-
+                SPMD.apply();
                 break;
             case 44:
                 SPMD.putString("scouterID", "TGk042");
-
+                SPMD.apply();
                 break;
             case 45:
                 SPMD.putString("scouterID", "TBk041");
-
+                SPMD.apply();
                 break;
             case 46:
                 SPMD.putString("scouterID", "VKb044");
-
+                SPMD.apply();
                 break;
             case 47:
                 SPMD.putString("scouterID", "Low'a");
-
+                SPMD.apply();
                 break;
             case 48:
                 SPMD.putString("scouterID", "ZAk045");
-
+                SPMD.apply();
                 break;
             case 49:
                 SPMD.putString("scouterID", "ZYb046");
-
+                SPMD.apply();
                 break;
             default:
                 SPMD.putString("scouterID", "Low'a");
+                SPMD.apply();
         }
-        SPMD.apply();
+
+    SharedPreferences.Editor SPOS = otherSettings.edit();
+
+        SPOS.putInt("scouterIDNum", scouterList.getSelectedItemPosition());
+
+        SPOS.apply();
+
+
+}
+
+    protected void onPause() {
+        // call the superclass method first
+        super.onPause();
+
+        SharedPreferences.Editor SPMD = matchData.edit();
+
+        switch (scouterList.getSelectedItemPosition()) {
+            case 0:
+                SPMD.putString("scouterID", "ARr005");
+                SPMD.apply();
+                break;
+            case 1:
+                SPMD.putString("scouterID", "AMk003");
+                SPMD.apply();
+                break;
+            case 2:
+                SPMD.putString("scouterID", "ASr006");
+                SPMD.apply();
+                break;
+            case 3:
+                SPMD.putString("scouterID", "ABr001");
+                SPMD.apply();
+                break;
+            case 4:
+                SPMD.putString("scouterID", "AJu002");
+                SPMD.apply();
+                break;
+            case 5:
+                SPMD.putString("scouterID", "AWk007");
+                SPMD.apply();
+                break;
+            case 6:
+                SPMD.putString("scouterID", "AOk004");
+                SPMD.apply();
+                break;
+            case 7:
+                SPMD.putString("scouterID", "AAx000");
+                SPMD.apply();
+                break;
+            case 8:
+                SPMD.putString("scouterID", "Low'a");
+                SPMD.apply();
+                break;
+            case 9:
+                SPMD.putString("scouterID", "DMb010");
+                SPMD.apply();
+                break;
+            case 10:
+                SPMD.putString("scouterID", "Low'a");
+                SPMD.apply();
+                break;
+            case 11:
+                SPMD.putString("scouterID", "DEu009");
+                SPMD.apply();
+                break;
+            case 12:
+                SPMD.putString("scouterID", "EEx011");
+                SPMD.apply();
+                break;
+            case 13:
+                SPMD.putString("scouterID", "EZu013");
+                SPMD.apply();
+                break;
+            case 14:
+                SPMD.putString("scouterID", "EZr012");
+                SPMD.apply();
+                break;
+            case 15:
+                SPMD.putString("scouterID", "JMr017");
+                SPMD.apply();
+                break;
+            case 16:
+                SPMD.putString("scouterID", "JDk015");
+                SPMD.apply();
+                break;
+            case 17:
+                SPMD.putString("scouterID", "JPx018");
+                SPMD.apply();
+                break;
+            case 18:
+                SPMD.putString("scouterID", "JWr021");
+                SPMD.apply();
+                break;
+            case 19:
+                SPMD.putString("scouterID", "JKw016");
+                SPMD.apply();
+                break;
+            case 20:
+                SPMD.putString("scouterID", "JWr020");
+                SPMD.apply();
+                break;
+            case 21:
+                SPMD.putString("scouterID", "JVb019");
+                SPMD.apply();
+                break;
+            case 22:
+                SPMD.putString("scouterID", "KKr022");
+                SPMD.apply();
+                break;
+            case 23:
+                SPMD.putString("scouterID", "Low'a");
+                SPMD.apply();
+                break;
+            case 24:
+                SPMD.putString("scouterID", "KMx023");
+                SPMD.apply();
+                break;
+            case 25:
+                SPMD.putString("scouterID", "KSk024");
+                SPMD.apply();
+                break;
+            case 26:
+                SPMD.putString("scouterID", "KSu025");
+                SPMD.apply();
+                break;
+            case 27:
+                SPMD.putString("scouterID", "MMr028");
+                SPMD.apply();
+                break;
+            case 28:
+                SPMD.putString("scouterID", "MRk029");
+                SPMD.apply();
+                break;
+            case 29:
+                SPMD.putString("scouterID", "MRb030");
+                SPMD.apply();
+                break;
+            case 30:
+                SPMD.putString("scouterID", "MHb027");
+                SPMD.apply();
+                break;
+            case 31:
+                SPMD.putString("scouterID", "NBr031");
+                SPMD.apply();
+                break;
+            case 32:
+                SPMD.putString("scouterID", "NKk032");
+                SPMD.apply();
+                break;
+            case 33:
+                SPMD.putString("scouterID", "NRr034");
+                SPMD.apply();
+                break;
+            case 34:
+                SPMD.putString("scouterID", "SUPAHOTFIREx048");
+                SPMD.apply();
+                break;
+            case 35:
+                SPMD.putString("scouterID", "NNb033");
+                SPMD.apply();
+                break;
+            case 36:
+                SPMD.putString("scouterID", "NFx047");
+                SPMD.apply();
+                break;
+            case 37:
+                SPMD.putString("scouterID", "PRo036");
+                SPMD.apply();
+                break;
+            case 38:
+                SPMD.putString("scouterID", "SRr039");
+                SPMD.apply();
+                break;
+            case 39:
+                SPMD.putString("scouterID", "SBr037");
+                SPMD.apply();
+                break;
+            case 40:
+                SPMD.putString("scouterID", "SGi038");
+                SPMD.apply();
+                break;
+            case 41:
+                SPMD.putString("scouterID", "Low'a");
+                SPMD.apply();
+                break;
+            case 42:
+                SPMD.putString("scouterID", "SSk040");
+                SPMD.apply();
+                break;
+            case 43:
+                SPMD.putString("scouterID", "TSr043");
+                SPMD.apply();
+                break;
+            case 44:
+                SPMD.putString("scouterID", "TGk042");
+                SPMD.apply();
+                break;
+            case 45:
+                SPMD.putString("scouterID", "TBk041");
+                SPMD.apply();
+                break;
+            case 46:
+                SPMD.putString("scouterID", "VKb044");
+                SPMD.apply();
+                break;
+            case 47:
+                SPMD.putString("scouterID", "Low'a");
+                SPMD.apply();
+                break;
+            case 48:
+                SPMD.putString("scouterID", "ZAk045");
+                SPMD.apply();
+                break;
+            case 49:
+                SPMD.putString("scouterID", "ZYb046");
+                SPMD.apply();
+                break;
+            default:
+                SPMD.putString("scouterID", "Low'a");
+                SPMD.apply();
+        }
 
         SharedPreferences.Editor SPOS = otherSettings.edit();
 
@@ -535,10 +749,7 @@ public class Settings extends AppCompatActivity {
 
         SPOS.apply();
 
-
     }
-
-
 }
 
 

@@ -13,7 +13,6 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
-import org.team930.bears.wearstime.R;
 
 import java.util.Locale;
 

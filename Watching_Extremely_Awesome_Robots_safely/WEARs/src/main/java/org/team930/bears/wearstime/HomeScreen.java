@@ -13,7 +13,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import org.team930.bears.wearstime.R;
 
 import static android.app.AlertDialog.THEME_HOLO_LIGHT;
 
@@ -24,7 +23,7 @@ public class HomeScreen extends AppCompatActivity {
     LinearLayout masterScanner;
     ImageView disappear;
 
-    String otherPreferences, numStoredMatches, matchDataPreferences;
+    String otherPreferences, numStoredMatches, matchDataPreferences, numMatchesStored;
     Integer maxMatches;
     boolean showToast;
 
@@ -48,6 +47,8 @@ public class HomeScreen extends AppCompatActivity {
         otherPreferences = getString(R.string.otherPreferences);
         otherSettings = getSharedPreferences(otherPreferences, 0);
 
+        numMatchesStored = getString(R.string.numStoredMatches);
+
         matchDataPreferences = getString(R.string.matchDataPreferences);
         matchData = getSharedPreferences(matchDataPreferences,0);
 
@@ -63,6 +64,53 @@ public class HomeScreen extends AppCompatActivity {
 
         if (otherSettings.getBoolean("firstOpen", true)) {
             SPOS.putInt(numStoredMatches, 0);
+
+            SPOS.putBoolean("deleteData", false);
+            SPOS.putInt(numMatchesStored, 0);
+
+            SPOS.putString("scannedMatches", "");
+            SPOS.putInt("scannedID", 0);
+            SPOS.putBoolean("csVisible", false);
+
+            SPOS.putBoolean("dataAvailable", false);
+
+            SPOS.apply();
+
+            SharedPreferences.Editor SPMD = matchData.edit();
+
+            SPMD.putString("teamNum", "0");
+            SPMD.putString("matchNum", "0");
+            SPMD.putString("aAutoline", "0");
+
+            SPMD.putString("aSwitchAttempts", "0");
+            SPMD.putString("aScaleScored", "0");
+            SPMD.putString("tSwitchAttempts", "0");
+            SPMD.putString("tScaleAttempts", "0");
+            SPMD.putString("tOSwitchAttempts", "0");
+
+            SPMD.putString("aSwitchScored", "0");
+            SPMD.putString("aScaleScored", "0");
+            SPMD.putString("tSwitchScored", "0");
+            SPMD.putString("tScaleScored", "0");
+            SPMD.putString("tOSwitchScored", "0");
+            SPMD.putString("tVaultScored", "0");
+
+
+
+            SPMD.putString("tParked", "0");
+            SPMD.putString("tElevated", "0");
+            SPMD.putString("disabled", "0");
+
+            SPMD.putString("comments", "0");
+
+            SPMD.putString("match1", "");
+            SPMD.putString("match2", "");
+            SPMD.putString("match3", "");
+            SPMD.putString("match4", "");
+            SPMD.putString("match5", "");
+            SPMD.putString("match6", "");
+
+            SPMD.apply();
             SPOS.apply();
         }
     }
