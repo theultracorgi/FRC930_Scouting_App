@@ -155,7 +155,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890./#)(: "
-                    android:hint="Very fast, bad drivers, fast cube intake, a nice haiku, etc."
+                    android:hint="Very fast, bad drivers, fast cube intake, how long they were disabled, a nice haiku, etc."
                     android:maxLength="300"
                     android:maxLines="4"
                     android:padding="8dp"

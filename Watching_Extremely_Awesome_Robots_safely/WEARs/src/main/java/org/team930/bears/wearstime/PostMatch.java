@@ -8,6 +8,7 @@ import android.content.pm.ActivityInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.ContextThemeWrapper;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -27,7 +28,7 @@ public class PostMatch extends AppCompatActivity {
     String matchDataPreferences, otherPreferences, numStoredMatches;
     String scouterIDFinal, teamNumFinal, matchNumFinal, aAutolineFinal, aSwitchAttemptsFinal, aScaleAttemptsFinal, tSwitchAttemptsFinal, tScaleAttemptsFinal, tOSwitchAttemptsFinal, aSwitchScoredFinal, aScaleScoredFinal, tSwitchScoredFinal, tScaleScoredFinal, tOSwitchScoredFinal,  tVaultScoredFinal, tParkedFinal, tElevatedFinal, disabledFinal, commentsFinal, aSwitchAccuracy, aScaleAccuracy, tSwitchAccuracy, tScaleAccuracy, tOSwitchAccuracy;
 
-    AlertDialog.Builder submit, moreComments;
+    AlertDialog.Builder submit, moreComments, backPressed;
     ContextThemeWrapper ctw;
     SharedPreferences matchData, otherSettings;
 
@@ -40,6 +41,7 @@ public class PostMatch extends AppCompatActivity {
         ctw = new ContextThemeWrapper(this, THEME_HOLO_LIGHT);
         submit = new AlertDialog.Builder(ctw);
         moreComments = new AlertDialog.Builder(ctw);
+        backPressed = new AlertDialog.Builder(ctw);
 
         numStoredMatches = getString(R.string.numStoredMatches);
         mDisabled = 0;
@@ -53,7 +55,7 @@ public class PostMatch extends AppCompatActivity {
         disabled = findViewById(R.id.disabled);
         comments = findViewById(R.id.comments);
         submitData = findViewById(R.id.submitData);
-
+//TODO do you like this robot? Why in Comments
     }
 
     public void setDisabled(View v){
@@ -245,6 +247,36 @@ public class PostMatch extends AppCompatActivity {
             alert.show();
         }
     }
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            backPressed.setTitle("Go Back");
+            backPressed.setMessage("Are you sure you want to go back? All data on this form will be lost.");
+            backPressed.setCancelable(true);
 
+            backPressed.setPositiveButton(
+                    "Yes",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                            Intent home = new Intent(PostMatch.this, AutonTeleop.class);
+                            startActivity(home);
+                        }
+                    });
 
+            backPressed.setNegativeButton(
+                    "No",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+
+                        }
+                    });
+
+            AlertDialog alert = backPressed.create();
+            alert.show();
+            return false;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
 }

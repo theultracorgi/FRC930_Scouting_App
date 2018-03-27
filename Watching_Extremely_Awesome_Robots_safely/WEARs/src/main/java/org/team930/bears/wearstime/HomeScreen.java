@@ -5,14 +5,13 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-
 
 import static android.app.AlertDialog.THEME_HOLO_LIGHT;
 
@@ -35,7 +34,7 @@ public class HomeScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home__screen);
-        setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         ctw = new ContextThemeWrapper(this, THEME_HOLO_LIGHT);
         builder = new AlertDialog.Builder(ctw);
@@ -50,7 +49,7 @@ public class HomeScreen extends AppCompatActivity {
         numMatchesStored = getString(R.string.numStoredMatches);
 
         matchDataPreferences = getString(R.string.matchDataPreferences);
-        matchData = getSharedPreferences(matchDataPreferences,0);
+        matchData = getSharedPreferences(matchDataPreferences, 0);
 
         masterScanner = findViewById(R.id.masterScanner);
 
@@ -96,7 +95,6 @@ public class HomeScreen extends AppCompatActivity {
             SPMD.putString("tVaultScored", "0");
 
 
-
             SPMD.putString("tParked", "0");
             SPMD.putString("tElevated", "0");
             SPMD.putString("disabled", "0");
@@ -116,16 +114,23 @@ public class HomeScreen extends AppCompatActivity {
     }
 
     public void setGoToPreMatch(View v) {
+        if (otherSettings.getBoolean("deleteData", false)) {
+            builder.setTitle("Delete Your Data");
+            builder.setMessage("You need to delete your data to continue scouting.");
+            builder.setCancelable(true);
+            builder.setNeutralButton(
+                    "OK",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    });
+            AlertDialog alert = builder.create();
+            alert.show();
 
-        if(otherSettings.getInt(numStoredMatches, maxMatches) >= maxMatches) { //
-
-            if(otherSettings.getBoolean("deleteData", false)) {
-                builder.setTitle("Delete Your Data");
-                builder.setMessage("You need to delete your data to continue scouting.");
-            } else {
-                builder.setTitle("All Your Data Are Belong To Us.");
-                builder.setMessage("You need to generate a QR code to continue scouting.");
-            }
+        } else if (otherSettings.getInt(numStoredMatches, maxMatches) >= maxMatches) { //
+            builder.setTitle("All Your Data Are Belong To Us.");
+            builder.setMessage("You need to generate a QR code to continue scouting.");
             builder.setCancelable(true);
             builder.setNeutralButton(
                     "OK",
@@ -144,7 +149,6 @@ public class HomeScreen extends AppCompatActivity {
     }
 
     public void setGoToGenQR(View v) {
-
 
 
         Intent nextScreen = new Intent(HomeScreen.this, QRCreator.class);
@@ -168,43 +172,43 @@ public class HomeScreen extends AppCompatActivity {
     public void setRevokeAdmin(View v) {
         if (otherSettings.getBoolean("admin", false)) {
 
-        builder.setTitle("Revoke Admin");
-        builder.setMessage("Are you sure you don't want this device to be an Administrator?");
-        builder.setCancelable(true);
-        builder.setPositiveButton(
-                "Yes",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
+            builder.setTitle("Revoke Admin");
+            builder.setMessage("Are you sure you don't want this device to be an Administrator?");
+            builder.setCancelable(true);
+            builder.setPositiveButton(
+                    "Yes",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
 
-                        SharedPreferences.Editor SPOS = otherSettings.edit();
-                        SPOS.putBoolean("admin", false);
-                        SPOS.apply();
-                        HomeScreen.this.recreate();
+                            SharedPreferences.Editor SPOS = otherSettings.edit();
+                            SPOS.putBoolean("admin", false);
+                            SPOS.apply();
+                            HomeScreen.this.recreate();
 
-                    }
-                });
+                        }
+                    });
 
-        builder.setNegativeButton(
-                "No",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-                    }
-                });
+            builder.setNegativeButton(
+                    "No",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    });
 
-        AlertDialog alert = builder.create();
-        alert.show();
+            AlertDialog alert = builder.create();
+            alert.show();
 
-    } else {
+        } else {
 
+        }
     }
-}
 
     public void onResume() {
         super.onResume();  // Always call the superclass method first
 
-        if (otherSettings.getBoolean("admin", false) ) {
+        if (otherSettings.getBoolean("admin", false)) {
             masterScanner.setVisibility(View.VISIBLE);
             disappear.setVisibility(View.VISIBLE);
             goToMasterScanner.setBackground(getResources().getDrawable(R.color.lightBlue));

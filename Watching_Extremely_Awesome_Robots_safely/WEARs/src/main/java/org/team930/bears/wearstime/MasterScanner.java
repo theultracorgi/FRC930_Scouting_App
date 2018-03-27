@@ -9,6 +9,7 @@ import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.media.MediaScannerConnection;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
@@ -20,7 +21,6 @@ import android.widget.Toast;
 
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
-
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -85,10 +85,12 @@ public class MasterScanner extends AppCompatActivity {
 
 
         if (!checkWriteExternalPermission()) {
-
-            requestPermissions(new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
-            requestPermissions(new String[]{android.Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
-
+            if (Build.VERSION.SDK_INT < 23) {
+                Toast.makeText(this, "Go into Settings and give access to storage", Toast.LENGTH_SHORT).show();
+            } else {
+                requestPermissions(new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+                requestPermissions(new String[]{android.Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
+            }
         } else {
 
             try {
@@ -143,6 +145,7 @@ public class MasterScanner extends AppCompatActivity {
     public void setScanQRCode(View v) {
         IntentIntegrator integrator = new IntentIntegrator(this);
         integrator.initiateScan();
+
     }
 
     @SuppressLint("SetTextI18n")
@@ -151,10 +154,10 @@ public class MasterScanner extends AppCompatActivity {
         generateCSV.setVisibility(View.VISIBLE);
 
         IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
-        if (resultCode == RESULT_CANCELED){
-            Toast.makeText(this, "Scan Cancelled" , Toast.LENGTH_SHORT).show();
+        if (resultCode == RESULT_CANCELED) {
+            Toast.makeText(this, "Scan Cancelled", Toast.LENGTH_SHORT).show();
 
-        }  else if (scanResult != null) {
+        } else if (scanResult != null) {
             // handle scan result
 
 
@@ -172,7 +175,7 @@ public class MasterScanner extends AppCompatActivity {
             numDataSets.setText(String.format(Locale.ENGLISH, "%d", otherSettings.getInt("scannedID", 6)));
 
         } else {
-            Toast.makeText(this, "Null Scan" , Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Null Scan", Toast.LENGTH_SHORT).show();
 
         }
     }
@@ -187,6 +190,24 @@ public class MasterScanner extends AppCompatActivity {
         boolean permsGranted;
 
         if (write == PackageManager.PERMISSION_GRANTED && read == PackageManager.PERMISSION_GRANTED) {
+            permsGranted = true;
+        } else {
+            permsGranted = false;
+        }
+
+        return permsGranted;
+
+
+    }
+
+    private boolean checkCameraPermission() {
+
+        String camPerm = "android.permission.CAMERA";
+        int cam = this.checkCallingOrSelfPermission(camPerm);
+
+        boolean permsGranted;
+
+        if (cam == PackageManager.PERMISSION_GRANTED) {
             permsGranted = true;
         } else {
             permsGranted = false;

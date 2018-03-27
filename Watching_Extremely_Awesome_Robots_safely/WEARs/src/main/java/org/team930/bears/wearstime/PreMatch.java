@@ -8,6 +8,7 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.ContextThemeWrapper;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -34,11 +35,10 @@ public class PreMatch extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pre_match);
-        setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         ctw = new ContextThemeWrapper(this, THEME_HOLO_LIGHT);
         builder = new AlertDialog.Builder(ctw);
-
 
 
         alliance = 'b';
@@ -69,7 +69,7 @@ public class PreMatch extends AppCompatActivity {
 
     public void setGoToAuton(View v) {
 
-        if((teamNum.getText().toString()).length() ==0 || (matchNum.getText().toString()).length() ==0 ) {
+        if ((teamNum.getText().toString()).length() == 0 || (matchNum.getText().toString()).length() == 0) {
 
             builder.setTitle("Fill out all Fields");
             builder.setCancelable(true);
@@ -84,7 +84,7 @@ public class PreMatch extends AppCompatActivity {
             alert.show();
 
 
-        } else if(Integer.parseInt(teamNum.getText().toString()) ==0 || Integer.parseInt(matchNum.getText().toString()) ==0) {
+        } else if (Integer.parseInt(teamNum.getText().toString()) == 0 || Integer.parseInt(matchNum.getText().toString()) == 0) {
             builder.setTitle("Give Us Valid Values");
             builder.setCancelable(true);
             builder.setNeutralButton(
@@ -96,7 +96,7 @@ public class PreMatch extends AppCompatActivity {
                     });
             AlertDialog alert = builder.create();
             alert.show();
-        }else {
+        } else {
             if (allianceColor.isChecked()) {
                 alliance = 'r';
             } else {
@@ -134,5 +134,41 @@ public class PreMatch extends AppCompatActivity {
         }
     }
 
-}
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
 
+        AlertDialog.Builder backPressed;
+        backPressed = new AlertDialog.Builder(ctw);
+
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            backPressed.setTitle("Go Back");
+            backPressed.setMessage("Are you sure you want to go back? All data on this form will be lost.");
+            backPressed.setCancelable(true);
+
+            backPressed.setPositiveButton(
+                    "Yes",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                            Intent home = new Intent(PreMatch.this, HomeScreen.class);
+                            startActivity(home);
+                        }
+                    });
+
+            backPressed.setNegativeButton(
+                    "No",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+
+                        }
+                    });
+
+            AlertDialog alert = backPressed.create();
+            alert.show();
+            return false;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+}

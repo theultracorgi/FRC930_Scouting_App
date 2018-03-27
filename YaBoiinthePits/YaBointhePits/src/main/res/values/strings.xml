@@ -7,7 +7,6 @@
     <string name="numStoredMatches">numStoredMatches</string>
 
 
-
     <string-array name="wheelNum">
         <item>4</item>
         <item>6</item>
@@ -25,6 +24,7 @@
         <item>Tank</item>
         <item>Swerve</item>
         <item>Mecanum</item>
+        <item>Omni</item>
         <item>Butterfly</item>
         <item>Other(Specify)</item>
     </string-array>
@@ -37,8 +37,6 @@
         <item>Other(Specify)</item>
     </string-array>
 
-    <string name="scouterListPrompt">Hu u Be?</string>
-    <integer name="adminPassword">478609</integer>
-    <integer name="maxMatches">6</integer>
+    <string name="data">pitData</string>
 
 </resources>

@@ -68,61 +68,9 @@
                 android:entries="@array/Scouter"
                 android:spinnerMode="dialog"
                 android:prompt="@string/scouterListPrompt"
-
-
-
                 />
 
         </LinearLayout> <!--Scouter Selection-->
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/background_material"
-            tools:ignore="ContentDescription" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/rounded_corners_chunk_material"
-            android:orientation="horizontal"
-            android:paddingBottom="10dp"
-            android:paddingLeft="11dp"
-            android:paddingRight="4dp"
-            android:paddingTop="10dp"
-
-            tools:ignore="RtlHardcoded">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="fill_parent"
-                android:layout_gravity="center"
-                android:layout_marginRight="8dp"
-                android:layout_weight=".7"
-                android:background="@color/white"
-                android:text="+1S = +1A"
-                android:textSize="30dp"
-                android:textStyle="italic"
-                android:padding="5dp"
-                android:textColor="@color/textMedium"
-                tools:ignore="HardcodedText,RtlHardcoded,SpUsage" />
-
-            <ToggleButton
-                android:id="@+id/scoredAddsAttempt"
-                android:layout_width="0dp"
-                android:layout_height="fill_parent"
-                android:layout_weight=".3"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp"
-                android:background="@drawable/toggle_button_at"
-                android:onClick="setScoredAddsAttempt"
-                android:textColor="@color/white"
-                android:textOff="Off"
-                android:textOn="On"
-
-                tools:ignore="HardcodedText" />
-
-        </LinearLayout> <!--Scored Adds Attempt-->
 
         <ImageView
             android:layout_width="match_parent"

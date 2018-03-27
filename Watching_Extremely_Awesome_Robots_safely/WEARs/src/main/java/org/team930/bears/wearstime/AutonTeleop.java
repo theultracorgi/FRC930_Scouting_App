@@ -1,18 +1,19 @@
 package org.team930.bears.wearstime;
 
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.ContextThemeWrapper;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.ToggleButton;
-
 
 import java.util.Locale;
 
@@ -32,7 +33,7 @@ public class AutonTeleop extends AppCompatActivity {
 
     SharedPreferences matchData, otherSettings;
     MediaPlayer Still;
-    AlertDialog.Builder submit;
+    AlertDialog.Builder backPressed;
     ContextThemeWrapper ctw;
 
     @Override
@@ -46,7 +47,7 @@ public class AutonTeleop extends AppCompatActivity {
 
         //POPUPS
         ctw = new ContextThemeWrapper(this, THEME_HOLO_LIGHT);
-        submit = new AlertDialog.Builder(ctw);
+        backPressed = new AlertDialog.Builder(ctw);
 
         //OHNINE
         Still = MediaPlayer.create(this, R.raw.ohnine_playa);
@@ -69,7 +70,7 @@ public class AutonTeleop extends AppCompatActivity {
         //VIEWS
         autoline = findViewById(R.id.autoline);
 
-        if(aAutoLine ==0) {
+        if (aAutoLine == 0) {
             autoline.setChecked(false);
         } else {
             autoline.setChecked(true);
@@ -135,11 +136,11 @@ public class AutonTeleop extends AppCompatActivity {
         parked = findViewById(R.id.parked);
         elevated = findViewById(R.id.elevated);
 
-        if(tParked == 1){
+        if (tParked == 1) {
             onField.setChecked(false);
             parked.setChecked(true);
             elevated.setChecked(false);
-        } else if(tElevated == 1){
+        } else if (tElevated == 1) {
             onField.setChecked(false);
             parked.setChecked(false);
             elevated.setChecked(true);
@@ -193,17 +194,13 @@ public class AutonTeleop extends AppCompatActivity {
     }
 
     public void setASwitchAddS(View v) {
-        if (!(aSwitchScored + aScaleScored >= 19)) {
+        if (!(aSwitchScored + aScaleScored >= 19) && aSwitchScored + aScaleScored + tSwitchScored + tScaleScored + tOSwitchScored + tVaultScored < 60) {
 
-            if (scoredAddsAttempt) {
-                aSwitchScored += 1;
-                aSwitchSDisplay.setText(String.format(Locale.ENGLISH, "%d", aSwitchScored));
-                aSwitchAttempts += 1;
-                aSwitchADisplay.setText(String.format(Locale.ENGLISH, "%d", aSwitchAttempts));
-            } else if (aSwitchScored < aSwitchAttempts) {
-                aSwitchScored += 1;
-                aSwitchSDisplay.setText(String.format(Locale.ENGLISH, "%d", aSwitchScored));
-            }
+            aSwitchScored += 1;
+            aSwitchSDisplay.setText(String.format(Locale.ENGLISH, "%d", aSwitchScored));
+            aSwitchAttempts += 1;
+            aSwitchADisplay.setText(String.format(Locale.ENGLISH, "%d", aSwitchAttempts));
+
         }
     }
 
@@ -233,17 +230,14 @@ public class AutonTeleop extends AppCompatActivity {
     }
 
     public void setAScaleAddS(View v) {
-        if (!(aSwitchScored + aScaleScored >= 19)) {
+        if (!(aSwitchScored + aScaleScored >= 19) && aSwitchScored + aScaleScored + tSwitchScored + tScaleScored + tOSwitchScored + tVaultScored < 60) {
 
-            if (scoredAddsAttempt) {
-                aScaleScored += 1;
-                aScaleSDisplay.setText(String.format(Locale.ENGLISH, "%d", aScaleScored));
-                aScaleAttempts += 1;
-                aScaleADisplay.setText(String.format(Locale.ENGLISH, "%d", aScaleAttempts));
-            } else if (aScaleScored < aScaleAttempts) {
-                aScaleScored += 1;
-                aScaleSDisplay.setText(String.format(Locale.ENGLISH, "%d", aScaleScored));
-            }
+
+            aScaleScored += 1;
+            aScaleSDisplay.setText(String.format(Locale.ENGLISH, "%d", aScaleScored));
+            aScaleAttempts += 1;
+            aScaleADisplay.setText(String.format(Locale.ENGLISH, "%d", aScaleAttempts));
+
         }
     }
 
@@ -274,15 +268,11 @@ public class AutonTeleop extends AppCompatActivity {
     public void setTSwitchAddS(View v) {
         if (!(tOSwitchScored + tSwitchScored + tScaleScored + tVaultScored >= 60 - (aSwitchScored + aScaleScored))) {
 
-            if (scoredAddsAttempt) {
-                tSwitchScored += 1;
-                tSwitchSDisplay.setText(String.format(Locale.ENGLISH, "%d", tSwitchScored));
-                tSwitchAttempts += 1;
-                tSwitchADisplay.setText(String.format(Locale.ENGLISH, "%d", tSwitchAttempts));
-            } else if (tSwitchScored < tSwitchAttempts) {
-                tSwitchScored += 1;
-                tSwitchSDisplay.setText(String.format(Locale.ENGLISH, "%d", tSwitchScored));
-            }
+            tSwitchScored += 1;
+            tSwitchSDisplay.setText(String.format(Locale.ENGLISH, "%d", tSwitchScored));
+            tSwitchAttempts += 1;
+            tSwitchADisplay.setText(String.format(Locale.ENGLISH, "%d", tSwitchAttempts));
+
         }
     }
 
@@ -313,15 +303,12 @@ public class AutonTeleop extends AppCompatActivity {
     public void setTScaleAddS(View v) {
         if (!(tOSwitchScored + tSwitchScored + tScaleScored + tVaultScored >= 60 - (aSwitchScored + aScaleScored))) {
 
-            if (scoredAddsAttempt) {
-                tScaleScored += 1;
-                tScaleSDisplay.setText(String.format(Locale.ENGLISH, "%d", tScaleScored));
-                tScaleAttempts += 1;
-                tScaleADisplay.setText(String.format(Locale.ENGLISH, "%d", tScaleAttempts));
-            } else if (tScaleScored < tScaleAttempts) {
-                tScaleScored += 1;
-                tScaleSDisplay.setText(String.format(Locale.ENGLISH, "%d", tScaleScored));
-            }
+
+            tScaleScored += 1;
+            tScaleSDisplay.setText(String.format(Locale.ENGLISH, "%d", tScaleScored));
+            tScaleAttempts += 1;
+            tScaleADisplay.setText(String.format(Locale.ENGLISH, "%d", tScaleAttempts));
+
         }
     }
 
@@ -352,15 +339,12 @@ public class AutonTeleop extends AppCompatActivity {
     public void setTOSwitchAddS(View v) {
         if (!(tOSwitchScored + tSwitchScored + tScaleScored + tVaultScored >= 60 - (aSwitchScored + aScaleScored))) {
 
-            if (scoredAddsAttempt) {
-                tOSwitchScored += 1;
-                tOSwitchSDisplay.setText(String.format(Locale.ENGLISH, "%d", tOSwitchScored));
-                tOSwitchAttempts += 1;
-                tOSwitchADisplay.setText(String.format(Locale.ENGLISH, "%d", tOSwitchAttempts));
-            } else if (tOSwitchScored < tOSwitchAttempts) {
-                tOSwitchScored += 1;
-                tOSwitchSDisplay.setText(String.format(Locale.ENGLISH, "%d", tOSwitchScored));
-            }
+
+            tOSwitchScored += 1;
+            tOSwitchSDisplay.setText(String.format(Locale.ENGLISH, "%d", tOSwitchScored));
+            tOSwitchAttempts += 1;
+            tOSwitchADisplay.setText(String.format(Locale.ENGLISH, "%d", tOSwitchAttempts));
+
         }
     }
 
@@ -382,7 +366,7 @@ public class AutonTeleop extends AppCompatActivity {
         }
     }
 
-//ENDGAME
+    //ENDGAME
     public void setOnField(View v) {
         tParked = 0;
         tElevated = 0;
@@ -401,7 +385,7 @@ public class AutonTeleop extends AppCompatActivity {
 
     }
 
-//NEXT
+    //NEXT
     public void setGoToPostMatch(View v) {
 
         //PASSABLE STRING CREATION
@@ -523,7 +507,7 @@ public class AutonTeleop extends AppCompatActivity {
         //VIEWS
         autoline = findViewById(R.id.autoline);
 
-        if(aAutoLine ==0) {
+        if (aAutoLine == 0) {
             autoline.setChecked(false);
         } else {
             autoline.setChecked(true);
@@ -589,11 +573,11 @@ public class AutonTeleop extends AppCompatActivity {
         parked = findViewById(R.id.parked);
         elevated = findViewById(R.id.elevated);
 
-        if(tParked == 1){
+        if (tParked == 1) {
             onField.setChecked(false);
             parked.setChecked(true);
             elevated.setChecked(false);
-        } else if(tElevated == 1){
+        } else if (tElevated == 1) {
             onField.setChecked(false);
             parked.setChecked(false);
             elevated.setChecked(true);
@@ -603,6 +587,41 @@ public class AutonTeleop extends AppCompatActivity {
             elevated.setChecked(false);
         }
     }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            backPressed.setTitle("Go Back");
+            backPressed.setMessage("Are you sure you want to go back? All data on this form will be lost.");
+            backPressed.setCancelable(true);
+
+            backPressed.setPositiveButton(
+                    "Yes",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                            Intent home = new Intent(AutonTeleop.this, PreMatch.class);
+                            startActivity(home);
+                        }
+                    });
+
+            backPressed.setNegativeButton(
+                    "No",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+
+                        }
+                    });
+
+            AlertDialog alert = backPressed.create();
+            alert.show();
+            return false;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+
 }
 
 

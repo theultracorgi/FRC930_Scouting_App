@@ -108,6 +108,7 @@
                     android:layout_weight=".3"
                     android:background="@color/white"
                     android:hint="Weight"
+                    android:text="0"
                     android:inputType="numberDecimal"
 
                     />
@@ -174,7 +175,6 @@
                 android:textSize="30dp" /> <!--Intake/Outtake-->
 
             <LinearLayout
-                android:id="@+id/intakeType"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded_corners_chunk_material"
@@ -202,6 +202,7 @@
                     android:paddingLeft="15dp">
 
                     <RadioGroup
+                        android:id="@+id/intakeType"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:checkedButton="@id/noIntake">
@@ -282,18 +283,6 @@
                         android:textColor="@color/textMedium"
                         android:textSize="30dp"
                         android:textStyle="italic" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="fill_parent"
-                        android:layout_marginRight="8dp"
-                        android:layout_weight=".25"
-                        android:background="@color/white"
-                        android:paddingLeft="5dp"
-                        android:paddingRight="15dp"
-                        android:text=""
-                        android:textColor="#ffffff"
-                        android:textSize="25dp" />
 
                 </LinearLayout>
 
@@ -429,7 +418,6 @@
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="12dp"
-                            android:layout_marginTop="8dp"
                             android:buttonTint="@color/lightBlue"
                             android:onClick="setPlace"
                             android:text="Place"
@@ -510,7 +498,7 @@
                             android:layout_marginTop="8dp"
                             android:buttonTint="@color/lightBlue"
                             android:onClick="setPark"
-                            android:text="park"
+                            android:text="Park"
                             android:textColor="@color/textMedium"
                             android:textSize="26dp" />
 
@@ -530,7 +518,6 @@
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="12dp"
-                            android:layout_marginTop="8dp"
                             android:buttonTint="@color/lightBlue"
                             android:onClick="setBar"
                             android:text="Bar"
@@ -542,7 +529,6 @@
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="12dp"
-                            android:layout_marginTop="8dp"
                             android:buttonTint="@color/lightBlue"
                             android:onClick="setRamp"
                             android:text="Ramp"
@@ -554,7 +540,7 @@
                 </LinearLayout>
 
 
-            </LinearLayout> <!--Output Type-->
+            </LinearLayout> <!--Endgame-->
 
             <ImageView
                 android:layout_width="match_parent"
@@ -760,7 +746,7 @@
                     />
 
                 <Spinner
-                    android:id="@+id/scouterList"
+                    android:id="@+id/numWheels"
                     android:layout_width="0dp"
                     android:layout_height="fill_parent"
                     android:layout_weight=".3"
@@ -853,6 +839,7 @@
                 android:background="@color/background_material" />
 
             <LinearLayout
+                android:id="@+id/middleWheelView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
@@ -936,6 +923,7 @@
             </LinearLayout> <!--Middle 2 Wheels-->
 
             <LinearLayout
+                android:id="@+id/secondMiddleWheelView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
@@ -967,7 +955,7 @@
                             android:background="@color/white"
                             android:maxLines="1"
                             android:padding="5dp"
-                            android:text="Back Middle Wheels"
+                            android:text="2nd Middle Wheels"
                             android:textColor="@color/textMedium"
                             android:textSize="30dp"
                             android:textStyle="italic"
@@ -1117,7 +1105,7 @@
                         android:background="@color/white"
                         android:maxLines="1"
                         android:padding="5dp"
-                        android:text="Orientation"
+                        android:text="Config"
                         android:textColor="@color/textMedium"
                         android:textSize="30dp"
                         android:textStyle="italic"
@@ -1220,7 +1208,6 @@
                         android:layout_marginBottom="12dp"
                         android:layout_marginTop="8dp"
                         android:buttonTint="@color/lightBlue"
-                        android:onClick="setPosL"
                         android:text="Left"
                         android:textColor="@color/textMedium"
                         android:textSize="26dp" />
@@ -1231,7 +1218,6 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="12dp"
                         android:buttonTint="@color/lightBlue"
-                        android:onClick="setPosM"
                         android:text="Middle"
                         android:textColor="@color/textMedium"
                         android:textSize="26dp" />
@@ -1242,7 +1228,6 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="12dp"
                         android:buttonTint="@color/lightBlue"
-                        android:onClick="setPosR"
                         android:text="Right"
                         android:textColor="@color/textMedium"
                         android:textSize="26dp" />
@@ -1295,60 +1280,86 @@
                     android:paddingLeft="15dp">
 
                     <CheckBox
+                        android:id="@+id/aAutoline"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="12dp"
                         android:layout_marginTop="8dp"
                         android:buttonTint="@color/lightBlue"
-                        android:onClick="setAutoAutoline"
                         android:text="Autoline"
                         android:textColor="@color/textMedium"
                         android:textSize="26dp" />
 
                     <CheckBox
+                        android:id="@+id/aSwitch"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="12dp"
                         android:layout_marginTop="8dp"
                         android:buttonTint="@color/lightBlue"
-                        android:onClick="setAutoSwitch"
                         android:text="Switch"
                         android:textColor="@color/textMedium"
                         android:textSize="26dp" />
 
                     <CheckBox
+                        android:id="@+id/aScale"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="12dp"
                         android:layout_marginTop="8dp"
                         android:buttonTint="@color/lightBlue"
-                        android:onClick="setAutoScale"
                         android:text="Scale"
                         android:textColor="@color/textMedium"
                         android:textSize="26dp" />
 
                     <CheckBox
+                        android:id="@+id/aSwitchScale"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="12dp"
                         android:layout_marginTop="8dp"
                         android:buttonTint="@color/lightBlue"
-                        android:onClick="setAutoSwitchScale"
                         android:text="Switch Then Scale"
                         android:textColor="@color/textMedium"
                         android:textSize="26dp" />
 
                     <CheckBox
+                        android:id="@+id/aScaleSwitch"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="12dp"
                         android:layout_marginTop="8dp"
                         android:buttonTint="@color/lightBlue"
-                        android:onClick="setAutoScaleSwitch"
                         android:text="Scale Then Switch"
                         android:textColor="@color/textMedium"
                         android:textSize="26dp" />
 
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingLeft="12dp"
+                    android:paddingRight="15dp"
+                    >
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="10dp"
+                        android:background="@color/white" />
+
+                    <EditText
+                        android:id="@+id/otherAuton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890./#)(:"
+                        android:hint="Other. Separate with :"
+                        android:maxLength="300"
+                        android:maxLines="2"
+                        android:padding="8dp" />
 
                 </LinearLayout>
 
@@ -1414,7 +1425,8 @@
                 android:paddingBottom="10dp"
                 android:paddingLeft="4dp"
                 android:paddingRight="4dp"
-                android:paddingTop="10dp">
+                android:paddingTop="10dp"
+                android:layout_marginTop="12dp">
 
                 <Button
                     android:layout_width="match_parent"

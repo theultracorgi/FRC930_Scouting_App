@@ -1231,7 +1231,7 @@
                             android:layout_marginBottom="12dp"
                             android:buttonTint="@color/lightBlue"
                             android:onClick="setElevated"
-                            android:text="Elevated"
+                            android:text="Climbing"
                             android:textColor="@color/textMedium"
                             android:textSize="26dp"
                             tools:ignore="HardcodedText,SpUsage" />

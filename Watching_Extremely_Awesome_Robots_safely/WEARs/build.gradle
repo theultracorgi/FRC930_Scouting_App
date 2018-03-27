@@ -27,7 +27,7 @@ android {
     }
     productFlavors {
         f125 {
-            minSdkVersion 19
+            minSdkVersion 18
             applicationId 'org.team930.bears.wearstime'
             signingConfig signingConfigs.team930
             targetSdkVersion 26
@@ -38,11 +38,21 @@ android {
         }
         f128 {
             signingConfig signingConfigs.team930
-            minSdkVersion 19
+            minSdkVersion 18
             applicationId 'org.team930.bears.wearstime'
             targetSdkVersion 26
             versionCode 0
             versionName '1.2.8'
+            versionNameSuffix '1.2'
+        }
+
+        f129 {
+            signingConfig signingConfigs.team930
+            minSdkVersion 18
+            applicationId 'org.team930.bears.wearstime'
+            targetSdkVersion 26
+            versionCode 0
+            versionName '1.2.9'
             versionNameSuffix '1.2'
         }
     }
