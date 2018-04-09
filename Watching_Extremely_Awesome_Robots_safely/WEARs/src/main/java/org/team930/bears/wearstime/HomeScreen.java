@@ -5,6 +5,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.ContextThemeWrapper;
@@ -18,6 +20,8 @@ import static android.app.AlertDialog.THEME_HOLO_LIGHT;
 
 @SuppressWarnings("ALL")
 public class HomeScreen extends AppCompatActivity {
+
+
     Button goToPreMatch, goToGenQR, goToSettings, goToMasterScanner;
     LinearLayout masterScanner;
     ImageView disappear;
@@ -28,7 +32,7 @@ public class HomeScreen extends AppCompatActivity {
 
     SharedPreferences otherSettings, matchData;
     ContextThemeWrapper ctw;
-    AlertDialog.Builder builder;
+    AlertDialog.Builder builder, permissions;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +42,7 @@ public class HomeScreen extends AppCompatActivity {
 
         ctw = new ContextThemeWrapper(this, THEME_HOLO_LIGHT);
         builder = new AlertDialog.Builder(ctw);
+        permissions = new AlertDialog.Builder(ctw);
         showToast = true;
 
         numStoredMatches = getString(R.string.numStoredMatches);
@@ -162,11 +167,50 @@ public class HomeScreen extends AppCompatActivity {
         startActivity(nextScreen);
     }
 
+    Intent intent;
+
     public void setGoToMasterScanner(View v) {
 
-        Intent nextScreen = new Intent(HomeScreen.this, MasterScanner.class);
-        startActivity(nextScreen);
+        if (!checkWriteExternalPermission() || !checkCameraPermission()) {
 
+            permissions.setTitle("Give Me permissions");
+            permissions.setMessage("Go into settings and give me permission to Camera and Storage");
+            permissions.setCancelable(true);
+
+            permissions.setPositiveButton(
+                    "Go to Settings",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                            intent = new Intent();
+                            intent.setAction(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                            Uri uri = Uri.fromParts("package", getPackageName(), null);
+                            intent.setData(uri);
+                            startActivity(intent);
+                        }
+                    });
+
+            permissions.setNegativeButton(
+                    "No",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                            intent = new Intent();
+                            intent.setAction(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                            Uri uri = Uri.fromParts("package", getPackageName(), null);
+                            intent.setData(uri);
+                            startActivity(intent);
+                        }
+                    });
+
+            AlertDialog alert = permissions.create();
+            alert.show();
+
+
+        } else {
+            Intent goToPostMatch = new Intent(this, MasterScanner.class);
+            startActivity(goToPostMatch);
+        }
     }
 
     public void setRevokeAdmin(View v) {
@@ -220,4 +264,41 @@ public class HomeScreen extends AppCompatActivity {
         }
     }
 
+    private boolean checkWriteExternalPermission() {
+
+        String writePerm = "android.permission.WRITE_EXTERNAL_STORAGE";
+        String readPerm = "android.permission.READ_EXTERNAL_STORAGE";
+        int write = this.checkCallingOrSelfPermission(writePerm);
+        int read = this.checkCallingOrSelfPermission(readPerm);
+
+        boolean permsGranted;
+
+        if (write == PackageManager.PERMISSION_GRANTED && read == PackageManager.PERMISSION_GRANTED) {
+            permsGranted = true;
+        } else {
+            permsGranted = false;
+        }
+
+        return permsGranted;
+
+
+    }
+
+    private boolean checkCameraPermission() {
+
+        String camPerm = "android.permission.CAMERA";
+        int cam = this.checkCallingOrSelfPermission(camPerm);
+
+        boolean permsGranted;
+
+        if (cam == PackageManager.PERMISSION_GRANTED) {
+            permsGranted = true;
+        } else {
+            permsGranted = false;
+        }
+
+        return permsGranted;
+
+
+    }
 }

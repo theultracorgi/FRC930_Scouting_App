@@ -28,7 +28,7 @@ public class AutonTeleop extends AppCompatActivity {
 
     Integer aAutoLine, aSwitchAttempts, aScaleAttempts, tSwitchAttempts, tScaleAttempts, tOSwitchAttempts, aSwitchScored, aScaleScored, tSwitchScored, tScaleScored, tOSwitchScored, tVaultScored, tParked, tElevated;
     String matchDataPreferences, otherPreferences;
-    Boolean scoredAddsAttempt, addAScoredCube, addTScoredCube;
+    Boolean addAScoredCube, addTScoredCube;
     String aAutoLinePassable, aSwitchAttemptsPassable, aScaleAttemptsPassable, tSwitchAttemptsPassable, tScaleAttemptsPassable, tOSwitchAttemptsPassable, aSwitchScoredPassable, aScaleScoredPassable, tSwitchScoredPassable, tScaleScoredPassable, tOSwitchScoredPassable, tVaultScoredPassable, tParkedPassable, tElevatedPassable;
 
     SharedPreferences matchData, otherSettings;
@@ -60,7 +60,7 @@ public class AutonTeleop extends AppCompatActivity {
         matchData = getSharedPreferences(matchDataPreferences, 0);
         otherSettings = getSharedPreferences(otherPreferences, 0);
 
-        scoredAddsAttempt = otherSettings.getBoolean("scoredAddsAttempt", false);
+
 
         //AUTOLINE
 

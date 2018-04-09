@@ -26,7 +26,7 @@ public class Settings extends AppCompatActivity {
 
     Spinner scouterList;
     LinearLayout stillEnabler, deleteBar, nerdStatsLayout, adminUnlock;
-    ToggleButton stillFRC, scoredAddsAttempt;
+    ToggleButton stillFRC;
     Button deleteData, submitPassword, statsForNerds;
     EditText password;
     TextView revokeStill;
@@ -86,9 +86,7 @@ public class Settings extends AppCompatActivity {
         disappearStats = findViewById(R.id.disappearStatsForNerds);
         nerdStatsLayout = findViewById(R.id.nerdStatsLayout);
         statsForNerds = findViewById(R.id.statsForNerds);
-        scoredAddsAttempt = findViewById(R.id.scoredAddsAttempt);
 
-        scoredAddsAttempt.setChecked(otherSettings.getBoolean("scoredAddsAttempt", false));
 
 
         scouterList.setSelection(otherSettings.getInt("scouterIDNum", 0));
@@ -148,17 +146,6 @@ public class Settings extends AppCompatActivity {
         }
     }
 
-    public void setScoredAddsAttempt(View v) {
-        SharedPreferences.Editor SPOS = otherSettings.edit();
-
-        if (scoredAddsAttempt.isChecked()) {
-            SPOS.putBoolean("scoredAddsAttempt", true);
-
-        } else {
-            SPOS.putBoolean("scoredAddsAttempt", false);
-        }
-        SPOS.apply();
-    }
 
     public void setStillFRC(View v) {
 

@@ -83,7 +83,6 @@
                 tools:ignore="ContentDescription" />
 
             <LinearLayout
-                android:id="@+id/aSwitch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded_corners_chunk_material"
@@ -92,24 +91,15 @@
                 android:paddingTop="5dp"
 
                 >
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight=".8"
-                    android:orientation="horizontal"
-                    android:paddingBottom="10dp"
-                    android:paddingLeft="11dp"
-                    android:paddingRight="10dp"
-                    tools:ignore="RtlHardcoded">
-
                     <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight=".75"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
                         android:background="@color/white"
-                        android:paddingLeft="5dp"
+                        android:paddingBottom="15dp"
+                        android:paddingLeft="16dp"
                         android:paddingRight="15dp"
+                        android:paddingTop="5dp"
                         android:text="Switch"
                         android:textColor="@color/textMedium"
                         android:textSize="30dp"
@@ -117,20 +107,6 @@
 
                         tools:ignore="HardcodedText,NestedWeights,RtlHardcoded,SpUsage" />
 
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="fill_parent"
-                        android:layout_marginRight="8dp"
-                        android:layout_weight=".25"
-                        android:background="@color/white"
-                        android:paddingLeft="5dp"
-                        android:paddingRight="15dp"
-                        android:text=""
-                        android:textColor="#ffffff"
-                        android:textSize="25dp"
-                        tools:ignore="RtlHardcoded,SpUsage" />
-
-                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -270,7 +246,6 @@
                 tools:ignore="ContentDescription" />
 
             <LinearLayout
-                android:id="@+id/aScale"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded_corners_chunk_material"
@@ -280,23 +255,16 @@
 
                 >
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight=".8"
-                    android:orientation="horizontal"
-                    android:paddingBottom="10dp"
-                    android:paddingLeft="11dp"
-                    android:paddingRight="10dp"
-                    tools:ignore="RtlHardcoded">
 
                     <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight=".75"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
                         android:background="@color/white"
-                        android:paddingLeft="5dp"
+                        android:paddingBottom="15dp"
+                        android:paddingLeft="16dp"
                         android:paddingRight="15dp"
+                        android:paddingTop="5dp"
                         android:text="Scale"
                         android:textColor="@color/textMedium"
                         android:textSize="30dp"
@@ -304,20 +272,6 @@
 
                         tools:ignore="HardcodedText,NestedWeights,RtlHardcoded,SpUsage" />
 
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="fill_parent"
-                        android:layout_marginRight="8dp"
-                        android:layout_weight=".25"
-                        android:background="@color/white"
-                        android:paddingLeft="5dp"
-                        android:paddingRight="15dp"
-                        android:text=""
-                        android:textColor="#ffffff"
-                        android:textSize="25dp"
-                        tools:ignore="RtlHardcoded,SpUsage" />
-
-                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -468,7 +422,6 @@
                 tools:ignore="HardcodedText,RtlHardcoded,RtlSymmetry,SpUsage" />
 
             <LinearLayout
-                android:id="@+id/tSwitch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded_corners_chunk_material"
@@ -478,44 +431,22 @@
 
                 >
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight=".8"
-                    android:orientation="horizontal"
-                    android:paddingBottom="10dp"
-                    android:paddingLeft="11dp"
-                    android:paddingRight="10dp"
-                    tools:ignore="RtlHardcoded">
-
                     <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight=".75"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
                         android:background="@color/white"
-                        android:paddingLeft="5dp"
+                        android:paddingBottom="15dp"
+                        android:paddingLeft="16dp"
                         android:paddingRight="15dp"
-                        android:text="Switch"
+                        android:paddingTop="5dp"
+                        android:text="Home Switch"
                         android:textColor="@color/textMedium"
                         android:textSize="30dp"
                         android:textStyle="italic"
 
                         tools:ignore="HardcodedText,NestedWeights,RtlHardcoded,SpUsage" />
 
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="fill_parent"
-                        android:layout_marginRight="8dp"
-                        android:layout_weight=".25"
-                        android:background="@color/white"
-                        android:paddingLeft="5dp"
-                        android:paddingRight="15dp"
-                        android:text=""
-                        android:textColor="#ffffff"
-                        android:textSize="25dp"
-                        tools:ignore="RtlHardcoded,SpUsage" />
-
-                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -655,7 +586,6 @@
                 tools:ignore="ContentDescription" />
 
             <LinearLayout
-                android:id="@+id/tScale"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded_corners_chunk_material"
@@ -664,24 +594,15 @@
                 android:paddingTop="5dp"
 
                 >
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight=".8"
-                    android:orientation="horizontal"
-                    android:paddingBottom="10dp"
-                    android:paddingLeft="11dp"
-                    android:paddingRight="10dp"
-                    tools:ignore="RtlHardcoded">
-
                     <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight=".75"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
                         android:background="@color/white"
-                        android:paddingLeft="5dp"
+                        android:paddingBottom="15dp"
+                        android:paddingLeft="16dp"
                         android:paddingRight="15dp"
+                        android:paddingTop="5dp"
                         android:text="Scale"
                         android:textColor="@color/textMedium"
                         android:textSize="30dp"
@@ -689,20 +610,7 @@
 
                         tools:ignore="HardcodedText,NestedWeights,RtlHardcoded,SpUsage" />
 
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="fill_parent"
-                        android:layout_marginRight="8dp"
-                        android:layout_weight=".25"
-                        android:background="@color/white"
-                        android:paddingLeft="5dp"
-                        android:paddingRight="15dp"
-                        android:text=""
-                        android:textColor="#ffffff"
-                        android:textSize="25dp"
-                        tools:ignore="RtlHardcoded,SpUsage" />
 
-                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -842,7 +750,6 @@
                 tools:ignore="ContentDescription" />
 
             <LinearLayout
-                android:id="@+id/tOSwitch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded_corners_chunk_material"
@@ -852,23 +759,15 @@
 
                 >
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight=".8"
-                    android:orientation="horizontal"
-                    android:paddingBottom="10dp"
-                    android:paddingLeft="11dp"
-                    android:paddingRight="10dp"
-                    tools:ignore="RtlHardcoded">
-
                     <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
+                        android:layout_height="0dp"
+                        android:layout_weight="1.3"
                         android:background="@color/white"
-                        android:paddingLeft="5dp"
+                        android:paddingBottom="15dp"
+                        android:paddingLeft="16dp"
                         android:paddingRight="15dp"
+                        android:paddingTop="5dp"
                         android:text="Opponent Switch"
                         android:textColor="@color/textMedium"
                         android:textSize="30dp"
@@ -876,7 +775,6 @@
 
                         tools:ignore="HardcodedText,NestedWeights,RtlHardcoded,SpUsage" />
 
-                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -1015,7 +913,6 @@
                 tools:ignore="ContentDescription" />
 
             <LinearLayout
-                android:id="@+id/tVault"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded_corners_chunk_material"
@@ -1025,23 +922,16 @@
 
                 >
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight=".8"
-                    android:orientation="horizontal"
-                    android:paddingBottom="10dp"
-                    android:paddingLeft="11dp"
-                    android:paddingRight="10dp"
-                    tools:ignore="RtlHardcoded">
 
                     <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight=".75"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
                         android:background="@color/white"
-                        android:paddingLeft="5dp"
+                        android:paddingBottom="15dp"
+                        android:paddingLeft="16dp"
                         android:paddingRight="15dp"
+                        android:paddingTop="5dp"
                         android:text="Vault"
                         android:textColor="@color/textMedium"
                         android:textSize="30dp"
@@ -1049,20 +939,6 @@
 
                         tools:ignore="HardcodedText,NestedWeights,RtlHardcoded,SpUsage" />
 
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="fill_parent"
-                        android:layout_marginRight="8dp"
-                        android:layout_weight=".25"
-                        android:background="@color/white"
-                        android:paddingLeft="5dp"
-                        android:paddingRight="15dp"
-                        android:text=""
-                        android:textColor="#ffffff"
-                        android:textSize="25dp"
-                        tools:ignore="RtlHardcoded,SpUsage" />
-
-                </LinearLayout>
 
                 <ImageView
                     android:layout_width="match_parent"
@@ -1141,7 +1017,6 @@
                 tools:ignore="ContentDescription" />
 
             <LinearLayout
-                android:id="@+id/endgame"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded_corners_chunk_material"
@@ -1149,43 +1024,22 @@
                 android:paddingBottom="10dp"
                 android:paddingTop="10dp">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="2dp"
-                    android:orientation="horizontal"
-                    android:paddingBottom="2dp"
-                    android:paddingLeft="12dp"
-                    android:paddingRight="15dp"
-                    tools:ignore="RtlHardcoded">
 
                     <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight=".75"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
                         android:background="@color/white"
-                        android:paddingLeft="5dp"
+                        android:paddingLeft="16dp"
                         android:paddingRight="15dp"
+                        android:paddingTop="5dp"
                         android:text="Endgame"
                         android:textColor="@color/textMedium"
                         android:textSize="30dp"
                         android:textStyle="italic"
                         tools:ignore="HardcodedText,RtlHardcoded,SpUsage" />
 
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="fill_parent"
-                        android:layout_marginRight="8dp"
-                        android:layout_weight=".25"
-                        android:background="@color/white"
-                        android:paddingLeft="5dp"
-                        android:paddingRight="15dp"
-                        android:text=""
-                        android:textColor="#ffffff"
-                        android:textSize="25dp"
-                        tools:ignore="RtlHardcoded,SpUsage" />
 
-                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"

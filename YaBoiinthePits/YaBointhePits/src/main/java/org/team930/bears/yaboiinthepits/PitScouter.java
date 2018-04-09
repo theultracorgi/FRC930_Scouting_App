@@ -1,10 +1,15 @@
 package org.team930.bears.yaboiinthepits;
 
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.media.MediaScannerConnection;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.ContextThemeWrapper;
@@ -14,11 +19,14 @@ import android.widget.AdapterView;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.Locale;
 
 import static android.app.AlertDialog.THEME_HOLO_LIGHT;
@@ -30,7 +38,8 @@ public class PitScouter extends AppCompatActivity {
     ToggleButton autoDelay;
     LinearLayout middleWheelsView, secondMiddleWheelsView, frontOtherLayout, middleOtherLayout, secondMiddleOtherLayout, backOtherLayout, orientationOtherLayout;
     Spinner wheelNum, frontWheels, middleWheels, secondMiddleWheels, backWheels, orientation;
-    RadioGroup intakeType;
+    int count;
+    File path, dir, file;
 
 
     Integer groundI, portalExchangeI, oExchange, oSwitch, oScale, park, climb, bar, ramp, cims, miniCIMs, wheelCount, aDelay;
@@ -41,10 +50,15 @@ public class PitScouter extends AppCompatActivity {
     ContextThemeWrapper ctw;
     SharedPreferences data;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pit_scouter);
+
+        count = 0;
+
 
         ctw = new ContextThemeWrapper(this, THEME_HOLO_LIGHT);
         submit = new AlertDialog.Builder(ctw);
@@ -55,7 +69,7 @@ public class PitScouter extends AppCompatActivity {
 
         groundI = 0;
         portalExchangeI = 0;
-//TODO make comments section
+
         weight = findViewById(R.id.weight);
         height = findViewById(R.id.height);
         teamNum = findViewById(R.id.teamNum);
@@ -333,7 +347,6 @@ public class PitScouter extends AppCompatActivity {
 
     }
 
-
     public void setNoIntake(View v) {
         groundI = 0;
         portalExchangeI = 0;
@@ -419,9 +432,7 @@ public class PitScouter extends AppCompatActivity {
 
 
     public void setSubtractCIM(View v) {
-        if (cims <= 0) {
-
-        } else {
+        if (cims > 0) {
             cims -= 1;
         }
         cimDisplay.setText(String.format(Locale.ENGLISH, "%d", cims));
@@ -433,9 +444,7 @@ public class PitScouter extends AppCompatActivity {
     }
 
     public void setSubtractMiniCIM(View v) {
-        if (miniCIMs <= 0) {
-
-        } else {
+        if (miniCIMs > 0) {
             miniCIMs -= 1;
         }
         miniCIMDisplay.setText(String.format(Locale.ENGLISH, "%d", miniCIMs));
@@ -453,6 +462,33 @@ public class PitScouter extends AppCompatActivity {
         } else {
             aDelay = 0;
         }
+    }
+
+    public void setTakePic(View v) {
+        count += 1;
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        try {
+            path = Environment.getExternalStorageDirectory();
+            dir = new File(path.getAbsolutePath() + "/FRCMATCHDATA/Photos/" + teamNum.getText().toString());
+            //noinspection ResultOfMethodCallIgnored
+            dir.mkdirs();
+
+
+            file = new File(dir, teamNum.getText().toString() + "(" + count + ").jpg");
+
+            file.setWritable(true);
+            file.setReadable(true);
+            file.setExecutable(true);
+
+
+            file.createNewFile();
+            takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(file));
+
+            startActivityForResult(takePictureIntent, 1777);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
     public void setSubmitData(View v) {
@@ -538,29 +574,43 @@ public class PitScouter extends AppCompatActivity {
                             frontWheelFinal = "Omni";
 
                         } else if (frontWheels.getSelectedItemPosition() == 2) {
+                            frontWheelFinal = "Swerve Module";
+
+                        } else if (frontWheels.getSelectedItemPosition() == 3) {
+                            frontWheelFinal = "Mecanum";
+
+                        } else if (frontWheels.getSelectedItemPosition() == 4) {
                             frontWheelFinal = "Pneumatic";
 
                         } else {
                             frontWheelFinal = frontOtherType.getText().toString();
                         }
 
+                        if (wheelNum.getSelectedItemId() != 0) {
+                            if (middleWheels.getSelectedItemId() == 0) {
+                                middleWheelFinal = "Traction";
 
-                        if (middleWheels.getSelectedItemId() == 0) {
-                            middleWheelFinal = "Traction";
+                            } else if (middleWheels.getSelectedItemPosition() == 1) {
+                                middleWheelFinal = "Omni";
 
-                        } else if (middleWheels.getSelectedItemPosition() == 1) {
-                            middleWheelFinal = "Omni";
+                            } else if (middleWheels.getSelectedItemPosition() == 2) {
+                                middleWheelFinal = "Swerve Module";
 
-                        } else if (middleWheels.getSelectedItemPosition() == 2) {
-                            middleWheelFinal = "Pneumatic";
+                            } else if (middleWheels.getSelectedItemPosition() == 3) {
+                                middleWheelFinal = "Mecanum";
 
-                        } else if (middleWheels.getSelectedItemPosition() == 3) {
-                            middleWheelFinal = "Butterfly Switch";
+                            } else if (middleWheels.getSelectedItemPosition() == 4) {
+                                middleWheelFinal = "Pneumatic";
 
+                            } else if (middleWheels.getSelectedItemPosition() == 5) {
+                                middleWheelFinal = "Butterfly Switch";
+
+                            } else {
+                                middleWheelFinal = middleOtherType.getText().toString();
+                            }
                         } else {
-                            middleWheelFinal = middleOtherType.getText().toString();
+                            middleWheelFinal = "";
                         }
-
 
                         if (backWheels.getSelectedItemId() == 0) {
                             backWheelFinal = "Traction";
@@ -569,29 +619,43 @@ public class PitScouter extends AppCompatActivity {
                             backWheelFinal = "Omni";
 
                         } else if (backWheels.getSelectedItemPosition() == 2) {
+                            backWheelFinal = "Swerve Module";
+
+                        } else if (backWheels.getSelectedItemPosition() == 3) {
+                            backWheelFinal = "Mecanum";
+
+                        } else if (backWheels.getSelectedItemPosition() == 4) {
                             backWheelFinal = "Pneumatic";
 
                         } else {
                             backWheelFinal = backOtherType.getText().toString();
                         }
 
+                        if (wheelNum.getSelectedItemId() == 2) {
+                            if (secondMiddleWheels.getSelectedItemId() == 0) {
+                                secondMiddleWheelFinal = "Traction";
 
-                        if (secondMiddleWheels.getSelectedItemId() == 0) {
-                            secondMiddleWheelFinal = "Traction";
+                            } else if (secondMiddleWheels.getSelectedItemPosition() == 1) {
+                                secondMiddleWheelFinal = "Omni";
 
-                        } else if (secondMiddleWheels.getSelectedItemPosition() == 1) {
-                            secondMiddleWheelFinal = "Omni";
+                            } else if (secondMiddleWheels.getSelectedItemPosition() == 2) {
+                                secondMiddleWheelFinal = "Swerve Module";
 
-                        } else if (secondMiddleWheels.getSelectedItemPosition() == 2) {
-                            secondMiddleWheelFinal = "Pneumatic";
+                            } else if (secondMiddleWheels.getSelectedItemPosition() == 3) {
+                                secondMiddleWheelFinal = "Mecanum";
 
-                        } else if (secondMiddleWheels.getSelectedItemPosition() == 3) {
-                            secondMiddleWheelFinal = "Butterfly Switch";
+                            } else if (secondMiddleWheels.getSelectedItemPosition() == 4) {
+                                secondMiddleWheelFinal = "Pneumatic";
 
+                            } else if (secondMiddleWheels.getSelectedItemPosition() == 5) {
+                                secondMiddleWheelFinal = "Butterfly Switch";
+
+                            } else {
+                                secondMiddleWheelFinal = secondMiddleOtherType.getText().toString();
+                            }
                         } else {
                             secondMiddleWheelFinal = "";
                         }
-
 
                         if (orientation.getSelectedItemId() == 0) {
                             configFinal = "Tank";
@@ -644,184 +708,33 @@ public class PitScouter extends AppCompatActivity {
         alert.show();
     }
 
-    public void onPause() {
-        super.onPause();
 
-        teamNumFinal = teamNum.getText().toString();
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (RESULT_OK == resultCode) {
 
-        if (autonLeftC.isChecked()) {
-            startingPosFinal = "Left:";
-        } else {
-            startingPosFinal = "";
+            try {
+                // Decode it for real
+                BitmapFactory.Options bmpFactoryOptions = new BitmapFactory.Options();
+                bmpFactoryOptions.inJustDecodeBounds = false;
+
+                //imageFilePath image path which you pass with intent
+                Bitmap bmp = BitmapFactory.decodeFile(file.getAbsolutePath(), bmpFactoryOptions);
+
+                FileOutputStream fos = new FileOutputStream(file);
+
+                bmp.compress(Bitmap.CompressFormat.JPEG, 100, fos);
+/*
+                fos.close();
+                */
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+
+            }/* catch (IOException e) {
+                e.printStackTrace();
+            }*/
+            MediaScannerConnection.scanFile(this, new String[]{file.toString()}, null, null);
         }
-
-        if (autonMiddleC.isChecked()) {
-            startingPosFinal = startingPosFinal + "Middle:";
-        }
-
-        if (autonRightC.isChecked()) {
-            startingPosFinal = startingPosFinal + "Right";
-        }
-
-        autoDelayFinal = String.format(Locale.ENGLISH, "%d", aDelay);
-
-        if (aAutoline.isChecked()) {
-            autonPathsFinal = "Autoline:";
-        } else {
-            autonPathsFinal = "";
-        }
-
-        if (aSwitch.isChecked()) {
-            autonPathsFinal = autonPathsFinal + "Switch:";
-        }
-
-        if (aScale.isChecked()) {
-            autonPathsFinal = autonPathsFinal + "Scale:";
-        }
-
-        if (aSwitchScale.isChecked()) {
-            autonPathsFinal = autonPathsFinal + "Switch then Scale:";
-        }
-
-        if (aScaleSwitch.isChecked()) {
-            autonPathsFinal = autonPathsFinal + "Scale then Switch:";
-        }
-        autonPathsFinal = autonPathsFinal + otherAuton.getText().toString();
-
-        groundIntakeFinal = String.format(Locale.ENGLISH, "%d", groundI);
-        exchangeIntakeFinal = String.format(Locale.ENGLISH, "%d", portalExchangeI);
-        portalIntakeFinal = String.format(Locale.ENGLISH, "%d", portalExchangeI);
-
-        outputExchangeFinal = String.format(Locale.ENGLISH, "%d", oExchange);
-        outputSwitchFinal = String.format(Locale.ENGLISH, "%d", oSwitch);
-        outputScaleFinal = String.format(Locale.ENGLISH, "%d", oScale);
-
-        typeOutputFinal = outputType;
-
-        rampFinal = String.format(Locale.ENGLISH, "%d", ramp);
-        barFinal = String.format(Locale.ENGLISH, "%d", bar);
-        climbFinal = String.format(Locale.ENGLISH, "%d", climb);
-        parkFinal = String.format(Locale.ENGLISH, "%d", park);
-
-        heightFinal = height.getText().toString();
-        weightFinal = weight.getText().toString();
-
-        cimsFinal = String.format(Locale.ENGLISH, "%d", cims);
-        miniCIMsFinal = String.format(Locale.ENGLISH, "%d", miniCIMs);
-
-
-        if (frontWheels.getSelectedItemId() == 0) {
-            frontWheelFinal = "Traction";
-
-        } else if (frontWheels.getSelectedItemPosition() == 1) {
-            frontWheelFinal = "Omni";
-
-        } else if (frontWheels.getSelectedItemPosition() == 2) {
-            frontWheelFinal = "Pneumatic";
-
-        } else {
-            frontWheelFinal = frontOtherType.getText().toString();
-        }
-
-
-        if (middleWheels.getSelectedItemId() == 0) {
-            middleWheelFinal = "Traction";
-
-        } else if (middleWheels.getSelectedItemPosition() == 1) {
-            middleWheelFinal = "Omni";
-
-        } else if (middleWheels.getSelectedItemPosition() == 2) {
-            middleWheelFinal = "Pneumatic";
-
-        } else if (middleWheels.getSelectedItemPosition() == 3) {
-            middleWheelFinal = "Butterfly Switch";
-
-        } else {
-            middleWheelFinal = middleOtherType.getText().toString();
-        }
-
-
-        if (backWheels.getSelectedItemId() == 0) {
-            backWheelFinal = "Traction";
-
-        } else if (backWheels.getSelectedItemPosition() == 1) {
-            backWheelFinal = "Omni";
-
-        } else if (backWheels.getSelectedItemPosition() == 2) {
-            backWheelFinal = "Pneumatic";
-
-        } else {
-            backWheelFinal = backOtherType.getText().toString();
-        }
-
-
-        if (secondMiddleWheels.getSelectedItemId() == 0) {
-            secondMiddleWheelFinal = "Traction";
-
-        } else if (secondMiddleWheels.getSelectedItemPosition() == 1) {
-            secondMiddleWheelFinal = "Omni";
-
-        } else if (secondMiddleWheels.getSelectedItemPosition() == 2) {
-            secondMiddleWheelFinal = "Pneumatic";
-
-        } else if (secondMiddleWheels.getSelectedItemPosition() == 3) {
-            secondMiddleWheelFinal = "Butterfly Switch";
-
-        } else {
-            secondMiddleWheelFinal = secondMiddleOtherType.getText().toString();
-        }
-
-
-        if (orientation.getSelectedItemId() == 0) {
-            configFinal = "Tank";
-
-        } else if (orientation.getSelectedItemPosition() == 1) {
-            configFinal = "Swerve";
-
-        } else if (orientation.getSelectedItemPosition() == 2) {
-            configFinal = "Mecanum";
-
-        } else if (orientation.getSelectedItemPosition() == 3) {
-            configFinal = "Omni";
-
-        } else if (orientation.getSelectedItemPosition() == 4) {
-            configFinal = "Butterfly";
-
-        } else {
-            configFinal = orientationOtherType.getText().toString();
-        }
-
-
-        SharedPreferences.Editor SPD = data.edit();
-
-        SPD.putString("Team Number", teamNumFinal);
-        SPD.putString("startingPos", startingPosFinal);
-        SPD.putString("autoDelay", autoDelayFinal);
-        SPD.putString("autoTypes", autonPathsFinal);
-        SPD.putString("gGround", groundIntakeFinal);
-        SPD.putString("gExchange", exchangeIntakeFinal);
-        SPD.putString("gPortal", portalIntakeFinal);
-        SPD.putString("oExchange", outputExchangeFinal);
-        SPD.putString("oSwitch", outputSwitchFinal);
-        SPD.putString("oScale", outputScaleFinal);
-        SPD.putString("typesOutput", typeOutputFinal);
-        SPD.putString("ramp", rampFinal);
-        SPD.putString("bar", barFinal);
-        SPD.putString("climb", climbFinal);
-        SPD.putString("park", parkFinal);
-        SPD.putString("height", heightFinal);
-        SPD.putString("weight", weightFinal);
-        SPD.putString("cims", cimsFinal);
-        SPD.putString("mini cims", miniCIMsFinal);
-        SPD.putString("front", frontWheelFinal);
-        SPD.putString("middle", middleWheelFinal);
-        SPD.putString("back", backWheelFinal);
-        SPD.putString("second mid", secondMiddleWheelFinal);
-        SPD.putString("config", configFinal);
-
-        SPD.apply();
-
-
 
     }
 
@@ -857,4 +770,6 @@ public class PitScouter extends AppCompatActivity {
         }
         return super.onKeyDown(keyCode, event);
     }
+
+
 }

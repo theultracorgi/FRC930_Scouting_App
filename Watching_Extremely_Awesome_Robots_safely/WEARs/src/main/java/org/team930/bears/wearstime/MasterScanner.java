@@ -26,6 +26,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Locale;
 
 import static android.app.AlertDialog.THEME_HOLO_LIGHT;
@@ -99,8 +102,9 @@ public class MasterScanner extends AppCompatActivity {
                 //noinspection ResultOfMethodCallIgnored
                 dir.mkdirs();
 
-
-                file = new File(dir, "MatchData.txt");
+                DateFormat df = new SimpleDateFormat("h:mm a");
+                String time = df.format(Calendar.getInstance().getTime());
+                file = new File(dir, "MatchData(" + time + ").csv");
 
                 file.setWritable(true);
                 file.setReadable(true);

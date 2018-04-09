@@ -16,6 +16,8 @@
     <string-array name="outerWheelType">
         <item>Traction</item>
         <item>Omni</item>
+        <item>Swerve Mod</item>
+        <item>Mecanum</item>
         <item>Pneumatic</item>
         <item>Other(Specify)</item>
     </string-array>
@@ -32,6 +34,8 @@
     <string-array name="middleWheelType">
         <item>Traction</item>
         <item>Omni</item>
+        <item>Swerve Mod</item>
+        <item>Mecanum</item>
         <item>Pneumatic</item>
         <item>Butterfly Switch</item>
         <item>Other(Specify)</item>
