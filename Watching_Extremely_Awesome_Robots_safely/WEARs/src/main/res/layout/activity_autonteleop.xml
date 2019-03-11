@@ -22,19 +22,19 @@
             android:layout_marginRight="2dp"
             android:orientation="vertical">
 
-            <!--AUTONOMOUS-->
+            <!--SANDSTORM-->
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:paddingLeft="8dp"
                 android:paddingTop="4dp"
-                android:text="Autonomous"
+                android:text="Sandstorm"
                 android:textSize="30dp"
                 tools:ignore="HardcodedText,RtlHardcoded,RtlSymmetry,SpUsage" />
 
             <LinearLayout
-                android:id="@+id/aAutoLine"
+                android:id="@+id/sHabLine"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded_corners_chunk_material"
@@ -54,7 +54,7 @@
                     android:background="@color/white"
                     android:maxLines="1"
                     android:padding="5dp"
-                    android:text="AutoLine"
+                    android:text="Hab Line"
                     android:textColor="@color/textMedium"
                     android:textSize="30dp"
                     android:textStyle="italic"
@@ -62,19 +62,19 @@
                     tools:ignore="HardcodedText,RtlHardcoded,SpUsage" />
 
                 <ToggleButton
-                    android:id="@+id/autoline"
+                    android:id="@+id/habLine"
                     android:layout_width="0dp"
                     android:layout_height="fill_parent"
                     android:layout_weight=".3"
                     android:background="@drawable/toggle_button_at_no_round"
-                    android:onClick="setAutoline"
+                    android:onClick="setHabline"
                     android:textColor="@color/white"
                     android:textOff="Not Crossed"
                     android:textOn="Crossed"
 
                     tools:ignore="HardcodedText" />
 
-            </LinearLayout> <!--AutoLine-->
+            </LinearLayout> <!--HabLine-->
 
             <ImageView
                 android:layout_width="match_parent"
@@ -94,13 +94,13 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:layout_weight="1"
+                        android:layout_weight="1.2"
                         android:background="@color/white"
                         android:paddingBottom="15dp"
                         android:paddingLeft="16dp"
                         android:paddingRight="15dp"
                         android:paddingTop="5dp"
-                        android:text="Switch"
+                        android:text="Cargo Ship"
                         android:textColor="@color/textMedium"
                         android:textSize="30dp"
                         android:textStyle="italic"
@@ -124,24 +124,24 @@
                         android:layout_weight="2"
                         android:background="@color/white"
                         android:gravity="left|center"
-                        android:text="Attempts"
+                        android:text="Hatches"
                         android:textSize="25dp"
                         tools:ignore="HardcodedText,NestedWeights,RtlHardcoded,SpUsage" />
 
                     <Button
-                        android:id="@+id/aSwitchSubtractA"
+                        android:id="@+id/sCsHtSub"
                         android:layout_width="0dp"
                         android:layout_height="fill_parent"
                         android:layout_weight="1"
                         android:background="@color/lightBlue"
-                        android:onClick="setASwitchSubtractA"
+                        android:onClick="setSCsHtSub"
                         android:text="-1"
                         android:textColor="@color/white"
                         android:textSize="15dp"
                         tools:ignore="HardcodedText,SpUsage" />
 
                     <TextView
-                        android:id="@+id/aSwitchDisplayA"
+                        android:id="@+id/sCsHtDs"
                         android:layout_width="0dp"
                         android:layout_height="fill_parent"
                         android:layout_marginLeft="4dp"
@@ -154,12 +154,12 @@
                         tools:ignore="HardcodedText,SpUsage" />
 
                     <Button
-                        android:id="@+id/aSwitchAddA"
+                        android:id="@+id/sCsHtAdd"
                         android:layout_width="0dp"
                         android:layout_height="fill_parent"
                         android:layout_weight="1"
                         android:background="@color/lightBlue"
-                        android:onClick="setASwitchAddA"
+                        android:onClick="setSCsHtAdd"
                         android:text="+1"
                         android:textColor="@color/white"
                         android:textSize="15dp"
@@ -193,24 +193,24 @@
                         android:layout_weight="2"
                         android:background="@color/white"
                         android:gravity="left|center"
-                        android:text="Scored"
+                        android:text="Cargo"
                         android:textSize="25dp"
                         tools:ignore="HardcodedText,NestedWeights,RtlHardcoded,SpUsage" />
 
                     <Button
-                        android:id="@+id/aSwitchSubtractS"
+                        android:id="@+id/sCsCgSub"
                         android:layout_width="0dp"
                         android:layout_height="fill_parent"
                         android:layout_weight="1"
                         android:background="@color/lightBlue"
-                        android:onClick="setASwitchSubtractS"
+                        android:onClick="setSCsCgSub"
                         android:text="-1"
                         android:textColor="@color/white"
                         android:textSize="15dp"
                         tools:ignore="HardcodedText,SpUsage" />
 
                     <TextView
-                        android:id="@+id/aSwitchDisplayS"
+                        android:id="@+id/sCsCgDs"
                         android:layout_width="0dp"
                         android:layout_height="fill_parent"
                         android:layout_marginLeft="4dp"
@@ -223,12 +223,12 @@
                         tools:ignore="HardcodedText,SpUsage" />
 
                     <Button
-                        android:id="@+id/aSwitchAddS"
+                        android:id="@+id/sCsCgAdd"
                         android:layout_width="0dp"
                         android:layout_height="fill_parent"
                         android:layout_weight="1"
                         android:background="@color/lightBlue"
-                        android:onClick="setASwitchAddS"
+                        android:onClick="setSCsCgAdd"
                         android:text="+1"
                         android:textColor="@color/white"
                         android:textSize="15dp"
@@ -237,7 +237,7 @@
 
                 </LinearLayout>
 
-            </LinearLayout> <!--Autonomous Switch-->
+            </LinearLayout> <!--Sandstorm Cargo Ship-->
 
             <ImageView
                 android:layout_width="match_parent"
@@ -256,21 +256,21 @@
                 >
 
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:background="@color/white"
-                        android:paddingBottom="15dp"
-                        android:paddingLeft="16dp"
-                        android:paddingRight="15dp"
-                        android:paddingTop="5dp"
-                        android:text="Scale"
-                        android:textColor="@color/textMedium"
-                        android:textSize="30dp"
-                        android:textStyle="italic"
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1.2"
+                    android:background="@color/white"
+                    android:paddingBottom="15dp"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="15dp"
+                    android:paddingTop="5dp"
+                    android:text="Rocket"
+                    android:textColor="@color/textMedium"
+                    android:textSize="30dp"
+                    android:textStyle="italic"
 
-                        tools:ignore="HardcodedText,NestedWeights,RtlHardcoded,SpUsage" />
+                    tools:ignore="HardcodedText,NestedWeights,RtlHardcoded,SpUsage" />
 
 
                 <LinearLayout
@@ -289,24 +289,24 @@
                         android:layout_weight="2"
                         android:background="@color/white"
                         android:gravity="left|center"
-                        android:text="Attempts"
+                        android:text="Hatches"
                         android:textSize="25dp"
                         tools:ignore="HardcodedText,NestedWeights,RtlHardcoded,SpUsage" />
 
                     <Button
-                        android:id="@+id/aScaleSubtractA"
+                        android:id="@+id/sRtHtSub"
                         android:layout_width="0dp"
                         android:layout_height="fill_parent"
                         android:layout_weight="1"
                         android:background="@color/lightBlue"
-                        android:onClick="setAScaleSubtractA"
+                        android:onClick="setSRtHtSub"
                         android:text="-1"
                         android:textColor="@color/white"
                         android:textSize="15dp"
                         tools:ignore="HardcodedText,SpUsage" />
 
                     <TextView
-                        android:id="@+id/aScaleDisplayA"
+                        android:id="@+id/sRtHtDs"
                         android:layout_width="0dp"
                         android:layout_height="fill_parent"
                         android:layout_marginLeft="4dp"
@@ -319,12 +319,12 @@
                         tools:ignore="HardcodedText,SpUsage" />
 
                     <Button
-                        android:id="@+id/aScaleAddA"
+                        android:id="@+id/sRtHtAdd"
                         android:layout_width="0dp"
                         android:layout_height="fill_parent"
                         android:layout_weight="1"
                         android:background="@color/lightBlue"
-                        android:onClick="setAScaleAddA"
+                        android:onClick="setSRtHtAdd"
                         android:text="+1"
                         android:textColor="@color/white"
                         android:textSize="15dp"
@@ -358,24 +358,24 @@
                         android:layout_weight="2"
                         android:background="@color/white"
                         android:gravity="left|center"
-                        android:text="Scored"
+                        android:text="Cargo"
                         android:textSize="25dp"
                         tools:ignore="HardcodedText,NestedWeights,RtlHardcoded,SpUsage" />
 
                     <Button
-                        android:id="@+id/aScaleSubtractS"
+                        android:id="@+id/sRtCgSub"
                         android:layout_width="0dp"
                         android:layout_height="fill_parent"
                         android:layout_weight="1"
                         android:background="@color/lightBlue"
-                        android:onClick="setAScaleSubtractS"
+                        android:onClick="setSRtCgSub"
                         android:text="-1"
                         android:textColor="@color/white"
                         android:textSize="15dp"
                         tools:ignore="HardcodedText,SpUsage" />
 
                     <TextView
-                        android:id="@+id/aScaleDisplayS"
+                        android:id="@+id/sRtCgDs"
                         android:layout_width="0dp"
                         android:layout_height="fill_parent"
                         android:layout_marginLeft="4dp"
@@ -388,12 +388,12 @@
                         tools:ignore="HardcodedText,SpUsage" />
 
                     <Button
-                        android:id="@+id/aScaleAddS"
+                        android:id="@+id/sRtCgAdd"
                         android:layout_width="0dp"
                         android:layout_height="fill_parent"
                         android:layout_weight="1"
                         android:background="@color/lightBlue"
-                        android:onClick="setAScaleAddS"
+                        android:onClick="setSRtCgAdd"
                         android:text="+1"
                         android:textColor="@color/white"
                         android:textSize="15dp"
@@ -402,7 +402,7 @@
 
                 </LinearLayout>
 
-            </LinearLayout> <!--Autonomous Scale-->
+            </LinearLayout> <!--Sandstorm Rocket Ship-->
 
             <ImageView
                 android:layout_width="match_parent"
@@ -430,22 +430,21 @@
                 android:paddingTop="5dp"
 
                 >
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1.2"
+                    android:background="@color/white"
+                    android:paddingBottom="15dp"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="15dp"
+                    android:paddingTop="5dp"
+                    android:text="Cargo Ship Hatches"
+                    android:textColor="@color/textMedium"
+                    android:textSize="30dp"
+                    android:textStyle="italic"
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:background="@color/white"
-                        android:paddingBottom="15dp"
-                        android:paddingLeft="16dp"
-                        android:paddingRight="15dp"
-                        android:paddingTop="5dp"
-                        android:text="Home Switch"
-                        android:textColor="@color/textMedium"
-                        android:textSize="30dp"
-                        android:textStyle="italic"
-
-                        tools:ignore="HardcodedText,NestedWeights,RtlHardcoded,SpUsage" />
+                    tools:ignore="HardcodedText,NestedWeights,RtlHardcoded,SpUsage" />
 
 
                 <LinearLayout
@@ -464,24 +463,24 @@
                         android:layout_weight="2"
                         android:background="@color/white"
                         android:gravity="left|center"
-                        android:text="Attempts"
+                        android:text="Scored"
                         android:textSize="25dp"
                         tools:ignore="HardcodedText,NestedWeights,RtlHardcoded,SpUsage" />
 
                     <Button
-                        android:id="@+id/tSwitchSubtractA"
+                        android:id="@+id/tCsHtSubSc"
                         android:layout_width="0dp"
                         android:layout_height="fill_parent"
                         android:layout_weight="1"
                         android:background="@color/lightBlue"
-                        android:onClick="setTSwitchSubtractA"
+                        android:onClick="setTCsHtSubSc"
                         android:text="-1"
                         android:textColor="@color/white"
                         android:textSize="15dp"
                         tools:ignore="HardcodedText,SpUsage" />
 
                     <TextView
-                        android:id="@+id/tSwitchDisplayA"
+                        android:id="@+id/tCsHtDsSc"
                         android:layout_width="0dp"
                         android:layout_height="fill_parent"
                         android:layout_marginLeft="4dp"
@@ -494,12 +493,12 @@
                         tools:ignore="HardcodedText,SpUsage" />
 
                     <Button
-                        android:id="@+id/tSwitchAddA"
+                        android:id="@+id/tCsHtAddSc"
                         android:layout_width="0dp"
                         android:layout_height="fill_parent"
                         android:layout_weight="1"
                         android:background="@color/lightBlue"
-                        android:onClick="setTSwitchAddA"
+                        android:onClick="setTCsHtAddSc"
                         android:text="+1"
                         android:textColor="@color/white"
                         android:textSize="15dp"
@@ -533,24 +532,24 @@
                         android:layout_weight="2"
                         android:background="@color/white"
                         android:gravity="left|center"
-                        android:text="Scored"
+                        android:text="Failed"
                         android:textSize="25dp"
                         tools:ignore="HardcodedText,NestedWeights,RtlHardcoded,SpUsage" />
 
                     <Button
-                        android:id="@+id/tSwitchSubtractS"
+                        android:id="@+id/tCsHtSubFl"
                         android:layout_width="0dp"
                         android:layout_height="fill_parent"
                         android:layout_weight="1"
                         android:background="@color/lightBlue"
-                        android:onClick="setTSwitchSubtractS"
+                        android:onClick="setTCsHtSubFl"
                         android:text="-1"
                         android:textColor="@color/white"
                         android:textSize="15dp"
                         tools:ignore="HardcodedText,SpUsage" />
 
                     <TextView
-                        android:id="@+id/tSwitchDisplayS"
+                        android:id="@+id/tCsHtDsFl"
                         android:layout_width="0dp"
                         android:layout_height="fill_parent"
                         android:layout_marginLeft="4dp"
@@ -563,12 +562,12 @@
                         tools:ignore="HardcodedText,SpUsage" />
 
                     <Button
-                        android:id="@+id/tSwitchAddS"
+                        android:id="@+id/tCsHtAddFl"
                         android:layout_width="0dp"
                         android:layout_height="fill_parent"
                         android:layout_weight="1"
                         android:background="@color/lightBlue"
-                        android:onClick="setTSwitchAddS"
+                        android:onClick="setTCsHtAddFl"
                         android:text="+1"
                         android:textColor="@color/white"
                         android:textSize="15dp"
@@ -577,7 +576,7 @@
 
                 </LinearLayout>
 
-            </LinearLayout> <!--Teleop Alliance Switch-->
+            </LinearLayout> <!--Teleop Cargo Ship Hatches-->
 
             <ImageView
                 android:layout_width="match_parent"
@@ -597,13 +596,13 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:layout_weight="1"
+                        android:layout_weight="1.2"
                         android:background="@color/white"
                         android:paddingBottom="15dp"
                         android:paddingLeft="16dp"
                         android:paddingRight="15dp"
                         android:paddingTop="5dp"
-                        android:text="Scale"
+                        android:text="Cargo Ship Cargo"
                         android:textColor="@color/textMedium"
                         android:textSize="30dp"
                         android:textStyle="italic"
@@ -628,24 +627,24 @@
                         android:layout_weight="2"
                         android:background="@color/white"
                         android:gravity="left|center"
-                        android:text="Attempts"
+                        android:text="Scored"
                         android:textSize="25dp"
                         tools:ignore="HardcodedText,NestedWeights,RtlHardcoded,SpUsage" />
 
                     <Button
-                        android:id="@+id/tScaleSubtractA"
+                        android:id="@+id/tCsCgSubSc"
                         android:layout_width="0dp"
                         android:layout_height="fill_parent"
                         android:layout_weight="1"
                         android:background="@color/lightBlue"
-                        android:onClick="setTScaleSubtractA"
+                        android:onClick="setTCsCgSubSc"
                         android:text="-1"
                         android:textColor="@color/white"
                         android:textSize="15dp"
                         tools:ignore="HardcodedText,SpUsage" />
 
                     <TextView
-                        android:id="@+id/tScaleDisplayA"
+                        android:id="@+id/tCsCgDsSc"
                         android:layout_width="0dp"
                         android:layout_height="fill_parent"
                         android:layout_marginLeft="4dp"
@@ -658,12 +657,12 @@
                         tools:ignore="HardcodedText,SpUsage" />
 
                     <Button
-                        android:id="@+id/tScaleAddA"
+                        android:id="@+id/tCsCgAddSc"
                         android:layout_width="0dp"
                         android:layout_height="fill_parent"
                         android:layout_weight="1"
                         android:background="@color/lightBlue"
-                        android:onClick="setTScaleAddA"
+                        android:onClick="setTCsCgAddSc"
                         android:text="+1"
                         android:textColor="@color/white"
                         android:textSize="15dp"
@@ -697,24 +696,24 @@
                         android:layout_weight="2"
                         android:background="@color/white"
                         android:gravity="left|center"
-                        android:text="Scored"
+                        android:text="Failed"
                         android:textSize="25dp"
                         tools:ignore="HardcodedText,NestedWeights,RtlHardcoded,SpUsage" />
 
                     <Button
-                        android:id="@+id/tScaleSubtractS"
+                        android:id="@+id/tCsCgSubFl"
                         android:layout_width="0dp"
                         android:layout_height="fill_parent"
                         android:layout_weight="1"
                         android:background="@color/lightBlue"
-                        android:onClick="setTScaleSubtractS"
+                        android:onClick="setTCsCgSubFl"
                         android:text="-1"
                         android:textColor="@color/white"
                         android:textSize="15dp"
                         tools:ignore="HardcodedText,SpUsage" />
 
                     <TextView
-                        android:id="@+id/tScaleDisplayS"
+                        android:id="@+id/tCsCgDsFl"
                         android:layout_width="0dp"
                         android:layout_height="fill_parent"
                         android:layout_marginLeft="4dp"
@@ -727,12 +726,12 @@
                         tools:ignore="HardcodedText,SpUsage" />
 
                     <Button
-                        android:id="@+id/tScaleAddS"
+                        android:id="@+id/tCsCgAddFl"
                         android:layout_width="0dp"
                         android:layout_height="fill_parent"
                         android:layout_weight="1"
                         android:background="@color/lightBlue"
-                        android:onClick="setTScaleAddS"
+                        android:onClick="setTCsCgAddFl"
                         android:text="+1"
                         android:textColor="@color/white"
                         android:textSize="15dp"
@@ -741,7 +740,7 @@
 
                 </LinearLayout>
 
-            </LinearLayout> <!--Teleop Scale-->
+            </LinearLayout> <!--Teleop Cargo Ship Cargo-->
 
             <ImageView
                 android:layout_width="match_parent"
@@ -758,22 +757,21 @@
                 android:paddingTop="5dp"
 
                 >
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1.2"
+                    android:background="@color/white"
+                    android:paddingBottom="15dp"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="15dp"
+                    android:paddingTop="5dp"
+                    android:text="Rocket Hatches"
+                    android:textColor="@color/textMedium"
+                    android:textSize="30dp"
+                    android:textStyle="italic"
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1.3"
-                        android:background="@color/white"
-                        android:paddingBottom="15dp"
-                        android:paddingLeft="16dp"
-                        android:paddingRight="15dp"
-                        android:paddingTop="5dp"
-                        android:text="Opponent Switch"
-                        android:textColor="@color/textMedium"
-                        android:textSize="30dp"
-                        android:textStyle="italic"
-
-                        tools:ignore="HardcodedText,NestedWeights,RtlHardcoded,SpUsage" />
+                    tools:ignore="HardcodedText,NestedWeights,RtlHardcoded,SpUsage" />
 
 
                 <LinearLayout
@@ -792,24 +790,24 @@
                         android:layout_weight="2"
                         android:background="@color/white"
                         android:gravity="left|center"
-                        android:text="Attempts"
+                        android:text="Scored"
                         android:textSize="25dp"
                         tools:ignore="HardcodedText,NestedWeights,RtlHardcoded,SpUsage" />
 
                     <Button
-
+                        android:id="@+id/tRtHtSubSc"
                         android:layout_width="0dp"
                         android:layout_height="fill_parent"
                         android:layout_weight="1"
                         android:background="@color/lightBlue"
-                        android:onClick="setTOSwitchSubtractA"
+                        android:onClick="setTRtHtSubSc"
                         android:text="-1"
                         android:textColor="@color/white"
                         android:textSize="15dp"
                         tools:ignore="HardcodedText,SpUsage" />
 
                     <TextView
-                        android:id="@+id/tOSwitchDisplayA"
+                        android:id="@+id/tRtHtDsSc"
                         android:layout_width="0dp"
                         android:layout_height="fill_parent"
                         android:layout_marginLeft="4dp"
@@ -822,12 +820,12 @@
                         tools:ignore="HardcodedText,SpUsage" />
 
                     <Button
-
+                        android:id="@+id/tRtHtAddSc"
                         android:layout_width="0dp"
                         android:layout_height="fill_parent"
                         android:layout_weight="1"
                         android:background="@color/lightBlue"
-                        android:onClick="setTOSwitchAddA"
+                        android:onClick="setTRtHtAddSc"
                         android:text="+1"
                         android:textColor="@color/white"
                         android:textSize="15dp"
@@ -861,24 +859,24 @@
                         android:layout_weight="2"
                         android:background="@color/white"
                         android:gravity="left|center"
-                        android:text="Scored"
+                        android:text="Failed"
                         android:textSize="25dp"
                         tools:ignore="HardcodedText,NestedWeights,RtlHardcoded,SpUsage" />
 
                     <Button
-
+                        android:id="@+id/tRtHtSubFl"
                         android:layout_width="0dp"
                         android:layout_height="fill_parent"
                         android:layout_weight="1"
                         android:background="@color/lightBlue"
-                        android:onClick="setTOSwitchSubtractS"
+                        android:onClick="setTRtHtSubFl"
                         android:text="-1"
                         android:textColor="@color/white"
                         android:textSize="15dp"
                         tools:ignore="HardcodedText,SpUsage" />
 
                     <TextView
-                        android:id="@+id/tOSwitchDisplayS"
+                        android:id="@+id/tRtHtDsFl"
                         android:layout_width="0dp"
                         android:layout_height="fill_parent"
                         android:layout_marginLeft="4dp"
@@ -891,11 +889,12 @@
                         tools:ignore="HardcodedText,SpUsage" />
 
                     <Button
+                        android:id="@+id/tRtHtAddFl"
                         android:layout_width="0dp"
                         android:layout_height="fill_parent"
                         android:layout_weight="1"
                         android:background="@color/lightBlue"
-                        android:onClick="setTOSwitchAddS"
+                        android:onClick="setTRtHtAddFl"
                         android:text="+1"
                         android:textColor="@color/white"
                         android:textSize="15dp"
@@ -904,7 +903,7 @@
 
                 </LinearLayout>
 
-            </LinearLayout> <!--Teleop Opponent Switch-->
+            </LinearLayout> <!--Teleop Rocket Ship Hatches-->
 
             <ImageView
                 android:layout_width="match_parent"
@@ -921,24 +920,83 @@
                 android:paddingTop="5dp"
 
                 >
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1.2"
+                    android:background="@color/white"
+                    android:paddingBottom="15dp"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="15dp"
+                    android:paddingTop="5dp"
+                    android:text="Rocket Cargo"
+                    android:textColor="@color/textMedium"
+                    android:textSize="30dp"
+                    android:textStyle="italic"
 
+                    tools:ignore="HardcodedText,NestedWeights,RtlHardcoded,SpUsage" />
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp">
 
                     <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginRight="4dp"
+                        android:layout_weight="2"
                         android:background="@color/white"
-                        android:paddingBottom="15dp"
-                        android:paddingLeft="16dp"
-                        android:paddingRight="15dp"
-                        android:paddingTop="5dp"
-                        android:text="Vault"
-                        android:textColor="@color/textMedium"
-                        android:textSize="30dp"
-                        android:textStyle="italic"
-
+                        android:gravity="left|center"
+                        android:text="Scored"
+                        android:textSize="25dp"
                         tools:ignore="HardcodedText,NestedWeights,RtlHardcoded,SpUsage" />
 
+                    <Button
+                        android:id="@+id/tRtCgSubSc"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:background="@color/lightBlue"
+                        android:onClick="setTRtCgSubSc"
+                        android:text="-1"
+                        android:textColor="@color/white"
+                        android:textSize="15dp"
+                        tools:ignore="HardcodedText,SpUsage" />
+
+                    <TextView
+                        android:id="@+id/tRtCgDsSc"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginRight="4dp"
+                        android:layout_weight="1"
+                        android:background="#D7DDEA"
+                        android:gravity="center"
+                        android:text="0"
+                        android:textSize="32dp"
+                        tools:ignore="HardcodedText,SpUsage" />
+
+                    <Button
+                        android:id="@+id/tRtCgAddSc"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:background="@color/lightBlue"
+                        android:onClick="setTRtCgAddSc"
+                        android:text="+1"
+                        android:textColor="@color/white"
+                        android:textSize="15dp"
+                        tools:ignore="HardcodedText,SpUsage" />
+
+
+                </LinearLayout>
 
                 <ImageView
                     android:layout_width="match_parent"
@@ -965,24 +1023,24 @@
                         android:layout_weight="2"
                         android:background="@color/white"
                         android:gravity="left|center"
-                        android:text="Scored"
+                        android:text="Failed"
                         android:textSize="25dp"
-                        tools:ignore="HardcodedText,NestedWeights,RtlHardcoded,SpUsage,TooManyViews" />
+                        tools:ignore="HardcodedText,NestedWeights,RtlHardcoded,SpUsage" />
 
                     <Button
-                        android:id="@+id/tVaultSubtractS"
+                        android:id="@+id/tRtCgSubFl"
                         android:layout_width="0dp"
                         android:layout_height="fill_parent"
                         android:layout_weight="1"
                         android:background="@color/lightBlue"
-                        android:onClick="setTVaultSubtractS"
+                        android:onClick="setTRtCgSubFl"
                         android:text="-1"
                         android:textColor="@color/white"
                         android:textSize="15dp"
                         tools:ignore="HardcodedText,SpUsage" />
 
                     <TextView
-                        android:id="@+id/tVaultDisplayS"
+                        android:id="@+id/tRtCgDsFl"
                         android:layout_width="0dp"
                         android:layout_height="fill_parent"
                         android:layout_marginLeft="4dp"
@@ -995,20 +1053,27 @@
                         tools:ignore="HardcodedText,SpUsage" />
 
                     <Button
-                        android:id="@+id/tVaultAddS"
+                        android:id="@+id/tRtCgAddFl"
                         android:layout_width="0dp"
                         android:layout_height="fill_parent"
                         android:layout_weight="1"
                         android:background="@color/lightBlue"
-                        android:onClick="setTVaultAddS"
+                        android:onClick="setTRtCgAddFl"
                         android:text="+1"
                         android:textColor="@color/white"
                         android:textSize="15dp"
                         tools:ignore="HardcodedText,SpUsage" />
 
+
                 </LinearLayout>
 
-            </LinearLayout> <!--Teleop Vault-->
+            </LinearLayout> <!--Teleop Rocket Ship Cargo-->
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/background_material"
+                tools:ignore="ContentDescription" />
 
             <ImageView
                 android:layout_width="match_parent"
@@ -1061,31 +1126,43 @@
                             android:layout_marginTop="8dp"
                             android:buttonTint="@color/lightBlue"
                             android:onClick="setOnField"
-                            android:text="On the Field"
+                            android:text="Not In Hab Zone"
                             android:textColor="@color/textMedium"
                             android:textSize="26dp"
                             tools:ignore="HardcodedText,SpUsage" />
 
                         <RadioButton
-                            android:id="@+id/parked"
+                            android:id="@+id/lvlOne"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="12dp"
                             android:buttonTint="@color/lightBlue"
-                            android:onClick="setParked"
-                            android:text="Parked"
+                            android:onClick="setLvlOne"
+                            android:text="Level 1"
                             android:textColor="@color/textMedium"
                             android:textSize="26dp"
                             tools:ignore="HardcodedText,SpUsage" />
 
                         <RadioButton
-                            android:id="@+id/elevated"
+                            android:id="@+id/lvlTwo"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="12dp"
                             android:buttonTint="@color/lightBlue"
-                            android:onClick="setElevated"
-                            android:text="Climbing"
+                            android:onClick="setLvlTwo"
+                            android:text="Level 2"
+                            android:textColor="@color/textMedium"
+                            android:textSize="26dp"
+                            tools:ignore="HardcodedText,SpUsage" />
+
+                        <RadioButton
+                            android:id="@+id/lvlThree"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="12dp"
+                            android:buttonTint="@color/lightBlue"
+                            android:onClick="setLvlThree"
+                            android:text="Level 3"
                             android:textColor="@color/textMedium"
                             android:textSize="26dp"
                             tools:ignore="HardcodedText,SpUsage" />
