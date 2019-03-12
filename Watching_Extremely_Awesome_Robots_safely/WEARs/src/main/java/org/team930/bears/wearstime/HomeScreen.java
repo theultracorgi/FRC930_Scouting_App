@@ -77,6 +77,8 @@ public class HomeScreen extends AppCompatActivity {
             SPOS.putBoolean("csVisible", false);
 
             SPOS.putBoolean("dataAvailable", false);
+            SPOS.putString("scouterPos", "0");
+            SPOS.putBoolean("multipleQR", false);
 
             SPOS.apply();
 
@@ -84,34 +86,36 @@ public class HomeScreen extends AppCompatActivity {
 
             SPMD.putString("teamNum", "0");
             SPMD.putString("matchNum", "0");
-            SPMD.putString("aAutoline", "0");
+            SPMD.putString("sHabLine", "0");
 
-            SPMD.putString("aSwitchAttempts", "0");
-            SPMD.putString("aScaleScored", "0");
-            SPMD.putString("tSwitchAttempts", "0");
-            SPMD.putString("tScaleAttempts", "0");
-            SPMD.putString("tOSwitchAttempts", "0");
+            SPMD.putString("sCsHt", "0");
+            SPMD.putString("sCsCg", "0");
+            SPMD.putString("sRtHt", "0");
+            SPMD.putString("sRtCg", "0");
 
-            SPMD.putString("aSwitchScored", "0");
-            SPMD.putString("aScaleScored", "0");
-            SPMD.putString("tSwitchScored", "0");
-            SPMD.putString("tScaleScored", "0");
-            SPMD.putString("tOSwitchScored", "0");
-            SPMD.putString("tVaultScored", "0");
+            SPMD.putString("tCsHtSc", "0");
+            SPMD.putString("tCsCgSc", "0");
+            SPMD.putString("tRtHtSc", "0");
+            SPMD.putString("tRtCgSc", "0");
 
+            SPMD.putString("tRtHtFl", "0");
+            SPMD.putString("tRtCgFl", "0");
+            SPMD.putString("tRtHtFl", "0");
+            SPMD.putString("tRtCgFl", "0");
 
-            SPMD.putString("tParked", "0");
-            SPMD.putString("tElevated", "0");
+            //ENDGAME
+            SPMD.putString("habStatus", "0");
             SPMD.putString("disabled", "0");
-
             SPMD.putString("comments", "0");
 
-            SPMD.putString("match1", "");
-            SPMD.putString("match2", "");
-            SPMD.putString("match3", "");
-            SPMD.putString("match4", "");
-            SPMD.putString("match5", "");
-            SPMD.putString("match6", "");
+            SPMD.putString("preMatchVals", "");
+            SPMD.putString("autonTeleopVals", "");
+            SPMD.putString("postMatchVals", "");
+
+
+            SPMD.putString("firstQR", "");
+            SPMD.putString("secondQR", "");
+
 
             SPMD.apply();
             SPOS.apply();
@@ -133,7 +137,7 @@ public class HomeScreen extends AppCompatActivity {
             AlertDialog alert = builder.create();
             alert.show();
 
-        } else if (otherSettings.getInt(numStoredMatches, maxMatches) >= maxMatches) { //
+        } else if (otherSettings.getInt(numStoredMatches, maxMatches) >= maxMatches  && otherSettings.getBoolean("multipleQR", false)) { //
             builder.setTitle("All Your Data Are Belong To Us.");
             builder.setMessage("You need to generate a QR code to continue scouting.");
             builder.setCancelable(true);

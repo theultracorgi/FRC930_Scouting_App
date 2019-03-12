@@ -102,7 +102,7 @@ public class MasterScanner extends AppCompatActivity {
                 //noinspection ResultOfMethodCallIgnored
                 dir.mkdirs();
 
-                DateFormat df = new SimpleDateFormat("h:mm a");
+                DateFormat df = new SimpleDateFormat("HH:mm:ss a");
                 String time = df.format(Calendar.getInstance().getTime());
                 file = new File(dir, "MatchData(" + time + ").csv");
 

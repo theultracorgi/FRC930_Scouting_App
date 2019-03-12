@@ -23,14 +23,13 @@ import static android.app.AlertDialog.THEME_HOLO_LIGHT;
 
 @SuppressWarnings("ALL")
 public class Settings extends AppCompatActivity {
-
-    Spinner scouterList;
-    LinearLayout stillEnabler, deleteBar, nerdStatsLayout, adminUnlock;
+    LinearLayout stillEnabler, deleteBar, adminUnlock;
     ToggleButton stillFRC;
-    Button deleteData, submitPassword, statsForNerds;
+    Button deleteData, submitPassword;
     EditText password;
     TextView revokeStill;
-    ImageView disappearStill, disappearAdmin, disappearDelete, disappearStats;
+    ImageView disappearStill, disappearAdmin, disappearDelete;
+    Spinner scouterPos;
 
     Integer previousAttempt, adminPassword;
     String stillPreferences, matchDataPreferences, otherPreferences, numMatchesStored;
@@ -38,7 +37,7 @@ public class Settings extends AppCompatActivity {
     SharedPreferences matchData, stillEnabled, otherSettings;
     MediaPlayer Still;
     ContextThemeWrapper ctw;
-    AlertDialog.Builder delete, adminNow, noStill, nerdStats;
+    AlertDialog.Builder delete, adminNow, noStill;
 
 
     @Override
@@ -47,7 +46,6 @@ public class Settings extends AppCompatActivity {
         setContentView(R.layout.activity_settings);
         setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-
         previousAttempt = 0;
         adminPassword = getResources().getInteger(R.integer.adminPassword);
 
@@ -55,7 +53,6 @@ public class Settings extends AppCompatActivity {
         adminNow = new AlertDialog.Builder(ctw);
         delete = new AlertDialog.Builder(ctw);
         noStill = new AlertDialog.Builder(ctw);
-        nerdStats = new AlertDialog.Builder(ctw);
 
         numMatchesStored = getString(R.string.numStoredMatches);
 
@@ -68,12 +65,12 @@ public class Settings extends AppCompatActivity {
         otherPreferences = getString(R.string.otherPreferences);
         otherSettings = getSharedPreferences(otherPreferences, 0);
 
-        Still = MediaPlayer.create(this, R.raw.eight_bit_dungeon_boss);
+        Still = MediaPlayer.create(this, R.raw.still_frc_mixdown);
         Still.setLooping(true);
 
         stillEnabler = findViewById(R.id.stillEnabler);
         stillFRC = findViewById(R.id.stillFRC);
-        scouterList = findViewById(R.id.scouterList);
+        scouterPos = findViewById(R.id.scouterPosition);
         adminUnlock = findViewById(R.id.adminUnlock);
         deleteData = findViewById(R.id.deleteData);
         deleteBar = findViewById(R.id.deleteBar);
@@ -83,13 +80,9 @@ public class Settings extends AppCompatActivity {
         disappearStill = findViewById(R.id.disappearStill);
         disappearAdmin = findViewById(R.id.disappearAdmin);
         disappearDelete = findViewById(R.id.disappearDelete);
-        disappearStats = findViewById(R.id.disappearStatsForNerds);
-        nerdStatsLayout = findViewById(R.id.nerdStatsLayout);
-        statsForNerds = findViewById(R.id.statsForNerds);
 
+        scouterPos.setSelection(Integer.parseInt(otherSettings.getString("scouterPos", "0")));
 
-
-        scouterList.setSelection(otherSettings.getInt("scouterIDNum", 0));
 
         if (stillEnabled.getBoolean("stillEnabled", false)) {
             stillEnabler.setVisibility(View.VISIBLE);
@@ -108,13 +101,9 @@ public class Settings extends AppCompatActivity {
         }
 
         if (otherSettings.getBoolean("admin", false)) {
-            nerdStatsLayout.setVisibility(View.VISIBLE);
-            disappearStats.setVisibility(View.VISIBLE);
             disappearAdmin.setVisibility(View.GONE);
             adminUnlock.setVisibility(View.GONE);
         } else {
-            nerdStatsLayout.setVisibility(View.GONE);
-            disappearStats.setVisibility(View.GONE);
             disappearAdmin.setVisibility(View.VISIBLE);
             adminUnlock.setVisibility(View.VISIBLE);
         }
@@ -129,8 +118,6 @@ public class Settings extends AppCompatActivity {
 
                 disappearAdmin.setVisibility(View.GONE);
                 adminUnlock.setVisibility(View.GONE);
-                nerdStatsLayout.setVisibility(View.VISIBLE);
-                disappearStats.setVisibility(View.VISIBLE);
 
                 SPOS.putBoolean("admin", true);
                 SPOS.apply();
@@ -158,6 +145,8 @@ public class Settings extends AppCompatActivity {
         }
     }
 
+
+
     public void setDeleteData(View v) {
 
         delete.setTitle("Delete Data");
@@ -180,6 +169,7 @@ public class Settings extends AppCompatActivity {
                         SPOS.putBoolean("csVisible", false);
 
                         SPOS.putBoolean("dataAvailable", false);
+                        SPOS.putBoolean("multipleQR",false);
 
                         SPOS.apply();
 
@@ -187,35 +177,35 @@ public class Settings extends AppCompatActivity {
 
                         SPMD.putString("teamNum", "0");
                         SPMD.putString("matchNum", "0");
-                        SPMD.putString("aAutoline", "0");
+                        SPMD.putString("sHabLine", "0");
 
-                        SPMD.putString("aSwitchAttempts", "0");
-                        SPMD.putString("aScaleScored", "0");
-                        SPMD.putString("tSwitchAttempts", "0");
-                        SPMD.putString("tScaleAttempts", "0");
-                        SPMD.putString("tOSwitchAttempts", "0");
+                        SPMD.putString("sCsHt", "0");
+                        SPMD.putString("sCsCg", "0");
+                        SPMD.putString("sRtHt", "0");
+                        SPMD.putString("sRtCg", "0");
 
-                        SPMD.putString("aSwitchScored", "0");
-                        SPMD.putString("aScaleScored", "0");
-                        SPMD.putString("tSwitchScored", "0");
-                        SPMD.putString("tScaleScored", "0");
-                        SPMD.putString("tOSwitchScored", "0");
-                        SPMD.putString("tVaultScored", "0");
+                        SPMD.putString("tCsHtSc", "0");
+                        SPMD.putString("tCsCgSc", "0");
+                        SPMD.putString("tRtHtSc", "0");
+                        SPMD.putString("tRtCgSc", "0");
 
+                        SPMD.putString("tRtHtFl", "0");
+                        SPMD.putString("tRtCgFl", "0");
+                        SPMD.putString("tRtHtFl", "0");
+                        SPMD.putString("tRtCgFl", "0");
 
-
-                        SPMD.putString("tParked", "0");
-                        SPMD.putString("tElevated", "0");
+                        //ENDGAME
+                        SPMD.putString("habStatus", "0");
                         SPMD.putString("disabled", "0");
-
                         SPMD.putString("comments", "0");
 
-                        SPMD.putString("match1", "");
-                        SPMD.putString("match2", "");
-                        SPMD.putString("match3", "");
-                        SPMD.putString("match4", "");
-                        SPMD.putString("match5", "");
-                        SPMD.putString("match6", "");
+                        SPMD.putString("preMatchVals", "");
+                        SPMD.putString("autonTeleopVals", "");
+                        SPMD.putString("postMatchVals", "");
+
+
+                        SPMD.putString("firstQR", "");
+                        SPMD.putString("secondQR", "");
 
                         SPMD.apply();
 
@@ -273,470 +263,15 @@ public class Settings extends AppCompatActivity {
 
         }
     }
-
-    public void setStatsForNerds(View v) {
-
-
-        nerdStats.setTitle("Stats For Nerds");
-        nerdStats.setMessage("CSVs Created: " + otherSettings.getInt("csvCreated", 0) + "\nQR Codes Scanned: " + otherSettings.getInt("qrScanned", 0));
-        nerdStats.setCancelable(true);
-        nerdStats.setNeutralButton(
-                "Yeah Playa",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-
-                        Settings.this.recreate();
-
-                    }
-                });
-
-
-        AlertDialog alert = nerdStats.create();
-        alert.show();
-
-    }
-
-    protected void onStop() {
-        // call the superclass method first
-        super.onStop();
-
-        SharedPreferences.Editor SPMD = matchData.edit();
-
-        switch (scouterList.getSelectedItemPosition()) {
-            case 0:
-                SPMD.putString("scouterID", "ARr005");
-                SPMD.apply();
-                break;
-            case 1:
-                SPMD.putString("scouterID", "AMk003");
-                SPMD.apply();
-                break;
-            case 2:
-                SPMD.putString("scouterID", "ASr006");
-                SPMD.apply();
-                break;
-            case 3:
-                SPMD.putString("scouterID", "ABr001");
-                SPMD.apply();
-                break;
-            case 4:
-                SPMD.putString("scouterID", "AJu002");
-                SPMD.apply();
-                break;
-            case 5:
-                SPMD.putString("scouterID", "AWk007");
-                SPMD.apply();
-                break;
-            case 6:
-                SPMD.putString("scouterID", "AOk004");
-                SPMD.apply();
-                break;
-            case 7:
-                SPMD.putString("scouterID", "AAx000");
-                SPMD.apply();
-                break;
-            case 8:
-                SPMD.putString("scouterID", "Low'a");
-                SPMD.apply();
-                break;
-            case 9:
-                SPMD.putString("scouterID", "DMb010");
-                SPMD.apply();
-                break;
-            case 10:
-                SPMD.putString("scouterID", "Low'a");
-                SPMD.apply();
-                break;
-            case 11:
-                SPMD.putString("scouterID", "DEu009");
-                SPMD.apply();
-                break;
-            case 12:
-                SPMD.putString("scouterID", "EEx011");
-                SPMD.apply();
-                break;
-            case 13:
-                SPMD.putString("scouterID", "EZu013");
-                SPMD.apply();
-                break;
-            case 14:
-                SPMD.putString("scouterID", "EZr012");
-                SPMD.apply();
-                break;
-            case 15:
-                SPMD.putString("scouterID", "JMr017");
-                SPMD.apply();
-                break;
-            case 16:
-                SPMD.putString("scouterID", "JDk015");
-                SPMD.apply();
-                break;
-            case 17:
-                SPMD.putString("scouterID", "JPx018");
-                SPMD.apply();
-                break;
-            case 18:
-                SPMD.putString("scouterID", "JWr021");
-                SPMD.apply();
-                break;
-            case 19:
-                SPMD.putString("scouterID", "JKw016");
-                SPMD.apply();
-                break;
-            case 20:
-                SPMD.putString("scouterID", "JWr020");
-                SPMD.apply();
-                break;
-            case 21:
-                SPMD.putString("scouterID", "JVb019");
-                SPMD.apply();
-                break;
-            case 22:
-                SPMD.putString("scouterID", "KKr022");
-                SPMD.apply();
-                break;
-            case 23:
-                SPMD.putString("scouterID", "Low'a");
-                SPMD.apply();
-                break;
-            case 24:
-                SPMD.putString("scouterID", "KMx023");
-                SPMD.apply();
-                break;
-            case 25:
-                SPMD.putString("scouterID", "KSk024");
-                SPMD.apply();
-                break;
-            case 26:
-                SPMD.putString("scouterID", "KSu025");
-                SPMD.apply();
-                break;
-            case 27:
-                SPMD.putString("scouterID", "MMr028");
-                SPMD.apply();
-                break;
-            case 28:
-                SPMD.putString("scouterID", "MRk029");
-                SPMD.apply();
-                break;
-            case 29:
-                SPMD.putString("scouterID", "MRb030");
-                SPMD.apply();
-                break;
-            case 30:
-                SPMD.putString("scouterID", "MHb027");
-                SPMD.apply();
-                break;
-            case 31:
-                SPMD.putString("scouterID", "NBr031");
-                SPMD.apply();
-                break;
-            case 32:
-                SPMD.putString("scouterID", "NKk032");
-                SPMD.apply();
-                break;
-            case 33:
-                SPMD.putString("scouterID", "NRr034");
-                SPMD.apply();
-                break;
-            case 34:
-                SPMD.putString("scouterID", "SUPAHOTFIREx048");
-                SPMD.apply();
-                break;
-            case 35:
-                SPMD.putString("scouterID", "NNb033");
-                SPMD.apply();
-                break;
-            case 36:
-                SPMD.putString("scouterID", "NFx047");
-                SPMD.apply();
-                break;
-            case 37:
-                SPMD.putString("scouterID", "PRo036");
-                SPMD.apply();
-                break;
-            case 38:
-                SPMD.putString("scouterID", "SRr039");
-                SPMD.apply();
-                break;
-            case 39:
-                SPMD.putString("scouterID", "SBr037");
-                SPMD.apply();
-                break;
-            case 40:
-                SPMD.putString("scouterID", "SGi038");
-                SPMD.apply();
-                break;
-            case 41:
-                SPMD.putString("scouterID", "Low'a");
-                SPMD.apply();
-                break;
-            case 42:
-                SPMD.putString("scouterID", "SSk040");
-                SPMD.apply();
-                break;
-            case 43:
-                SPMD.putString("scouterID", "TSr043");
-                SPMD.apply();
-                break;
-            case 44:
-                SPMD.putString("scouterID", "TGk042");
-                SPMD.apply();
-                break;
-            case 45:
-                SPMD.putString("scouterID", "TBk041");
-                SPMD.apply();
-                break;
-            case 46:
-                SPMD.putString("scouterID", "VKb044");
-                SPMD.apply();
-                break;
-            case 47:
-                SPMD.putString("scouterID", "Low'a");
-                SPMD.apply();
-                break;
-            case 48:
-                SPMD.putString("scouterID", "ZAk045");
-                SPMD.apply();
-                break;
-            case 49:
-                SPMD.putString("scouterID", "ZYb046");
-                SPMD.apply();
-                break;
-            default:
-                SPMD.putString("scouterID", "Low'a");
-                SPMD.apply();
-        }
-
-    SharedPreferences.Editor SPOS = otherSettings.edit();
-
-        SPOS.putInt("scouterIDNum", scouterList.getSelectedItemPosition());
-
-        SPOS.apply();
-
-
-}
-
-    protected void onPause() {
-        // call the superclass method first
+    public void onPause() {
         super.onPause();
-
-        SharedPreferences.Editor SPMD = matchData.edit();
-
-        switch (scouterList.getSelectedItemPosition()) {
-            case 0:
-                SPMD.putString("scouterID", "ARr005");
-                SPMD.apply();
-                break;
-            case 1:
-                SPMD.putString("scouterID", "AMk003");
-                SPMD.apply();
-                break;
-            case 2:
-                SPMD.putString("scouterID", "ASr006");
-                SPMD.apply();
-                break;
-            case 3:
-                SPMD.putString("scouterID", "ABr001");
-                SPMD.apply();
-                break;
-            case 4:
-                SPMD.putString("scouterID", "AJu002");
-                SPMD.apply();
-                break;
-            case 5:
-                SPMD.putString("scouterID", "AWk007");
-                SPMD.apply();
-                break;
-            case 6:
-                SPMD.putString("scouterID", "AOk004");
-                SPMD.apply();
-                break;
-            case 7:
-                SPMD.putString("scouterID", "AAx000");
-                SPMD.apply();
-                break;
-            case 8:
-                SPMD.putString("scouterID", "Low'a");
-                SPMD.apply();
-                break;
-            case 9:
-                SPMD.putString("scouterID", "DMb010");
-                SPMD.apply();
-                break;
-            case 10:
-                SPMD.putString("scouterID", "Low'a");
-                SPMD.apply();
-                break;
-            case 11:
-                SPMD.putString("scouterID", "DEu009");
-                SPMD.apply();
-                break;
-            case 12:
-                SPMD.putString("scouterID", "EEx011");
-                SPMD.apply();
-                break;
-            case 13:
-                SPMD.putString("scouterID", "EZu013");
-                SPMD.apply();
-                break;
-            case 14:
-                SPMD.putString("scouterID", "EZr012");
-                SPMD.apply();
-                break;
-            case 15:
-                SPMD.putString("scouterID", "JMr017");
-                SPMD.apply();
-                break;
-            case 16:
-                SPMD.putString("scouterID", "JDk015");
-                SPMD.apply();
-                break;
-            case 17:
-                SPMD.putString("scouterID", "JPx018");
-                SPMD.apply();
-                break;
-            case 18:
-                SPMD.putString("scouterID", "JWr021");
-                SPMD.apply();
-                break;
-            case 19:
-                SPMD.putString("scouterID", "JKw016");
-                SPMD.apply();
-                break;
-            case 20:
-                SPMD.putString("scouterID", "JWr020");
-                SPMD.apply();
-                break;
-            case 21:
-                SPMD.putString("scouterID", "JVb019");
-                SPMD.apply();
-                break;
-            case 22:
-                SPMD.putString("scouterID", "KKr022");
-                SPMD.apply();
-                break;
-            case 23:
-                SPMD.putString("scouterID", "Low'a");
-                SPMD.apply();
-                break;
-            case 24:
-                SPMD.putString("scouterID", "KMx023");
-                SPMD.apply();
-                break;
-            case 25:
-                SPMD.putString("scouterID", "KSk024");
-                SPMD.apply();
-                break;
-            case 26:
-                SPMD.putString("scouterID", "KSu025");
-                SPMD.apply();
-                break;
-            case 27:
-                SPMD.putString("scouterID", "MMr028");
-                SPMD.apply();
-                break;
-            case 28:
-                SPMD.putString("scouterID", "MRk029");
-                SPMD.apply();
-                break;
-            case 29:
-                SPMD.putString("scouterID", "MRb030");
-                SPMD.apply();
-                break;
-            case 30:
-                SPMD.putString("scouterID", "MHb027");
-                SPMD.apply();
-                break;
-            case 31:
-                SPMD.putString("scouterID", "NBr031");
-                SPMD.apply();
-                break;
-            case 32:
-                SPMD.putString("scouterID", "NKk032");
-                SPMD.apply();
-                break;
-            case 33:
-                SPMD.putString("scouterID", "NRr034");
-                SPMD.apply();
-                break;
-            case 34:
-                SPMD.putString("scouterID", "SUPAHOTFIREx048");
-                SPMD.apply();
-                break;
-            case 35:
-                SPMD.putString("scouterID", "NNb033");
-                SPMD.apply();
-                break;
-            case 36:
-                SPMD.putString("scouterID", "NFx047");
-                SPMD.apply();
-                break;
-            case 37:
-                SPMD.putString("scouterID", "PRo036");
-                SPMD.apply();
-                break;
-            case 38:
-                SPMD.putString("scouterID", "SRr039");
-                SPMD.apply();
-                break;
-            case 39:
-                SPMD.putString("scouterID", "SBr037");
-                SPMD.apply();
-                break;
-            case 40:
-                SPMD.putString("scouterID", "SGi038");
-                SPMD.apply();
-                break;
-            case 41:
-                SPMD.putString("scouterID", "Low'a");
-                SPMD.apply();
-                break;
-            case 42:
-                SPMD.putString("scouterID", "SSk040");
-                SPMD.apply();
-                break;
-            case 43:
-                SPMD.putString("scouterID", "TSr043");
-                SPMD.apply();
-                break;
-            case 44:
-                SPMD.putString("scouterID", "TGk042");
-                SPMD.apply();
-                break;
-            case 45:
-                SPMD.putString("scouterID", "TBk041");
-                SPMD.apply();
-                break;
-            case 46:
-                SPMD.putString("scouterID", "VKb044");
-                SPMD.apply();
-                break;
-            case 47:
-                SPMD.putString("scouterID", "Low'a");
-                SPMD.apply();
-                break;
-            case 48:
-                SPMD.putString("scouterID", "ZAk045");
-                SPMD.apply();
-                break;
-            case 49:
-                SPMD.putString("scouterID", "ZYb046");
-                SPMD.apply();
-                break;
-            default:
-                SPMD.putString("scouterID", "Low'a");
-                SPMD.apply();
-        }
-
         SharedPreferences.Editor SPOS = otherSettings.edit();
 
-        SPOS.putInt("scouterIDNum", scouterList.getSelectedItemPosition());
-
+        SPOS.putString("scouterPos", Integer.toString(scouterPos.getSelectedItemPosition()));
         SPOS.apply();
-
     }
+
+
 }
 
 

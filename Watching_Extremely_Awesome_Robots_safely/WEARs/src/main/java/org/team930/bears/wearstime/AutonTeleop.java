@@ -22,14 +22,15 @@ import static android.app.AlertDialog.THEME_HOLO_LIGHT;
 @SuppressWarnings("ALL")
 public class AutonTeleop extends AppCompatActivity {
     Button goToPostMatch;
-    ToggleButton autoline;
-    RadioButton onField, parked, elevated;
-    TextView aSwitchADisplay, aScaleADisplay, aSwitchSDisplay, aScaleSDisplay, tSwitchADisplay, tSwitchSDisplay, tScaleADisplay, tScaleSDisplay, tOSwitchADisplay, tOSwitchSDisplay, tVaultSDisplay;
+    ToggleButton habLine;
+    RadioButton onField, lvlOne, lvlTwo, lvlThree;
+    TextView sCsHtDs, sCsCgDs, sRtHtDs, sRtCgDs, tCsHtDsSc, tCsHtDsFl, tCsCgDsSc, tCsCgDsFl, tRtHtDsSc, tRtHtDsFl, tRtCgDsSc, tRtCgDsFl;
 
-    Integer aAutoLine, aSwitchAttempts, aScaleAttempts, tSwitchAttempts, tScaleAttempts, tOSwitchAttempts, aSwitchScored, aScaleScored, tSwitchScored, tScaleScored, tOSwitchScored, tVaultScored, tParked, tElevated;
+    Integer sHabLine, sCsHt, sCsCg, sRtHt, sRtCg, tCsHtSc, tCsHtFl,  tCsCgSc, tCsCgFl, tRtHtSc, tRtHtFl,  tRtCgSc, tRtCgFl, habStatus;
     String matchDataPreferences, otherPreferences;
-    Boolean addAScoredCube, addTScoredCube;
-    String aAutoLinePassable, aSwitchAttemptsPassable, aScaleAttemptsPassable, tSwitchAttemptsPassable, tScaleAttemptsPassable, tOSwitchAttemptsPassable, aSwitchScoredPassable, aScaleScoredPassable, tSwitchScoredPassable, tScaleScoredPassable, tOSwitchScoredPassable, tVaultScoredPassable, tParkedPassable, tElevatedPassable;
+    String sHabLinePass, sCsHtPass, sCsCgPass, sRtHtPass, sRtCgPass, tCsHtScPass, tCsHtFlPass,  tCsCgScPass, tCsCgFlPass, tRtHtScPass, tRtHtFlPass,  tRtCgScPass, tRtCgFlPass, habStatusPass;
+    Boolean attemptsOutput;
+
 
     SharedPreferences matchData, otherSettings;
     MediaPlayer Still;
@@ -41,16 +42,14 @@ public class AutonTeleop extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_autonteleop);
 
-        //CUBE LIMITS
-        addAScoredCube = true;
-        addTScoredCube = true;
-
         //POPUPS
         ctw = new ContextThemeWrapper(this, THEME_HOLO_LIGHT);
         backPressed = new AlertDialog.Builder(ctw);
 
         //OHNINE
         Still = MediaPlayer.create(this, R.raw.ohnine_playa);
+
+        attemptsOutput = true;
 
 
         //SHARED PREFERENCES
@@ -60,94 +59,99 @@ public class AutonTeleop extends AppCompatActivity {
         matchData = getSharedPreferences(matchDataPreferences, 0);
         otherSettings = getSharedPreferences(otherPreferences, 0);
 
-
-
-        //AUTOLINE
-
         //BINARIES
-        aAutoLine = Integer.parseInt(matchData.getString("aAutoline", "0")); //binary
+        sHabLine = Integer.parseInt(matchData.getString("sHabline", "0")); //binary
 
         //VIEWS
-        autoline = findViewById(R.id.autoline);
+        habLine = findViewById(R.id.habLine);
 
-        if (aAutoLine == 0) {
-            autoline.setChecked(false);
+        if (sHabLine == 0) {
+            habLine.setChecked(false);
         } else {
-            autoline.setChecked(true);
+            habLine.setChecked(true);
         }
-
-        //ATTEMPTS
-
+//SANDSTORM SETTERS
         //COUNTS
-        aSwitchAttempts = Integer.parseInt(matchData.getString("aSwitchAttempts", "0"));
-        aScaleAttempts = Integer.parseInt(matchData.getString("aScaleAttempts", "0"));
-        tSwitchAttempts = Integer.parseInt(matchData.getString("tSwitchAttempts", "0"));
-        tScaleAttempts = Integer.parseInt(matchData.getString("tScaleAttempts", "0"));
-        tOSwitchAttempts = Integer.parseInt(matchData.getString("tSwitchAttempts", "0"));
+        sCsHt = Integer.parseInt(matchData.getString("sCsHt", "0"));
+        sCsCg = Integer.parseInt(matchData.getString("sCsCg", "0"));
+        sRtHt = Integer.parseInt(matchData.getString("sRtHt", "0"));
+        sRtCg = Integer.parseInt(matchData.getString("sRtCg", "0"));
 
 
         //VIEWS
-        aSwitchADisplay = findViewById(R.id.aSwitchDisplayA);
-        aScaleADisplay = findViewById(R.id.aScaleDisplayA);
-        tSwitchADisplay = findViewById(R.id.tSwitchDisplayA);
-        tScaleADisplay = findViewById(R.id.tScaleDisplayA);
-        tOSwitchADisplay = findViewById(R.id.tOSwitchDisplayA);
+        sCsHtDs = findViewById(R.id.sCsHtDs);
+        sCsCgDs = findViewById(R.id.sCsCgDs);
+        sRtHtDs = findViewById(R.id.sRtHtDs);
+        sRtCgDs = findViewById(R.id.sRtCgDs);
 
-        aSwitchADisplay.setText(String.format(Locale.ENGLISH, "%d", aSwitchAttempts));
-        aScaleADisplay.setText(String.format(Locale.ENGLISH, "%d", aScaleAttempts));
-        tSwitchADisplay.setText(String.format(Locale.ENGLISH, "%d", tSwitchAttempts));
-        tScaleADisplay.setText(String.format(Locale.ENGLISH, "%d", tScaleAttempts));
-        tOSwitchADisplay.setText(String.format(Locale.ENGLISH, "%d", tOSwitchAttempts));
+        sCsHtDs.setText(String.format(Locale.ENGLISH, "%d", sCsHt));
+        sCsCgDs.setText(String.format(Locale.ENGLISH, "%d", sCsCg));
+        sRtHtDs.setText(String.format(Locale.ENGLISH, "%d", sRtHt));
+        sRtCgDs.setText(String.format(Locale.ENGLISH, "%d", sRtCg));
 
-        //SCORED
+        //TELEOP SETTERS
 
         //COUNTS
-        aSwitchScored = Integer.parseInt(matchData.getString("aSwitchScored", "0"));
-        aScaleScored = Integer.parseInt(matchData.getString("aScaleScored", "0"));
-        tSwitchScored = Integer.parseInt(matchData.getString("tSwitchScored", "0"));
-        tScaleScored = Integer.parseInt(matchData.getString("tScaleScored", "0"));
-        tOSwitchScored = Integer.parseInt(matchData.getString("tSwitchScored", "0"));
-        tVaultScored = Integer.parseInt(matchData.getString("tVaultScored", "0"));
+        tCsHtSc = Integer.parseInt(matchData.getString("tCsHtSc", "0"));
+        tCsHtFl = Integer.parseInt(matchData.getString("tCsHtFl", "0"));
+        tCsCgSc = Integer.parseInt(matchData.getString("tCsCgSc", "0"));
+        tCsCgFl = Integer.parseInt(matchData.getString("tCsCgFl", "0"));
+        tRtHtSc = Integer.parseInt(matchData.getString("tRtHtSc", "0"));
+        tRtHtFl = Integer.parseInt(matchData.getString("tRtHtFl", "0"));
+        tRtCgSc = Integer.parseInt(matchData.getString("tRtCgSc", "0"));
+        tRtCgFl = Integer.parseInt(matchData.getString("tRtCgFl", "0"));
 
         //VIEWS
-        aSwitchSDisplay = findViewById(R.id.aSwitchDisplayS);
-        aScaleSDisplay = findViewById(R.id.aScaleDisplayS);
-        tSwitchSDisplay = findViewById(R.id.tSwitchDisplayS);
-        tScaleSDisplay = findViewById(R.id.tScaleDisplayS);
-        tOSwitchSDisplay = findViewById(R.id.tOSwitchDisplayS);
-        tVaultSDisplay = findViewById(R.id.tVaultDisplayS);
+        tCsHtDsSc = findViewById(R.id.tCsHtDsSc);
+        tCsHtDsFl = findViewById(R.id.tCsHtDsFl);
+        tCsCgDsSc = findViewById(R.id.tCsCgDsSc);
+        tCsCgDsFl = findViewById(R.id.tCsCgDsFl);
+        tRtHtDsSc = findViewById(R.id.tRtHtDsSc);
+        tRtHtDsFl = findViewById(R.id.tRtHtDsFl);
+        tRtCgDsSc = findViewById(R.id.tRtCgDsSc);
+        tRtCgDsFl = findViewById(R.id.tRtCgDsFl);
 
-        aSwitchSDisplay.setText(String.format(Locale.ENGLISH, "%d", aSwitchScored));
-        aScaleSDisplay.setText(String.format(Locale.ENGLISH, "%d", aScaleScored));
-        tSwitchSDisplay.setText(String.format(Locale.ENGLISH, "%d", tSwitchScored));
-        tScaleSDisplay.setText(String.format(Locale.ENGLISH, "%d", tScaleScored));
-        tOSwitchSDisplay.setText(String.format(Locale.ENGLISH, "%d", tOSwitchScored));
-        tVaultSDisplay.setText(String.format(Locale.ENGLISH, "%d", tVaultScored));
 
+        tCsHtDsSc.setText(String.format(Locale.ENGLISH, "%d", tCsHtSc));
+        tCsHtDsFl.setText(String.format(Locale.ENGLISH, "%d", tCsHtFl));
+        tCsCgDsSc.setText(String.format(Locale.ENGLISH, "%d", tCsCgSc));
+        tCsCgDsFl.setText(String.format(Locale.ENGLISH, "%d", tCsCgFl));
+        tRtHtDsSc.setText(String.format(Locale.ENGLISH, "%d", tRtHtSc));
+        tRtHtDsFl.setText(String.format(Locale.ENGLISH, "%d", tRtHtFl));
+        tRtCgDsSc.setText(String.format(Locale.ENGLISH, "%d", tRtCgSc));
+        tRtCgDsFl.setText(String.format(Locale.ENGLISH, "%d", tRtCgFl));
 
         //ENDGAME
 
         //BINARIES
-        tParked = Integer.parseInt(matchData.getString("tParked", "0")); //binary
-        tElevated = Integer.parseInt(matchData.getString("tElevated", "0")); //binary
+        habStatus = Integer.parseInt(matchData.getString("tParked", "0")); //binary
 
         //VIEWS
         onField = findViewById(R.id.onField);
-        parked = findViewById(R.id.parked);
-        elevated = findViewById(R.id.elevated);
+        lvlOne = findViewById(R.id.lvlOne);
+        lvlTwo = findViewById(R.id.lvlTwo);
+        lvlThree = findViewById(R.id.lvlThree);
 
-        if (tParked == 1) {
-            onField.setChecked(false);
-            parked.setChecked(true);
-            elevated.setChecked(false);
-        } else if (tElevated == 1) {
-            onField.setChecked(false);
-            parked.setChecked(false);
-            elevated.setChecked(true);
-        } else {
+        if (habStatus == 0) {
             onField.setChecked(true);
-            parked.setChecked(false);
-            elevated.setChecked(false);
+            lvlOne.setChecked(false);
+            lvlTwo.setChecked(false);
+            lvlThree.setChecked(false);
+        } else if (habStatus == 1) {
+            onField.setChecked(false);
+            lvlOne.setChecked(true);
+            lvlTwo.setChecked(false);
+            lvlThree.setChecked(false);
+        } else if(habStatus == 2) {
+            onField.setChecked(false);
+            lvlOne.setChecked(false);
+            lvlTwo.setChecked(true);
+            lvlThree.setChecked(false);
+        } else {
+            onField.setChecked(false);
+            lvlOne.setChecked(false);
+            lvlTwo.setChecked(false);
+            lvlThree.setChecked(true);
         }
 
         //NEXT
@@ -157,232 +161,210 @@ public class AutonTeleop extends AppCompatActivity {
     }
 
 
-    //AUTON AUTOLINE
-    public void setAutoline(View v) {
+    //SANDSTORM HABLINE
+    public void setHabLine(View v) {
 
-        if (autoline.isChecked()) {
-            aAutoLine = 1;
+        if (habLine.isChecked()) {
+            sHabLine = 1;
 
         } else {
-            aAutoLine = 0;
-
+            sHabLine = 0;
         }
     }
 
-//AUTON SWITCH
+//SANDSTORM CARGO SHIP
+    //Hatches
+    public void setSCsHtSub(View v) {
+        if (sCsHt > 0) {
+            sCsHt -= 1;
+            sCsHtDs.setText(String.format(Locale.ENGLISH, "%d", sCsHt));
+        }
+    }
+
+    public void setSCsHtAdd(View v) {
+        sCsHt += 1;
+        sCsHtDs.setText(String.format(Locale.ENGLISH, "%d", sCsHt));
+    }
+
+    //Cargo
+    public void setSCsCgSub(View v) {
+
+        if (sCsCg > 0) {
+            sCsCg -= 1;
+            sCsCgDs.setText(String.format(Locale.ENGLISH, "%d", sCsCg));
+        }
+    }
+
+    public void setSCsCgAdd(View v) {
+        sCsCg += 1;
+        sCsCgDs.setText(String.format(Locale.ENGLISH, "%d", sCsCg));
+        }
+
+//SANDSTORM ROCKET SHIP
+   
+    //Hatches
+    public void setSRtHtSub(View v) {
+        if (sRtHt > 0) {
+            sRtHt -= 1;
+            sRtHtDs.setText(String.format(Locale.ENGLISH, "%d", sRtHt));
+        }
+    }
+
+    public void setSRtHtAdd(View v) {
+        sRtHt += 1;
+        sRtHtDs.setText(String.format(Locale.ENGLISH, "%d", sRtHt));
+    }
+
+    //Cargo
+    public void setSRtCgSub(View v) {
+
+        if (sRtCg > 0) {
+            sRtCg -= 1;
+            sRtCgDs.setText(String.format(Locale.ENGLISH, "%d", sRtCg));
+        }
+    }
+
+    public void setSRtCgAdd(View v) {
+        sRtCg += 1;
+        sRtCgDs.setText(String.format(Locale.ENGLISH, "%d", sRtCg));
+    }
+
+//TELEOP CARGO SHIP HATCHES
 
     //ATTEMPTS
-    public void setASwitchSubtractA(View v) {
-        if (aSwitchAttempts > 0 && aSwitchAttempts > aSwitchScored) {
-            aSwitchAttempts -= 1;
-            aSwitchADisplay.setText(String.format(Locale.ENGLISH, "%d", aSwitchAttempts));
+    public void setTCsHtSubSc(View v) {
+        if (tCsHtSc > 0) {
+            tCsHtSc -= 1;
+            tCsHtDsSc.setText(String.format(Locale.ENGLISH, "%d", tCsHtSc));
         }
     }
 
-    public void setASwitchAddA(View v) {
-        aSwitchAttempts += 1;
-        aSwitchADisplay.setText(String.format(Locale.ENGLISH, "%d", aSwitchAttempts));
+    public void setTCsHtAddSc(View v) {
+        tCsHtSc += 1;
+        tCsHtDsSc.setText(String.format(Locale.ENGLISH, "%d", tCsHtSc));
+    }
+    
+    //SCORED
+    public void setTCsHtSubFl(View v) {
+
+        if (tCsHtFl > 0) {
+            tCsHtFl -= 1;
+            tCsHtDsFl.setText(String.format(Locale.ENGLISH, "%d", tCsHtFl));
+        }
+    }
+
+    public void setTCsHtAddFl(View v) {
+        tCsHtFl += 1;
+        tCsHtDsFl.setText(String.format(Locale.ENGLISH, "%d", tCsHtFl));
+    }
+
+//TELEOP CARGO SHIP CARGO
+ 
+    //ATTEMPTS
+    public void setTCsCgSubSc(View v) {
+        if (tCsCgSc > 0) {
+            tCsCgSc -= 1;
+            tCsCgDsSc.setText(String.format(Locale.ENGLISH, "%d", tCsCgSc));
+        }
+    }
+
+    public void setTCsCgAddSc(View v) {
+        tCsCgSc += 1;
+        tCsCgDsSc.setText(String.format(Locale.ENGLISH, "%d", tCsCgSc));
     }
 
     //SCORED
-    public void setASwitchSubtractS(View v) {
+  
+    public void setTCsCgSubFl(View v) {
 
-        if (aSwitchScored > 0) {
-            aSwitchScored -= 1;
-            aSwitchSDisplay.setText(String.format(Locale.ENGLISH, "%d", aSwitchScored));
+        if (tCsCgFl > 0) {
+            tCsCgFl -= 1;
+            tCsCgDsFl.setText(String.format(Locale.ENGLISH, "%d", tCsCgFl));
         }
     }
 
-    public void setASwitchAddS(View v) {
-        if (!(aSwitchScored + aScaleScored >= 19) && aSwitchScored + aScaleScored + tSwitchScored + tScaleScored + tOSwitchScored + tVaultScored < 60) {
-
-            aSwitchScored += 1;
-            aSwitchSDisplay.setText(String.format(Locale.ENGLISH, "%d", aSwitchScored));
-            aSwitchAttempts += 1;
-            aSwitchADisplay.setText(String.format(Locale.ENGLISH, "%d", aSwitchAttempts));
-
-        }
+    public void setTCsCgAddFl(View v) {
+        tCsCgFl += 1;
+        tCsCgDsFl.setText(String.format(Locale.ENGLISH, "%d", tCsCgFl));
     }
 
-//AUTON SCALE
+//TELEOP ROCKET SHIP HATCHES
 
     //ATTEMPTS
-    public void setAScaleSubtractA(View v) {
-        if (aScaleAttempts > 0 && aScaleAttempts > aScaleScored) {
-            aScaleAttempts -= 1;
-            aScaleADisplay.setText(String.format(Locale.ENGLISH, "%d", aScaleAttempts));
+    public void setTRtHtSubSc(View v) {
+        if (tRtHtSc > 0) {
+            tRtHtSc -= 1;
+            tRtHtDsSc.setText(String.format(Locale.ENGLISH, "%d", tRtHtSc));
         }
     }
 
-    public void setAScaleAddA(View v) {
-
-        aScaleAttempts += 1;
-        aScaleADisplay.setText(String.format(Locale.ENGLISH, "%d", aScaleAttempts));
+    public void setTRtHtAddSc(View v) {
+        tRtHtSc += 1;
+        tRtHtDsSc.setText(String.format(Locale.ENGLISH, "%d", tRtHtSc));
     }
 
     //SCORED
-    public void setAScaleSubtractS(View v) {
-        if (aScaleScored > 0) {
+    public void setTRtHtSubFl(View v) {
 
-            aScaleScored -= 1;
-            aScaleSDisplay.setText(String.format(Locale.ENGLISH, "%d", aScaleScored));
+        if (tRtHtFl > 0) {
+            tRtHtFl -= 1;
+            tRtHtDsFl.setText(String.format(Locale.ENGLISH, "%d", tRtHtFl));
         }
     }
 
-    public void setAScaleAddS(View v) {
-        if (!(aSwitchScored + aScaleScored >= 19) && aSwitchScored + aScaleScored + tSwitchScored + tScaleScored + tOSwitchScored + tVaultScored < 60) {
-
-
-            aScaleScored += 1;
-            aScaleSDisplay.setText(String.format(Locale.ENGLISH, "%d", aScaleScored));
-            aScaleAttempts += 1;
-            aScaleADisplay.setText(String.format(Locale.ENGLISH, "%d", aScaleAttempts));
-
-        }
+    public void setTRtHtAddFl(View v) {
+        tRtHtFl += 1;
+        tRtHtDsFl.setText(String.format(Locale.ENGLISH, "%d", tRtHtFl));
     }
 
-//TELEOP SWITCH
+//TELEOP ROCKET SHIP CARGO
 
     //ATTEMPTS
-    public void setTSwitchSubtractA(View v) {
-        if (tSwitchAttempts > 0 && tSwitchAttempts > tSwitchScored) {
-            tSwitchAttempts -= 1;
-            tSwitchADisplay.setText(String.format(Locale.ENGLISH, "%d", tSwitchAttempts));
+    public void setTRtCgSubSc(View v) {
+        if (tRtCgSc > 0) {
+            tRtCgSc -= 1;
+            tRtCgDsSc.setText(String.format(Locale.ENGLISH, "%d", tRtCgSc));
         }
     }
 
-    public void setTSwitchAddA(View v) {
-        tSwitchAttempts += 1;
-        tSwitchADisplay.setText(String.format(Locale.ENGLISH, "%d", tSwitchAttempts));
+    public void setTRtCgAddSc(View v) {
+        tRtCgSc += 1;
+        tRtCgDsSc.setText(String.format(Locale.ENGLISH, "%d", tRtCgSc));
     }
 
     //SCORED
-    public void setTSwitchSubtractS(View v) {
+    public void setTRtCgSubFl(View v) {
 
-        if (tSwitchScored > 0) {
-            tSwitchScored -= 1;
-            tSwitchSDisplay.setText(String.format(Locale.ENGLISH, "%d", tSwitchScored));
+        if (tRtCgFl > 0) {
+            tRtCgFl -= 1;
+            tRtCgDsFl.setText(String.format(Locale.ENGLISH, "%d", tRtCgFl));
         }
     }
 
-    public void setTSwitchAddS(View v) {
-        if (!(tOSwitchScored + tSwitchScored + tScaleScored + tVaultScored >= 60 - (aSwitchScored + aScaleScored))) {
-
-            tSwitchScored += 1;
-            tSwitchSDisplay.setText(String.format(Locale.ENGLISH, "%d", tSwitchScored));
-            tSwitchAttempts += 1;
-            tSwitchADisplay.setText(String.format(Locale.ENGLISH, "%d", tSwitchAttempts));
-
-        }
-    }
-
-//TELEOP SCALE
-
-    //ATTEMPTS
-    public void setTScaleSubtractA(View v) {
-        if (tScaleAttempts > 0 && tScaleAttempts > tScaleScored) {
-            tScaleAttempts -= 1;
-            tScaleADisplay.setText(String.format(Locale.ENGLISH, "%d", tScaleAttempts));
-        }
-    }
-
-    public void setTScaleAddA(View v) {
-        //if(add 1 to both fields)
-        tScaleAttempts += 1;
-        tScaleADisplay.setText(String.format(Locale.ENGLISH, "%d", tScaleAttempts));
-    }
-
-    //SCORED
-    public void setTScaleSubtractS(View v) {
-        if (tScaleScored > 0) {
-            tScaleScored -= 1;
-            tScaleSDisplay.setText(String.format(Locale.ENGLISH, "%d", tScaleScored));
-        }
-    }
-
-    public void setTScaleAddS(View v) {
-        if (!(tOSwitchScored + tSwitchScored + tScaleScored + tVaultScored >= 60 - (aSwitchScored + aScaleScored))) {
-
-
-            tScaleScored += 1;
-            tScaleSDisplay.setText(String.format(Locale.ENGLISH, "%d", tScaleScored));
-            tScaleAttempts += 1;
-            tScaleADisplay.setText(String.format(Locale.ENGLISH, "%d", tScaleAttempts));
-
-        }
-    }
-
-//TELEOP SWITCH
-
-    //ATTEMPTS
-    public void setTOSwitchSubtractA(View v) {
-        if (tOSwitchAttempts > 0 && tOSwitchAttempts > tOSwitchScored) {
-            tOSwitchAttempts -= 1;
-            tOSwitchADisplay.setText(String.format(Locale.ENGLISH, "%d", tOSwitchAttempts));
-        }
-    }
-
-    public void setTOSwitchAddA(View v) {
-        tOSwitchAttempts += 1;
-        tOSwitchADisplay.setText(String.format(Locale.ENGLISH, "%d", tOSwitchAttempts));
-    }
-
-    //SCORED
-    public void setTOSwitchSubtractS(View v) {
-
-        if (tOSwitchScored > 0) {
-            tOSwitchScored -= 1;
-            tOSwitchSDisplay.setText(String.format(Locale.ENGLISH, "%d", tOSwitchScored));
-        }
-    }
-
-    public void setTOSwitchAddS(View v) {
-        if (!(tOSwitchScored + tSwitchScored + tScaleScored + tVaultScored >= 60 - (aSwitchScored + aScaleScored))) {
-
-
-            tOSwitchScored += 1;
-            tOSwitchSDisplay.setText(String.format(Locale.ENGLISH, "%d", tOSwitchScored));
-            tOSwitchAttempts += 1;
-            tOSwitchADisplay.setText(String.format(Locale.ENGLISH, "%d", tOSwitchAttempts));
-
-        }
-    }
-
-//TELEOP VAULT
-
-    //SCORED
-    public void setTVaultSubtractS(View v) {
-        if (tVaultScored > 0) {
-            tVaultScored -= 1;
-            tVaultSDisplay.setText(String.format(Locale.ENGLISH, "%d", tVaultScored));
-        }
-    }
-
-    public void setTVaultAddS(View v) {
-        if (!(tOSwitchScored + tSwitchScored + tScaleScored + tVaultScored >= 60 - (aSwitchScored + aScaleScored))) {
-
-            tVaultScored += 1;
-            tVaultSDisplay.setText(String.format(Locale.ENGLISH, "%d", tVaultScored));
-        }
+    public void setTRtCgAddFl(View v) {
+        tRtCgFl += 1;
+        tRtCgDsFl.setText(String.format(Locale.ENGLISH, "%d", tRtCgFl));
     }
 
     //ENDGAME
     public void setOnField(View v) {
-        tParked = 0;
-        tElevated = 0;
+        habStatus = 0;
 
     }
 
-    public void setParked(View v) {
-        tParked = 1;
-        tElevated = 0;
+    public void setLvlOne(View v) {
 
+        habStatus = 1;
     }
 
-    public void setElevated(View v) {
-        tParked = 0;
-        tElevated = 1;
+    public void setLvlTwo(View v) {
 
+        habStatus = 2;
+    }
+
+    public void setLvlThree(View v) {
+
+        habStatus = 3;
     }
 
     //NEXT
@@ -391,52 +373,62 @@ public class AutonTeleop extends AppCompatActivity {
         //PASSABLE STRING CREATION
 
         //AUTOLINE
-        aAutoLinePassable = String.format(Locale.ENGLISH, "%d", aAutoLine);
+        sHabLinePass = String.format(Locale.ENGLISH, "%d", sHabLine);
 
         //ATTEMPTS
-        aSwitchAttemptsPassable = String.format(Locale.ENGLISH, "%d", aSwitchAttempts);
-        aScaleAttemptsPassable = String.format(Locale.ENGLISH, "%d", aScaleAttempts);
-        tSwitchAttemptsPassable = String.format(Locale.ENGLISH, "%d", tSwitchAttempts);
-        tScaleAttemptsPassable = String.format(Locale.ENGLISH, "%d", tScaleAttempts);
-        tOSwitchAttemptsPassable = String.format(Locale.ENGLISH, "%d", tOSwitchAttempts);
+        sCsHtPass = String.format(Locale.ENGLISH, "%d", sCsHt);
+        sCsCgPass = String.format(Locale.ENGLISH, "%d", sCsCg);
+        sRtHtPass = String.format(Locale.ENGLISH, "%d", sCsHt);
+        sRtCgPass = String.format(Locale.ENGLISH, "%d", sCsCg);
 
-        //SCORED
-        aSwitchScoredPassable = String.format(Locale.ENGLISH, "%d", aSwitchScored);
-        aScaleScoredPassable = String.format(Locale.ENGLISH, "%d", aScaleScored);
-        tSwitchScoredPassable = String.format(Locale.ENGLISH, "%d", tSwitchScored);
-        tScaleScoredPassable = String.format(Locale.ENGLISH, "%d", tScaleScored);
-        tOSwitchScoredPassable = String.format(Locale.ENGLISH, "%d", tOSwitchScored);
-        tVaultScoredPassable = String.format(Locale.ENGLISH, "%d", tVaultScored);
+        tCsHtScPass = String.format(Locale.ENGLISH, "%d", tCsHtSc);
+        tCsCgScPass = String.format(Locale.ENGLISH, "%d", tCsCgSc);
+        tRtHtScPass = String.format(Locale.ENGLISH, "%d", tRtHtSc);
+        tRtCgScPass = String.format(Locale.ENGLISH, "%d", tRtCgSc);
+
+        if(attemptsOutput) {
+            tCsHtFlPass = String.format(Locale.ENGLISH, "%d", tCsHtFl + tCsHtSc);
+            tCsCgFlPass = String.format(Locale.ENGLISH, "%d", tCsCgFl + tCsCgSc);
+            tRtHtFlPass = String.format(Locale.ENGLISH, "%d", tRtHtFl + tRtHtSc);
+            tRtCgFlPass = String.format(Locale.ENGLISH, "%d", tRtCgFl + tRtCgSc);
+        } else {
+            tCsHtFlPass = String.format(Locale.ENGLISH, "%d", tCsHtFl);
+            tCsCgFlPass = String.format(Locale.ENGLISH, "%d", tCsCgFl);
+            tRtHtFlPass = String.format(Locale.ENGLISH, "%d", tRtHtFl);
+            tRtCgFlPass = String.format(Locale.ENGLISH, "%d", tRtCgFl);
+        }
+
 
 
         //ENDGAME
-        tParkedPassable = String.format(Locale.ENGLISH, "%d", tParked);
-        tElevatedPassable = String.format(Locale.ENGLISH, "%d", tElevated);
+        habStatusPass = String.format(Locale.ENGLISH, "%d", habStatus);
+
 
         //SAVING PASSABLES
         SharedPreferences.Editor SPMD = matchData.edit();
 
         //AUTOLINE
-        SPMD.putString("aAutoline", aAutoLinePassable);
+        SPMD.putString("sHabLine", sHabLinePass);
 
         //ATTEMPTS
-        SPMD.putString("aSwitchAttempts", aSwitchAttemptsPassable);
-        SPMD.putString("aScaleAttempts", aScaleAttemptsPassable);
-        SPMD.putString("tSwitchAttempts", tSwitchAttemptsPassable);
-        SPMD.putString("tScaleAttempts", tScaleAttemptsPassable);
-        SPMD.putString("tOSwitchAttempts", tOSwitchAttemptsPassable);
+        SPMD.putString("sCsHt", sCsHtPass);
+        SPMD.putString("sCsCg", sCsCgPass);
+        SPMD.putString("sRtHt", sRtHtPass);
+        SPMD.putString("sRtCg", sRtCgPass);
 
-        //SCORED
-        SPMD.putString("aSwitchScored", aSwitchScoredPassable);
-        SPMD.putString("aScaleScored", aScaleScoredPassable);
-        SPMD.putString("tSwitchScored", tSwitchScoredPassable);
-        SPMD.putString("tScaleScored", tScaleScoredPassable);
-        SPMD.putString("tOSwitchScored", tOSwitchScoredPassable);
-        SPMD.putString("tVaultScored", tVaultScoredPassable);
+        SPMD.putString("tCsHtSc", tCsHtScPass);
+        SPMD.putString("tCsCgSc", tCsCgScPass);
+        SPMD.putString("tRtHtSc", tRtHtScPass);
+        SPMD.putString("tRtCgSc", tRtCgScPass);
+
+        SPMD.putString("tRtHtFl", tCsHtFlPass);
+        SPMD.putString("tRtCgFl", tCsCgFlPass);
+        SPMD.putString("tRtHtFl", tRtHtFlPass);
+        SPMD.putString("tRtCgFl", tRtCgFlPass);
+
 
         //ENDGAME
-        SPMD.putString("tParked", tParkedPassable);
-        SPMD.putString("tElevated", tElevatedPassable);
+        SPMD.putString("habStatus", habStatusPass);
         SPMD.apply();
 
         //NEXT
@@ -447,52 +439,62 @@ public class AutonTeleop extends AppCompatActivity {
     public void onPause() {
         super.onPause();
         //AUTOLINE
-        aAutoLinePassable = String.format(Locale.ENGLISH, "%d", aAutoLine);
+        //PASSABLE STRING CREATION
+
+        //AUTOLINE
+        sHabLinePass = String.format(Locale.ENGLISH, "%d", sHabLine);
 
         //ATTEMPTS
-        aSwitchAttemptsPassable = String.format(Locale.ENGLISH, "%d", aSwitchAttempts);
-        aScaleAttemptsPassable = String.format(Locale.ENGLISH, "%d", aScaleAttempts);
-        tSwitchAttemptsPassable = String.format(Locale.ENGLISH, "%d", tSwitchAttempts);
-        tScaleAttemptsPassable = String.format(Locale.ENGLISH, "%d", tScaleAttempts);
-        tOSwitchAttemptsPassable = String.format(Locale.ENGLISH, "%d", tOSwitchAttempts);
+        sCsHtPass = String.format(Locale.ENGLISH, "%d", sCsHt);
+        sCsCgPass = String.format(Locale.ENGLISH, "%d", sCsCg);
+        sRtHtPass = String.format(Locale.ENGLISH, "%d", sCsHt);
+        sRtCgPass = String.format(Locale.ENGLISH, "%d", sCsCg);
 
-        //SCORED
-        aSwitchScoredPassable = String.format(Locale.ENGLISH, "%d", aSwitchScored);
-        aScaleScoredPassable = String.format(Locale.ENGLISH, "%d", aScaleScored);
-        tSwitchScoredPassable = String.format(Locale.ENGLISH, "%d", tSwitchScored);
-        tScaleScoredPassable = String.format(Locale.ENGLISH, "%d", tScaleScored);
-        tOSwitchScoredPassable = String.format(Locale.ENGLISH, "%d", tOSwitchScored);
-        tVaultScoredPassable = String.format(Locale.ENGLISH, "%d", tVaultScored);
+
+        tCsHtScPass = String.format(Locale.ENGLISH, "%d", tCsHtSc);
+        tCsCgScPass = String.format(Locale.ENGLISH, "%d", tCsCgSc);
+        tRtHtScPass = String.format(Locale.ENGLISH, "%d", tRtHtSc);
+        tRtCgScPass = String.format(Locale.ENGLISH, "%d", tRtCgSc);
+
+        tCsHtFlPass = String.format(Locale.ENGLISH, "%d", tCsHtFl);
+        tCsCgFlPass = String.format(Locale.ENGLISH, "%d", tCsCgFl);
+        tRtHtFlPass = String.format(Locale.ENGLISH, "%d", tRtHtFl);
+        tRtCgFlPass = String.format(Locale.ENGLISH, "%d", tRtCgFl);
+
 
 
         //ENDGAME
-        tParkedPassable = String.format(Locale.ENGLISH, "%d", tParked);
-        tElevatedPassable = String.format(Locale.ENGLISH, "%d", tElevated);
+        habStatusPass = String.format(Locale.ENGLISH, "%d", habStatus);
+
 
         //SAVING PASSABLES
         SharedPreferences.Editor SPMD = matchData.edit();
 
         //AUTOLINE
-        SPMD.putString("aAutoline", aAutoLinePassable);
+        SPMD.putString("sHabLine", sHabLinePass);
 
         //ATTEMPTS
-        SPMD.putString("aSwitchAttempts", aSwitchAttemptsPassable);
-        SPMD.putString("aScaleAttempts", aScaleAttemptsPassable);
-        SPMD.putString("tSwitchAttempts", tSwitchAttemptsPassable);
-        SPMD.putString("tScaleAttempts", tScaleAttemptsPassable);
-        SPMD.putString("tOSwitchAttempts", tOSwitchAttemptsPassable);
+        SPMD.putString("sCsHt", sCsHtPass);
+        SPMD.putString("sCsCg", sCsCgPass);
+        SPMD.putString("sRtHt", sRtHtPass);
+        SPMD.putString("sRtCg", sRtCgPass);
 
-        //SCORED
-        SPMD.putString("aSwitchScored", aSwitchScoredPassable);
-        SPMD.putString("aScaleScored", aScaleScoredPassable);
-        SPMD.putString("tSwitchScored", tSwitchScoredPassable);
-        SPMD.putString("tScaleScored", tScaleScoredPassable);
-        SPMD.putString("tOSwitchScored", tOSwitchScoredPassable);
-        SPMD.putString("tVaultScored", tVaultScoredPassable);
+        SPMD.putString("tCsHtSc", tCsHtScPass);
+        SPMD.putString("tCsCgSc", tCsCgScPass);
+        SPMD.putString("tRtHtSc", tRtHtScPass);
+        SPMD.putString("tRtCgSc", tRtCgScPass);
+
+        SPMD.putString("tRtHtFl", tCsHtFlPass);
+        SPMD.putString("tRtCgFl", tCsCgFlPass);
+        SPMD.putString("tRtHtFl", tRtHtFlPass);
+        SPMD.putString("tRtCgFl", tRtCgFlPass);
+
 
         //ENDGAME
-        SPMD.putString("tParked", tParkedPassable);
-        SPMD.putString("tElevated", tElevatedPassable);
+        SPMD.putString("habStatus", habStatusPass);
+        SPMD.putString("autonTeleopVals", sHabLinePass + ","  + sCsHtPass + ","  + sCsCgPass + ","  + sRtHtPass + ","  + sRtCgPass + ","  +
+                tCsHtScPass + ","  + tCsHtFlPass + ","  +  tCsCgScPass + ","  + tCsCgFlPass + ","  +
+                tRtHtScPass + ","  + tRtHtFlPass + ","  + tRtCgScPass + ","  + tRtCgFlPass + ","  + habStatusPass + ",");
         SPMD.apply();
 
     }
@@ -502,89 +504,98 @@ public class AutonTeleop extends AppCompatActivity {
 
 
         //BINARIES
-        aAutoLine = Integer.parseInt(matchData.getString("aAutoline", "0")); //binary
+        sHabLine = Integer.parseInt(matchData.getString("sHabline", "0")); //binary
 
         //VIEWS
-        autoline = findViewById(R.id.autoline);
+        habLine = findViewById(R.id.habLine);
 
-        if (aAutoLine == 0) {
-            autoline.setChecked(false);
+        if (sHabLine == 0) {
+            habLine.setChecked(false);
         } else {
-            autoline.setChecked(true);
+            habLine.setChecked(true);
         }
-
-        //ATTEMPTS
-
+//SANDSTORM SETTERS
         //COUNTS
-        aSwitchAttempts = Integer.parseInt(matchData.getString("aSwitchAttempts", "0"));
-        aScaleAttempts = Integer.parseInt(matchData.getString("aScaleAttempts", "0"));
-        tSwitchAttempts = Integer.parseInt(matchData.getString("tSwitchAttempts", "0"));
-        tScaleAttempts = Integer.parseInt(matchData.getString("tScaleAttempts", "0"));
-        tOSwitchAttempts = Integer.parseInt(matchData.getString("tSwitchAttempts", "0"));
+        sCsHt = Integer.parseInt(matchData.getString("sCsHt", "0"));
+        sCsCg = Integer.parseInt(matchData.getString("sCsCg", "0"));
+        sRtHt = Integer.parseInt(matchData.getString("sRtHt", "0"));
+        sRtCg = Integer.parseInt(matchData.getString("sRtCg", "0"));
 
 
         //VIEWS
-        aSwitchADisplay = findViewById(R.id.aSwitchDisplayA);
-        aScaleADisplay = findViewById(R.id.aScaleDisplayA);
-        tSwitchADisplay = findViewById(R.id.tSwitchDisplayA);
-        tScaleADisplay = findViewById(R.id.tScaleDisplayA);
-        tOSwitchADisplay = findViewById(R.id.tOSwitchDisplayA);
+        sCsHtDs = findViewById(R.id.sCsHtDs);
+        sCsCgDs = findViewById(R.id.sCsCgDs);
+        sRtHtDs = findViewById(R.id.sRtHtDs);
+        sRtCgDs = findViewById(R.id.sRtCgDs);
 
-        aSwitchADisplay.setText(String.format(Locale.ENGLISH, "%d", aSwitchAttempts));
-        aScaleADisplay.setText(String.format(Locale.ENGLISH, "%d", aScaleAttempts));
-        tSwitchADisplay.setText(String.format(Locale.ENGLISH, "%d", tSwitchAttempts));
-        tScaleADisplay.setText(String.format(Locale.ENGLISH, "%d", tScaleAttempts));
-        tOSwitchADisplay.setText(String.format(Locale.ENGLISH, "%d", tOSwitchAttempts));
+        sCsHtDs.setText(String.format(Locale.ENGLISH, "%d", sCsHt));
+        sCsCgDs.setText(String.format(Locale.ENGLISH, "%d", sCsCg));
+        sRtHtDs.setText(String.format(Locale.ENGLISH, "%d", sRtHt));
+        sRtCgDs.setText(String.format(Locale.ENGLISH, "%d", sRtCg));
 
-        //SCORED
+        //TELEOP SETTERS
 
         //COUNTS
-        aSwitchScored = Integer.parseInt(matchData.getString("aSwitchScored", "0"));
-        aScaleScored = Integer.parseInt(matchData.getString("aScaleScored", "0"));
-        tSwitchScored = Integer.parseInt(matchData.getString("tSwitchScored", "0"));
-        tScaleScored = Integer.parseInt(matchData.getString("tScaleScored", "0"));
-        tOSwitchScored = Integer.parseInt(matchData.getString("tSwitchScored", "0"));
-        tVaultScored = Integer.parseInt(matchData.getString("tVaultScored", "0"));
+        tCsHtSc = Integer.parseInt(matchData.getString("tCsHtSc", "0"));
+        tCsHtFl = Integer.parseInt(matchData.getString("tCsHtFl", "0"));
+        tCsCgSc = Integer.parseInt(matchData.getString("tCsCgSc", "0"));
+        tCsCgFl = Integer.parseInt(matchData.getString("tCsCgFl", "0"));
+        tRtHtSc = Integer.parseInt(matchData.getString("tRtHtSc", "0"));
+        tRtHtFl = Integer.parseInt(matchData.getString("tRtHtFl", "0"));
+        tRtCgSc = Integer.parseInt(matchData.getString("tRtCgSc", "0"));
+        tRtCgFl = Integer.parseInt(matchData.getString("tRtCgFl", "0"));
 
         //VIEWS
-        aSwitchSDisplay = findViewById(R.id.aSwitchDisplayS);
-        aScaleSDisplay = findViewById(R.id.aScaleDisplayS);
-        tSwitchSDisplay = findViewById(R.id.tSwitchDisplayS);
-        tScaleSDisplay = findViewById(R.id.tScaleDisplayS);
-        tOSwitchSDisplay = findViewById(R.id.tOSwitchDisplayS);
-        tVaultSDisplay = findViewById(R.id.tVaultDisplayS);
+        tCsHtDsSc = findViewById(R.id.tCsHtDsSc);
+        tCsHtDsFl = findViewById(R.id.tCsHtDsFl);
+        tCsCgDsSc = findViewById(R.id.tCsCgDsSc);
+        tCsCgDsFl = findViewById(R.id.tCsCgDsFl);
+        tRtHtDsSc = findViewById(R.id.tRtHtDsSc);
+        tRtHtDsFl = findViewById(R.id.tRtHtDsFl);
+        tRtCgDsSc = findViewById(R.id.tRtCgDsSc);
+        tRtCgDsFl = findViewById(R.id.tRtCgDsFl);
 
-        aSwitchSDisplay.setText(String.format(Locale.ENGLISH, "%d", aSwitchScored));
-        aScaleSDisplay.setText(String.format(Locale.ENGLISH, "%d", aScaleScored));
-        tSwitchSDisplay.setText(String.format(Locale.ENGLISH, "%d", tSwitchScored));
-        tScaleSDisplay.setText(String.format(Locale.ENGLISH, "%d", tScaleScored));
-        tOSwitchSDisplay.setText(String.format(Locale.ENGLISH, "%d", tOSwitchScored));
-        tVaultSDisplay.setText(String.format(Locale.ENGLISH, "%d", tVaultScored));
 
+        tCsHtDsSc.setText(String.format(Locale.ENGLISH, "%d", tCsHtSc));
+        tCsHtDsFl.setText(String.format(Locale.ENGLISH, "%d", tCsHtFl));
+        tCsCgDsSc.setText(String.format(Locale.ENGLISH, "%d", tCsCgSc));
+        tCsCgDsFl.setText(String.format(Locale.ENGLISH, "%d", tCsCgFl));
+        tRtHtDsSc.setText(String.format(Locale.ENGLISH, "%d", tRtHtSc));
+        tRtHtDsFl.setText(String.format(Locale.ENGLISH, "%d", tRtHtFl));
+        tRtCgDsSc.setText(String.format(Locale.ENGLISH, "%d", tRtCgSc));
+        tRtCgDsFl.setText(String.format(Locale.ENGLISH, "%d", tRtCgFl));
 
         //ENDGAME
 
         //BINARIES
-        tParked = Integer.parseInt(matchData.getString("tParked", "0")); //binary
-        tElevated = Integer.parseInt(matchData.getString("tElevated", "0")); //binary
+        habStatus = Integer.parseInt(matchData.getString("tParked", "0")); //binary
 
         //VIEWS
         onField = findViewById(R.id.onField);
-        parked = findViewById(R.id.parked);
-        elevated = findViewById(R.id.elevated);
+        lvlOne = findViewById(R.id.lvlOne);
+        lvlTwo = findViewById(R.id.lvlTwo);
+        lvlThree = findViewById(R.id.lvlThree);
 
-        if (tParked == 1) {
-            onField.setChecked(false);
-            parked.setChecked(true);
-            elevated.setChecked(false);
-        } else if (tElevated == 1) {
-            onField.setChecked(false);
-            parked.setChecked(false);
-            elevated.setChecked(true);
-        } else {
+        if (habStatus == 0) {
             onField.setChecked(true);
-            parked.setChecked(false);
-            elevated.setChecked(false);
+            lvlOne.setChecked(false);
+            lvlTwo.setChecked(false);
+            lvlThree.setChecked(false);
+        } else if (habStatus == 1) {
+            onField.setChecked(false);
+            lvlOne.setChecked(true);
+            lvlTwo.setChecked(false);
+            lvlThree.setChecked(false);
+        } else if(habStatus == 2) {
+            onField.setChecked(false);
+            lvlOne.setChecked(false);
+            lvlTwo.setChecked(true);
+            lvlThree.setChecked(false);
+        } else {
+            onField.setChecked(false);
+            lvlOne.setChecked(false);
+            lvlTwo.setChecked(false);
+            lvlThree.setChecked(true);
         }
     }
 

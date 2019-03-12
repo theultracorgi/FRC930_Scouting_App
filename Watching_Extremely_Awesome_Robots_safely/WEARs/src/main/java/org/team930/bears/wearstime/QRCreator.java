@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.zxing.BarcodeFormat;
@@ -28,8 +29,9 @@ public class QRCreator extends AppCompatActivity {
     Button genQRCode;
     LinearLayout border;
     ImageView qrCode;
+    TextView indicator;
 
-    boolean showToast;
+    boolean showToast, disFirstQR;
     String otherPreferences, matchDataPreferences, sendableData, numStoredMatches;
 
     SharedPreferences otherSettings, matchData;
@@ -57,10 +59,15 @@ public class QRCreator extends AppCompatActivity {
         genQRCode = findViewById(R.id.genQRCode);
         border = findViewById(R.id.border);
         qrCode = findViewById(R.id.qrCode);
+        indicator = findViewById(R.id.qrcodey);
 
-        sendableData = matchData.getString("match1", "") + matchData.getString("match2", "") +
-                matchData.getString("match3", "") + matchData.getString("match4", "") +
-                matchData.getString("match5", "") + matchData.getString("match6", "");
+        disFirstQR = false;
+
+
+        if(otherSettings.getBoolean("multipleQR", false)) {
+            genQRCode.setText("Generate QR-1");
+            disFirstQR = true;
+        }
 
 
         if (otherSettings.getInt(numStoredMatches, 0) == 0) {
@@ -72,6 +79,15 @@ public class QRCreator extends AppCompatActivity {
     }
 
     public void setGenQRCode(View v) {
+       if(otherSettings.getBoolean("multipleQR", true)) {
+            if (disFirstQR == true) {
+                sendableData = matchData.getString("firstQR", "");
+            } else {
+                sendableData = matchData.getString("secondQR", "");
+            }
+        } else {
+            sendableData = matchData.getString("firstQR", "");
+        }
 
         if (otherSettings.getInt(numStoredMatches, 0) != 0) {
 
@@ -95,12 +111,26 @@ public class QRCreator extends AppCompatActivity {
             }
 
             border.setVisibility(View.VISIBLE);
-            genQRCode.setVisibility(View.INVISIBLE);
 
             SharedPreferences.Editor SPOS = otherSettings.edit();
             SPOS.putBoolean("deleteData", true);
             SPOS.apply();
-            //QR Code Generation}
+            //QR Code Generation
+
+            disFirstQR = !disFirstQR;
+
+            if(false == otherSettings.getBoolean("multipleQR", false)) {
+
+            } else {
+                if(disFirstQR) {
+                    genQRCode.setText("Generate QR-1");
+                    indicator.setText("QR Code 2");
+
+                } else {
+                    genQRCode.setText("Generate QR-2");
+                    indicator.setText("QR Code 1");
+                }
+            }
 
         } else if (showToast) {
             Toast.makeText(getApplicationContext(), "No Data", Toast.LENGTH_SHORT).show();

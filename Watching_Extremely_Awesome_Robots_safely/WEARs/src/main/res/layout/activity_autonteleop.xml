@@ -67,7 +67,7 @@
                     android:layout_height="fill_parent"
                     android:layout_weight=".3"
                     android:background="@drawable/toggle_button_at_no_round"
-                    android:onClick="setHabline"
+                    android:onClick="setHabLine"
                     android:textColor="@color/white"
                     android:textOff="Not Crossed"
                     android:textOn="Crossed"
@@ -1172,7 +1172,7 @@
 
                 </LinearLayout>
 
-            </LinearLayout> <!--Teleop Endgame Condition-->
+            </LinearLayout> <!--Teleop Endgame-->
 
             <ImageView
                 android:layout_width="match_parent"

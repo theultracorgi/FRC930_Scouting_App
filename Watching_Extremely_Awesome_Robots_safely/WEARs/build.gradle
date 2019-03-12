@@ -3,9 +3,9 @@ android {
     flavorDimensions "default"
     signingConfigs {
         team930 {
-            keyAlias 'team930'
+            keyAlias 'key1'
             keyPassword '4786fear'
-            storeFile file('C:/Users/new/Desktop/git/Scouting App/app_keystore.jks')
+            storeFile file('C:/Users/Owner/Documents/Kenneth\'s Schtuff/FRC/Strategy/FRC930_Scouting_App/WEARsKeystore.jks')
             storePassword '4786fear'
         }
     }
@@ -25,7 +25,7 @@ android {
             signingConfig signingConfigs.team930
         }
         debug {
-            debuggable false
+            debuggable true
             jniDebuggable false
             signingConfig signingConfigs.team930
             renderscriptDebuggable false

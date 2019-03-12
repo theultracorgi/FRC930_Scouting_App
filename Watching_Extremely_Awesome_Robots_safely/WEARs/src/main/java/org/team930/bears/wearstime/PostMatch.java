@@ -25,8 +25,8 @@ public class PostMatch extends AppCompatActivity {
     EditText comments;
 
     Integer mDisabled;
-    String matchDataPreferences, otherPreferences, numStoredMatches;
-    String scouterIDFinal, teamNumFinal, matchNumFinal, aAutolineFinal, aSwitchAttemptsFinal, aScaleAttemptsFinal, tSwitchAttemptsFinal, tScaleAttemptsFinal, tOSwitchAttemptsFinal, aSwitchScoredFinal, aScaleScoredFinal, tSwitchScoredFinal, tScaleScoredFinal, tOSwitchScoredFinal,  tVaultScoredFinal, tParkedFinal, tElevatedFinal, disabledFinal, commentsFinal, aSwitchAccuracy, aScaleAccuracy, tSwitchAccuracy, tScaleAccuracy, tOSwitchAccuracy;
+    String matchDataPreferences, otherPreferences, numStoredMatches, fullMatchData;
+    String disabledPassable, commentsPassable;
 
     AlertDialog.Builder submit, moreComments, backPressed;
     ContextThemeWrapper ctw;
@@ -95,136 +95,60 @@ public class PostMatch extends AppCompatActivity {
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             dialog.cancel();
-                            SharedPreferences.Editor SPMD = matchData.edit();
 
-                            String disabledPassable = String.format(Locale.ENGLISH, "%d", mDisabled);
-                            String commentsPassable = comments.getText().toString();
+
+                            SharedPreferences.Editor SPMD = matchData.edit();
+                            SharedPreferences.Editor SPOS = otherSettings.edit();
+
+                            disabledPassable = String.format(Locale.ENGLISH, "%d", mDisabled);
+                            commentsPassable = comments.getText().toString();
 
                             SPMD.putString("disabled", disabledPassable);
                             SPMD.putString("comments", commentsPassable);
+                            SPMD.putString("postMatchVals", disabledPassable + "," + commentsPassable);
                             SPMD.apply();
 
-                            scouterIDFinal = matchData.getString("scouterID", "Low'a");
-                            teamNumFinal = matchData.getString("teamNum", "420");
-                            matchNumFinal = matchData.getString("matchNum", "The muthaFLowers D-O double G");
-
-                            aAutolineFinal = matchData.getString("aAutoline", "0");
-                            aSwitchAttemptsFinal = matchData.getString("aSwitchAttempts", "0");
-                            aScaleAttemptsFinal = matchData.getString("aScaleAttempts", "0");
-                            tSwitchAttemptsFinal = matchData.getString("tSwitchAttempts", "0");
-                            tScaleAttemptsFinal = matchData.getString("tScaleAttempts", "0");
-                            tOSwitchAttemptsFinal = matchData.getString("tOSwitchAttempts", "0");
-
-                            aSwitchScoredFinal = matchData.getString("aSwitchScored", "0");
-                            aScaleScoredFinal = matchData.getString("aScaleScored", "0");
-                            tSwitchScoredFinal = matchData.getString("tSwitchScored", "0");
-                            tScaleScoredFinal = matchData.getString("tScaleScored", "0");
-                            tOSwitchScoredFinal = matchData.getString("tOSwitchScored", "0");
-                            tVaultScoredFinal = matchData.getString("tVaultScored", "0");
+                            fullMatchData = matchData.getString("preMatchVals","") + matchData.getString("autonTeleopVals","") + matchData.getString("postmatchVals","") + "\n";
 
 
-                            if(Integer.parseInt(aSwitchAttemptsFinal) != 0) {
-                                aSwitchAccuracy = String.format(Locale.ENGLISH, "%d", Integer.parseInt(aSwitchScoredFinal) / Integer.parseInt(aSwitchAttemptsFinal));
-                            } else {
-                                aSwitchAccuracy = "N/A";
-                            }
 
-                            if(Integer.parseInt(aScaleAttemptsFinal) !=0) {
-                                aScaleAccuracy = String.format(Locale.ENGLISH, "%d", Integer.parseInt(aScaleScoredFinal) / Integer.parseInt(aScaleAttemptsFinal));
-                            } else {
-                                aScaleAccuracy = "N/A";
-                            }
-
-                            if(Integer.parseInt(tSwitchAttemptsFinal) != 0) {
-                                tSwitchAccuracy = String.format(Locale.ENGLISH, "%d", Integer.parseInt(tSwitchScoredFinal) / Integer.parseInt(tSwitchAttemptsFinal));
-                            } else {
-                                tSwitchAccuracy = "N/A";
-                            }
-
-                            if(Integer.parseInt(tScaleAttemptsFinal) !=0) {
-                                tScaleAccuracy = String.format(Locale.ENGLISH, "%d", Integer.parseInt(tScaleScoredFinal) / Integer.parseInt(tScaleAttemptsFinal));
-                            } else {
-                                tScaleAccuracy = "N/A";
-                            }
-
-                            if(Integer.parseInt(tOSwitchAttemptsFinal) != 0) {
-                                tOSwitchAccuracy = String.format(Locale.ENGLISH, "%d", Integer.parseInt(tOSwitchScoredFinal) / Integer.parseInt(tOSwitchAttemptsFinal));
-                            } else {
-                                tOSwitchAccuracy = "N/A";
-                            }
-
-
-                            tParkedFinal = matchData.getString("tParked", "0");
-                            tElevatedFinal = matchData.getString("tElevated", "0");
-
-                            disabledFinal = matchData.getString("disabled", "0");
-                            commentsFinal = matchData.getString("comments", "you no maka da comments, you suffer da consequence");
-
-                            String fullMatchData = scouterIDFinal + "," + teamNumFinal + "," + matchNumFinal + "," + aAutolineFinal + "," +
-                                    aSwitchScoredFinal + "," + aSwitchAccuracy + "," +
-                                    aScaleScoredFinal + "," + aScaleAccuracy + "," +
-                                    tOSwitchScoredFinal + "," + tOSwitchAccuracy + "," +
-                                    tSwitchScoredFinal + "," + tSwitchAccuracy + "," +
-                                    tScaleScoredFinal + "," + tScaleAccuracy + "," +
-                                    tVaultScoredFinal + "," + tParkedFinal + "," + tElevatedFinal + "," + disabledFinal + "," + commentsFinal + "\n";
-
-
-                            switch (otherSettings.getInt(numStoredMatches, 5)) {
-                                case 0:
-                                    SPMD.putString("match1", fullMatchData);
-                                    SPMD.apply();
-                                    break;
-                                case 1:
-                                    SPMD.putString("match2", fullMatchData);
-                                    SPMD.apply();
-                                    break;
-                                case 2:
-                                    SPMD.putString("match3", fullMatchData);
-                                    SPMD.apply();
-                                    break;
-                                case 3:
-                                    SPMD.putString("match4", fullMatchData);
-                                    SPMD.apply();
-                                    break;
-                                case 4:
-                                    SPMD.putString("match5", fullMatchData);
-                                    SPMD.apply();
-                                    break;
-                                case 5:
-                                    SPMD.putString("match6", fullMatchData);
-                                    SPMD.apply();
-                                    break;
-                                default:
-                                    SPMD.putString("match6", fullMatchData);
-                                    SPMD.apply();
-
-                            }
-                            SharedPreferences.Editor SPOS = otherSettings.edit();
 
                             SPOS.putInt(numStoredMatches, otherSettings.getInt(numStoredMatches, 5) + 1);
+
+                            if(otherSettings.getInt(numStoredMatches,6) >= 6 && otherSettings.getBoolean("multipleQR", false) == false) {
+                                SPOS.putBoolean("multipleQR", true);
+
+                            }
+                            if(otherSettings.getBoolean("multipleQR", true)){
+                                SPMD.putString("secondQR", matchData.getString("secondQR", "") + fullMatchData);
+                            } else{
+                                SPMD.putString("firstQR", matchData.getString("firstQR", "") + fullMatchData);
+                            }
                             SPOS.apply();
+
 
                             SPMD.putString("teamNum", "0");
                             SPMD.putString("matchNum", "0");
-                            SPMD.putString("aAutoline", "0");
+                            SPMD.putString("sHabLine", "0");
 
-                            SPMD.putString("aSwitchAttempts", "0");
-                            SPMD.putString("aScaleAttempts", "0");
-                            SPMD.putString("tSwitchAttempts", "0");
-                            SPMD.putString("tScaleAttempts", "0");
-                            SPMD.putString("tOSwitchAttempts", "0");
+                            SPMD.putString("sCsHt", "0");
+                            SPMD.putString("sCsCg", "0");
+                            SPMD.putString("sRtHt", "0");
+                            SPMD.putString("sRtCg", "0");
 
-                            SPMD.putString("aSwitchScored", "0");
-                            SPMD.putString("aScaleScored", "0");
-                            SPMD.putString("tSwitchScored", "0");
-                            SPMD.putString("tScaleScored", "0");
-                            SPMD.putString("tOSwitchScored", "0");
-                            SPMD.putString("tVaultScored", "0");
+                            SPMD.putString("tCsHtSc", "0");
+                            SPMD.putString("tCsCgSc", "0");
+                            SPMD.putString("tRtHtSc", "0");
+                            SPMD.putString("tRtCgSc", "0");
 
-                            SPMD.putString("tParked", "0");
-                            SPMD.putString("tElevated", "0");
+                            SPMD.putString("tRtHtFl", "0");
+                            SPMD.putString("tRtCgFl", "0");
+                            SPMD.putString("tRtHtFl", "0");
+                            SPMD.putString("tRtCgFl", "0");
+
+                            //ENDGAME
+                            SPMD.putString("habStatus", "0");
                             SPMD.putString("disabled", "0");
-
                             SPMD.putString("comments", "0");
 
                             SPMD.apply();

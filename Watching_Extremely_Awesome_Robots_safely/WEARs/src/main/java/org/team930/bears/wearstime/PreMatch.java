@@ -5,12 +5,15 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.ContextThemeWrapper;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
@@ -21,6 +24,7 @@ import static android.app.AlertDialog.THEME_HOLO_LIGHT;
 public class PreMatch extends AppCompatActivity {
     EditText teamNum, matchNum;
     ToggleButton allianceColor;
+    ImageView map;
 
     String stillPreferences, matchDataPreferences, otherPreferences;
     char alliance;
@@ -29,6 +33,7 @@ public class PreMatch extends AppCompatActivity {
     SharedPreferences matchData, stillEnabled, otherSettings;
     AlertDialog.Builder builder;
     ContextThemeWrapper ctw;
+
 
 
     @Override
@@ -64,7 +69,33 @@ public class PreMatch extends AppCompatActivity {
         teamNum = findViewById(R.id.teamNum);
         matchNum = findViewById(R.id.matchNum);
         allianceColor = findViewById(R.id.allianceToggle);
+        map = findViewById(R.id.map);
+        switch(Integer.parseInt(otherSettings.getString("scouterPos", "0"))) {
+            case 0:
+                map.setImageResource(R.drawable.s0);
+                break;
+            case 1:
+                map.setImageResource(R.drawable.s1);
+                break;
+            case 2:
+                map.setImageResource(R.drawable.s2);
+                break;
+            case 3:
+                map.setImageResource(R.drawable.s3);
+                break;
+            case 4:
+                map.setImageResource(R.drawable.s4);
+                break;
+            case 5:
+                map.setImageResource(R.drawable.s5);
+                break;
+            default:
+                map.setImageResource(R.drawable.field);
+                break;
 
+
+
+        }
     }
 
     public void setGoToAuton(View v) {
@@ -110,6 +141,7 @@ public class PreMatch extends AppCompatActivity {
 
             SPMD.putString("teamNum", teamNumPassable);
             SPMD.putString("matchNum", matchNumPassable);
+            SPMD.putString("preMatchVals", teamNumPassable + "," + matchNumPassable + ",");
             SPMD.apply();
 
 
@@ -170,5 +202,13 @@ public class PreMatch extends AppCompatActivity {
         }
         return super.onKeyDown(keyCode, event);
     }
+    public final static String PACKAGE = "..."; // insert your package name
 
+    private int getDrawable(String name) {
+        return getId(name, "drawable");
+    }
+
+    private int getId(String name, String type) {
+        return getResources().getIdentifier(name, type, PACKAGE);
+    }
 }
