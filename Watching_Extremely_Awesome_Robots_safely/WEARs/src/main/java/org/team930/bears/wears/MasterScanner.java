@@ -1,4 +1,4 @@
-package org.team930.bears.wearstime;
+package org.team930.bears.wears;
 
 
 import android.annotation.SuppressLint;

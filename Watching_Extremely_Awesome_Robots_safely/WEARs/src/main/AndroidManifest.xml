@@ -2,7 +2,7 @@
 <!--suppress ALL -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="org.team930.bears.wearstime">
+    package="org.team930.bears.wears">
 
     <supports-screens
         android:xlargeScreens="true"
