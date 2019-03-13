@@ -8,6 +8,14 @@
     android:screenOrientation="portrait"
     tools:ignore="Overdraw">
 
+    <ScrollView
+        android:id="@+id/titleWindow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        tools:ignore="UselessParent">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -143,6 +151,60 @@
                     android:maxLines="1"
                     android:paddingLeft="11dp"
                     android:paddingRight="5dp"
+                    android:text="Defense"
+                    android:textColor="@color/textMedium"
+                    android:textSize="30dp"
+                    android:textStyle="italic"
+
+                    tools:ignore="HardcodedText,RtlHardcoded,SpUsage" />
+
+                <TextView
+                    android:id="@+id/progress"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textSize="25dp"
+                    />
+
+                <SeekBar
+                    android:id="@+id/defense"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:max="5"
+                    android:padding="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    tools:ignore="HardcodedText" />
+
+            </LinearLayout> <!--Defense-->
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/background_material"
+                tools:ignore="ContentDescription" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_corners_chunk_material"
+                android:orientation="vertical"
+                android:paddingBottom="10dp"
+                android:paddingLeft="11dp"
+                android:paddingRight="4dp"
+                android:paddingTop="10dp"
+                tools:ignore="RtlHardcoded">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="8dp"
+                    android:layout_weight=".7"
+                    android:background="@color/white"
+                    android:maxLines="1"
+                    android:paddingLeft="11dp"
+                    android:paddingRight="5dp"
                     android:text="Comments"
                     android:textColor="@color/textMedium"
                     android:textSize="30dp"
@@ -158,11 +220,17 @@
                     android:hint="Very fast, bad drivers, aligns fast for hatches, how long they were disabled, a nice haiku, etc."
                     android:maxLength="300"
                     android:maxLines="4"
+                    android:textSize="15dp"
+                    android:inputType="text"
                     android:padding="8dp"
                     tools:ignore="HardcodedText" />
 
             </LinearLayout> <!--Comments-->
-
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="16dp"
+                android:background="@color/background_material"
+                tools:ignore="ContentDescription" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -201,5 +269,5 @@
             </LinearLayout> <!--Next-->
 
         </LinearLayout>
-
+    </ScrollView>
 </RelativeLayout>

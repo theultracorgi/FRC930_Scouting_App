@@ -26,9 +26,9 @@ public class AutonTeleop extends AppCompatActivity {
     RadioButton onField, lvlOne, lvlTwo, lvlThree;
     TextView sCsHtDs, sCsCgDs, sRtHtDs, sRtCgDs, tCsHtDsSc, tCsHtDsFl, tCsCgDsSc, tCsCgDsFl, tRtHtDsSc, tRtHtDsFl, tRtCgDsSc, tRtCgDsFl;
 
-    Integer sHabLine, sCsHt, sCsCg, sRtHt, sRtCg, tCsHtSc, tCsHtFl,  tCsCgSc, tCsCgFl, tRtHtSc, tRtHtFl,  tRtCgSc, tRtCgFl, habStatus;
+    Integer sHabLine, sCsHt, sCsCg, sRtHt, sRtCg, tCsHtSc, tCsHtFl, tCsCgSc, tCsCgFl, tRtHtSc, tRtHtFl, tRtCgSc, tRtCgFl, habStatus;
     String matchDataPreferences, otherPreferences;
-    String sHabLinePass, sCsHtPass, sCsCgPass, sRtHtPass, sRtCgPass, tCsHtScPass, tCsHtFlPass,  tCsCgScPass, tCsCgFlPass, tRtHtScPass, tRtHtFlPass,  tRtCgScPass, tRtCgFlPass, habStatusPass;
+    String sHabLinePass, sCsHtPass, sCsCgPass, sRtHtPass, sRtCgPass, tCsHtScPass, tCsHtFlPass, tCsCgScPass, tCsCgFlPass, tRtHtScPass, tRtHtFlPass, tRtCgScPass, tRtCgFlPass, habStatusPass;
     Boolean attemptsOutput;
 
 
@@ -49,7 +49,7 @@ public class AutonTeleop extends AppCompatActivity {
         //OHNINE
         Still = MediaPlayer.create(this, R.raw.ohnine_playa);
 
-        attemptsOutput = true;
+        attemptsOutput = false;
 
 
         //SHARED PREFERENCES
@@ -142,7 +142,7 @@ public class AutonTeleop extends AppCompatActivity {
             lvlOne.setChecked(true);
             lvlTwo.setChecked(false);
             lvlThree.setChecked(false);
-        } else if(habStatus == 2) {
+        } else if (habStatus == 2) {
             onField.setChecked(false);
             lvlOne.setChecked(false);
             lvlTwo.setChecked(true);
@@ -172,7 +172,7 @@ public class AutonTeleop extends AppCompatActivity {
         }
     }
 
-//SANDSTORM CARGO SHIP
+    //SANDSTORM CARGO SHIP
     //Hatches
     public void setSCsHtSub(View v) {
         if (sCsHt > 0) {
@@ -182,8 +182,11 @@ public class AutonTeleop extends AppCompatActivity {
     }
 
     public void setSCsHtAdd(View v) {
-        sCsHt += 1;
-        sCsHtDs.setText(String.format(Locale.ENGLISH, "%d", sCsHt));
+
+        if (sCsHt + sRtHt <= 4) {
+            sCsHt += 1;
+            sCsHtDs.setText(String.format(Locale.ENGLISH, "%d", sCsHt));
+        }
     }
 
     //Cargo
@@ -198,10 +201,10 @@ public class AutonTeleop extends AppCompatActivity {
     public void setSCsCgAdd(View v) {
         sCsCg += 1;
         sCsCgDs.setText(String.format(Locale.ENGLISH, "%d", sCsCg));
-        }
+    }
 
 //SANDSTORM ROCKET SHIP
-   
+
     //Hatches
     public void setSRtHtSub(View v) {
         if (sRtHt > 0) {
@@ -211,8 +214,10 @@ public class AutonTeleop extends AppCompatActivity {
     }
 
     public void setSRtHtAdd(View v) {
-        sRtHt += 1;
-        sRtHtDs.setText(String.format(Locale.ENGLISH, "%d", sRtHt));
+        if (sCsHt + sRtHt <= 4) {
+            sRtHt += 1;
+            sRtHtDs.setText(String.format(Locale.ENGLISH, "%d", sRtHt));
+        }
     }
 
     //Cargo
@@ -243,7 +248,7 @@ public class AutonTeleop extends AppCompatActivity {
         tCsHtSc += 1;
         tCsHtDsSc.setText(String.format(Locale.ENGLISH, "%d", tCsHtSc));
     }
-    
+
     //SCORED
     public void setTCsHtSubFl(View v) {
 
@@ -259,7 +264,7 @@ public class AutonTeleop extends AppCompatActivity {
     }
 
 //TELEOP CARGO SHIP CARGO
- 
+
     //ATTEMPTS
     public void setTCsCgSubSc(View v) {
         if (tCsCgSc > 0) {
@@ -274,7 +279,7 @@ public class AutonTeleop extends AppCompatActivity {
     }
 
     //SCORED
-  
+
     public void setTCsCgSubFl(View v) {
 
         if (tCsCgFl > 0) {
@@ -386,7 +391,7 @@ public class AutonTeleop extends AppCompatActivity {
         tRtHtScPass = String.format(Locale.ENGLISH, "%d", tRtHtSc);
         tRtCgScPass = String.format(Locale.ENGLISH, "%d", tRtCgSc);
 
-        if(attemptsOutput) {
+        if (attemptsOutput) {
             tCsHtFlPass = String.format(Locale.ENGLISH, "%d", tCsHtFl + tCsHtSc);
             tCsCgFlPass = String.format(Locale.ENGLISH, "%d", tCsCgFl + tCsCgSc);
             tRtHtFlPass = String.format(Locale.ENGLISH, "%d", tRtHtFl + tRtHtSc);
@@ -397,7 +402,6 @@ public class AutonTeleop extends AppCompatActivity {
             tRtHtFlPass = String.format(Locale.ENGLISH, "%d", tRtHtFl);
             tRtCgFlPass = String.format(Locale.ENGLISH, "%d", tRtCgFl);
         }
-
 
 
         //ENDGAME
@@ -462,7 +466,6 @@ public class AutonTeleop extends AppCompatActivity {
         tRtCgFlPass = String.format(Locale.ENGLISH, "%d", tRtCgFl);
 
 
-
         //ENDGAME
         habStatusPass = String.format(Locale.ENGLISH, "%d", habStatus);
 
@@ -492,9 +495,9 @@ public class AutonTeleop extends AppCompatActivity {
 
         //ENDGAME
         SPMD.putString("habStatus", habStatusPass);
-        SPMD.putString("autonTeleopVals", sHabLinePass + ","  + sCsHtPass + ","  + sCsCgPass + ","  + sRtHtPass + ","  + sRtCgPass + ","  +
-                tCsHtScPass + ","  + tCsHtFlPass + ","  +  tCsCgScPass + ","  + tCsCgFlPass + ","  +
-                tRtHtScPass + ","  + tRtHtFlPass + ","  + tRtCgScPass + ","  + tRtCgFlPass + ","  + habStatusPass + ",");
+        SPMD.putString("autonTeleopVals", sHabLinePass + "," + sCsHtPass + "," + sCsCgPass + "," + sRtHtPass + "," + sRtCgPass + "," +
+                tCsHtScPass + "," + tCsHtFlPass + "," + tCsCgScPass + "," + tCsCgFlPass + "," +
+                tRtHtScPass + "," + tRtHtFlPass + "," + tRtCgScPass + "," + tRtCgFlPass + "," + habStatusPass + ",");
         SPMD.apply();
 
     }
@@ -586,7 +589,7 @@ public class AutonTeleop extends AppCompatActivity {
             lvlOne.setChecked(true);
             lvlTwo.setChecked(false);
             lvlThree.setChecked(false);
-        } else if(habStatus == 2) {
+        } else if (habStatus == 2) {
             onField.setChecked(false);
             lvlOne.setChecked(false);
             lvlTwo.setChecked(true);

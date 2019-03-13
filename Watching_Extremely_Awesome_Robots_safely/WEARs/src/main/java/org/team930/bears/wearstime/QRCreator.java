@@ -42,7 +42,7 @@ public class QRCreator extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_qrcreator);
-        setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         showToast = true;
         ctw = new ContextThemeWrapper(this, THEME_HOLO_LIGHT);
@@ -64,7 +64,7 @@ public class QRCreator extends AppCompatActivity {
         disFirstQR = false;
 
 
-        if(otherSettings.getBoolean("multipleQR", false)) {
+        if (otherSettings.getBoolean("multipleQR", false)) {
             genQRCode.setText("Generate QR-1");
             disFirstQR = true;
         }
@@ -79,7 +79,7 @@ public class QRCreator extends AppCompatActivity {
     }
 
     public void setGenQRCode(View v) {
-       if(otherSettings.getBoolean("multipleQR", true)) {
+        if (otherSettings.getBoolean("multipleQR", true)) {
             if (disFirstQR == true) {
                 sendableData = matchData.getString("firstQR", "");
             } else {
@@ -100,7 +100,7 @@ public class QRCreator extends AppCompatActivity {
                 Bitmap bmp = Bitmap.createBitmap(width, height, Bitmap.Config.RGB_565);
                 for (int x = 0; x < width; x++) {
                     for (int y = 0; y < height; y++) {
-                        bmp.setPixel(x, y, bitMatrix.get(x, y) ? Color.rgb(1, 9,84) : Color.WHITE);
+                        bmp.setPixel(x, y, bitMatrix.get(x, y) ? Color.rgb(1, 9, 84) : Color.WHITE);
                     }
                 }
                 qrCode.setBackgroundDrawable(getResources().getDrawable(R.color.white));
@@ -119,10 +119,10 @@ public class QRCreator extends AppCompatActivity {
 
             disFirstQR = !disFirstQR;
 
-            if(false == otherSettings.getBoolean("multipleQR", false)) {
+            if (false == otherSettings.getBoolean("multipleQR", false)) {
 
             } else {
-                if(disFirstQR) {
+                if (disFirstQR) {
                     genQRCode.setText("Generate QR-1");
                     indicator.setText("QR Code 2");
 

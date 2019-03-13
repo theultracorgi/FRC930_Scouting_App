@@ -89,7 +89,7 @@ public class MasterScanner extends AppCompatActivity {
 
         if (!checkWriteExternalPermission()) {
             if (Build.VERSION.SDK_INT < 23) {
-                Toast.makeText(this, "Go into Settings and give access to storage", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Go into your phone Settings and give access to storage", Toast.LENGTH_SHORT).show();
             } else {
                 requestPermissions(new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
                 requestPermissions(new String[]{android.Manifest.permission.READ_EXTERNAL_STORAGE}, 1);

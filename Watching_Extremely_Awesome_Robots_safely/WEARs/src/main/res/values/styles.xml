@@ -17,9 +17,15 @@
     </style>
 
     <style name="mySpinnerItemStyle" parent="@android:style/Widget.Holo.DropDownItem.Spinner">
-        <item name="android:textColor">@color/textMedium</item>
-        <item name="android:textSize" tools:ignore="SpUsage">25dp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize" tools:ignore="SpUsage">16dp</item>
+        <item name="android:popupBackground">#ffffff</item>
+        <item name="android:background">#ffffff</item>
     </style>
 
+    <style name="myRadioButtonStyle" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorControlNormal">@color/lightBlue</item>
+        <item name="colorControlActivated">@color/lightBlue</item>
+    </style>
 
 </resources>

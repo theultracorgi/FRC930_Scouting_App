@@ -67,7 +67,7 @@
                 android:paddingLeft="5dp"
                 android:paddingRight="5dp"
                 android:entries="@array/ScouterPos"
-                android:background="@color/white"
+                android:popupTheme="@style/mySpinnerItemStyle"
                 tools:ignore="HardcodedText" />
 
         </LinearLayout> <!--Scouter Position-->

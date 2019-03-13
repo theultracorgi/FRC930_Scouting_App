@@ -12,6 +12,8 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.SeekBar;
+import android.widget.TextView;
 import android.widget.ToggleButton;
 
 import java.util.Locale;
@@ -23,10 +25,12 @@ public class PostMatch extends AppCompatActivity {
     ToggleButton disabled;
     Button submitData;
     EditText comments;
+    SeekBar defense;
+    TextView dProgress;
 
-    Integer mDisabled;
+    Integer mDisabled, defenseProgress;
     String matchDataPreferences, otherPreferences, numStoredMatches, fullMatchData;
-    String disabledPassable, commentsPassable;
+    String disabledPassable, defensePassable, commentsPassable;
 
     AlertDialog.Builder submit, moreComments, backPressed;
     ContextThemeWrapper ctw;
@@ -36,7 +40,7 @@ public class PostMatch extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_match);
-        setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         ctw = new ContextThemeWrapper(this, THEME_HOLO_LIGHT);
         submit = new AlertDialog.Builder(ctw);
@@ -48,6 +52,7 @@ public class PostMatch extends AppCompatActivity {
 
         matchDataPreferences = getString(R.string.matchDataPreferences);
         matchData = getSharedPreferences(matchDataPreferences, 0);
+        defenseProgress = 0;
 
         otherPreferences = getString(R.string.otherPreferences);
         otherSettings = getSharedPreferences(otherPreferences, 0);
@@ -55,12 +60,37 @@ public class PostMatch extends AppCompatActivity {
         disabled = findViewById(R.id.disabled);
         comments = findViewById(R.id.comments);
         submitData = findViewById(R.id.submitData);
+        defense = findViewById(R.id.defense);
+        dProgress = findViewById(R.id.progress);
+
+        defense.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+
+                int val = (progress * (seekBar.getWidth() - 2 * seekBar.getThumbOffset())) / seekBar.getMax();
+                dProgress.setText("" + progress);
+                dProgress.setX(seekBar.getX() + val + seekBar.getThumbOffset() / 2);
+
+                defenseProgress = defense.getProgress();
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
 //TODO do you like this robot? Why in Comments
     }
 
-    public void setDisabled(View v){
+    public void setDisabled(View v) {
 
-        if(disabled.isChecked()){
+        if (disabled.isChecked()) {
             mDisabled = 1;
         } else {
             mDisabled = 0;
@@ -101,27 +131,27 @@ public class PostMatch extends AppCompatActivity {
                             SharedPreferences.Editor SPOS = otherSettings.edit();
 
                             disabledPassable = String.format(Locale.ENGLISH, "%d", mDisabled);
+                            defensePassable = String.format(Locale.ENGLISH, "%d", defenseProgress);
                             commentsPassable = comments.getText().toString();
 
                             SPMD.putString("disabled", disabledPassable);
+                            SPMD.putString("defense", defensePassable);
                             SPMD.putString("comments", commentsPassable);
-                            SPMD.putString("postMatchVals", disabledPassable + "," + commentsPassable);
+                            SPMD.putString("postMatchVals", disabledPassable + "," + defensePassable + "," + commentsPassable);
                             SPMD.apply();
 
-                            fullMatchData = matchData.getString("preMatchVals","") + matchData.getString("autonTeleopVals","") + matchData.getString("postmatchVals","") + "\n";
-
-
+                            fullMatchData = matchData.getString("preMatchVals", "") + matchData.getString("autonTeleopVals", "") + matchData.getString("postmatchVals", "") + "\n";
 
 
                             SPOS.putInt(numStoredMatches, otherSettings.getInt(numStoredMatches, 5) + 1);
 
-                            if(otherSettings.getInt(numStoredMatches,6) >= 6 && otherSettings.getBoolean("multipleQR", false) == false) {
+                            if (otherSettings.getInt(numStoredMatches, 6) >= 6 && otherSettings.getBoolean("multipleQR", false) == false) {
                                 SPOS.putBoolean("multipleQR", true);
 
                             }
-                            if(otherSettings.getBoolean("multipleQR", true)){
+                            if (otherSettings.getBoolean("multipleQR", true)) {
                                 SPMD.putString("secondQR", matchData.getString("secondQR", "") + fullMatchData);
-                            } else{
+                            } else {
                                 SPMD.putString("firstQR", matchData.getString("firstQR", "") + fullMatchData);
                             }
                             SPOS.apply();
@@ -171,6 +201,7 @@ public class PostMatch extends AppCompatActivity {
             alert.show();
         }
     }
+
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {

@@ -65,6 +65,7 @@ public class HomeScreen extends AppCompatActivity {
         disappear = findViewById(R.id.disappearHomeScreen);
 
         SharedPreferences.Editor SPOS = otherSettings.edit();
+        SharedPreferences.Editor SPMD = matchData.edit();
 
         if (otherSettings.getBoolean("firstOpen", true)) {
             SPOS.putInt(numStoredMatches, 0);
@@ -80,13 +81,10 @@ public class HomeScreen extends AppCompatActivity {
             SPOS.putString("scouterPos", "0");
             SPOS.putBoolean("multipleQR", false);
 
-            SPOS.apply();
-
-            SharedPreferences.Editor SPMD = matchData.edit();
-
             SPMD.putString("teamNum", "0");
             SPMD.putString("matchNum", "0");
             SPMD.putString("sHabLine", "0");
+
 
             SPMD.putString("sCsHt", "0");
             SPMD.putString("sCsCg", "0");
@@ -103,7 +101,7 @@ public class HomeScreen extends AppCompatActivity {
             SPMD.putString("tRtHtFl", "0");
             SPMD.putString("tRtCgFl", "0");
 
-            //ENDGAME
+
             SPMD.putString("habStatus", "0");
             SPMD.putString("disabled", "0");
             SPMD.putString("comments", "0");
@@ -137,7 +135,7 @@ public class HomeScreen extends AppCompatActivity {
             AlertDialog alert = builder.create();
             alert.show();
 
-        } else if (otherSettings.getInt(numStoredMatches, maxMatches) >= maxMatches  && otherSettings.getBoolean("multipleQR", false)) { //
+        } else if (otherSettings.getInt(numStoredMatches, maxMatches) >= maxMatches && otherSettings.getBoolean("multipleQR", false)) { //
             builder.setTitle("All Your Data Are Belong To Us.");
             builder.setMessage("You need to generate a QR code to continue scouting.");
             builder.setCancelable(true);

@@ -27,13 +27,13 @@ public class PreMatch extends AppCompatActivity {
     ImageView map;
 
     String stillPreferences, matchDataPreferences, otherPreferences;
+    String teamNumPassable, matchNumPassable;
     char alliance;
     Integer stillCount;
 
     SharedPreferences matchData, stillEnabled, otherSettings;
     AlertDialog.Builder builder;
     ContextThemeWrapper ctw;
-
 
 
     @Override
@@ -70,7 +70,7 @@ public class PreMatch extends AppCompatActivity {
         matchNum = findViewById(R.id.matchNum);
         allianceColor = findViewById(R.id.allianceToggle);
         map = findViewById(R.id.map);
-        switch(Integer.parseInt(otherSettings.getString("scouterPos", "0"))) {
+        switch (Integer.parseInt(otherSettings.getString("scouterPos", "0"))) {
             case 0:
                 map.setImageResource(R.drawable.s0);
                 break;
@@ -92,7 +92,6 @@ public class PreMatch extends AppCompatActivity {
             default:
                 map.setImageResource(R.drawable.field);
                 break;
-
 
 
         }
@@ -134,8 +133,8 @@ public class PreMatch extends AppCompatActivity {
                 alliance = 'b';
             }
 
-            String teamNumPassable = teamNum.getText().toString();
-            String matchNumPassable = matchNum.getText().toString() + alliance;
+            teamNumPassable = teamNum.getText().toString();
+            matchNumPassable = matchNum.getText().toString() + alliance;
 
             SharedPreferences.Editor SPMD = matchData.edit();
 
@@ -202,6 +201,7 @@ public class PreMatch extends AppCompatActivity {
         }
         return super.onKeyDown(keyCode, event);
     }
+
     public final static String PACKAGE = "..."; // insert your package name
 
     private int getDrawable(String name) {

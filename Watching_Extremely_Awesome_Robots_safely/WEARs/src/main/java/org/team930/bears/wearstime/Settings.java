@@ -44,7 +44,7 @@ public class Settings extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
-        setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         previousAttempt = 0;
         adminPassword = getResources().getInteger(R.integer.adminPassword);
@@ -82,6 +82,7 @@ public class Settings extends AppCompatActivity {
         disappearDelete = findViewById(R.id.disappearDelete);
 
         scouterPos.setSelection(Integer.parseInt(otherSettings.getString("scouterPos", "0")));
+        scouterPos.setPopupBackgroundResource(R.drawable.spinner_bg);
 
 
         if (stillEnabled.getBoolean("stillEnabled", false)) {
@@ -112,9 +113,9 @@ public class Settings extends AppCompatActivity {
     public void setSubmitPassword(View v) {
         if (password.getText().toString().length() != 0 && TextUtils.isDigitsOnly(password.getText().toString())) {
             SharedPreferences.Editor SPOS = otherSettings.edit();
-             if (Integer.parseInt(password.getText().toString()) == adminPassword) {
+            if (Integer.parseInt(password.getText().toString()) == adminPassword) {
 
-               Toast.makeText(this, "You are now Admin!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "You are now Admin!", Toast.LENGTH_SHORT).show();
 
                 disappearAdmin.setVisibility(View.GONE);
                 adminUnlock.setVisibility(View.GONE);
@@ -146,7 +147,6 @@ public class Settings extends AppCompatActivity {
     }
 
 
-
     public void setDeleteData(View v) {
 
         delete.setTitle("Delete Data");
@@ -169,7 +169,7 @@ public class Settings extends AppCompatActivity {
                         SPOS.putBoolean("csVisible", false);
 
                         SPOS.putBoolean("dataAvailable", false);
-                        SPOS.putBoolean("multipleQR",false);
+                        SPOS.putBoolean("multipleQR", false);
 
                         SPOS.apply();
 
@@ -263,6 +263,7 @@ public class Settings extends AppCompatActivity {
 
         }
     }
+
     public void onPause() {
         super.onPause();
         SharedPreferences.Editor SPOS = otherSettings.edit();

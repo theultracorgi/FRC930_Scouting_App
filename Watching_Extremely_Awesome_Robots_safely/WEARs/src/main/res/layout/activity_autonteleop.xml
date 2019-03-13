@@ -919,7 +919,7 @@
                 android:paddingBottom="10dp"
                 android:paddingTop="5dp"
 
-                >
+                tools:ignore="TooManyViews">
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
@@ -1124,7 +1124,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="12dp"
                             android:layout_marginTop="8dp"
-                            android:buttonTint="@color/lightBlue"
+                            android:theme="@style/myRadioButtonStyle"
                             android:onClick="setOnField"
                             android:text="Not In Hab Zone"
                             android:textColor="@color/textMedium"
@@ -1136,7 +1136,7 @@
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="12dp"
-                            android:buttonTint="@color/lightBlue"
+                            android:theme="@style/myRadioButtonStyle"
                             android:onClick="setLvlOne"
                             android:text="Level 1"
                             android:textColor="@color/textMedium"
@@ -1148,7 +1148,7 @@
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="12dp"
-                            android:buttonTint="@color/lightBlue"
+                            android:theme="@style/myRadioButtonStyle"
                             android:onClick="setLvlTwo"
                             android:text="Level 2"
                             android:textColor="@color/textMedium"
@@ -1160,7 +1160,7 @@
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="12dp"
-                            android:buttonTint="@color/lightBlue"
+                            android:theme="@style/myRadioButtonStyle"
                             android:onClick="setLvlThree"
                             android:text="Level 3"
                             android:textColor="@color/textMedium"
