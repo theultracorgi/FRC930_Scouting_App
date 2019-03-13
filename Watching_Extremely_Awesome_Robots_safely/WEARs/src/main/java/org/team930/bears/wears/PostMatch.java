@@ -140,7 +140,7 @@ public class PostMatch extends AppCompatActivity {
                             SPMD.putString("postMatchVals", disabledPassable + "," + defensePassable + "," + commentsPassable);
                             SPMD.apply();
 
-                            fullMatchData = matchData.getString("preMatchVals", "") + matchData.getString("autonTeleopVals", "") + matchData.getString("postmatchVals", "") + "\n";
+                            fullMatchData = matchData.getString("preMatchVals", "") + matchData.getString("autonTeleopVals", "") + matchData.getString("postMatchVals", "") + "\n";
 
 
                             SPOS.putInt(numStoredMatches, otherSettings.getInt(numStoredMatches, 5) + 1);
