@@ -5,7 +5,7 @@
     <string name="stillPreferences">stillEnabled</string>
     <string name="otherPreferences">otherPreferences</string>
     <string name="numStoredMatches">numStoredMatches</string>
-    <string-array name="ScouterPos">
+    <string-array name="scouterPos">
         <item>BlueTop</item>
         <item>BlueMid</item>
         <item>BlueBottom</item>
@@ -13,6 +13,7 @@
         <item>RedMid</item>
         <item>RedBottom</item>
     </string-array>
+
     <string-array name="startPos">
         <item>Lvl 1</item>
         <item>Lvl 2</item>
