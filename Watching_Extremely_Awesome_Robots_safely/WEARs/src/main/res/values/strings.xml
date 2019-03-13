@@ -13,6 +13,10 @@
         <item>RedMid</item>
         <item>RedBottom</item>
     </string-array>
+    <string-array name="startPos">
+        <item>Lvl 1</item>
+        <item>Lvl 2</item>
+    </string-array>
     <string name="scouterListPrompt">Man\'s Got Name</string>
     <integer name="adminPassword">478609</integer>
     <integer name="maxMatches">12</integer>

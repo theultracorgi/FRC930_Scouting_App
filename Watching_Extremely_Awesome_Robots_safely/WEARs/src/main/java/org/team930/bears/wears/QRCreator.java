@@ -100,7 +100,7 @@ public class QRCreator extends AppCompatActivity {
                 Bitmap bmp = Bitmap.createBitmap(width, height, Bitmap.Config.RGB_565);
                 for (int x = 0; x < width; x++) {
                     for (int y = 0; y < height; y++) {
-                        bmp.setPixel(x, y, bitMatrix.get(x, y) ? Color.rgb(1, 9, 84) : Color.WHITE);
+                        bmp.setPixel(x, y, bitMatrix.get(x, y) ? Color.rgb(0, 0, 0) : Color.WHITE);
                     }
                 }
                 qrCode.setBackgroundDrawable(getResources().getDrawable(R.color.white));

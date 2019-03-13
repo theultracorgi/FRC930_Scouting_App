@@ -12,6 +12,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
@@ -23,9 +24,10 @@ public class PreMatch extends AppCompatActivity {
     EditText teamNum, matchNum;
     ToggleButton allianceColor;
     ImageView map;
+    Spinner startPos;
 
     String stillPreferences, matchDataPreferences, otherPreferences;
-    String teamNumPassable, matchNumPassable;
+    String teamNumPassable, matchNumPassable, startPosPassable;
     char alliance;
     Integer stillCount;
 
@@ -66,8 +68,10 @@ public class PreMatch extends AppCompatActivity {
 
         teamNum = findViewById(R.id.teamNum);
         matchNum = findViewById(R.id.matchNum);
+        startPos = findViewById(R.id.startingPos);
         allianceColor = findViewById(R.id.allianceToggle);
         map = findViewById(R.id.map);
+
         switch (Integer.parseInt(otherSettings.getString("scouterPos", "0"))) {
             case 0:
                 map.setImageResource(R.drawable.s0);
@@ -133,12 +137,14 @@ public class PreMatch extends AppCompatActivity {
 
             teamNumPassable = teamNum.getText().toString();
             matchNumPassable = matchNum.getText().toString() + alliance;
+            startPosPassable = Integer.toString(startPos.getSelectedItemPosition() + 1);
 
             SharedPreferences.Editor SPMD = matchData.edit();
 
             SPMD.putString("teamNum", teamNumPassable);
             SPMD.putString("matchNum", matchNumPassable);
-            SPMD.putString("preMatchVals", teamNumPassable + "," + matchNumPassable + ",");
+            SPMD.putString("startPos", startPosPassable);
+            SPMD.putString("preMatchVals", teamNumPassable + "," + matchNumPassable + "," + startPosPassable + ",");
             SPMD.apply();
 
 

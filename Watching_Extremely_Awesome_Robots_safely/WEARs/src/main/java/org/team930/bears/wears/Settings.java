@@ -177,6 +177,7 @@ public class Settings extends AppCompatActivity {
 
                         SPMD.putString("teamNum", "0");
                         SPMD.putString("matchNum", "0");
+                        SPMD.putString("startPos", "1");
                         SPMD.putString("sHabLine", "0");
 
                         SPMD.putString("sCsHt", "0");

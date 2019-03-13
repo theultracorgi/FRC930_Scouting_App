@@ -451,8 +451,8 @@ public class AutonTeleop extends AppCompatActivity {
         //ATTEMPTS
         sCsHtPass = String.format(Locale.ENGLISH, "%d", sCsHt);
         sCsCgPass = String.format(Locale.ENGLISH, "%d", sCsCg);
-        sRtHtPass = String.format(Locale.ENGLISH, "%d", sCsHt);
-        sRtCgPass = String.format(Locale.ENGLISH, "%d", sCsCg);
+        sRtHtPass = String.format(Locale.ENGLISH, "%d", sRtHt);
+        sRtCgPass = String.format(Locale.ENGLISH, "%d", sRtCg);
 
 
         tCsHtScPass = String.format(Locale.ENGLISH, "%d", tCsHtSc);
@@ -507,7 +507,7 @@ public class AutonTeleop extends AppCompatActivity {
 
 
         //BINARIES
-        sHabLine = Integer.parseInt(matchData.getString("sHabline", "0")); //binary
+        sHabLine = Integer.parseInt(matchData.getString("sHabLine", "0")); //binary
 
         //VIEWS
         habLine = findViewById(R.id.habLine);
@@ -571,7 +571,7 @@ public class AutonTeleop extends AppCompatActivity {
         //ENDGAME
 
         //BINARIES
-        habStatus = Integer.parseInt(matchData.getString("tParked", "0")); //binary
+        habStatus = Integer.parseInt(matchData.getString("habStatus", "0")); //binary
 
         //VIEWS
         onField = findViewById(R.id.onField);
