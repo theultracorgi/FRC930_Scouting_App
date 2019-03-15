@@ -80,6 +80,7 @@ public class HomeScreen extends AppCompatActivity {
             SPOS.putBoolean("dataAvailable", false);
             SPOS.putString("scouterPos", "0");
             SPOS.putBoolean("multipleQR", false);
+            SPOS.putBoolean("firstOpen", false);
 
             SPMD.putString("teamNum", "0");
             SPMD.putString("matchNum", "0");

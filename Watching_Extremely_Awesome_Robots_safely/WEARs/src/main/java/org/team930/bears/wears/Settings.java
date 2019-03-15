@@ -195,7 +195,7 @@ public class Settings extends AppCompatActivity {
                         SPMD.putString("tRtHtFl", "0");
                         SPMD.putString("tRtCgFl", "0");
 
-                        //ENDGAME
+
                         SPMD.putString("habStatus", "0");
                         SPMD.putString("disabled", "0");
                         SPMD.putString("comments", "0");
