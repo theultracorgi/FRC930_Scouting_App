@@ -169,7 +169,6 @@ public class Settings extends AppCompatActivity {
                         SPOS.putBoolean("csVisible", false);
 
                         SPOS.putBoolean("dataAvailable", false);
-                        SPOS.putBoolean("multipleQR", false);
 
                         SPOS.apply();
 

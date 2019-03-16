@@ -79,7 +79,6 @@ public class HomeScreen extends AppCompatActivity {
 
             SPOS.putBoolean("dataAvailable", false);
             SPOS.putString("scouterPos", "0");
-            SPOS.putBoolean("multipleQR", false);
             SPOS.putBoolean("firstOpen", false);
 
             SPMD.putString("teamNum", "0");
@@ -136,7 +135,7 @@ public class HomeScreen extends AppCompatActivity {
             AlertDialog alert = builder.create();
             alert.show();
 
-        } else if (otherSettings.getInt(numStoredMatches, maxMatches) >= maxMatches && otherSettings.getBoolean("multipleQR", false)) { //
+        } else if (otherSettings.getInt(numStoredMatches, maxMatches) >= maxMatches) { //
             builder.setTitle("All Your Data Are Belong To Us.");
             builder.setMessage("You need to generate a QR code to continue scouting.");
             builder.setCancelable(true);

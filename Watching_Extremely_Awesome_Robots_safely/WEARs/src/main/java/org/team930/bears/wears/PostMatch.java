@@ -144,12 +144,9 @@ public class PostMatch extends AppCompatActivity {
 
 
                             SPOS.putInt(numStoredMatches, otherSettings.getInt(numStoredMatches, 5) + 1);
+                            SPOS.apply();
 
-                            if (otherSettings.getInt(numStoredMatches, 6) > 6 && otherSettings.getBoolean("multipleQR", false) == false) {
-                                SPOS.putBoolean("multipleQR", true);
-
-                            }
-                            if (otherSettings.getBoolean("multipleQR", true)) {
+                            if (otherSettings.getInt(numStoredMatches, 6) % 2 == 0) {
                                 SPMD.putString("secondQR", matchData.getString("secondQR", "") + fullMatchData);
                             } else {
                                 SPMD.putString("firstQR", matchData.getString("firstQR", "") + fullMatchData);

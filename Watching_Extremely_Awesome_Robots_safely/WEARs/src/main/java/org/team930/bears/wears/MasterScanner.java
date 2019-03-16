@@ -179,7 +179,7 @@ public class MasterScanner extends AppCompatActivity {
             numDataSets.setText(String.format(Locale.ENGLISH, "%d", otherSettings.getInt("scannedID", 6)));
 
         } else {
-            Toast.makeText(this, "Null Scan", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Null Scan. Please Retry", Toast.LENGTH_SHORT).show();
 
         }
     }

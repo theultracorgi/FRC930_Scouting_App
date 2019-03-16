@@ -62,15 +62,12 @@ public class QRCreator extends AppCompatActivity {
         indicator = findViewById(R.id.qrcodey);
 
         disFirstQR = false;
-
-
-        if (otherSettings.getBoolean("multipleQR", false)) {
+        if(matchData.getString("secondQR", "0") != "") {
             genQRCode.setText("Generate QR-1");
             disFirstQR = true;
+
         }
-
-
-        if (otherSettings.getInt(numStoredMatches, 0) == 0) {
+        if (otherSettings.getInt(numStoredMatches, 0) <= 0) {
             qrCode.setBackgroundDrawable(getResources().getDrawable(R.drawable.bad));
 
         } else {
@@ -79,17 +76,19 @@ public class QRCreator extends AppCompatActivity {
     }
 
     public void setGenQRCode(View v) {
-        if (otherSettings.getBoolean("multipleQR", true)) {
-            if (disFirstQR == true) {
-                sendableData = matchData.getString("firstQR", "");
-            } else {
-                sendableData = matchData.getString("secondQR", "");
-            }
-        } else {
-            sendableData = matchData.getString("firstQR", "");
-        }
 
-        if (otherSettings.getInt(numStoredMatches, 0) != 0) {
+        if(matchData.getString("secondQR", "0") == "") {
+            sendableData = matchData.getString("firstQR", "0");
+            genQRCode.setText("Generate QR Code");
+        } else {
+
+            if (disFirstQR == true) {
+                sendableData = matchData.getString("firstQR", "0");
+            } else {
+                sendableData = matchData.getString("secondQR", "0");
+            }
+        }
+        if (otherSettings.getInt(numStoredMatches, 0) > 0) {
 
             QRCodeWriter writer = new QRCodeWriter();
             try {
@@ -118,10 +117,7 @@ public class QRCreator extends AppCompatActivity {
             //QR Code Generation
 
             disFirstQR = !disFirstQR;
-
-            if (false == otherSettings.getBoolean("multipleQR", false)) {
-
-            } else {
+            if(matchData.getString("secondQR", "0") != "") {
                 if (disFirstQR) {
                     genQRCode.setText("Generate QR-1");
                     indicator.setText("QR Code 2");
@@ -130,8 +126,9 @@ public class QRCreator extends AppCompatActivity {
                     genQRCode.setText("Generate QR-2");
                     indicator.setText("QR Code 1");
                 }
+            } else {
+                genQRCode.setVisibility(View.INVISIBLE);
             }
-
         } else if (showToast) {
             Toast.makeText(getApplicationContext(), "No Data", Toast.LENGTH_SHORT).show();
             showToast = false;
