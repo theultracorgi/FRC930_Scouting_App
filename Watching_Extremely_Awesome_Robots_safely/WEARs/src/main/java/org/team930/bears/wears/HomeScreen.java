@@ -73,7 +73,7 @@ public class HomeScreen extends AppCompatActivity {
             SPOS.putBoolean("deleteData", false);
             SPOS.putInt(numMatchesStored, 0);
 
-            SPOS.putString("scannedMatches", "");
+            SPOS.putString("scannedMatches", "Null");
             SPOS.putInt("scannedID", 0);
             SPOS.putBoolean("csVisible", false);
 
@@ -106,13 +106,13 @@ public class HomeScreen extends AppCompatActivity {
             SPMD.putString("disabled", "0");
             SPMD.putString("comments", "0");
 
-            SPMD.putString("preMatchVals", "");
-            SPMD.putString("autonTeleopVals", "");
-            SPMD.putString("postMatchVals", "");
+            SPMD.putString("preMatchVals", "Null");
+            SPMD.putString("autonTeleopVals", "Null");
+            SPMD.putString("postMatchVals", "Null");
 
 
-            SPMD.putString("firstQR", "");
-            SPMD.putString("secondQR", "");
+            SPMD.putString("firstQR", "Null");
+            SPMD.putString("secondQR", "Null");
 
 
             SPMD.apply();

@@ -137,7 +137,7 @@ public class Settings extends AppCompatActivity {
 
     public void setStillFRC(View v) {
 
-        if (stillFRC.isChecked()) {
+        if (stillFRC.isChecked() && !Still.isPlaying()) {
             Still.start();
 
         } else {
