@@ -62,7 +62,7 @@ public class QRCreator extends AppCompatActivity {
         indicator = findViewById(R.id.qrcodey);
 
         disFirstQR = false;
-        if(matchData.getString("secondQR", "0") != "") {
+        if(otherSettings.getInt(numStoredMatches, 12) > 1) {
             genQRCode.setText("Generate QR-1");
             disFirstQR = true;
 
@@ -77,7 +77,7 @@ public class QRCreator extends AppCompatActivity {
 
     public void setGenQRCode(View v) {
 
-        if(matchData.getString("secondQR", "0") == "") {
+        if(otherSettings.getInt(numStoredMatches, 12) <= 1) {
             sendableData = matchData.getString("firstQR", "0");
             genQRCode.setText("Generate QR Code");
         } else {
@@ -117,7 +117,7 @@ public class QRCreator extends AppCompatActivity {
             //QR Code Generation
 
             disFirstQR = !disFirstQR;
-            if(matchData.getString("secondQR", "0") != "") {
+            if(otherSettings.getInt(numStoredMatches, 12) <= 1) {
                 if (disFirstQR) {
                     genQRCode.setText("Generate QR-1");
                     indicator.setText("QR Code 2");
