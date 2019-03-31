@@ -46,7 +46,7 @@ public class MasterScanner extends AppCompatActivity {
     FileOutputStream fos;
     File path, dir, file;
     ContextThemeWrapper ctw;
-    AlertDialog.Builder csvCreated;
+    AlertDialog.Builder csvCreated, nullScan;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -58,6 +58,7 @@ public class MasterScanner extends AppCompatActivity {
 
         ctw = new ContextThemeWrapper(this, THEME_HOLO_LIGHT);
         csvCreated = new AlertDialog.Builder(ctw);
+        nullScan = new AlertDialog.Builder(ctw);
 
         otherPreferences = getString(R.string.otherPreferences);
         otherSettings = getSharedPreferences(otherPreferences, 0);
@@ -161,9 +162,8 @@ public class MasterScanner extends AppCompatActivity {
         if (resultCode == RESULT_CANCELED) {
             Toast.makeText(this, "Scan Cancelled", Toast.LENGTH_SHORT).show();
 
-        } else if (scanResult != null || scanResult.getContents() == "0" || scanResult.getContents().toLowerCase() != "null") {
+        } else if (scanResult != null && scanResult.getContents() != "0" && scanResult.getContents().toLowerCase() != "null") {
             // handle scan result
-
 
             SharedPreferences.Editor SPOS = otherSettings.edit();
 
@@ -179,7 +179,18 @@ public class MasterScanner extends AppCompatActivity {
             numDataSets.setText(String.format(Locale.ENGLISH, "%d", otherSettings.getInt("scannedID", 6)));
 
         } else {
-            Toast.makeText(this, "Null Scan. Please Retry", Toast.LENGTH_SHORT).show();
+            nullScan.setTitle("Null Scan");
+            nullScan.setMessage("Please rescan QR code. Data not transferred");
+            nullScan.setCancelable(true);
+            nullScan.setNeutralButton(
+                    "OK",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    });
+            AlertDialog alert = nullScan.create();
+            alert.show();
 
         }
     }

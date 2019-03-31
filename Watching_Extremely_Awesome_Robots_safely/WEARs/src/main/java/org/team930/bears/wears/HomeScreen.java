@@ -106,13 +106,13 @@ public class HomeScreen extends AppCompatActivity {
             SPMD.putString("disabled", "0");
             SPMD.putString("comments", "0");
 
-            SPMD.putString("preMatchVals", "Null");
-            SPMD.putString("autonTeleopVals", "Null");
-            SPMD.putString("postMatchVals", "Null");
+            SPMD.putString("preMatchVals", "");
+            SPMD.putString("autonTeleopVals", "");
+            SPMD.putString("postMatchVals", "");
 
 
-            SPMD.putString("firstQR", "Null");
-            SPMD.putString("secondQR", "Null");
+            SPMD.putString("firstQR", "");
+            SPMD.putString("secondQR", "");
 
 
             SPMD.apply();
