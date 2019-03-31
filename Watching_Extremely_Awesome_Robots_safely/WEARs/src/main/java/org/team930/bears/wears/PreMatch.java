@@ -61,9 +61,6 @@ public class PreMatch extends AppCompatActivity {
 
         SharedPreferences.Editor SPOS = otherSettings.edit();
 
-        SPOS.putBoolean("firstOpen", false);
-
-
         SPOS.apply();
 
         teamNum = findViewById(R.id.teamNum);

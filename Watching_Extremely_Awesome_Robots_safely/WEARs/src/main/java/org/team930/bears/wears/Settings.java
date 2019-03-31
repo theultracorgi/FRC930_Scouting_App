@@ -197,7 +197,7 @@ public class Settings extends AppCompatActivity {
 
                         SPMD.putString("habStatus", "0");
                         SPMD.putString("disabled", "0");
-                        SPMD.putString("comments", "0");
+                        SPMD.putString("comments", "");
 
                         SPMD.putString("preMatchVals", "");
                         SPMD.putString("autonTeleopVals", "");
