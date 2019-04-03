@@ -1,17 +1,18 @@
 Naming Standards
-CargoShip == Ct
-Rocket == Rt
+
+Sandstorm  == S
+Teleop == T
 
 Hatches == Ht
 Cargo == Cg
-Sandstorm  == S
-Teleop == T
+
+High == H
+Mid == M
+Low == L
 
 Add == Add
 Subtract == Sub
 Display == Ds
 
-Scored == Sc
-Failed = Fl
 
-Order; T/S -> CS/RT -> HT/CG -> Function(Display, add, etc) -> Sc/Fl
+Order: T/S -> Ht/Cg -> H/M/L -> Add/Sub/Ds
