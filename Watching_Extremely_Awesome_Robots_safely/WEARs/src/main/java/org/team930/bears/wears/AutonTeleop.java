@@ -25,11 +25,11 @@ public class AutonTeleop extends AppCompatActivity {
     Button goToPostMatch;
     ToggleButton habLine;
     RadioButton onField, lvlOne, lvlTwo, lvlThree;
-    TextView sCsHtDs, sCsCgDs, sRtHtDs, sRtCgDs, tCsHtDsSc, tCsHtDsFl, tCsCgDsSc, tCsCgDsFl, tRtHtDsSc, tRtHtDsFl, tRtCgDsSc, tRtCgDsFl;
+    TextView sCgLDs, sHtLDs, sHtMDs, sHtHDs, tCgLDs, tCgMDs, tCgHDs, tHtLDs, tHtMDs, tHtHDs,
 
-    Integer sHabLine, sCsHt, sCsCg, sRtHt, sRtCg, tCsHtSc, tCsHtFl, tCsCgSc, tCsCgFl, tRtHtSc, tRtHtFl, tRtCgSc, tRtCgFl, habStatus;
+    Integer sHabLine, sCgL, sHtL, sHtM, sHtH, tCgL, tCgM, tCgH, tHtL, tHtM, tHtH, habStatus;
     String matchDataPreferences, otherPreferences;
-    String sHabLinePass, sCsHtPass, sCsCgPass, sRtHtPass, sRtCgPass, tCsHtScPass, tCsHtFlPass, tCsCgScPass, tCsCgFlPass, tRtHtScPass, tRtHtFlPass, tRtCgScPass, tRtCgFlPass, habStatusPass;
+    String sHabLinePass, sCgLPass, sHtLPass, sHtMPass, sHtHPass, tCgLPass, tCgMPass, tCgHPass, tHtLPass, tHtMPass, tHtHPass, habStatusPass;
     Boolean attemptsOutput;
 
 
@@ -74,54 +74,47 @@ public class AutonTeleop extends AppCompatActivity {
         }
 //SANDSTORM SETTERS
         //COUNTS
-        sCsHt = Integer.parseInt(matchData.getString("sCsHt", "0"));
-        sCsCg = Integer.parseInt(matchData.getString("sCsCg", "0"));
-        sRtHt = Integer.parseInt(matchData.getString("sRtHt", "0"));
-        sRtCg = Integer.parseInt(matchData.getString("sRtCg", "0"));
+        sCgL = Integer.parseInt(matchData.getString("sCgL", "0"));
+        sHtL = Integer.parseInt(matchData.getString("sHtL", "0"));
+        sHtM = Integer.parseInt(matchData.getString("sHtM", "0"));
+        sHtH = Integer.parseInt(matchData.getString("sHtH", "0"));
 
 
         //VIEWS
-        sCsHtDs = findViewById(R.id.sCsHtDs);
-        sCsCgDs = findViewById(R.id.sCsCgDs);
-        sRtHtDs = findViewById(R.id.sRtHtDs);
-        sRtCgDs = findViewById(R.id.sRtCgDs);
+        sCgLDs = findViewById(R.id.sCgLDs);
+        sHtLDs = findViewById(R.id.sHtLDs);
+        sHtMDs = findViewById(R.id.sHtMDs);
+        sHtHDs = findViewById(R.id.sHtHDs);
 
-        sCsHtDs.setText(String.format(Locale.ENGLISH, "%d", sCsHt));
-        sCsCgDs.setText(String.format(Locale.ENGLISH, "%d", sCsCg));
-        sRtHtDs.setText(String.format(Locale.ENGLISH, "%d", sRtHt));
-        sRtCgDs.setText(String.format(Locale.ENGLISH, "%d", sRtCg));
+        sCgLDs.setText(String.format(Locale.ENGLISH, "%d", sCgL));
+        sHtLDs.setText(String.format(Locale.ENGLISH, "%d", sHtL));
+        sHtMDs.setText(String.format(Locale.ENGLISH, "%d", sHtM));
+        sHtHDs.setText(String.format(Locale.ENGLISH, "%d", sHtH));
 
         //TELEOP SETTERS
 
         //COUNTS
-        tCsHtSc = Integer.parseInt(matchData.getString("tCsHtSc", "0"));
-        tCsHtFl = Integer.parseInt(matchData.getString("tCsHtFl", "0"));
-        tCsCgSc = Integer.parseInt(matchData.getString("tCsCgSc", "0"));
-        tCsCgFl = Integer.parseInt(matchData.getString("tCsCgFl", "0"));
-        tRtHtSc = Integer.parseInt(matchData.getString("tRtHtSc", "0"));
-        tRtHtFl = Integer.parseInt(matchData.getString("tRtHtFl", "0"));
-        tRtCgSc = Integer.parseInt(matchData.getString("tRtCgSc", "0"));
-        tRtCgFl = Integer.parseInt(matchData.getString("tRtCgFl", "0"));
+        tCgL = Integer.parseInt(matchData.getString("tCgL", "0"));
+        tCgM = Integer.parseInt(matchData.getString("tCgM", "0"));
+        tCgH = Integer.parseInt(matchData.getString("tCGH", "0"));
+        tHtL = Integer.parseInt(matchData.getString("tHtL", "0"));
+        tHtM = Integer.parseInt(matchData.getString("tHtM", "0"));
+        tHtH = Integer.parseInt(matchData.getString("tHtH", "0"));
 
         //VIEWS
-        tCsHtDsSc = findViewById(R.id.tCsHtDsSc);
-        tCsHtDsFl = findViewById(R.id.tCsHtDsFl);
-        tCsCgDsSc = findViewById(R.id.tCsCgDsSc);
-        tCsCgDsFl = findViewById(R.id.tCsCgDsFl);
-        tRtHtDsSc = findViewById(R.id.tRtHtDsSc);
-        tRtHtDsFl = findViewById(R.id.tRtHtDsFl);
-        tRtCgDsSc = findViewById(R.id.tRtCgDsSc);
-        tRtCgDsFl = findViewById(R.id.tRtCgDsFl);
+        tCgLDs = findViewById(R.id.tCgLDs);
+        tCgMDs = findViewById(R.id.tCgMDs);
+        tCgHDs = findViewById(R.id.tCgHDs);
+        tHtLDs = findViewById(R.id.tHtLDs);
+        tHtMDs = findViewById(R.id.tHtMDs);
+        tHtHDs = findViewById(R.id.tHtHDs);
 
-
-        tCsHtDsSc.setText(String.format(Locale.ENGLISH, "%d", tCsHtSc));
-        tCsHtDsFl.setText(String.format(Locale.ENGLISH, "%d", tCsHtFl));
-        tCsCgDsSc.setText(String.format(Locale.ENGLISH, "%d", tCsCgSc));
-        tCsCgDsFl.setText(String.format(Locale.ENGLISH, "%d", tCsCgFl));
-        tRtHtDsSc.setText(String.format(Locale.ENGLISH, "%d", tRtHtSc));
-        tRtHtDsFl.setText(String.format(Locale.ENGLISH, "%d", tRtHtFl));
-        tRtCgDsSc.setText(String.format(Locale.ENGLISH, "%d", tRtCgSc));
-        tRtCgDsFl.setText(String.format(Locale.ENGLISH, "%d", tRtCgFl));
+        tCgLDs.setText(String.format(Locale.ENGLISH, "%d", tCgL));
+        tCgMDs.setText(String.format(Locale.ENGLISH, "%d", tCgM));
+        tCgHDs.setText(String.format(Locale.ENGLISH, "%d",  tCgH));
+        tHtLDs.setText(String.format(Locale.ENGLISH, "%d", tHtL));
+        tHtMDs.setText(String.format(Locale.ENGLISH, "%d", tHtM));
+        tHtHDs.setText(String.format(Locale.ENGLISH, "%d", tHtH));
 
         //ENDGAME
 
@@ -383,27 +376,17 @@ public class AutonTeleop extends AppCompatActivity {
         sHabLinePass = String.format(Locale.ENGLISH, "%d", sHabLine);
 
         //ATTEMPTS
-        sCsHtPass = String.format(Locale.ENGLISH, "%d", sCsHt);
-        sCsCgPass = String.format(Locale.ENGLISH, "%d", sCsCg);
-        sRtHtPass = String.format(Locale.ENGLISH, "%d", sCsHt);
-        sRtCgPass = String.format(Locale.ENGLISH, "%d", sCsCg);
+        sCgLPass = String.format(Locale.ENGLISH, "%d", sCgL);
+        sHtLPass = String.format(Locale.ENGLISH, "%d", sHtL);
+        sHtMPass = String.format(Locale.ENGLISH, "%d", sHtM);
+        sHtHPass = String.format(Locale.ENGLISH, "%d", sHtH);
 
-        tCsHtScPass = String.format(Locale.ENGLISH, "%d", tCsHtSc);
-        tCsCgScPass = String.format(Locale.ENGLISH, "%d", tCsCgSc);
-        tRtHtScPass = String.format(Locale.ENGLISH, "%d", tRtHtSc);
-        tRtCgScPass = String.format(Locale.ENGLISH, "%d", tRtCgSc);
-
-        if (attemptsOutput) {
-            tCsHtFlPass = String.format(Locale.ENGLISH, "%d", tCsHtFl + tCsHtSc);
-            tCsCgFlPass = String.format(Locale.ENGLISH, "%d", tCsCgFl + tCsCgSc);
-            tRtHtFlPass = String.format(Locale.ENGLISH, "%d", tRtHtFl + tRtHtSc);
-            tRtCgFlPass = String.format(Locale.ENGLISH, "%d", tRtCgFl + tRtCgSc);
-        } else {
-            tCsHtFlPass = String.format(Locale.ENGLISH, "%d", tCsHtFl);
-            tCsCgFlPass = String.format(Locale.ENGLISH, "%d", tCsCgFl);
-            tRtHtFlPass = String.format(Locale.ENGLISH, "%d", tRtHtFl);
-            tRtCgFlPass = String.format(Locale.ENGLISH, "%d", tRtCgFl);
-        }
+        tCgLPass = String.format(Locale.ENGLISH, "%d", tCgL);
+        tCgMPass = String.format(Locale.ENGLISH, "%d", tCgM);
+        tCgHPass = String.format(Locale.ENGLISH, "%d", tCgH);
+        tHtLPass = String.format(Locale.ENGLISH, "%d", tHtL);
+        tHtMPass = String.format(Locale.ENGLISH, "%d", tHtM);
+        tHtHPass = String.format(Locale.ENGLISH, "%d", tHtH);
 
 
         //ENDGAME
@@ -417,24 +400,25 @@ public class AutonTeleop extends AppCompatActivity {
         SPMD.putString("sHabLine", sHabLinePass);
 
         //ATTEMPTS
-        SPMD.putString("sCsHt", sCsHtPass);
-        SPMD.putString("sCsCg", sCsCgPass);
-        SPMD.putString("sRtHt", sRtHtPass);
-        SPMD.putString("sRtCg", sRtCgPass);
+        SPMD.putString("sCgL", sCgLPass);
+        SPMD.putString("sHtL", sHtLPass);
+        SPMD.putString("sHtM", sHtMPass);
+        SPMD.putString("sHtH", sHtHPass);
 
-        SPMD.putString("tCsHtSc", tCsHtScPass);
-        SPMD.putString("tCsCgSc", tCsCgScPass);
-        SPMD.putString("tRtHtSc", tRtHtScPass);
-        SPMD.putString("tRtCgSc", tRtCgScPass);
-
-        SPMD.putString("tRtHtFl", tCsHtFlPass);
-        SPMD.putString("tRtCgFl", tCsCgFlPass);
-        SPMD.putString("tRtHtFl", tRtHtFlPass);
-        SPMD.putString("tRtCgFl", tRtCgFlPass);
+        SPMD.putString("tCgL", tCgLPass);
+        SPMD.putString("tCgM", tCgMPass);
+        SPMD.putString("tCgH", tCgHPass);
+        SPMD.putString("tHtL", tHtLPass);
+        SPMD.putString("tHtM", tHtMPass);
+        SPMD.putString("tHtH", tHtHPass);
 
 
         //ENDGAME
         SPMD.putString("habStatus", habStatusPass);
+        SPMD.putString("autonTeleopVals", sHabLinePass + "," + sCgLPass + "," + sHtLPass + "," + sHtMPass + "," + sHtHPass + "," +
+                tCgLPass + "," + tCgMPass + "," + tCgHPass + "," +
+                tHtLPass + "," + tHtMPass + "," + tHtHPass + ","  +
+                habStatusPass + ",");
         SPMD.apply();
 
         //NEXT
@@ -451,21 +435,17 @@ public class AutonTeleop extends AppCompatActivity {
         sHabLinePass = String.format(Locale.ENGLISH, "%d", sHabLine);
 
         //ATTEMPTS
-        sCsHtPass = String.format(Locale.ENGLISH, "%d", sCsHt);
-        sCsCgPass = String.format(Locale.ENGLISH, "%d", sCsCg);
-        sRtHtPass = String.format(Locale.ENGLISH, "%d", sRtHt);
-        sRtCgPass = String.format(Locale.ENGLISH, "%d", sRtCg);
+        sCgLPass = String.format(Locale.ENGLISH, "%d", sCgL);
+        sHtLPass = String.format(Locale.ENGLISH, "%d", sHtL);
+        sHtMPass = String.format(Locale.ENGLISH, "%d", sHtM);
+        sHtHPass = String.format(Locale.ENGLISH, "%d", sHtH);
 
-
-        tCsHtScPass = String.format(Locale.ENGLISH, "%d", tCsHtSc);
-        tCsCgScPass = String.format(Locale.ENGLISH, "%d", tCsCgSc);
-        tRtHtScPass = String.format(Locale.ENGLISH, "%d", tRtHtSc);
-        tRtCgScPass = String.format(Locale.ENGLISH, "%d", tRtCgSc);
-
-        tCsHtFlPass = String.format(Locale.ENGLISH, "%d", tCsHtFl);
-        tCsCgFlPass = String.format(Locale.ENGLISH, "%d", tCsCgFl);
-        tRtHtFlPass = String.format(Locale.ENGLISH, "%d", tRtHtFl);
-        tRtCgFlPass = String.format(Locale.ENGLISH, "%d", tRtCgFl);
+        tCgLPass = String.format(Locale.ENGLISH, "%d", tCgL);
+        tCgMPass = String.format(Locale.ENGLISH, "%d", tCgM);
+        tCgHPass = String.format(Locale.ENGLISH, "%d", tCgH);
+        tHtLPass = String.format(Locale.ENGLISH, "%d", tHtL);
+        tHtMPass = String.format(Locale.ENGLISH, "%d", tHtM);
+        tHtHPass = String.format(Locale.ENGLISH, "%d", tHtH);
 
 
         //ENDGAME
@@ -479,27 +459,26 @@ public class AutonTeleop extends AppCompatActivity {
         SPMD.putString("sHabLine", sHabLinePass);
 
         //ATTEMPTS
-        SPMD.putString("sCsHt", sCsHtPass);
-        SPMD.putString("sCsCg", sCsCgPass);
-        SPMD.putString("sRtHt", sRtHtPass);
-        SPMD.putString("sRtCg", sRtCgPass);
+        SPMD.putString("sCgL", sCgLPass);
+        SPMD.putString("sHtL", sHtLPass);
+        SPMD.putString("sHtM", sHtMPass);
+        SPMD.putString("sHtH", sHtHPass);
 
-        SPMD.putString("tCsHtSc", tCsHtScPass);
-        SPMD.putString("tCsCgSc", tCsCgScPass);
-        SPMD.putString("tRtHtSc", tRtHtScPass);
-        SPMD.putString("tRtCgSc", tRtCgScPass);
-
-        SPMD.putString("tRtHtFl", tCsHtFlPass);
-        SPMD.putString("tRtCgFl", tCsCgFlPass);
-        SPMD.putString("tRtHtFl", tRtHtFlPass);
-        SPMD.putString("tRtCgFl", tRtCgFlPass);
+        SPMD.putString("tCgL", tCgLPass);
+        SPMD.putString("tCgM", tCgMPass);
+        SPMD.putString("tCgH", tCgHPass);
+        SPMD.putString("tHtL", tHtLPass);
+        SPMD.putString("tHtM", tHtMPass);
+        SPMD.putString("tHtH", tHtHPass);
 
 
         //ENDGAME
         SPMD.putString("habStatus", habStatusPass);
-        SPMD.putString("autonTeleopVals", sHabLinePass + "," + sCsHtPass + "," + sCsCgPass + "," + sRtHtPass + "," + sRtCgPass + "," +
-                tCsHtScPass + "," + tCsHtFlPass + "," + tCsCgScPass + "," + tCsCgFlPass + "," +
-                tRtHtScPass + "," + tRtHtFlPass + "," + tRtCgScPass + "," + tRtCgFlPass + "," + habStatusPass + ",");
+
+        SPMD.putString("autonTeleopVals", sHabLinePass + "," + sCgLPass + "," + sHtLPass + "," + sHtMPass + "," + sHtHPass + "," +
+                tCgLPass + "," + tCgMPass + "," + tCgHPass + "," +
+                tHtLPass + "," + tHtMPass + "," + tHtHPass + ","  +
+                habStatusPass + ",");
         SPMD.apply();
 
     }
@@ -521,54 +500,47 @@ public class AutonTeleop extends AppCompatActivity {
         }
 //SANDSTORM SETTERS
         //COUNTS
-        sCsHt = Integer.parseInt(matchData.getString("sCsHt", "0"));
-        sCsCg = Integer.parseInt(matchData.getString("sCsCg", "0"));
-        sRtHt = Integer.parseInt(matchData.getString("sRtHt", "0"));
-        sRtCg = Integer.parseInt(matchData.getString("sRtCg", "0"));
+        sCgL = Integer.parseInt(matchData.getString("sCgL", "0"));
+        sHtL = Integer.parseInt(matchData.getString("sHtL", "0"));
+        sHtM = Integer.parseInt(matchData.getString("sHtM", "0"));
+        sHtH = Integer.parseInt(matchData.getString("sHtH", "0"));
 
 
         //VIEWS
-        sCsHtDs = findViewById(R.id.sCsHtDs);
-        sCsCgDs = findViewById(R.id.sCsCgDs);
-        sRtHtDs = findViewById(R.id.sRtHtDs);
-        sRtCgDs = findViewById(R.id.sRtCgDs);
+        sCgLDs = findViewById(R.id.sCgLDs);
+        sHtLDs = findViewById(R.id.sHtLDs);
+        sHtMDs = findViewById(R.id.sHtMDs);
+        sHtHDs = findViewById(R.id.sHtHDs);
 
-        sCsHtDs.setText(String.format(Locale.ENGLISH, "%d", sCsHt));
-        sCsCgDs.setText(String.format(Locale.ENGLISH, "%d", sCsCg));
-        sRtHtDs.setText(String.format(Locale.ENGLISH, "%d", sRtHt));
-        sRtCgDs.setText(String.format(Locale.ENGLISH, "%d", sRtCg));
+        sCgLDs.setText(String.format(Locale.ENGLISH, "%d", sCgL));
+        sHtLDs.setText(String.format(Locale.ENGLISH, "%d", sHtL));
+        sHtMDs.setText(String.format(Locale.ENGLISH, "%d", sHtM));
+        sHtHDs.setText(String.format(Locale.ENGLISH, "%d", sHtH));
 
         //TELEOP SETTERS
 
         //COUNTS
-        tCsHtSc = Integer.parseInt(matchData.getString("tCsHtSc", "0"));
-        tCsHtFl = Integer.parseInt(matchData.getString("tCsHtFl", "0"));
-        tCsCgSc = Integer.parseInt(matchData.getString("tCsCgSc", "0"));
-        tCsCgFl = Integer.parseInt(matchData.getString("tCsCgFl", "0"));
-        tRtHtSc = Integer.parseInt(matchData.getString("tRtHtSc", "0"));
-        tRtHtFl = Integer.parseInt(matchData.getString("tRtHtFl", "0"));
-        tRtCgSc = Integer.parseInt(matchData.getString("tRtCgSc", "0"));
-        tRtCgFl = Integer.parseInt(matchData.getString("tRtCgFl", "0"));
+        tCgL = Integer.parseInt(matchData.getString("tCgL", "0"));
+        tCgM = Integer.parseInt(matchData.getString("tCgM", "0"));
+        tCgH = Integer.parseInt(matchData.getString("tCGH", "0"));
+        tHtL = Integer.parseInt(matchData.getString("tHtL", "0"));
+        tHtM = Integer.parseInt(matchData.getString("tHtM", "0"));
+        tHtH = Integer.parseInt(matchData.getString("tHtH", "0"));
 
         //VIEWS
-        tCsHtDsSc = findViewById(R.id.tCsHtDsSc);
-        tCsHtDsFl = findViewById(R.id.tCsHtDsFl);
-        tCsCgDsSc = findViewById(R.id.tCsCgDsSc);
-        tCsCgDsFl = findViewById(R.id.tCsCgDsFl);
-        tRtHtDsSc = findViewById(R.id.tRtHtDsSc);
-        tRtHtDsFl = findViewById(R.id.tRtHtDsFl);
-        tRtCgDsSc = findViewById(R.id.tRtCgDsSc);
-        tRtCgDsFl = findViewById(R.id.tRtCgDsFl);
+        tCgLDs = findViewById(R.id.tCgLDs);
+        tCgMDs = findViewById(R.id.tCgMDs);
+        tCgHDs = findViewById(R.id.tCgHDs);
+        tHtLDs = findViewById(R.id.tHtLDs);
+        tHtMDs = findViewById(R.id.tHtMDs);
+        tHtHDs = findViewById(R.id.tHtHDs);
 
-
-        tCsHtDsSc.setText(String.format(Locale.ENGLISH, "%d", tCsHtSc));
-        tCsHtDsFl.setText(String.format(Locale.ENGLISH, "%d", tCsHtFl));
-        tCsCgDsSc.setText(String.format(Locale.ENGLISH, "%d", tCsCgSc));
-        tCsCgDsFl.setText(String.format(Locale.ENGLISH, "%d", tCsCgFl));
-        tRtHtDsSc.setText(String.format(Locale.ENGLISH, "%d", tRtHtSc));
-        tRtHtDsFl.setText(String.format(Locale.ENGLISH, "%d", tRtHtFl));
-        tRtCgDsSc.setText(String.format(Locale.ENGLISH, "%d", tRtCgSc));
-        tRtCgDsFl.setText(String.format(Locale.ENGLISH, "%d", tRtCgFl));
+        tCgLDs.setText(String.format(Locale.ENGLISH, "%d", tCgL));
+        tCgMDs.setText(String.format(Locale.ENGLISH, "%d", tCgM));
+        tCgHDs.setText(String.format(Locale.ENGLISH, "%d",  tCgH));
+        tHtLDs.setText(String.format(Locale.ENGLISH, "%d", tHtL));
+        tHtMDs.setText(String.format(Locale.ENGLISH, "%d", tHtM));
+        tHtHDs.setText(String.format(Locale.ENGLISH, "%d", tHtH));
 
         //ENDGAME
 
