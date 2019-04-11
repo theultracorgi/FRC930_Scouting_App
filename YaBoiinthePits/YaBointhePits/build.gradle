@@ -4,7 +4,7 @@ android {
     compileSdkVersion 26
     defaultConfig {
         applicationId "org.team930.bears.yaboiinthepits"
-        minSdkVersion 14
+        minSdkVersion 18
         //noinspection OldTargetApi
         targetSdkVersion 23
         versionCode 1
