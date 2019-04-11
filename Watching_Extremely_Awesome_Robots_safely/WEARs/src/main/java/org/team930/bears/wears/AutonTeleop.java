@@ -155,8 +155,7 @@ public class AutonTeleop extends AppCompatActivity {
 
     }
 
-
-    //SANDSTORM HABLINE
+//SANDSTORM HABLINE
     public void setHabLine(View v) {
 
         if (habLine.isChecked()) {
@@ -167,8 +166,7 @@ public class AutonTeleop extends AppCompatActivity {
         }
     }
 
-    //SANDSTORM CARGO SHIP
-    //Hatches
+//SANDSTORM LOW CARGO
     public void setSCgLSub(View v) {
         if (sCgL > 0) {
             sCgL -= 1;
@@ -180,7 +178,9 @@ public class AutonTeleop extends AppCompatActivity {
         sCgL += 1;
         sCgLDs.setText(String.format(Locale.ENGLISH, "%d", sCgL));
         }
-    //Cargo
+
+
+//SANDSTORM LOW HATCHES
     public void setSHtLSub(View v) {
 
         if (sHtL > 0) {
@@ -194,9 +194,7 @@ public class AutonTeleop extends AppCompatActivity {
         sHtLDs.setText(String.format(Locale.ENGLISH, "%d", sHtL));
     }
 
-//SANDSTORM ROCKET SHIP
-
-    //Hatches
+//SANDSTORM MID HATCHES
     public void setSHtMSub(View v) {
         if (sHtM > 0) {
             sHtM -= 1;
@@ -209,7 +207,7 @@ public class AutonTeleop extends AppCompatActivity {
             sHtMDs.setText(String.format(Locale.ENGLISH, "%d", sHtM));
         }
 
-    //Cargo
+//SANDSTORM HIGH HATCHES
     public void setSHtHSub(View v) {
 
         if (sHtH > 0) {
@@ -223,9 +221,9 @@ public class AutonTeleop extends AppCompatActivity {
         sHtHDs.setText(String.format(Locale.ENGLISH, "%d", sHtH));
     }
 
-//TELEOP CARGO SHIP HATCHES
 
-    //ATTEMPTS
+
+//TELEOP LOW CARGO
     public void setTCgLSub(View v) {
         if (tCgL > 0) {
             tCgL -= 1;
@@ -238,7 +236,7 @@ public class AutonTeleop extends AppCompatActivity {
         tCgLDs.setText(String.format(Locale.ENGLISH, "%d", tCgL));
     }
 
-    //SCORED
+//TELEOP MID CARGO
     public void setTCgMSub(View v) {
 
         if (tCgM > 0) {
@@ -252,9 +250,7 @@ public class AutonTeleop extends AppCompatActivity {
         tCgMDs.setText(String.format(Locale.ENGLISH, "%d", tCgM));
     }
 
-//TELEOP CARGO SHIP CARGO
-
-    //ATTEMPTS
+//TELEOP HIGH CARGO
     public void setTCgHSub(View v) {
         if (tCgH > 0) {
             tCgH -= 1;
@@ -267,7 +263,9 @@ public class AutonTeleop extends AppCompatActivity {
         tCgHDs.setText(String.format(Locale.ENGLISH, "%d", tCgH));
     }
 
-    //SCORED
+
+
+//TELEOP LOW HATCHES
     public void setTHtLSub(View v) {
         if (tHtL > 0) {
             tHtL -= 1;
@@ -280,7 +278,7 @@ public class AutonTeleop extends AppCompatActivity {
         tHtLDs.setText(String.format(Locale.ENGLISH, "%d", tHtL));
     }
 
-    //SCORED
+//TELEOP MID HATCHES
     public void setTHtMSub(View v) {
 
         if (tHtM > 0) {
@@ -294,9 +292,7 @@ public class AutonTeleop extends AppCompatActivity {
         tHtMDs.setText(String.format(Locale.ENGLISH, "%d", tHtM));
     }
 
-//TELEOP CARGO SHIP CARGO
-
-    //ATTEMPTS
+//TELEOP HIGH HATCHES
     public void setTHtHSub(View v) {
         if (tHtH > 0) {
             tHtH -= 1;
@@ -308,6 +304,8 @@ public class AutonTeleop extends AppCompatActivity {
         tHtH += 1;
         tHtHDs.setText(String.format(Locale.ENGLISH, "%d", tHtH));
     }
+
+
 
     //ENDGAME
     public void setOnField(View v) {
@@ -421,7 +419,7 @@ public class AutonTeleop extends AppCompatActivity {
         //AUTOLINE
         SPMD.putString("sHabLine", sHabLinePass);
 
-        //ATTEMPTS
+
         SPMD.putString("sCgL", sCgLPass);
         SPMD.putString("sHtL", sHtLPass);
         SPMD.putString("sHtM", sHtMPass);

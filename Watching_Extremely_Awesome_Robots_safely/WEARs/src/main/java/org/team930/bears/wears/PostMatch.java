@@ -174,6 +174,7 @@ public class PostMatch extends AppCompatActivity {
                             //ENDGAME
                             SPMD.putString("habStatus", "0");
                             SPMD.putString("disabled", "0");
+                            SPMD.putString("defense", "0");
                             SPMD.putString("comments", "0");
 
                             SPMD.apply();

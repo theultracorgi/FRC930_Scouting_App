@@ -101,6 +101,7 @@ public class HomeScreen extends AppCompatActivity {
 
             SPMD.putString("habStatus", "0");
             SPMD.putString("disabled", "0");
+            SPMD.putString("defense", "0");
             SPMD.putString("comments", "0");
 
             SPMD.putString("preMatchVals", "");
