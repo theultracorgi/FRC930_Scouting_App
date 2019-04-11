@@ -86,20 +86,17 @@ public class HomeScreen extends AppCompatActivity {
             SPMD.putString("startPos", "1");
             SPMD.putString("sHabLine", "0");
 
-            SPMD.putString("sCsHt", "0");
-            SPMD.putString("sCsCg", "0");
-            SPMD.putString("sRtHt", "0");
-            SPMD.putString("sRtCg", "0");
+            SPMD.putString("sCgL", "0");
+            SPMD.putString("sHtL", "0");
+            SPMD.putString("sHtM", "0");
+            SPMD.putString("sHtH", "0");
 
-            SPMD.putString("tCsHtSc", "0");
-            SPMD.putString("tCsCgSc", "0");
-            SPMD.putString("tRtHtSc", "0");
-            SPMD.putString("tRtCgSc", "0");
-
-            SPMD.putString("tRtHtFl", "0");
-            SPMD.putString("tRtCgFl", "0");
-            SPMD.putString("tRtHtFl", "0");
-            SPMD.putString("tRtCgFl", "0");
+            SPMD.putString("tCgL", "0");
+            SPMD.putString("tCgM", "0");
+            SPMD.putString("tCgH", "0");
+            SPMD.putString("tHtL", "0");
+            SPMD.putString("tHtM", "0");
+            SPMD.putString("tHtH", "0");
 
 
             SPMD.putString("habStatus", "0");

@@ -25,7 +25,7 @@ public class AutonTeleop extends AppCompatActivity {
     Button goToPostMatch;
     ToggleButton habLine;
     RadioButton onField, lvlOne, lvlTwo, lvlThree;
-    TextView sCgLDs, sHtLDs, sHtMDs, sHtHDs, tCgLDs, tCgMDs, tCgHDs, tHtLDs, tHtMDs, tHtHDs,
+    TextView sCgLDs, sHtLDs, sHtMDs, sHtHDs, tCgLDs, tCgMDs, tCgHDs, tHtLDs, tHtMDs, tHtHDs;
 
     Integer sHabLine, sCgL, sHtL, sHtM, sHtH, tCgL, tCgM, tCgH, tHtL, tHtM, tHtH, habStatus;
     String matchDataPreferences, otherPreferences;
@@ -169,181 +169,144 @@ public class AutonTeleop extends AppCompatActivity {
 
     //SANDSTORM CARGO SHIP
     //Hatches
-    public void setSCsHtSub(View v) {
-        if (sCsHt > 0) {
-            sCsHt -= 1;
-            sCsHtDs.setText(String.format(Locale.ENGLISH, "%d", sCsHt));
+    public void setSCgLSub(View v) {
+        if (sCgL > 0) {
+            sCgL -= 1;
+            sCgLDs.setText(String.format(Locale.ENGLISH, "%d", sCgL));
         }
     }
 
-    public void setSCsHtAdd(View v) {
-
-        if (sCsHt + sRtHt <= 4) {
-            sCsHt += 1;
-            sCsHtDs.setText(String.format(Locale.ENGLISH, "%d", sCsHt));
+    public void setSCgLAdd(View v) {
+        sCgL += 1;
+        sCgLDs.setText(String.format(Locale.ENGLISH, "%d", sCgL));
         }
-    }
-
     //Cargo
-    public void setSCsCgSub(View v) {
+    public void setSHtLSub(View v) {
 
-        if (sCsCg > 0) {
-            sCsCg -= 1;
-            sCsCgDs.setText(String.format(Locale.ENGLISH, "%d", sCsCg));
+        if (sHtL > 0) {
+            sHtL -= 1;
+            sHtLDs.setText(String.format(Locale.ENGLISH, "%d", sHtL));
         }
     }
 
-    public void setSCsCgAdd(View v) {
-        sCsCg += 1;
-        sCsCgDs.setText(String.format(Locale.ENGLISH, "%d", sCsCg));
+    public void setSHtLAdd(View v) {
+        sHtL += 1;
+        sHtLDs.setText(String.format(Locale.ENGLISH, "%d", sHtL));
     }
 
 //SANDSTORM ROCKET SHIP
 
     //Hatches
-    public void setSRtHtSub(View v) {
-        if (sRtHt > 0) {
-            sRtHt -= 1;
-            sRtHtDs.setText(String.format(Locale.ENGLISH, "%d", sRtHt));
+    public void setSHtMSub(View v) {
+        if (sHtM > 0) {
+            sHtM -= 1;
+            sHtMDs.setText(String.format(Locale.ENGLISH, "%d", sHtM));
         }
     }
 
-    public void setSRtHtAdd(View v) {
-        if (sCsHt + sRtHt <= 4) {
-            sRtHt += 1;
-            sRtHtDs.setText(String.format(Locale.ENGLISH, "%d", sRtHt));
+    public void setSHtMAdd(View v) {
+            sHtM += 1;
+            sHtMDs.setText(String.format(Locale.ENGLISH, "%d", sHtM));
         }
-    }
 
     //Cargo
-    public void setSRtCgSub(View v) {
+    public void setSHtHSub(View v) {
 
-        if (sRtCg > 0) {
-            sRtCg -= 1;
-            sRtCgDs.setText(String.format(Locale.ENGLISH, "%d", sRtCg));
+        if (sHtH > 0) {
+            sHtH -= 1;
+            sHtHDs.setText(String.format(Locale.ENGLISH, "%d", sHtH));
         }
     }
 
-    public void setSRtCgAdd(View v) {
-        sRtCg += 1;
-        sRtCgDs.setText(String.format(Locale.ENGLISH, "%d", sRtCg));
+    public void setSHtHAdd(View v) {
+        sHtH += 1;
+        sHtHDs.setText(String.format(Locale.ENGLISH, "%d", sHtH));
     }
 
 //TELEOP CARGO SHIP HATCHES
 
     //ATTEMPTS
-    public void setTCsHtSubSc(View v) {
-        if (tCsHtSc > 0) {
-            tCsHtSc -= 1;
-            tCsHtDsSc.setText(String.format(Locale.ENGLISH, "%d", tCsHtSc));
+    public void setTCgLSub(View v) {
+        if (tCgL > 0) {
+            tCgL -= 1;
+            tCgLDs.setText(String.format(Locale.ENGLISH, "%d", tCgL));
         }
     }
 
-    public void setTCsHtAddSc(View v) {
-        tCsHtSc += 1;
-        tCsHtDsSc.setText(String.format(Locale.ENGLISH, "%d", tCsHtSc));
+    public void setTCgLAdd(View v) {
+        tCgL += 1;
+        tCgLDs.setText(String.format(Locale.ENGLISH, "%d", tCgL));
     }
 
     //SCORED
-    public void setTCsHtSubFl(View v) {
+    public void setTCgMSub(View v) {
 
-        if (tCsHtFl > 0) {
-            tCsHtFl -= 1;
-            tCsHtDsFl.setText(String.format(Locale.ENGLISH, "%d", tCsHtFl));
+        if (tCgM > 0) {
+            tCgM -= 1;
+            tCgMDs.setText(String.format(Locale.ENGLISH, "%d", tCgM));
         }
     }
 
-    public void setTCsHtAddFl(View v) {
-        tCsHtFl += 1;
-        tCsHtDsFl.setText(String.format(Locale.ENGLISH, "%d", tCsHtFl));
+    public void setTCgMAdd(View v) {
+        tCgM += 1;
+        tCgMDs.setText(String.format(Locale.ENGLISH, "%d", tCgM));
     }
 
 //TELEOP CARGO SHIP CARGO
 
     //ATTEMPTS
-    public void setTCsCgSubSc(View v) {
-        if (tCsCgSc > 0) {
-            tCsCgSc -= 1;
-            tCsCgDsSc.setText(String.format(Locale.ENGLISH, "%d", tCsCgSc));
+    public void setTCgHSub(View v) {
+        if (tCgH > 0) {
+            tCgH -= 1;
+            tCgHDs.setText(String.format(Locale.ENGLISH, "%d", tCgH));
         }
     }
 
-    public void setTCsCgAddSc(View v) {
-        tCsCgSc += 1;
-        tCsCgDsSc.setText(String.format(Locale.ENGLISH, "%d", tCsCgSc));
+    public void setTCgHAdd(View v) {
+        tCgH += 1;
+        tCgHDs.setText(String.format(Locale.ENGLISH, "%d", tCgH));
     }
 
     //SCORED
-
-    public void setTCsCgSubFl(View v) {
-
-        if (tCsCgFl > 0) {
-            tCsCgFl -= 1;
-            tCsCgDsFl.setText(String.format(Locale.ENGLISH, "%d", tCsCgFl));
+    public void setTHtLSub(View v) {
+        if (tHtL > 0) {
+            tHtL -= 1;
+            tHtLDs.setText(String.format(Locale.ENGLISH, "%d", tHtL));
         }
     }
 
-    public void setTCsCgAddFl(View v) {
-        tCsCgFl += 1;
-        tCsCgDsFl.setText(String.format(Locale.ENGLISH, "%d", tCsCgFl));
+    public void setTHtLAdd(View v) {
+        tHtL += 1;
+        tHtLDs.setText(String.format(Locale.ENGLISH, "%d", tHtL));
     }
 
-//TELEOP ROCKET SHIP HATCHES
+    //SCORED
+    public void setTHtMSub(View v) {
+
+        if (tHtM > 0) {
+            tHtM -= 1;
+            tHtMDs.setText(String.format(Locale.ENGLISH, "%d", tHtM));
+        }
+    }
+
+    public void setTHtMAdd(View v) {
+        tHtM += 1;
+        tHtMDs.setText(String.format(Locale.ENGLISH, "%d", tHtM));
+    }
+
+//TELEOP CARGO SHIP CARGO
 
     //ATTEMPTS
-    public void setTRtHtSubSc(View v) {
-        if (tRtHtSc > 0) {
-            tRtHtSc -= 1;
-            tRtHtDsSc.setText(String.format(Locale.ENGLISH, "%d", tRtHtSc));
+    public void setTHtHSub(View v) {
+        if (tHtH > 0) {
+            tHtH -= 1;
+            tHtHDs.setText(String.format(Locale.ENGLISH, "%d", tHtH));
         }
     }
 
-    public void setTRtHtAddSc(View v) {
-        tRtHtSc += 1;
-        tRtHtDsSc.setText(String.format(Locale.ENGLISH, "%d", tRtHtSc));
-    }
-
-    //SCORED
-    public void setTRtHtSubFl(View v) {
-
-        if (tRtHtFl > 0) {
-            tRtHtFl -= 1;
-            tRtHtDsFl.setText(String.format(Locale.ENGLISH, "%d", tRtHtFl));
-        }
-    }
-
-    public void setTRtHtAddFl(View v) {
-        tRtHtFl += 1;
-        tRtHtDsFl.setText(String.format(Locale.ENGLISH, "%d", tRtHtFl));
-    }
-
-//TELEOP ROCKET SHIP CARGO
-
-    //ATTEMPTS
-    public void setTRtCgSubSc(View v) {
-        if (tRtCgSc > 0) {
-            tRtCgSc -= 1;
-            tRtCgDsSc.setText(String.format(Locale.ENGLISH, "%d", tRtCgSc));
-        }
-    }
-
-    public void setTRtCgAddSc(View v) {
-        tRtCgSc += 1;
-        tRtCgDsSc.setText(String.format(Locale.ENGLISH, "%d", tRtCgSc));
-    }
-
-    //SCORED
-    public void setTRtCgSubFl(View v) {
-
-        if (tRtCgFl > 0) {
-            tRtCgFl -= 1;
-            tRtCgDsFl.setText(String.format(Locale.ENGLISH, "%d", tRtCgFl));
-        }
-    }
-
-    public void setTRtCgAddFl(View v) {
-        tRtCgFl += 1;
-        tRtCgDsFl.setText(String.format(Locale.ENGLISH, "%d", tRtCgFl));
+    public void setTHtHAdd(View v) {
+        tHtH += 1;
+        tHtHDs.setText(String.format(Locale.ENGLISH, "%d", tHtH));
     }
 
     //ENDGAME
