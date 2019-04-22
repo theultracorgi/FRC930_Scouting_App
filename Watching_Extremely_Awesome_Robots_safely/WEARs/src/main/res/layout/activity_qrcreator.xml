@@ -71,25 +71,6 @@
 
             </LinearLayout> <!--QR ImageView-->
 
-            <Button
-                android:id="@+id/genQRCode"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
-                android:background="@drawable/blue_rounded_button"
-                android:onClick="setGenQRCode"
-                android:text="Generate QR Code"
-                android:textColor="@color/white"
-                tools:ignore="HardcodedText" />
-            <!--Generate QR Button-->
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:background="@color/white"
-                tools:ignore="ContentDescription" />
-
         </LinearLayout>
 
     </LinearLayout>

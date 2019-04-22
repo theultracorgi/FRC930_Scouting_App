@@ -26,7 +26,6 @@ import static android.app.AlertDialog.THEME_HOLO_LIGHT;
 @SuppressWarnings("ALL")
 public class QRCreator extends AppCompatActivity {
 
-    Button genQRCode;
     LinearLayout border;
     ImageView qrCode;
     TextView indicator;
@@ -56,14 +55,12 @@ public class QRCreator extends AppCompatActivity {
         matchDataPreferences = getString(R.string.matchDataPreferences);
         matchData = getSharedPreferences(matchDataPreferences, 0);
 
-        genQRCode = findViewById(R.id.genQRCode);
         border = findViewById(R.id.border);
         qrCode = findViewById(R.id.qrCode);
         indicator = findViewById(R.id.qrcodey);
 
         disFirstQR = false;
         if(otherSettings.getInt(numStoredMatches, 12) > 1) {
-            genQRCode.setText("Generate QR-1");
             disFirstQR = true;
 
         }
@@ -79,7 +76,6 @@ public class QRCreator extends AppCompatActivity {
 
         if(otherSettings.getInt(numStoredMatches, 12) <= 1) {
             sendableData = matchData.getString("firstQR", "0");
-            genQRCode.setText("Generate QR Code");
         } else {
 
             if (disFirstQR == true) {
@@ -115,19 +111,16 @@ public class QRCreator extends AppCompatActivity {
             SPOS.putBoolean("deleteData", true);
             SPOS.apply();
             //QR Code Generation
-
             disFirstQR = !disFirstQR;
-            if(otherSettings.getInt(numStoredMatches, 12) <= 1) {
+            if(otherSettings.getInt(numStoredMatches, 12) > 1) {
                 if (disFirstQR) {
-                    genQRCode.setText("Generate QR-1");
                     indicator.setText("QR Code 2");
 
                 } else {
-                    genQRCode.setText("Generate QR-2");
                     indicator.setText("QR Code 1");
                 }
             } else {
-                genQRCode.setVisibility(View.INVISIBLE);
+
             }
         } else if (showToast) {
             Toast.makeText(getApplicationContext(), "No Data", Toast.LENGTH_SHORT).show();
