@@ -35,9 +35,6 @@ public class PitScouter extends AppCompatActivity {
     EditText teamNum;
     int count;
 
-    Bitmap bmp;
-    FileOutputStream fos;
-    BitmapFactory.Options bmpFactoryOptions;
     File path, dir, file;
     String dataKey;
 
@@ -103,13 +100,13 @@ public class PitScouter extends AppCompatActivity {
 
             try {
                 // Decode it for real
-                bmpFactoryOptions = new BitmapFactory.Options();
+                BitmapFactory.Options bmpFactoryOptions = new BitmapFactory.Options();
                 bmpFactoryOptions.inJustDecodeBounds = false;
 
                 //imageFilePath image path which you pass with intent
-                bmp = BitmapFactory.decodeFile(file.getAbsolutePath(), bmpFactoryOptions);
+                Bitmap bmp = BitmapFactory.decodeFile(file.getAbsolutePath(), bmpFactoryOptions);
 
-                fos = new FileOutputStream(file);
+                FileOutputStream fos = new FileOutputStream(file);
 
                 bmp.compress(Bitmap.CompressFormat.JPEG, 100, fos);
 /*
