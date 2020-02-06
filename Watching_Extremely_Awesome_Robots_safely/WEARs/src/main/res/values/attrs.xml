@@ -1,6 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="Counter">
-        <attr name="title" format="string" ></attr>
+        <attr name="label" format="string" ></attr>
         <attr name="increment" format="integer" > </attr>
         <attr name="base" format="integer"></attr>
     </declare-styleable>

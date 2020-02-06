@@ -47,7 +47,7 @@ public class AutonTeleop extends AppCompatActivity {
         //POPUPS
         ctw = new ContextThemeWrapper(this, THEME_HOLO_LIGHT);
         backPressed = new AlertDialog.Builder(ctw);
-
+/*
         //OHNINE
         Still = MediaPlayer.create(this, R.raw.ohnine_playa);
 
@@ -567,7 +567,7 @@ public class AutonTeleop extends AppCompatActivity {
             alert.show();
             return false;
         }
-        return super.onKeyDown(keyCode, event);
+        return super.onKeyDown(keyCode, event); */
     }
 
 
