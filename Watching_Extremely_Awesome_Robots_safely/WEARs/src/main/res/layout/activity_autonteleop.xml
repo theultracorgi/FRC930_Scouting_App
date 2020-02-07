@@ -25,25 +25,56 @@
 
             <!--SANDSTORM-->
 
-           <org.team930.bears.wears.Counter
+           <org.team930.bears.wears.CounterView
+               android:id="@+id/testcounter"
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
-               app:counterLabel="Test"
+               app:label="Counter"
                app:base="0"
                app:increment="1"
 
            />
-            <org.team930.bears.wears.Toggle
+            <org.team930.bears.wears.ToggleView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:toggleLabel="Initiation Line"
-                app:textOff="Not Crossed"
-                app:textOn="Crossed"/>
+                app:label="Toggle"/>
 
+            <org.team930.bears.wears.SpinnerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:label="Spinner"
+                android:entries="@array/spinnerList"
+                tools:ignore="HardcodedText" />
 
+            <org.team930.bears.wears.SeekbarView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:label="Seekbar"
+                app:ceil="5"
+                app:floor="1"
+                app:floor_name="Didn't affect"
+                app:ceil_name="Shut down"
+                app:zero_name="Not Ranked"
 
+                />
 
+            <org.team930.bears.wears.ChronometerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:label="Chronometer"/>
 
+            <org.team930.bears.wears.CheckboxView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:label="Checkbox"
+                android:entries="@array/checkboxList"/>
+
+            <TextView
+                android:id="@+id/test"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="choops"
+                />
 
         </LinearLayout>
 

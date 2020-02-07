@@ -1,6 +1,5 @@
 package org.team930.bears.wears;
 
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.content.Context;
@@ -11,7 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import java.util.Locale;
 
-public class Counter extends LinearLayout {
+public class CounterView extends LinearLayout {
     String label;
     int count, base;
     int increment;
@@ -20,17 +19,25 @@ public class Counter extends LinearLayout {
     Button add, sub;
 
 
-    public Counter(Context context, AttributeSet attrs) {
+    public CounterView(Context context) {
+        super(context);
+        initializeViews(context);
+    }
+    public CounterView(Context context, AttributeSet attrs) {
         super(context, attrs);
         initializeViews(context);
         TypedArray a = context.getTheme().obtainStyledAttributes(
                 attrs,
-                R.styleable.Counter,
+                R.styleable.counter,
                 0, 0);
-        this.label = a.getString(R.styleable.Counter_counterLabel);
-        this.count = a.getInt(R.styleable.Counter_base, 0);
-        this.base = a.getInt(R.styleable.Counter_base, 0);
-        this.increment = a.getInt(R.styleable.Counter_increment, 1);
+        TypedArray b = context.getTheme().obtainStyledAttributes(
+                attrs,
+                R.styleable.global,
+                0, 0);
+        this.label = b.getString(R.styleable.global_label);
+        this.count = a.getInt(R.styleable.counter_base, 0);
+        this.base = a.getInt(R.styleable.counter_base, 0);
+        this.increment = a.getInt(R.styleable.counter_increment, 1);
 
         labelView = findViewById(R.id.counterLabelView);
         display = findViewById(R.id.counterD);
@@ -74,7 +81,7 @@ public class Counter extends LinearLayout {
     private void initializeViews(Context context) {
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        inflater.inflate(R.layout.counter, this);
+        inflater.inflate(R.layout.counter_view, this);
     }
 
     protected void onFinishInflate() {

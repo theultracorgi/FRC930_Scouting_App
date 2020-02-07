@@ -47,12 +47,14 @@ public class AutonTeleop extends AppCompatActivity {
         //POPUPS
         ctw = new ContextThemeWrapper(this, THEME_HOLO_LIGHT);
         backPressed = new AlertDialog.Builder(ctw);
+
 /*
+
+
         //OHNINE
         Still = MediaPlayer.create(this, R.raw.ohnine_playa);
 
         attemptsOutput = false;
-
 
         //SHARED PREFERENCES
         matchDataPreferences = getString(R.string.matchDataPreferences);

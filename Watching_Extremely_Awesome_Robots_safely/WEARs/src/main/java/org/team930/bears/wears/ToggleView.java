@@ -5,33 +5,35 @@ import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.LinearLayout;
+import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.ToggleButton;
 
-public class Toggle extends LinearLayout {
+public class ToggleView extends LinearLayout {
 
-    String label, textOn, textOff;
+    String label;
     TextView labelView;
-    ToggleButton toggle;
+    Switch toggle;
 
-    public Toggle(Context context, AttributeSet attrs) {
+    public ToggleView(Context context) {
+        super(context);
+        initializeViews(context);
+    }
+
+    public ToggleView(Context context, AttributeSet attrs) {
         super(context, attrs);
         initializeViews(context);
-        TypedArray a = context.getTheme().obtainStyledAttributes(
+        TypedArray b = context.getTheme().obtainStyledAttributes(
                 attrs,
-                R.styleable.Toggle,
+                R.styleable.global,
                 0, 0);
-        this.label = a.getString(R.styleable.Toggle_toggleLabel);
-        this.textOn = a.getString(R.styleable.Toggle_textOn);
-        this.textOff = a.getString(R.styleable.Toggle_textOff);
+        this.label = b.getString(R.styleable.global_label);
 
         labelView = findViewById(R.id.toggleLabelView);
         toggle = findViewById(R.id.toggle);
 
         labelView.setText(label);
 
-        toggle.setTextOff(textOff);
-        toggle.setTextOn(textOn);
+        toggle.setChecked(false);
 
     }
 
@@ -48,7 +50,7 @@ public class Toggle extends LinearLayout {
     private void initializeViews(Context context) {
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        inflater.inflate(R.layout.toggle, this);
+        inflater.inflate(R.layout.toggle_view, this);
     }
 
     protected void onFinishInflate() {

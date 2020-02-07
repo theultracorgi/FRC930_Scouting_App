@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/rounded_corners_chunk_material"
+    android:orientation="vertical"
+    android:clickable="true"
+    android:focusable="true"
+    android:layout_marginBottom="2dp"
+    android:layout_marginTop="2dp"
+    android:padding="5dp">
+
+        <TextView
+            android:id="@+id/seekbarLabelView"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"
+            android:layout_weight="2"
+            android:background="@color/white"
+            android:gravity="left|center"
+            android:text="default"
+            android:fontFamily="@font/montserratitalic"
+            android:textSize="30sp"
+            tools:ignore="HardcodedText,NestedWeights,RtlHardcoded,SpUsage" />
+
+        <TextView
+            android:id="@+id/seekbarProgress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:gravity="center"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"
+            android:text="0"
+            android:textSize="20sp"
+            android:fontFamily="@font/montserratsemibold"
+            tools:ignore="HardcodedText,SpUsage" />
+
+        <SeekBar
+            android:id="@+id/seekbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="0"
+            android:gravity="left|center"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"
+            tools:ignore="HardcodedText" />
+
+</LinearLayout>

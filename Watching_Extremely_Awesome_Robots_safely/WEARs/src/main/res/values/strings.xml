@@ -21,5 +21,21 @@
     <string name="scouterListPrompt">Man\'s Got Name</string>
     <integer name="adminPassword">478609</integer>
     <integer name="maxMatches">12</integer>
+    <string-array name="spinnerList">
+        <item>BlueTop</item>
+        <item>BlueMid</item>
+        <item>BlueBottom</item>
+        <item>RedTop</item>
+        <item>RedMid</item>
+        <item>RedBottom</item>
+    </string-array>
 
+    <string-array name="checkboxList">
+        <item>BlueTop</item>
+        <item>BlueMid</item>
+        <item>BlueBottom</item>
+        <item>RedTop</item>
+        <item>RedMid</item>
+        <item>RedBottom</item>
+    </string-array>
 </resources>

@@ -13,13 +13,17 @@
         <item name="android:spinnerDropDownItemStyle">@style/mySpinnerItemStyle</item>
         <item name="android:spinnerItemStyle">@style/mySpinnerItemStyle</item>
         <item name="android:editTextColor">@color/black</item>
+        <item name="android:fontFamily">@font/montserratregular</item>
 
     </style>
 
-    <style name="mySpinnerItemStyle" parent="@android:style/Widget.Holo.DropDownItem.Spinner">
+
+    <style name="mySpinnerItemStyle">
         <item name="android:textColor">@color/black</item>
-        <item name="android:textSize" tools:ignore="SpUsage">16dp</item>
+        <item name="android:textSize" >20sp</item>
+        <item name="android:padding">2dp</item>
         <item name="android:popupBackground">#ffffff</item>
+        <item name="android:fontFamily">@font/montserratregular</item>
         <item name="android:background">#ffffff</item>
     </style>
 
@@ -27,5 +31,22 @@
         <item name="colorControlNormal">@color/lightBlue</item>
         <item name="colorControlActivated">@color/lightBlue</item>
     </style>
+
+    <style name="mySwitchStyle" parent="Theme.AppCompat.Light">
+        <!-- active thumb & track color (30% transparency) -->
+        <item name="colorControlActivated">@color/lightBlue</item>
+        <item name="colorSwitchThumbNormal">#f1f1f1</item>
+        <item name="android:colorForeground">#42221f1f</item>
+    </style>
+
+    <style name="myCheckBoxItemStyle">
+        <item name="android:textColor">#fdfdfd</item>
+        <item name="android:textSize" >16sp</item>
+        <item name="android:padding">2dp</item>
+        <item name="android:popupBackground">#ffffff</item>
+        <item name="android:fontFamily">@font/montserratregular</item>
+        <item name="android:background">#ffffff</item>
+    </style>
+
 
 </resources>

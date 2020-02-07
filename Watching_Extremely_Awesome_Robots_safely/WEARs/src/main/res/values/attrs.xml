@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="Counter">
-        <attr name="counterLabel" format="string" ></attr>
+    <declare-styleable name="counter">
         <attr name="increment" format="integer" > </attr>
         <attr name="base" format="integer"></attr>
     </declare-styleable>
 
-    <declare-styleable name="Toggle">
-        <attr name="toggleLabel" format="string" ></attr>
-        <attr name="textOn" format="string" > </attr>
-        <attr name="textOff" format="string"></attr>
+    <declare-styleable name="global">
+        <attr name="label" format="string" ></attr>
+        <attr name="android:entries" />
+    </declare-styleable>
+
+    <declare-styleable name="seekbar">
+        <attr name="floor" format="integer" ></attr>
+        <attr name="ceil" format="integer" ></attr>
+        <attr name="floor_name" format="string" ></attr>
+        <attr name="ceil_name" format="string" ></attr>
+        <attr name="zero_name" format="string" ></attr>
     </declare-styleable>
 </resources>
