@@ -28,11 +28,17 @@
            <org.team930.bears.wears.Counter
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
-               app:label="Test"
+               app:counterLabel="Test"
                app:base="0"
                app:increment="1"
 
            />
+            <org.team930.bears.wears.Toggle
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:toggleLabel="Initiation Line"
+                app:textOff="Not Crossed"
+                app:textOn="Crossed"/>
 
 
 

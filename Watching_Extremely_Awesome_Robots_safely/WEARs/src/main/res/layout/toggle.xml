@@ -1,0 +1,38 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/rounded_corners_chunk_material"
+    android:orientation="horizontal"
+    android:clickable="true"
+    android:focusable="true"
+    android:padding="5dp"
+    android:paddingTop="5dp">
+    <TextView
+        android:id="@+id/toggleLabelView"
+        android:layout_width="0dp"
+        android:layout_height="fill_parent"
+        android:layout_gravity="center"
+        android:layout_marginRight="8dp"
+        android:layout_weight="2.7"
+        android:background="@color/white"
+        android:maxLines="1"
+        android:padding="5dp"
+        android:text=""
+        android:textColor="@color/textMedium"
+        android:textSize="30dp"
+        android:fontFamily="@font/montserratitalic"
+
+        tools:ignore="HardcodedText,RtlHardcoded,SpUsage" />
+
+    <ToggleButton
+        android:id="@+id/toggle"
+        android:layout_width="0dp"
+        android:layout_height="fill_parent"
+        android:layout_weight="1.2"
+        android:background="@drawable/toggle_button_at_no_round"
+        android:textColor="@color/white"
+        android:fontFamily="@font/montserratbold"
+
+        tools:ignore="HardcodedText" />
+</LinearLayout>

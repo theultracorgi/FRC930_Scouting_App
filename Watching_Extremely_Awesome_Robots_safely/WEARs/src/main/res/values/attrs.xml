@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="Counter">
-        <attr name="label" format="string" ></attr>
+        <attr name="counterLabel" format="string" ></attr>
         <attr name="increment" format="integer" > </attr>
         <attr name="base" format="integer"></attr>
+    </declare-styleable>
+
+    <declare-styleable name="Toggle">
+        <attr name="toggleLabel" format="string" ></attr>
+        <attr name="textOn" format="string" > </attr>
+        <attr name="textOff" format="string"></attr>
     </declare-styleable>
 </resources>

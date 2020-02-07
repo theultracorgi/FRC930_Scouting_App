@@ -27,12 +27,12 @@ public class Counter extends LinearLayout {
                 attrs,
                 R.styleable.Counter,
                 0, 0);
-        this.label = a.getString(R.styleable.Counter_label);
+        this.label = a.getString(R.styleable.Counter_counterLabel);
         this.count = a.getInt(R.styleable.Counter_base, 0);
         this.base = a.getInt(R.styleable.Counter_base, 0);
         this.increment = a.getInt(R.styleable.Counter_increment, 1);
 
-        labelView = findViewById(R.id.label);
+        labelView = findViewById(R.id.counterLabelView);
         display = findViewById(R.id.counterD);
         add = findViewById(R.id.counterAdd);
         sub = findViewById(R.id.counterSub);

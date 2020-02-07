@@ -6,12 +6,10 @@
     android:orientation="horizontal"
     android:clickable="true"
     android:focusable="true"
-    android:paddingBottom="5dp"
-    android:paddingTop="5dp">
-
+    android:padding="5dp">
 
         <TextView
-            android:id="@+id/label"
+            android:id="@+id/counterLabelView"
             android:layout_width="0dp"
             android:layout_height="fill_parent"
             android:layout_marginLeft="4dp"
@@ -19,19 +17,21 @@
             android:layout_weight="2"
             android:background="@color/white"
             android:gravity="left|center"
-            android:text="@{attr.label}"
-            android:textSize="25dp"
+            android:text="sumthin"
+            android:fontFamily="@font/montserratitalic"
+            android:textSize="30sp"
             tools:ignore="HardcodedText,NestedWeights,RtlHardcoded,SpUsage" />
 
         <Button
             android:id="@+id/counterSub"
             android:layout_width="0dp"
             android:layout_height="fill_parent"
-            android:layout_weight="1"
+            android:layout_weight=".7"
             android:background="@color/lightBlue"
             android:text="-1"
             android:textColor="@color/white"
-            android:textSize="15dp"
+            android:textSize="20sp"
+            android:fontFamily="@font/montserratbold"
             tools:ignore="HardcodedText,SpUsage" />
 
         <TextView
@@ -40,22 +40,24 @@
             android:layout_height="fill_parent"
             android:layout_marginLeft="4dp"
             android:layout_marginRight="4dp"
-            android:layout_weight="1"
+            android:layout_weight=".5"
             android:background="#D7DDEA"
             android:gravity="center"
             android:text="0"
-            android:textSize="32dp"
+            android:fontFamily="@font/montserratsemibold"
+            android:textSize="32sp"
             tools:ignore="HardcodedText,SpUsage" />
 
         <Button
             android:id="@+id/counterAdd"
             android:layout_width="0dp"
             android:layout_height="fill_parent"
-            android:layout_weight="1"
+            android:layout_weight=".7"
             android:background="@color/lightBlue"
             android:text="+1"
             android:textColor="@color/white"
-            android:textSize="15dp"
+            android:textSize="20sp"
+            android:fontFamily="@font/montserratbold"
             tools:ignore="HardcodedText,SpUsage" />
 
 
