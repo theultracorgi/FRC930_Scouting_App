@@ -1,52 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout2"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginTop="2dp"
+    android:layout_marginBottom="2dp"
     android:background="@drawable/rounded_corners_chunk_material"
-    android:orientation="vertical"
     android:clickable="true"
     android:focusable="true"
-    android:layout_marginBottom="2dp"
-    android:layout_marginTop="2dp"
     android:padding="5dp">
 
         <TextView
             android:id="@+id/seekbarLabelView"
-            android:layout_width="fill_parent"
-            android:layout_height="0dp"
-            android:layout_marginLeft="4dp"
-            android:layout_marginRight="4dp"
-            android:layout_weight="2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:background="@color/colorWhite"
-            android:gravity="left|center"
-            android:text="default"
             android:fontFamily="@font/montserratitalic"
+            android:gravity="left|center_vertical"
+            android:text="default"
             android:textSize="30sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             tools:ignore="HardcodedText,NestedWeights,RtlHardcoded,SpUsage" />
 
         <TextView
             android:id="@+id/seekbarProgress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/montserratsemibold"
+            android:gravity="center"
             android:paddingLeft="8dp"
             android:paddingRight="8dp"
-            android:gravity="center"
-            android:layout_marginLeft="4dp"
-            android:layout_marginRight="4dp"
             android:text="0"
             android:textSize="20sp"
-            android:fontFamily="@font/montserratsemibold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/seekbarLabelView"
             tools:ignore="HardcodedText,SpUsage" />
 
         <SeekBar
             android:id="@+id/seekbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:max="0"
             android:gravity="left|center"
-            android:layout_marginLeft="4dp"
-            android:layout_marginRight="4dp"
+            android:max="0"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/seekbarProgress"
             tools:ignore="HardcodedText" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

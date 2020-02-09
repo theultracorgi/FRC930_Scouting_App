@@ -80,7 +80,7 @@ public class ButtonView extends LinearLayout {
                             }
                             clickCount = 0;
                         }
-                    }, 500);
+                    }, 700);
                 }
                 }
 
@@ -116,7 +116,7 @@ public class ButtonView extends LinearLayout {
         SPMD.putString("secondQR", "");
 
         SPMD.apply();
-        Toast.makeText(getContext(), "Data Successfully Deleted", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), "Data Successfully Deleted", Toast.LENGTH_LONG).show();
     }
 
     private void initializeViews(Context context, AttributeSet attrs) {

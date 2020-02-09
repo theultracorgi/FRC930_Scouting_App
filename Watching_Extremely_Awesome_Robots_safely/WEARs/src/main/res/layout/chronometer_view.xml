@@ -1,69 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout2"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/rounded_corners_chunk_material"
-    android:orientation="vertical"
-    android:clickable="true"
-    android:focusable="true"
-    android:layout_marginBottom="2dp"
     android:layout_marginTop="2dp"
-    android:padding="5dp">
+    android:layout_marginBottom="2dp"
+    android:background="@drawable/rounded_corners_chunk_material"
+    android:clickable="true"
+    android:focusable="true">
+
     <TextView
         android:id="@+id/chronometerLabelView"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_marginLeft="4dp"
-        android:layout_marginRight="4dp"
-        android:paddingBottom="4dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"
         android:background="@color/colorWhite"
-        android:gravity="left|center"
-        android:text="default"
         android:fontFamily="@font/montserratitalic"
+        android:gravity="left|center"
+        android:paddingBottom="4dp"
+        android:text="default"
         android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="HardcodedText,NestedWeights,RtlHardcoded,SpUsage" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
+
+    <Button
+        android:id="@+id/chronometerStart"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:backgroundTint="@color/colorAccentTwo"
+        android:fontFamily="@font/montserratbold"
+        android:gravity="center"
+        android:text="Start"
+        app:layout_constraintDimensionRatio="1:1"
+        android:textAllCaps="false"
+        android:textColor="@color/textDark"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/chronometer"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chronometerLabelView" />
 
-        <Button
-            android:id="@+id/chronometerStart"
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:backgroundTint="@color/colorAccentTwo"
-            android:text="Start"
-            android:fontFamily="@font/montserratbold"
-            android:textColor="@color/textDark"
-            android:textAllCaps="false"
-            android:gravity="center"/>
+    <Chronometer
+        android:id="@+id/chronometer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserratbold"
+        android:gravity="center"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/chronometerStart" />
 
-        <Chronometer
-            android:id="@+id/chronometer"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight=".5"
-            android:fontFamily="@font/montserratbold"
-            android:textSize="30sp"
-            android:gravity="center"
-            android:layout_marginEnd="8dp"
-            />
-
-        <Button
-            android:id="@+id/chronometerStop"
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:text="Reset"
-            android:backgroundTint="@color/colorAccentTwo"
-            android:fontFamily="@font/montserratbold"
-            android:textColor="@color/textDark"
-            android:textAllCaps="false"
-            android:gravity="center"
-            />
+    <Button
+        android:id="@+id/chronometerStop"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:backgroundTint="@color/colorAccentTwo"
+        android:fontFamily="@font/montserratbold"
+        android:gravity="center"
+        android:text="Reset"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:textAllCaps="false"
+        android:textColor="@color/textDark"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/chronometer"
+        app:layout_constraintTop_toBottomOf="@+id/chronometerLabelView" />
 
 
-    </LinearLayout>
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

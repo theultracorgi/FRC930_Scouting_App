@@ -11,7 +11,9 @@ import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.core.content.ContextCompat;
 import androidx.core.content.res.ResourcesCompat;
+import androidx.core.widget.CompoundButtonCompat;
 
 import java.util.ArrayList;
 import java.util.Locale;
@@ -47,7 +49,13 @@ public class CheckboxView extends LinearLayout {
             final CheckBox checkBox = new CheckBox(getContext());
             checkBox.setText(list[j]);
             checkBoxes.add(checkBox);
-            checkBox.setTypeface(ResourcesCompat.getFont(getContext(), R.font.montserratregular));
+            if (Math.random() >= .5) {
+                CompoundButtonCompat.setButtonTintList(checkBox, ContextCompat.getColorStateList(getContext(), R.color.colorAccentOne));
+            } else {
+                CompoundButtonCompat.setButtonTintList(checkBox, ContextCompat.getColorStateList(getContext(), R.color.colorBase));
+            }
+
+            //checkBox.setTypeface(ResourcesCompat.getFont(getContext(), R.font.montserratregular));
             checkboxLayout.addView(checkBox);
         }
     }

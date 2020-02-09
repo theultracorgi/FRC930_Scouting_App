@@ -40,10 +40,10 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:label="Chronometer"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline33"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/guideline50"
-        app:layout_constraintTop_toBottomOf="@+id/textboxView2" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/counterView2" />
 
     <org.team930.bears.wears.SpinnerView
         android:id="@+id/spinnerView2"
@@ -52,7 +52,7 @@
 
         android:entries="@array/spinnerList"
         app:label="Spinner"
-        app:layout_constraintEnd_toStartOf="@+id/guideline33"
+        app:layout_constraintEnd_toStartOf="@+id/guideline50"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/checkboxView2"
@@ -66,7 +66,7 @@
         app:base="0"
         app:increment="1"
         app:label="Missed"
-        app:layout_constraintEnd_toStartOf="@+id/guideline33"
+        app:layout_constraintEnd_toStartOf="@+id/guideline50"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinnerView2" />
 

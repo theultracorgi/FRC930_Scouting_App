@@ -1,5 +1,8 @@
 package org.team930.bears.wears;
 
+import android.graphics.Point;
+import android.util.DisplayMetrics;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.content.Context;
@@ -53,9 +56,6 @@ public class CounterView extends LinearLayout {
         });
 
     }
-
-
-
 
 
 
