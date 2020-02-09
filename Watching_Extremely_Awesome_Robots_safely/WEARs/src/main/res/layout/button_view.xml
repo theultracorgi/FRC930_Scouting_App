@@ -10,7 +10,7 @@
     android:padding="5dp">
 
     <TextView
-        android:id="@+id/toggleLabelView"
+        android:id="@+id/buttonLabelView"
         android:layout_width="0dp"
         android:layout_height="fill_parent"
         android:layout_marginLeft="4dp"
@@ -23,15 +23,12 @@
         android:textSize="30sp"
         tools:ignore="HardcodedText,NestedWeights,RtlHardcoded,SpUsage" />
 
-    <Switch
-        android:id="@+id/toggle"
+    <Button
+        android:id="@+id/button"
         android:layout_width="0dp"
         android:layout_height="fill_parent"
         android:layout_weight="1.2"
-        android:checked="false"
-        android:paddingRight="2dp"
         android:fontFamily="@font/montserratbold"
         android:textColor="@color/colorWhite"
-        android:theme="@style/mySwitchStyle"
         tools:ignore="HardcodedText" />
 </LinearLayout>

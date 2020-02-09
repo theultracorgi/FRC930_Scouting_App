@@ -1,84 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/background_material"
+    android:background="@color/colorBackground"
     tools:ignore="Overdraw">
 
 
-    <ScrollView
-        android:id="@+id/titleWindow"
-        android:layout_width="match_parent"
+    <!--SANDSTORM-->
+
+    <org.team930.bears.wears.SpinnerView
+        android:id="@+id/spinnerView2"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        tools:ignore="UselessParent">
+        android:entries="@array/spinnerList"
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="2dp"
-            android:layout_marginRight="2dp"
-            android:orientation="vertical">
+        app:label="Spinner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="HardcodedText"
+        tools:layout_editor_absoluteY="16dp" />
 
-            <!--SANDSTORM-->
+    <org.team930.bears.wears.CounterView
+        android:id="@+id/counterView2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        app:base="0"
+        app:increment="1"
 
-           <org.team930.bears.wears.CounterView
-               android:id="@+id/testcounter"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               app:label="Counter"
-               app:base="0"
-               app:increment="1"
+        app:label="Counter"
+        app:layout_constraintBottom_toTopOf="@+id/textboxView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-           />
-            <org.team930.bears.wears.ToggleView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:label="Toggle"/>
+    <org.team930.bears.wears.ToggleView
+        android:id="@+id/toggleView2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        app:label="Toggle"
+        app:layout_constraintBottom_toTopOf="@+id/seekbarView2"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkboxView2"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintWidth_percent="0.5">
 
-            <org.team930.bears.wears.SpinnerView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:label="Spinner"
-                android:entries="@array/spinnerList"
-                tools:ignore="HardcodedText" />
+    </org.team930.bears.wears.ToggleView>
 
-            <org.team930.bears.wears.SeekbarView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:label="Seekbar"
-                app:ceil="5"
-                app:floor="1"
-                app:floor_name="Didn't affect"
-                app:ceil_name="Shut down"
-                app:zero_name="Not Ranked"
+    <org.team930.bears.wears.SeekbarView
+        android:id="@+id/seekbarView2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        app:ceil="5"
+        app:ceil_name="Shut down"
+        app:floor="1"
+        app:floor_name="Didn't affect"
+        app:label="Seekbar"
 
-                />
+        app:layout_constraintBottom_toTopOf="@+id/chronometerView2"
+        app:layout_constraintEnd_toStartOf="@+id/chronometerView2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:zero_name="Not Ranked" />
 
-            <org.team930.bears.wears.ChronometerView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:label="Chronometer"/>
+    <org.team930.bears.wears.ChronometerView
+        android:id="@+id/chronometerView2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        app:label="Chronometer"
+        app:layout_constraintBottom_toTopOf="@+id/counterView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-            <org.team930.bears.wears.CheckboxView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:label="Checkbox"
-                android:entries="@array/checkboxList"/>
+    <org.team930.bears.wears.CheckboxView
+        android:id="@+id/checkboxView2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/checkboxList"
+        app:label="Checkbox" />
 
-            <TextView
-                android:id="@+id/test"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="choops"
-                />
 
-        </LinearLayout>
+    <org.team930.bears.wears.TextboxView
+        android:id="@+id/textboxView2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        app:hint="default_hint"
+        app:label="EditText"
+        app:label_location="none"
+        app:layout_constraintBottom_toTopOf="@+id/buttonView6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-    </ScrollView>
+    <org.team930.bears.wears.ButtonView
+        android:id="@+id/buttonView6"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        app:button_function="navigate"
+        app:label="NextActivity"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:next_activity="PostMatch"
+        app:text="next"
+        tools:layout_editor_absoluteY="570dp" />
 
-</RelativeLayout>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="300dp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
 

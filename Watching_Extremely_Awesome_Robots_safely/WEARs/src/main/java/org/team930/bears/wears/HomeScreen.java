@@ -8,12 +8,13 @@ import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import static android.app.AlertDialog.THEME_HOLO_LIGHT;
 
@@ -56,13 +57,6 @@ public class HomeScreen extends AppCompatActivity {
         matchDataPreferences = getString(R.string.matchDataPreferences);
         matchData = getSharedPreferences(matchDataPreferences, 0);
 
-        masterScanner = findViewById(R.id.masterScanner);
-
-        goToPreMatch = findViewById(R.id.goToPreMatch);
-        goToGenQR = findViewById(R.id.goToGenQR);
-        goToSettings = findViewById(R.id.goToSettings);
-        goToMasterScanner = findViewById(R.id.goToMaster);
-        disappear = findViewById(R.id.disappearHomeScreen);
 
         SharedPreferences.Editor SPOS = otherSettings.edit();
         SharedPreferences.Editor SPMD = matchData.edit();
@@ -83,26 +77,7 @@ public class HomeScreen extends AppCompatActivity {
 
             SPMD.putString("teamNum", "0");
             SPMD.putString("matchNum", "0");
-            SPMD.putString("startPos", "1");
-            SPMD.putString("sHabLine", "0");
 
-            SPMD.putString("sCgL", "0");
-            SPMD.putString("sHtL", "0");
-            SPMD.putString("sHtM", "0");
-            SPMD.putString("sHtH", "0");
-
-            SPMD.putString("tCgL", "0");
-            SPMD.putString("tCgM", "0");
-            SPMD.putString("tCgH", "0");
-            SPMD.putString("tHtL", "0");
-            SPMD.putString("tHtM", "0");
-            SPMD.putString("tHtH", "0");
-
-
-            SPMD.putString("habStatus", "0");
-            SPMD.putString("disabled", "0");
-            SPMD.putString("defense", "0");
-            SPMD.putString("comments", "0");
 
             SPMD.putString("preMatchVals", "");
             SPMD.putString("autonTeleopVals", "");
@@ -118,54 +93,8 @@ public class HomeScreen extends AppCompatActivity {
         }
     }
 
-    public void setGoToPreMatch(View v) {
-        if (otherSettings.getBoolean("deleteData", false)) {
-            builder.setTitle("Delete Your Data");
-            builder.setMessage("You need to delete your data to continue scouting.");
-            builder.setCancelable(true);
-            builder.setNeutralButton(
-                    "OK",
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            dialog.cancel();
-                        }
-                    });
-            AlertDialog alert = builder.create();
-            alert.show();
-
-        } else if (otherSettings.getInt(numStoredMatches, maxMatches) >= maxMatches) { //
-            builder.setTitle("All Your Data Are Belong To Us.");
-            builder.setMessage("You need to generate a QR code to continue scouting.");
-            builder.setCancelable(true);
-            builder.setNeutralButton(
-                    "OK",
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            dialog.cancel();
-                        }
-                    });
-            AlertDialog alert = builder.create();
-            alert.show();
-
-        } else {
-            Intent nextScreen = new Intent(this, PreMatch.class);
-            startActivity(nextScreen);
-        }
-    }
-
-    public void setGoToGenQR(View v) {
 
 
-        Intent nextScreen = new Intent(HomeScreen.this, QRCreator.class);
-        startActivity(nextScreen);
-
-    }
-
-    public void setGoToSettings(View v) {
-
-        Intent nextScreen = new Intent(HomeScreen.this, Settings.class);
-        startActivity(nextScreen);
-    }
 
     Intent intent;
 
@@ -216,51 +145,6 @@ public class HomeScreen extends AppCompatActivity {
     public void setRevokeAdmin(View v) {
         if (otherSettings.getBoolean("admin", false)) {
 
-            builder.setTitle("Revoke Admin");
-            builder.setMessage("Are you sure you don't want this device to be an Administrator?");
-            builder.setCancelable(true);
-            builder.setPositiveButton(
-                    "Yes",
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            dialog.cancel();
-
-                            SharedPreferences.Editor SPOS = otherSettings.edit();
-                            SPOS.putBoolean("admin", false);
-                            SPOS.apply();
-                            HomeScreen.this.recreate();
-
-                        }
-                    });
-
-            builder.setNegativeButton(
-                    "No",
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            dialog.cancel();
-                        }
-                    });
-
-            AlertDialog alert = builder.create();
-            alert.show();
-
-        } else {
-
-        }
-    }
-
-    public void onResume() {
-        super.onResume();  // Always call the superclass method first
-
-        if (otherSettings.getBoolean("admin", false)) {
-            masterScanner.setVisibility(View.VISIBLE);
-            disappear.setVisibility(View.VISIBLE);
-            goToMasterScanner.setBackground(getResources().getDrawable(R.color.lightBlue));
-            goToSettings.setBackground(getResources().getDrawable(R.color.lighterBlue));
-        } else {
-            masterScanner.setVisibility(View.GONE);
-            disappear.setVisibility(View.GONE);
-            goToSettings.setBackground(getResources().getDrawable(R.color.lightBlue));
         }
     }
 

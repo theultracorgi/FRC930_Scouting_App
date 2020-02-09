@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.ContextThemeWrapper;
 import android.view.KeyEvent;
 import android.view.View;
@@ -26,10 +26,10 @@ public class PreMatch extends AppCompatActivity {
     ImageView map;
     Spinner startPos;
 
-    String stillPreferences, matchDataPreferences, otherPreferences;
+    String matchDataPreferences, otherPreferences;
     String teamNumPassable, matchNumPassable, startPosPassable;
     char alliance;
-    Integer stillCount;
+    Integer greenAlliance;
 
     SharedPreferences matchData, stillEnabled, otherSettings;
     AlertDialog.Builder builder;
@@ -47,12 +47,8 @@ public class PreMatch extends AppCompatActivity {
 
 
         alliance = 'b';
-        stillCount = 0;
-
-
-        stillPreferences = getString(R.string.stillPreferences);
-        stillEnabled = getSharedPreferences(stillPreferences, 0);
-
+        greenAlliance = 0;
+        
         matchDataPreferences = getString(R.string.matchDataPreferences);
         matchData = getSharedPreferences(matchDataPreferences, 0);
 
@@ -151,16 +147,9 @@ public class PreMatch extends AppCompatActivity {
     }
 
     public void setAllianceColor(View v) {
-        stillCount += 1;
-        if (stillCount == 50) {
+        greenAlliance += 1;
+        if (greenAlliance >= 50) {
             allianceColor.setBackgroundColor(getResources().getColor(R.color.stillGreen));
-            Toast.makeText(getApplicationContext(), "Not Dis Way!", Toast.LENGTH_LONG).show();
-
-
-            SharedPreferences.Editor SPSE = stillEnabled.edit();
-
-            SPSE.putBoolean("stillEnabled", true);
-            SPSE.apply();
         } else {
 
         }

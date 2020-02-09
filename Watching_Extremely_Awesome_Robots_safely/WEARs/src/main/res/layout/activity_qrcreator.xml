@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_material"
+    android:background="@color/colorBackground"
     android:screenOrientation="portrait"
     tools:ignore="Overdraw">
 
@@ -28,7 +28,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/white"
+            android:background="@color/colorWhite"
             android:gravity="center|bottom"
             android:orientation="vertical"
             tools:ignore="ExtraText">
@@ -58,7 +58,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="10dp"
                     android:layout_marginLeft="10dp"
-                    android:background="@color/white"
+                    android:background="@color/colorWhite"
                     android:maxLines="1"
                     android:padding="5dp"
                     android:text="QR Code"

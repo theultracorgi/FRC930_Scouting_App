@@ -52,7 +52,7 @@ public class ChronometerView extends LinearLayout {
 
         anim = new AlphaAnimation(0.0f, 1.0f);
         anim.setDuration(500); //You can manage the blinking time with this parameter
-        anim.setStartOffset(20);
+        anim.setStartOffset(500);
         anim.setRepeatMode(Animation.REVERSE);
         anim.setRepeatCount(Animation.INFINITE);
 
@@ -76,6 +76,10 @@ public class ChronometerView extends LinearLayout {
             }
         });
 
+    }
+
+    public double getChonometerReading() {
+        return (double) (SystemClock.elapsedRealtime()-pauseOffset);
     }
 
 

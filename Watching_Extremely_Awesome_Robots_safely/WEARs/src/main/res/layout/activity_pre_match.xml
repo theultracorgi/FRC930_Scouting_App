@@ -4,12 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_material"
+    android:background="@color/colorBackground"
     android:screenOrientation="portrait"
     tools:ignore="Overdraw">
 
     <ScrollView
-        android:id="@+id/titleWindow"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -21,13 +20,13 @@
         android:layout_height="match_parent"
         android:layout_marginLeft="2dp"
         android:layout_marginRight="2dp"
-        android:background="@color/background_material"
+
         android:orientation="vertical">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:background="@color/background_material"
+            android:background="@color/colorBackground"
             android:paddingLeft="8dp"
             android:paddingTop="4dp"
             android:text="Pre Match"
@@ -35,7 +34,6 @@
             tools:ignore="HardcodedText,RtlHardcoded,RtlSymmetry,SpUsage" />
 
         <LinearLayout
-            android:id="@+id/teamMatchNum"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/rounded_corners_chunk_material"
@@ -63,7 +61,7 @@
                 android:layout_height="1dp"
                 android:layout_marginLeft="1dp"
                 android:layout_marginRight="4dp"
-                android:background="@color/background_material"
+
                 tools:ignore="ContentDescription,RtlHardcoded" />
 
             <EditText
@@ -86,11 +84,9 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="8dp"
-            android:background="@color/background_material"
             tools:ignore="ContentDescription" />
 
         <LinearLayout
-            android:id="@+id/allianceSelector"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/rounded_corners_chunk_material"
@@ -102,18 +98,17 @@
             tools:ignore="RtlHardcoded">
 
             <TextView
-                android:id="@+id/allianceColor"
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
                 android:layout_marginRight="8dp"
                 android:layout_weight=".7"
-                android:background="@color/white"
+                android:background="@color/colorWhite"
                 android:maxLines="1"
                 android:padding="5dp"
                 android:text="Alliance Color"
                 android:textColor="@color/textMedium"
                 android:textSize="30dp"
-                android:textStyle="italic"
+
 
                 tools:ignore="HardcodedText,RtlHardcoded,SpUsage" />
 
@@ -124,7 +119,7 @@
                 android:layout_weight=".3"
                 android:background="@drawable/alliance_toggle"
                 android:onClick="setAllianceColor"
-                android:textColor="@color/white"
+                android:textColor="@color/colorWhite"
                 android:textOff="Blue"
                 android:textOn="Red"
 
@@ -135,7 +130,6 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="8dp"
-            android:background="@color/background_material"
             tools:ignore="ContentDescription" />
 
         <LinearLayout
@@ -156,7 +150,7 @@
                 android:layout_gravity="center"
                 android:layout_marginRight="8dp"
                 android:layout_weight=".9"
-                android:background="@color/white"
+                android:background="@color/colorWhite"
                 android:textSize="30dp"
                 android:padding="5dp"
                 android:text="Start Level"
@@ -179,7 +173,6 @@
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/background_material"
                 android:gravity="top|center"
                 android:orientation="vertical">
 
@@ -193,7 +186,6 @@
 
 
                 <LinearLayout
-                    android:id="@+id/goToAuton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/rounded_corners_chunk_material"
@@ -204,13 +196,11 @@
                     android:paddingTop="10dp">
 
                     <Button
-                        android:id="@+id/pMNext"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@color/lightBlue"
                         android:onClick="setGoToAuton"
                         android:text="Start Scouting"
-                        android:textColor="@color/white"
+                        android:textColor="@color/colorWhite"
                         tools:ignore="HardcodedText" />
 
                 </LinearLayout>
@@ -220,7 +210,6 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="8dp"
-            android:background="@color/background_material"
             tools:ignore="ContentDescription" />
 
 

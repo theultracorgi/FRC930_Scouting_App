@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_material"
+    android:background="@color/colorBackground"
     android:screenOrientation="portrait"
     tools:ignore="Overdraw">
 
@@ -23,7 +23,6 @@
         android:orientation="vertical"
         tools:ignore="ScrollViewSize">
         <TextView
-            android:id="@+id/revokeStill"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:paddingLeft="8dp"
@@ -34,7 +33,6 @@
             tools:ignore="HardcodedText,RtlHardcoded,RtlSymmetry,SpUsage" />
 
         <LinearLayout
-            android:id="@+id/scouterPos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/rounded_corners_chunk_material"
@@ -52,7 +50,7 @@
                 android:layout_gravity="center"
                 android:layout_marginRight="8dp"
                 android:layout_weight=".7"
-                android:background="@color/white"
+                android:background="@color/colorWhite"
                 android:textSize="30dp"
                 android:padding="5dp"
                 android:text="Position"
@@ -75,7 +73,6 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/background_material"
             android:visibility="visible"
             tools:ignore="ContentDescription" />
 
@@ -99,7 +96,7 @@
                 android:layout_gravity="center"
                 android:layout_marginRight="8dp"
                 android:layout_weight=".7"
-                android:background="@color/white"
+                android:background="@color/colorWhite"
                 android:hint="Admin Password"
                 android:maxLength="6"
                 android:textSize="28dp"
@@ -115,9 +112,9 @@
                 android:layout_weight=".3"
                 android:paddingLeft="5dp"
                 android:paddingRight="5dp"
-                android:background="@drawable/blue_rounded_button"
+                android:backgroundTint="@color/colorAccentThree"
                 android:onClick="setSubmitPassword"
-                android:textColor="@color/white"
+                android:textColor="@color/colorWhite"
                 android:text="Unlock"
 
                 tools:ignore="HardcodedText" />
@@ -128,7 +125,6 @@
             android:id="@+id/disappearAdmin"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/background_material"
             android:visibility="gone"
             tools:ignore="ContentDescription" />
 
@@ -157,7 +153,7 @@
                     android:layout_gravity="center"
                     android:layout_marginRight="8dp"
                     android:layout_weight=".7"
-                    android:background="@color/white"
+                    android:background="@color/colorWhite"
                     android:maxLines="1"
                     android:padding="5dp"
                     android:text="Delete \'Le Data\'"
@@ -175,10 +171,10 @@
                     android:layout_weight=".3"
                     android:paddingLeft="5dp"
                     android:paddingRight="5dp"
-                    android:background="@drawable/blue_rounded_button"
+                    android:backgroundTint="@color/colorAccentThree"
                     android:text="Delete Data"
                     android:visibility="visible"
-                    android:textColor="@color/white"
+                    android:textColor="@color/colorWhite"
                     android:onClick="setDeleteData"
 
                     tools:ignore="HardcodedText" />
@@ -187,64 +183,6 @@
 
         </LinearLayout> <!--Delete le Data-->
 
-        <ImageView
-            android:id="@+id/disappearDelete"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/background_material"
-            android:visibility="gone"
-            tools:ignore="ContentDescription" />
-
-        <LinearLayout
-            android:id="@+id/stillEnabler"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/rounded_corners_chunk_material"
-            android:orientation="horizontal"
-            android:paddingBottom="10dp"
-            android:paddingLeft="11dp"
-            android:paddingRight="4dp"
-            android:paddingTop="10dp"
-            android:visibility="gone"
-            tools:ignore="RtlHardcoded">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="fill_parent"
-                android:layout_gravity="center"
-                android:layout_marginRight="8dp"
-                android:layout_weight=".7"
-                android:background="@color/white"
-                android:maxLines="1"
-                android:padding="5dp"
-                android:text="Mewsic"
-                android:textColor="@color/textMedium"
-                android:textSize="30dp"
-
-                tools:ignore="HardcodedText,RtlHardcoded,SpUsage" />
-
-            <ToggleButton
-                android:id="@+id/stillFRC"
-                android:layout_width="0dp"
-                android:layout_height="fill_parent"
-                android:layout_weight=".3"
-                android:background="@drawable/toggle_button_at"
-                android:onClick="setStillFRC"
-                android:textColor="@color/white"
-                android:textOff="Off"
-                android:textOn="On"
-
-                tools:ignore="HardcodedText" />
-
-        </LinearLayout> <!--STILL-->
-
-        <ImageView
-            android:id="@+id/disappearStill"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/background_material"
-            android:visibility="gone"
-            tools:ignore="ContentDescription" />
 
     </LinearLayout>
 

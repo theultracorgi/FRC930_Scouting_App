@@ -3,6 +3,7 @@ package org.team930.bears.wears;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
@@ -11,6 +12,8 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import static android.content.ContentValues.TAG;
 
 
 public class SpinnerView extends LinearLayout {
@@ -45,8 +48,9 @@ public class SpinnerView extends LinearLayout {
             list[i++] = ch.toString();
         }
         spinner = findViewById(R.id.spinner);
+
         adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, list); //selected item will look like a spinner set from XML
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapter.setDropDownViewResource(android.R.layout.select_dialog_item);
         spinner.setAdapter(adapter);
         spinner.setSelection(0);
 
@@ -55,26 +59,6 @@ public class SpinnerView extends LinearLayout {
         labelView.setText(label);
 
 
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View v,
-                                       int postion, long arg3) {
-                // TODO Auto-generated method stub
-                String  spinnerValue= parent.getItemAtPosition(postion).toString();
-
-                Toast.makeText(getContext(),
-                        "Selected item: " + spinnerValue,
-                        Toast.LENGTH_SHORT).show();
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> arg0) {
-                // TODO Auto-generated method stub
-
-            }
-        });
 
     }
 

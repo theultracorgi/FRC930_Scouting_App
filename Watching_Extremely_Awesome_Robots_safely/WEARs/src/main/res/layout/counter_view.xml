@@ -6,8 +6,7 @@
     android:orientation="horizontal"
     android:clickable="true"
     android:focusable="true"
-    android:layout_marginBottom="2dp"
-    android:layout_marginTop="2dp"
+    android:layout_margin="2dp"
     android:padding="5dp">
 
         <TextView
@@ -17,7 +16,7 @@
             android:layout_marginLeft="4dp"
             android:layout_marginRight="4dp"
             android:layout_weight="2"
-            android:background="@color/white"
+            android:background="@color/colorWhite"
             android:gravity="left|center"
             android:text="default"
             android:fontFamily="@font/montserratitalic"
@@ -29,9 +28,8 @@
             android:layout_width="0dp"
             android:layout_height="fill_parent"
             android:layout_weight=".7"
-            android:background="@color/lightBlue"
             android:text="-1"
-            android:textColor="@color/white"
+            android:textColor="@color/textWhite"
             android:textSize="20sp"
             android:fontFamily="@font/montserratbold"
             tools:ignore="HardcodedText,SpUsage" />
@@ -43,9 +41,9 @@
             android:layout_marginLeft="4dp"
             android:layout_marginRight="4dp"
             android:layout_weight=".5"
-            android:background="#D7DDEA"
             android:gravity="center"
             android:text="0"
+            android:textColor="@color/textDark"
             android:fontFamily="@font/montserratsemibold"
             android:textSize="32sp"
             tools:ignore="HardcodedText,SpUsage" />
@@ -55,9 +53,8 @@
             android:layout_width="0dp"
             android:layout_height="fill_parent"
             android:layout_weight=".7"
-            android:background="@color/lightBlue"
             android:text="+1"
-            android:textColor="@color/white"
+            android:textColor="@color/textWhite"
             android:textSize="20sp"
             android:fontFamily="@font/montserratbold"
             tools:ignore="HardcodedText,SpUsage" />

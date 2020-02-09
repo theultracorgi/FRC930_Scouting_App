@@ -2,7 +2,6 @@
     <string name="app_name" tools:ignore="UnusedResources">WEARs</string>
 
     <string name="matchDataPreferences">matchData</string>
-    <string name="stillPreferences">stillEnabled</string>
     <string name="otherPreferences">otherPreferences</string>
     <string name="numStoredMatches">numStoredMatches</string>
     <string-array name="scouterPos">
@@ -18,9 +17,9 @@
         <item>Lvl 1</item>
         <item>Lvl 2</item>
     </string-array>
-    <string name="scouterListPrompt">Man\'s Got Name</string>
     <integer name="adminPassword">478609</integer>
-    <integer name="maxMatches">12</integer>
+    <integer name="maxMatches">8</integer>
+    <string name="TBA_AUTH_KEY">jNdQjBDqhihOqZw8Al5t83XKRSxBOh3OJDKo3GLDYp5xSzvQJP2oEKOu9gCgM5DQ</string>
     <string-array name="spinnerList">
         <item>BlueTop</item>
         <item>BlueMid</item>

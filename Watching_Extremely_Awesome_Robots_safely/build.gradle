@@ -23,3 +23,7 @@ buildscript {
 
 
 }
+
+repositories {
+    google()
+}

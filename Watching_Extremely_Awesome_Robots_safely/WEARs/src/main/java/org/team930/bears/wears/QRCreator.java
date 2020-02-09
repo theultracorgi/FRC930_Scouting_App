@@ -6,7 +6,7 @@ import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.widget.Button;
@@ -98,7 +98,7 @@ public class QRCreator extends AppCompatActivity {
                         bmp.setPixel(x, y, bitMatrix.get(x, y) ? Color.rgb(0, 0, 0) : Color.WHITE);
                     }
                 }
-                qrCode.setBackgroundDrawable(getResources().getDrawable(R.color.white));
+                qrCode.setBackgroundDrawable(getResources().getDrawable(R.color.colorWhite));
                 qrCode.setImageBitmap(bmp);
             } catch (WriterException e) {
                 e.printStackTrace();
@@ -112,7 +112,7 @@ public class QRCreator extends AppCompatActivity {
             SPOS.apply();
             //QR Code Generation
             disFirstQR = !disFirstQR;
-            if(otherSettings.getInt(numStoredMatches, 12) > 1) {
+            if(otherSettings.getInt(numStoredMatches, 8) > 1) {
                 if (disFirstQR) {
                     indicator.setText("QR Code 2");
 

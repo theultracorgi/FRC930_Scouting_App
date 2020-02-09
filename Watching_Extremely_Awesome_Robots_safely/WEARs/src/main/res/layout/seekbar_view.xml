@@ -7,8 +7,7 @@
     android:orientation="vertical"
     android:clickable="true"
     android:focusable="true"
-    android:layout_marginBottom="2dp"
-    android:layout_marginTop="2dp"
+    android:layout_margin="2dp"
     android:padding="5dp">
 
         <TextView
@@ -18,7 +17,7 @@
             android:layout_marginLeft="4dp"
             android:layout_marginRight="4dp"
             android:layout_weight="2"
-            android:background="@color/white"
+            android:background="@color/colorWhite"
             android:gravity="left|center"
             android:text="default"
             android:fontFamily="@font/montserratitalic"
