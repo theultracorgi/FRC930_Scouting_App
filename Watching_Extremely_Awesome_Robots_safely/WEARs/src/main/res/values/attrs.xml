@@ -10,9 +10,11 @@
         <attr name="button_function" format="enum">
             <enum name="navigate" value="0"/>
             <enum name="delete" value="1"/>
-
+            <enum name="nav_confirm" value="2"/>
         </attr>
         <attr name="next_activity" format="string"/>
+        <attr name="double_press" format="boolean"/>
+        <attr name="confirm_message" format="string"/>
     </declare-styleable>
 
     <declare-styleable name="textbox">

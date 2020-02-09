@@ -26,19 +26,10 @@ public class ChronometerView extends LinearLayout {
     Animation anim;
 
 
-    public ChronometerView(Context context) {
-        super(context);
-        initializeViews(context);
-    }
-
     public ChronometerView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        initializeViews(context);
-        TypedArray b = context.getTheme().obtainStyledAttributes(
-                attrs,
-                R.styleable.global,
-                0, 0);
-        this.label = b.getString(R.styleable.global_label);
+        initializeViews(context, attrs);
+
 
         labelView = findViewById(R.id.chronometerLabelView);
         chronometer = findViewById(R.id.chronometer);
@@ -118,7 +109,13 @@ public class ChronometerView extends LinearLayout {
 
 
 
-    private void initializeViews(Context context) {
+    private void initializeViews(Context context, AttributeSet attrs) {
+        TypedArray b = context.getTheme().obtainStyledAttributes(
+                attrs,
+                R.styleable.global,
+                0, 0);
+        this.label = b.getString(R.styleable.global_label);
+
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.chronometer_view, this);

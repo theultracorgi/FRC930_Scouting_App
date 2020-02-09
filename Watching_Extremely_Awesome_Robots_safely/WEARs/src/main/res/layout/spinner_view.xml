@@ -1,37 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginTop="2dp"
+    android:layout_marginBottom="2dp"
     android:background="@drawable/rounded_corners_chunk_material"
-    android:orientation="horizontal"
     android:clickable="true"
     android:focusable="true"
-    android:layout_marginBottom="2dp"
-    android:layout_marginTop="2dp"
+    android:orientation="horizontal"
     android:padding="5dp">
 
-        <TextView
-            android:id="@+id/spinnerLabelView"
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:layout_marginLeft="4dp"
-            android:layout_marginRight="12dp"
-            android:background="@color/colorWhite"
-            android:gravity="left|center"
-            android:text="default"
-            android:fontFamily="@font/montserratitalic"
-            android:textSize="30sp"
-            tools:ignore="HardcodedText,NestedWeights,RtlHardcoded,SpUsage" />
 
-        <Spinner
-            android:id="@+id/spinner"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:textSize="20sp"
-            android:gravity="left|center_vertical"
-            android:spinnerMode="dialog"
-            android:popupTheme="@style/mySpinnerItemStyle"
-            tools:ignore="HardcodedText" />
+    <TextView
+        android:id="@+id/spinnerLabelView"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:background="@color/colorWhite"
+        android:fontFamily="@font/montserratitalic"
+        android:gravity="left|center"
+        android:text="default"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText,NestedWeights,RtlHardcoded,SpUsage" />
 
-    </LinearLayout>
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_gravity="end"
+        android:gravity="end|center_vertical"
+        android:popupTheme="@style/mySpinnerItemStyle"
+        android:spinnerMode="dialog"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

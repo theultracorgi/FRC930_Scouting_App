@@ -7,6 +7,8 @@ import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Handler;
 import android.view.ContextThemeWrapper;
 import android.view.KeyEvent;
 import android.view.View;
@@ -31,19 +33,15 @@ public class PreMatch extends AppCompatActivity {
     char alliance;
     Integer greenAlliance;
 
-    SharedPreferences matchData, stillEnabled, otherSettings;
-    AlertDialog.Builder builder;
-    ContextThemeWrapper ctw;
+    SharedPreferences matchData, otherSettings;
 
 
+    boolean doubleBackToExitPressedOnce = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pre_match);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-
-        ctw = new ContextThemeWrapper(this, THEME_HOLO_LIGHT);
-        builder = new AlertDialog.Builder(ctw);
 
 
         alliance = 'b';
@@ -96,31 +94,11 @@ public class PreMatch extends AppCompatActivity {
 
         if ((teamNum.getText().toString()).length() == 0 || (matchNum.getText().toString()).length() == 0) {
 
-            builder.setTitle("Fill out all Fields");
-            builder.setCancelable(true);
-            builder.setNeutralButton(
-                    "OK",
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            dialog.cancel();
-                        }
-                    });
-            AlertDialog alert = builder.create();
-            alert.show();
+            Toast.makeText(this, "Please Complete All Fields", Toast.LENGTH_SHORT).show();
 
 
         } else if (Integer.parseInt(teamNum.getText().toString()) == 0 || Integer.parseInt(matchNum.getText().toString()) == 0) {
-            builder.setTitle("Give Us Valid Values");
-            builder.setCancelable(true);
-            builder.setNeutralButton(
-                    "OK",
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            dialog.cancel();
-                        }
-                    });
-            AlertDialog alert = builder.create();
-            alert.show();
+            Toast.makeText(this, "you gave us values but they suck. try again", Toast.LENGTH_SHORT).show();
         } else {
             if (allianceColor.isChecked()) {
                 alliance = 'r';
@@ -133,10 +111,6 @@ public class PreMatch extends AppCompatActivity {
             startPosPassable = Integer.toString(startPos.getSelectedItemPosition() + 1);
 
             SharedPreferences.Editor SPMD = matchData.edit();
-
-            SPMD.putString("teamNum", teamNumPassable);
-            SPMD.putString("matchNum", matchNumPassable);
-            SPMD.putString("startPos", startPosPassable);
             SPMD.putString("preMatchVals", teamNumPassable + "," + matchNumPassable + "," + startPosPassable + ",");
             SPMD.apply();
 
@@ -154,42 +128,23 @@ public class PreMatch extends AppCompatActivity {
 
         }
     }
-
     @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-
-        AlertDialog.Builder backPressed;
-        backPressed = new AlertDialog.Builder(ctw);
-
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
-            backPressed.setTitle("Go Back");
-            backPressed.setMessage("Are you sure you want to go back? All data on this form will be lost.");
-            backPressed.setCancelable(true);
-
-            backPressed.setPositiveButton(
-                    "Yes",
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            dialog.cancel();
-                            Intent home = new Intent(PreMatch.this, HomeScreen.class);
-                            startActivity(home);
-                        }
-                    });
-
-            backPressed.setNegativeButton(
-                    "No",
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            dialog.cancel();
-
-                        }
-                    });
-
-            AlertDialog alert = backPressed.create();
-            alert.show();
-            return false;
+    public void onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed();
+            return;
         }
-        return super.onKeyDown(keyCode, event);
+
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
+
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce=false;
+            }
+        }, 2000);
     }
 
     public final static String PACKAGE = "..."; // insert your package name

@@ -5,8 +5,11 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.ContextThemeWrapper;
 import android.view.KeyEvent;
 import android.view.View;
@@ -14,6 +17,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import java.util.Locale;
@@ -28,12 +32,11 @@ public class PostMatch extends AppCompatActivity {
     SeekBar defense;
     TextView dProgress;
 
+    boolean doubleBackToExitPressedOnce = false;
     Integer mDisabled, defenseProgress;
     String matchDataPreferences, otherPreferences, numStoredMatches, fullMatchData;
     String disabledPassable, defensePassable, commentsPassable;
 
-    AlertDialog.Builder submit, moreComments, backPressed;
-    ContextThemeWrapper ctw;
     SharedPreferences matchData, otherSettings;
 
     @Override
@@ -42,10 +45,6 @@ public class PostMatch extends AppCompatActivity {
         setContentView(R.layout.activity_post_match);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-        ctw = new ContextThemeWrapper(this, THEME_HOLO_LIGHT);
-        submit = new AlertDialog.Builder(ctw);
-        moreComments = new AlertDialog.Builder(ctw);
-        backPressed = new AlertDialog.Builder(ctw);
 
         numStoredMatches = getString(R.string.numStoredMatches);
         mDisabled = 0;
@@ -101,133 +100,55 @@ public class PostMatch extends AppCompatActivity {
 
         if ((comments.getText().toString()).length() <= 10 || !comments.getText().toString().contains(" ")) {
 
-            moreComments.setTitle("Make more comments");
-            moreComments.setCancelable(true);
-            moreComments.setNeutralButton(
-                    "OK",
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            dialog.cancel();
-                        }
-                    });
-            AlertDialog alert = moreComments.create();
-            alert.show();
+            Toast.makeText(this, "cool kids make more comments", Toast.LENGTH_SHORT).show();
 
 
         } else {
 
-            submit.setTitle("Submit Match Data");
-            submit.setMessage("Are you sure you want to submit this data?");
-            submit.setCancelable(true);
 
-            submit.setPositiveButton(
-                    "Yes",
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            dialog.cancel();
+            SharedPreferences.Editor SPMD = matchData.edit();
+            SharedPreferences.Editor SPOS = otherSettings.edit();
 
+            SPMD.putString("postMatchVals", disabledPassable + "," + defensePassable + "," + commentsPassable);
+            SPMD.apply();
 
-                            SharedPreferences.Editor SPMD = matchData.edit();
-                            SharedPreferences.Editor SPOS = otherSettings.edit();
-
-                            disabledPassable = String.format(Locale.ENGLISH, "%d", mDisabled);
-                            defensePassable = String.format(Locale.ENGLISH, "%d", defenseProgress);
-                            commentsPassable = comments.getText().toString();
-
-                            SPMD.putString("disabled", disabledPassable);
-                            SPMD.putString("defense", defensePassable);
-                            SPMD.putString("comments", commentsPassable);
-                            SPMD.putString("postMatchVals", disabledPassable + "," + defensePassable + "," + commentsPassable);
-                            SPMD.apply();
-
-                            fullMatchData = matchData.getString("preMatchVals", "") + matchData.getString("autonTeleopVals", "") + matchData.getString("postMatchVals", "") + "\n";
+            fullMatchData = matchData.getString("preMatchVals", "") + matchData.getString("autonTeleopVals", "") + matchData.getString("postMatchVals", "") + "\n";
 
 
-                            SPOS.putInt(numStoredMatches, otherSettings.getInt(numStoredMatches, 5) + 1);
-                            SPOS.apply();
+            SPOS.putInt(numStoredMatches, otherSettings.getInt(numStoredMatches, 3) + 1);
+            SPOS.apply();
 
-                            if (otherSettings.getInt(numStoredMatches, 6) % 2 == 0) {
-                                SPMD.putString("secondQR", matchData.getString("secondQR", "") + fullMatchData);
-                            } else {
-                                SPMD.putString("firstQR", matchData.getString("firstQR", "") + fullMatchData);
-                            }
-                            SPOS.apply();
+            if (otherSettings.getInt(numStoredMatches, 4) % 2 == 0) {
+                SPMD.putString("secondQR", matchData.getString("secondQR", "") + fullMatchData);
+            } else {
+                SPMD.putString("firstQR", matchData.getString("firstQR", "") + fullMatchData);
+            }
+            SPOS.apply();
 
+            Intent submitData = new Intent(PostMatch.this, HomeScreen.class);
+            startActivity(submitData);
 
-                            SPMD.putString("teamNum", "0");
-                            SPMD.putString("matchNum", "0");
-                            SPMD.putString("startPos", "1");
-                            SPMD.putString("sHabLine", "0");
-
-                            SPMD.putString("sCgL", "0");
-                            SPMD.putString("sHtL", "0");
-                            SPMD.putString("sHtM", "0");
-                            SPMD.putString("sHtH", "0");
-
-                            SPMD.putString("tCgL", "0");
-                            SPMD.putString("tCgM", "0");
-                            SPMD.putString("tCgH", "0");
-                            SPMD.putString("tHtL", "0");
-                            SPMD.putString("tHtM", "0");
-                            SPMD.putString("tHtH", "0");
-
-                            //ENDGAME
-                            SPMD.putString("habStatus", "0");
-                            SPMD.putString("disabled", "0");
-                            SPMD.putString("defense", "0");
-                            SPMD.putString("comments", "0");
-
-                            SPMD.apply();
-
-                            Intent submitData = new Intent(PostMatch.this, HomeScreen.class);
-                            startActivity(submitData);
-
-                        }
-                    });
-
-            submit.setNegativeButton(
-                    "No",
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            dialog.cancel();
-                        }
-                    });
-
-            AlertDialog alert = submit.create();
-            alert.show();
         }
+
+
     }
 
     @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
-            backPressed.setTitle("Go Back");
-            backPressed.setMessage("Are you sure you want to go back? All data on this form will be lost.");
-            backPressed.setCancelable(true);
-
-            backPressed.setPositiveButton(
-                    "Yes",
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            dialog.cancel();
-                            Intent home = new Intent(PostMatch.this, AutonTeleop.class);
-                            startActivity(home);
-                        }
-                    });
-
-            backPressed.setNegativeButton(
-                    "No",
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            dialog.cancel();
-
-                        }
-                    });
-
-            AlertDialog alert = backPressed.create();
-            alert.show();
-            return false;
+    public void onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed();
+            return;
         }
-        return super.onKeyDown(keyCode, event);
+
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
+
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce = false;
+            }
+        }, 2000);
     }
 }

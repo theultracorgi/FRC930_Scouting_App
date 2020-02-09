@@ -41,6 +41,7 @@ public class HomeScreen extends AppCompatActivity {
         setContentView(R.layout.activity_home__screen);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
+
         ctw = new ContextThemeWrapper(this, THEME_HOLO_LIGHT);
         builder = new AlertDialog.Builder(ctw);
         permissions = new AlertDialog.Builder(ctw);
@@ -53,6 +54,7 @@ public class HomeScreen extends AppCompatActivity {
         otherSettings = getSharedPreferences(otherPreferences, 0);
 
         numMatchesStored = getString(R.string.numStoredMatches);
+
 
         matchDataPreferences = getString(R.string.matchDataPreferences);
         matchData = getSharedPreferences(matchDataPreferences, 0);

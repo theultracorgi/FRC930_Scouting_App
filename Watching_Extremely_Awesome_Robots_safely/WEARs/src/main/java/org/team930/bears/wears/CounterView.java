@@ -8,6 +8,9 @@ import android.util.AttributeSet;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import org.w3c.dom.Attr;
+
 import java.util.Locale;
 
 public class CounterView extends LinearLayout {
@@ -19,25 +22,9 @@ public class CounterView extends LinearLayout {
     Button add, sub;
 
 
-    public CounterView(Context context) {
-        super(context);
-        initializeViews(context);
-    }
     public CounterView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        initializeViews(context);
-        TypedArray a = context.getTheme().obtainStyledAttributes(
-                attrs,
-                R.styleable.counter,
-                0, 0);
-        TypedArray b = context.getTheme().obtainStyledAttributes(
-                attrs,
-                R.styleable.global,
-                0, 0);
-        this.label = b.getString(R.styleable.global_label);
-        this.count = a.getInt(R.styleable.counter_base, 0);
-        this.base = a.getInt(R.styleable.counter_base, 0);
-        this.increment = a.getInt(R.styleable.counter_increment, 1);
+        initializeViews(context, attrs);
 
         labelView = findViewById(R.id.counterLabelView);
         display = findViewById(R.id.counterD);
@@ -78,7 +65,20 @@ public class CounterView extends LinearLayout {
 
 
 
-    private void initializeViews(Context context) {
+    private void initializeViews(Context context, AttributeSet attrs) {
+        TypedArray a = context.getTheme().obtainStyledAttributes(
+                attrs,
+                R.styleable.counter,
+                0, 0);
+        TypedArray b = context.getTheme().obtainStyledAttributes(
+                attrs,
+                R.styleable.global,
+                0, 0);
+        this.label = b.getString(R.styleable.global_label);
+        this.count = a.getInt(R.styleable.counter_base, 0);
+        this.base = a.getInt(R.styleable.counter_base, 0);
+        this.increment = a.getInt(R.styleable.counter_increment, 1);
+
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.counter_view, this);

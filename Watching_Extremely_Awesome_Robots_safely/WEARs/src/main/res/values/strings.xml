@@ -5,19 +5,19 @@
     <string name="otherPreferences">otherPreferences</string>
     <string name="numStoredMatches">numStoredMatches</string>
     <string-array name="scouterPos">
-        <item>BlueTop</item>
-        <item>BlueMid</item>
-        <item>BlueBottom</item>
-        <item>RedTop</item>
-        <item>RedMid</item>
-        <item>RedBottom</item>
+        <item>Blue 1</item>
+        <item>Blue 2</item>
+        <item>Blue 3</item>
+        <item>Red 1</item>
+        <item>Red 2</item>
+        <item>Red 3</item>
     </string-array>
 
     <string-array name="startPos">
         <item>Lvl 1</item>
         <item>Lvl 2</item>
     </string-array>
-    <integer name="adminPassword">478609</integer>
+    <string name="adminPassword">478609</string>
     <integer name="maxMatches">8</integer>
     <string name="TBA_AUTH_KEY">jNdQjBDqhihOqZw8Al5t83XKRSxBOh3OJDKo3GLDYp5xSzvQJP2oEKOu9gCgM5DQ</string>
     <string-array name="spinnerList">
@@ -37,4 +37,5 @@
         <item>RedMid</item>
         <item>RedBottom</item>
     </string-array>
+
 </resources>

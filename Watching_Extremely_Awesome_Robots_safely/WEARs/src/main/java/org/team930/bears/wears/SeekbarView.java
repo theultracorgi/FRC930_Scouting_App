@@ -17,28 +17,11 @@ public class SeekbarView extends LinearLayout {
     SeekBar seekbar;
 
 
-    public SeekbarView(Context context) {
-        super(context);
-        initializeViews(context);
-    }
 
     public SeekbarView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        initializeViews(context);
-        TypedArray a = context.getTheme().obtainStyledAttributes(
-                attrs,
-                R.styleable.seekbar,
-                0, 0);
-        TypedArray b = context.getTheme().obtainStyledAttributes(
-                attrs,
-                R.styleable.global,
-                0, 0);
-        this.label = b.getString(R.styleable.global_label);
-        this.ceil = a.getInt(R.styleable.seekbar_ceil,5);
-        this.floor = a.getInt(R.styleable.seekbar_floor,0);
-        this.floorName = a.getString(R.styleable.seekbar_floor_name);
-        this.ceilName = a.getString(R.styleable.seekbar_ceil_name);
-        this.zeroName = a.getString(R.styleable.seekbar_zero_name);
+        initializeViews(context, attrs);
+
         seekbarProgress =0;
 
         labelView = findViewById(R.id.seekbarLabelView);
@@ -93,7 +76,22 @@ public class SeekbarView extends LinearLayout {
     }
 
 
-    private void initializeViews(Context context) {
+    private void initializeViews(Context context, AttributeSet attrs) {
+        TypedArray a = context.getTheme().obtainStyledAttributes(
+                attrs,
+                R.styleable.seekbar,
+                0, 0);
+        TypedArray b = context.getTheme().obtainStyledAttributes(
+                attrs,
+                R.styleable.global,
+                0, 0);
+        this.label = b.getString(R.styleable.global_label);
+        this.ceil = a.getInt(R.styleable.seekbar_ceil,5);
+        this.floor = a.getInt(R.styleable.seekbar_floor,0);
+        this.floorName = a.getString(R.styleable.seekbar_floor_name);
+        this.ceilName = a.getString(R.styleable.seekbar_ceil_name);
+        this.zeroName = a.getString(R.styleable.seekbar_zero_name);
+
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.seekbar_view, this);

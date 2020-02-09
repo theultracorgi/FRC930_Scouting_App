@@ -22,19 +22,27 @@
         android:testOnly="false"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
 
-        <activity android:name=".HomeScreen">
+        <activity android:name=".HomeScreen"
+            android:label="WEARs">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <activity android:name=".PreMatch" />
-        <activity android:name=".PostMatch" />
-        <activity android:name=".AutonTeleop" />
-        <activity android:name=".Settings" />
-        <activity android:name=".QRCreator" />
-        <activity android:name=".MasterScanner"/>
+        <activity android:name=".PreMatch"
+            android:label="Pre-Match"/>
+        <activity android:name=".PostMatch"
+            android:label="Post-Match"/>
+
+        <activity android:name=".AutonTeleop"
+            android:label="Match"/>
+        <activity android:name=".Settings"
+            android:label="Settings"/>
+        <activity android:name=".QRCreator"
+            android:label="QR Creator"/>
+        <activity android:name=".MasterScanner"
+            android:label="QR Scanner"/>
 
     </application>
 

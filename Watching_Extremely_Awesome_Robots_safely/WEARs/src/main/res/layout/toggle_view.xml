@@ -1,4 +1,5 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -6,32 +7,36 @@
     android:orientation="horizontal"
     android:clickable="true"
     android:focusable="true"
-    android:layout_margin="2dp"
+    android:layout_marginBottom="2dp"
+    android:layout_marginTop="2dp"
     android:padding="5dp">
 
     <TextView
         android:id="@+id/toggleLabelView"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="fill_parent"
-        android:layout_marginLeft="4dp"
-        android:layout_marginRight="4dp"
-        android:layout_weight="2.7"
         android:background="@color/colorWhite"
+        android:fontFamily="@font/montserratitalic"
         android:gravity="left|center"
         android:text="default"
-        android:fontFamily="@font/montserratitalic"
         android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="HardcodedText,NestedWeights,RtlHardcoded,SpUsage" />
 
     <Switch
         android:id="@+id/toggle"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="fill_parent"
-        android:layout_weight="1.2"
         android:checked="false"
-        android:paddingRight="2dp"
         android:fontFamily="@font/montserratbold"
+        android:paddingRight="2dp"
+        android:paddingLeft="2dp"
         android:textColor="@color/colorWhite"
         android:theme="@style/mySwitchStyle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="HardcodedText" />
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

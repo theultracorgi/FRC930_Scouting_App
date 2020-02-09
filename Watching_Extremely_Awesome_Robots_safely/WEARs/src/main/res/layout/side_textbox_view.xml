@@ -3,18 +3,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_margin="2dp"
     android:background="@drawable/rounded_corners_chunk_material"
-    android:orientation="horizontal"
     android:clickable="true"
     android:focusable="true"
-    android:layout_marginBottom="2dp"
-    android:layout_marginTop="2dp"
+    android:focusableInTouchMode="true"
     android:padding="5dp">
 
+
     <TextView
-        android:id="@+id/buttonLabelView"
+        android:id="@+id/textboxSideLabelView"
         android:layout_width="wrap_content"
-        android:layout_height="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="4"
         android:background="@color/colorWhite"
         android:fontFamily="@font/montserratitalic"
         android:gravity="left|center"
@@ -25,14 +26,22 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="HardcodedText,NestedWeights,RtlHardcoded,SpUsage" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="fill_parent"
-        android:fontFamily="@font/montserratbold"
-        android:textColor="@color/colorWhite"
+    <EditText
+        android:id="@+id/textboxSide"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:background="@drawable/edit_text_border"
+        android:fontFamily="@font/montserratmedium"
+        android:hint="default_hint"
+        android:inputType="text"
+        android:text=""
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textboxSideLabelView"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="HardcodedText" />
+        tools:ignore="HardcodedText,NestedWeights,RtlHardcoded,SpUsage" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

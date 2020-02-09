@@ -26,21 +26,9 @@ public class CheckboxView extends LinearLayout {
     TextView labelView;
 
 
-    public CheckboxView(Context context) {
-        super(context);
-        initializeViews(context);
-    }
-
     public CheckboxView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        initializeViews(context);
-
-        TypedArray b = context.getTheme().obtainStyledAttributes(
-                attrs,
-                R.styleable.global,
-                0, 0);
-        this.label = b.getString(R.styleable.global_label);
-        this.tempList = b.getTextArray(R.styleable.global_android_entries);
+        initializeViews(context, attrs);
 
         list = new String[tempList.length];
         int i=0;
@@ -56,10 +44,10 @@ public class CheckboxView extends LinearLayout {
 
         for (int j = 0; j < list.length; j++) {
 
-            final CheckBox checkBox = new CheckBox(context);
+            final CheckBox checkBox = new CheckBox(getContext());
             checkBox.setText(list[j]);
             checkBoxes.add(checkBox);
-            checkBox.setTypeface(ResourcesCompat.getFont(context, R.font.montserratregular));
+            checkBox.setTypeface(ResourcesCompat.getFont(getContext(), R.font.montserratregular));
             checkboxLayout.addView(checkBox);
         }
     }
@@ -79,7 +67,14 @@ public class CheckboxView extends LinearLayout {
     }
 
 
-    private void initializeViews(Context context) {
+    private void initializeViews(Context context, AttributeSet attrs) {
+        TypedArray b = context.getTheme().obtainStyledAttributes(
+                attrs,
+                R.styleable.global,
+                0, 0);
+        this.label = b.getString(R.styleable.global_label);
+        this.tempList = b.getTextArray(R.styleable.global_android_entries);
+
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.checkbox_view, this);

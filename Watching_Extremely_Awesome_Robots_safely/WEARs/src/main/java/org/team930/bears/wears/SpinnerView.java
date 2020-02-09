@@ -26,21 +26,11 @@ public class SpinnerView extends LinearLayout {
     ArrayAdapter<String> adapter;
 
 
-    public SpinnerView(Context context) {
-        super(context);
-        initializeViews(context);
-    }
-
     public SpinnerView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        initializeViews(context);
+        initializeViews(context, attrs);
 
-        TypedArray b = context.getTheme().obtainStyledAttributes(
-                attrs,
-                R.styleable.global,
-                0, 0);
-        this.label = b.getString(R.styleable.global_label);
-        this.tempList = b.getTextArray(R.styleable.global_android_entries);
+
 
         list = new String[tempList.length];
         int i=0;
@@ -62,6 +52,11 @@ public class SpinnerView extends LinearLayout {
 
     }
 
+    public void setPos(int pos) {
+        spinner.setSelection(pos);
+    }
+
+
     public int getPos(){
         return spinner.getSelectedItemPosition();
     }
@@ -71,7 +66,14 @@ public class SpinnerView extends LinearLayout {
     }
 
 
-    private void initializeViews(Context context) {
+    private void initializeViews(Context context, AttributeSet attrs) {
+        TypedArray b = context.getTheme().obtainStyledAttributes(
+                attrs,
+                R.styleable.global,
+                0, 0);
+        this.label = b.getString(R.styleable.global_label);
+        this.tempList = b.getTextArray(R.styleable.global_android_entries);
+
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.spinner_view, this);

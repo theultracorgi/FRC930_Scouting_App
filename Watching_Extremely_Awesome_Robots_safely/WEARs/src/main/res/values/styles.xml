@@ -22,7 +22,7 @@
 
     <style name="mySpinnerItemStyle" parent="android:Widget.TextView.SpinnerItem">
         <item name="android:textColor">@color/colorBlack</item>
-        <item name="android:textSize" >20sp</item>
+        <item name="android:textSize" >18sp</item>
         <item name="android:paddingLeft">2dp</item>
         <item name="android:paddingRight">2dp</item>
         <item name="android:popupBackground">#ffffff</item>
