@@ -33,6 +33,16 @@
         app:next_activity="PostMatch"
         app:text="next" />
 
+    <org.team930.bears.wears.LabelView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:center="true"
+        app:label="Divider"
+        app:layout_constraintBottom_toTopOf="@+id/buttonView6"
+        app:layout_constraintEnd_toStartOf="@+id/guideline33"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chronometerView2" />
+
     <org.team930.bears.wears.ChronometerView
         android:id="@+id/chronometerView2"
         android:layout_width="0dp"

@@ -70,7 +70,6 @@ public class ButtonView extends LinearLayout {
                     long thisTime = Calendar.getInstance().getTimeInMillis();
                     if(prevTime<thisTime) {
                         if ((thisTime - prevTime) <= 1000) {//1 SEC
-                            Toast.makeText(getContext(), "DOUBLE TAP DETECTED!!!", Toast.LENGTH_LONG).show();
                             Intent newActivity = new Intent(getContext(), next_activity);
                             getContext().startActivity(newActivity);
                         } else {

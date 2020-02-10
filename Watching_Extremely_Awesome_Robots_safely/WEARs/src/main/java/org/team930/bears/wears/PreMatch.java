@@ -1,66 +1,48 @@
 package org.team930.bears.wears;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.Handler;
-import android.view.ContextThemeWrapper;
-import android.view.KeyEvent;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Spinner;
 import android.widget.Toast;
-import android.widget.ToggleButton;
+
+import java.util.Calendar;
 
 
-import static android.app.AlertDialog.THEME_HOLO_LIGHT;
 
-@SuppressWarnings("ALL")
 public class PreMatch extends AppCompatActivity {
-    EditText teamNum, matchNum;
-    ToggleButton allianceColor;
-    ImageView map;
-    Spinner startPos;
 
+    TextboxView teamNum, matchNum;
+    SpinnerView startPos;
+
+    ImageView map;
     String matchDataPreferences, otherPreferences;
-    String teamNumPassable, matchNumPassable, startPosPassable;
-    char alliance;
-    Integer greenAlliance;
 
     SharedPreferences matchData, otherSettings;
 
-
-    boolean doubleBackToExitPressedOnce = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pre_match);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-/*
 
-        alliance = 'b';
-        greenAlliance = 0;
-        
         matchDataPreferences = getString(R.string.matchDataPreferences);
         matchData = getSharedPreferences(matchDataPreferences, 0);
-*/
+
         otherPreferences = getString(R.string.otherPreferences);
         otherSettings = getSharedPreferences(otherPreferences, 0);
 
         SharedPreferences.Editor SPOS = otherSettings.edit();
 
         SPOS.apply();
-/*
+
         teamNum = findViewById(R.id.teamNum);
         matchNum = findViewById(R.id.matchNum);
-        startPos = findViewById(R.id.startingPos);
-        allianceColor = findViewById(R.id.allianceToggle);*/
+        startPos = findViewById(R.id.startPos);
         map = findViewById(R.id.map);
 
         switch (otherSettings.getInt("scouterPos", 0)) {
@@ -89,7 +71,7 @@ public class PreMatch extends AppCompatActivity {
 
         }
     }
-/*
+
     public void setGoToAuton(View v) {
 
         if ((teamNum.getText().toString()).length() == 0 || (matchNum.getText().toString()).length() == 0) {
@@ -100,18 +82,10 @@ public class PreMatch extends AppCompatActivity {
         } else if (Integer.parseInt(teamNum.getText().toString()) == 0 || Integer.parseInt(matchNum.getText().toString()) == 0) {
             Toast.makeText(this, "you gave us values but they suck. try again", Toast.LENGTH_SHORT).show();
         } else {
-            if (allianceColor.isChecked()) {
-                alliance = 'r';
-            } else {
-                alliance = 'b';
-            }
 
-            teamNumPassable = teamNum.getText().toString();
-            matchNumPassable = matchNum.getText().toString() + alliance;
-            startPosPassable = Integer.toString(startPos.getSelectedItemPosition() + 1);
 
             SharedPreferences.Editor SPMD = matchData.edit();
-            SPMD.putString("preMatchVals", teamNumPassable + "," + matchNumPassable + "," + startPosPassable + ",");
+            SPMD.putString("preMatchVals", ",");
             SPMD.apply();
 
 
@@ -120,14 +94,6 @@ public class PreMatch extends AppCompatActivity {
         }
     }
 
-    public void setAllianceColor(View v) {
-        greenAlliance += 1;
-        if (greenAlliance >= 50) {
-            allianceColor.setBackgroundColor(getResources().getColor(R.color.stillGreen));
-        } else {
-
-        }
-    }
     long prevTime = 0;
    @Override
     public void onBackPressed() {
@@ -142,15 +108,5 @@ public class PreMatch extends AppCompatActivity {
         }
 
     }
-    }
 
-    public final static String PACKAGE = "..."; // insert your package name
-
-    private int getDrawable(String name) {
-        return getId(name, "drawable");
-    }
-
-    private int getId(String name, String type) {
-        return getResources().getIdentifier(name, type, PACKAGE);
-    }*/
 }
