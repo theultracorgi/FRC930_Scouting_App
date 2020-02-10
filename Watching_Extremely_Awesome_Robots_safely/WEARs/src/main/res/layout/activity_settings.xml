@@ -78,7 +78,7 @@
         app:layout_constraintTop_toBottomOf="@+id/adminUnlock"
         app:next_activity="Settings"
         app:text="Confirm"
-        app:confirm_message="Please Click Again to Delete Data"
+        app:toast="Please Click Again to Delete Data"
         />
 </androidx.constraintlayout.widget.ConstraintLayout>
 

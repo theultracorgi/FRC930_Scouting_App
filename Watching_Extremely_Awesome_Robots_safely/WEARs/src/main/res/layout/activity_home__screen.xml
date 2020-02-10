@@ -9,6 +9,21 @@
     android:screenOrientation="portrait"
     tools:ignore="Overdraw">
 
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/logo2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginEnd="100dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitStart"
+        android:src="@drawable/team_logo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonView4"
+        app:layout_constraintVertical_bias="1.0" />
+
     <org.team930.bears.wears.ButtonView
         android:id="@+id/buttonView"
         android:layout_width="match_parent"

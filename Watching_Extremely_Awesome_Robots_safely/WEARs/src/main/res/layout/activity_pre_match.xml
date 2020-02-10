@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?><!--suppress ALL -->
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,211 +8,85 @@
     android:screenOrientation="portrait"
     tools:ignore="Overdraw">
 
-    <ScrollView
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/logo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        tools:ignore="UselessParent">
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitStart"
+        android:src="@drawable/team_logo_glitch"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
+    <org.team930.bears.wears.TextboxView
+        android:id="@+id/teamNum"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:hint="Team Number"
+        app:label="Team Number"
+        app:label_location="none"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/logo" />
+
+    <org.team930.bears.wears.TextboxView
+        android:id="@+id/matchNum"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:hint="Match Number"
+        app:label="Match Number"
+        app:label_location="none"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@id/logo" />
+
+    <org.team930.bears.wears.SpinnerView
+        android:id="@+id/spinnerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="2dp"
-        android:layout_marginRight="2dp"
+        android:layout_height="wrap_content"
+        android:entries="@array/startPos"
+        app:label="Starting Position"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/teamNum" />
 
-        android:orientation="vertical">
+    <ImageView
+        android:id="@+id/map"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerView"
+        tools:ignore="ContentDescription" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:background="@color/colorBackground"
-            android:paddingLeft="8dp"
-            android:paddingTop="4dp"
-            android:text="Pre Match"
-            android:textSize="30dp"
-            tools:ignore="HardcodedText,RtlHardcoded,RtlSymmetry,SpUsage" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".5" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/rounded_corners_chunk_material"
-            android:orientation="vertical">
-
-
-            <EditText
-                android:id="@+id/teamNum"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:layout_marginLeft="80dp"
-                android:layout_marginRight="80dp"
-                android:layout_marginTop="13dp"
-                android:hint="Team Number"
-                android:inputType="number"
-                android:maxLength="4"
-                android:shadowColor="#FF3297EA"
-                android:textColor="#000000"
-                android:textSize="22dp"
-                tools:ignore="HardcodedText,SpUsage" />
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginLeft="1dp"
-                android:layout_marginRight="4dp"
-
-                tools:ignore="ContentDescription,RtlHardcoded" />
-
-            <EditText
-                android:id="@+id/matchNum"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="13dp"
-                android:layout_marginLeft="80dp"
-                android:layout_marginRight="80dp"
-                android:layout_marginTop="5dp"
-                android:hint="Match Number"
-                android:inputType="number"
-                android:maxLength="3"
-                android:shadowColor="#FF3297EA"
-                android:textColor="#000000"
-                android:textSize="22dp"
-                tools:ignore="HardcodedText,SpUsage" />
-        </LinearLayout> <!--Team/Match Number-->
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="8dp"
-            tools:ignore="ContentDescription" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/rounded_corners_chunk_material"
-            android:orientation="horizontal"
-            android:paddingBottom="8dp"
-            android:paddingLeft="11dp"
-            android:paddingRight="4dp"
-            android:paddingTop="10dp"
-            tools:ignore="RtlHardcoded">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="fill_parent"
-                android:layout_marginRight="8dp"
-                android:layout_weight=".7"
-                android:background="@color/colorWhite"
-                android:maxLines="1"
-                android:padding="5dp"
-                android:text="Alliance Color"
-                android:textColor="@color/textMedium"
-                android:textSize="30dp"
+    <org.team930.bears.wears.ButtonView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:label="Match Metrics"
+        app:text="Next"
+        app:button_function="nav_confirm"
+        app:next_activity="AutonTeleop"
+        app:toast="Press Again to Continue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
-                tools:ignore="HardcodedText,RtlHardcoded,SpUsage" />
-
-            <ToggleButton
-                android:id="@+id/allianceToggle"
-                android:layout_width="0dp"
-                android:layout_height="fill_parent"
-                android:layout_weight=".3"
-                android:background="@drawable/alliance_toggle"
-                android:onClick="setAllianceColor"
-                android:textColor="@color/colorWhite"
-                android:textOff="Blue"
-                android:textOn="Red"
-
-                tools:ignore="HardcodedText" />
-
-        </LinearLayout> <!--Alliance Selector-->
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="8dp"
-            tools:ignore="ContentDescription" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/rounded_corners_chunk_material"
-            android:orientation="horizontal"
-            android:paddingBottom="10dp"
-            android:paddingLeft="11dp"
-            android:paddingRight="4dp"
-            android:paddingTop="10dp"
-
-            tools:ignore="RtlHardcoded">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="fill_parent"
-                android:layout_gravity="center"
-                android:layout_marginRight="8dp"
-                android:layout_weight=".9"
-                android:background="@color/colorWhite"
-                android:textSize="30dp"
-                android:padding="5dp"
-                android:text="Start Level"
-                android:textColor="@color/textMedium"
-                tools:ignore="HardcodedText,RtlHardcoded,SpUsage" />
-
-            <Spinner
-                android:id="@+id/startingPos"
-                android:layout_width="0dp"
-                android:layout_height="fill_parent"
-                android:layout_weight=".5"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp"
-                android:entries="@array/startPos"
-                android:popupTheme="@style/mySpinnerItemStyle"
-                tools:ignore="HardcodedText" />
-
-        </LinearLayout> <!--Starting Position-->
-
-        <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="top|center"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:id="@+id/map"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="4dp"
-                    android:layout_marginRight="4dp"
-                    tools:ignore="ContentDescription" />
+    <!--Next-->
 
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/rounded_corners_chunk_material"
-                    android:orientation="vertical"
-                    android:paddingBottom="10dp"
-                    android:paddingLeft="4dp"
-                    android:paddingRight="4dp"
-                    android:paddingTop="10dp">
-
-                    <Button
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:onClick="setGoToAuton"
-                        android:text="Start Scouting"
-                        android:textColor="@color/colorWhite"
-                        tools:ignore="HardcodedText" />
-
-                </LinearLayout>
-
-            </LinearLayout>  <!--Next-->
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="8dp"
-            tools:ignore="ContentDescription" />
-
-
-    </LinearLayout>
-    </ScrollView>
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

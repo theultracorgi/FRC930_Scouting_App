@@ -31,7 +31,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
-import static android.app.AlertDialog.THEME_HOLO_LIGHT;
 
 
 @SuppressWarnings("ALL")
@@ -45,8 +44,6 @@ public class MasterScanner extends AppCompatActivity {
     SharedPreferences otherSettings;
     FileOutputStream fos;
     File path, dir, file;
-    ContextThemeWrapper ctw;
-    AlertDialog.Builder csvCreated, nullScan;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -55,10 +52,6 @@ public class MasterScanner extends AppCompatActivity {
         setContentView(R.layout.activity_master_scanner);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-
-        ctw = new ContextThemeWrapper(this, THEME_HOLO_LIGHT);
-        csvCreated = new AlertDialog.Builder(ctw);
-        nullScan = new AlertDialog.Builder(ctw);
 
         otherPreferences = getString(R.string.otherPreferences);
         otherSettings = getSharedPreferences(otherPreferences, 0);
@@ -122,17 +115,7 @@ public class MasterScanner extends AppCompatActivity {
                 fos.write(fullCSVExport);
                 fos.close();
 
-                csvCreated.setTitle("Data Added Successfully");
-                csvCreated.setCancelable(true);
-                csvCreated.setNeutralButton(
-                        "OK",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                dialog.cancel();
-                            }
-                        });
-                AlertDialog alert = csvCreated.create();
-                alert.show();
+                Toast.makeText(this, "Data Exported Successfully", Toast.LENGTH_SHORT).show();
 
                 MediaScannerConnection.scanFile(this, new String[]{file.toString()}, null, null);
 
@@ -156,8 +139,6 @@ public class MasterScanner extends AppCompatActivity {
     @SuppressLint("SetTextI18n")
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
 
-        generateCSV.setVisibility(View.VISIBLE);
-
         IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
         if (resultCode == RESULT_CANCELED) {
             Toast.makeText(this, "Scan Cancelled", Toast.LENGTH_SHORT).show();
@@ -175,22 +156,12 @@ public class MasterScanner extends AppCompatActivity {
             SPOS.putBoolean("csVisible", true);
             SPOS.apply();
 
+            generateCSV.setVisibility(View.VISIBLE);
             prevScan = scanResult.getContents();
             numDataSets.setText(String.format(Locale.ENGLISH, "%d", otherSettings.getInt("scannedID", 6)));
 
         } else {
-            nullScan.setTitle("Null Scan");
-            nullScan.setMessage("Please rescan QR code. Data not transferred");
-            nullScan.setCancelable(true);
-            nullScan.setNeutralButton(
-                    "OK",
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            dialog.cancel();
-                        }
-                    });
-            AlertDialog alert = nullScan.create();
-            alert.show();
+            Toast.makeText(this, "Scan returned \"null.\" Please re-scan", Toast.LENGTH_SHORT).show();
 
         }
     }

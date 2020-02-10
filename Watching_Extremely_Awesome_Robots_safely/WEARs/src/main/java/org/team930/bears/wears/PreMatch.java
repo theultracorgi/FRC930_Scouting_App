@@ -42,28 +42,28 @@ public class PreMatch extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pre_match);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-
+/*
 
         alliance = 'b';
         greenAlliance = 0;
         
         matchDataPreferences = getString(R.string.matchDataPreferences);
         matchData = getSharedPreferences(matchDataPreferences, 0);
-
+*/
         otherPreferences = getString(R.string.otherPreferences);
         otherSettings = getSharedPreferences(otherPreferences, 0);
 
         SharedPreferences.Editor SPOS = otherSettings.edit();
 
         SPOS.apply();
-
+/*
         teamNum = findViewById(R.id.teamNum);
         matchNum = findViewById(R.id.matchNum);
         startPos = findViewById(R.id.startingPos);
-        allianceColor = findViewById(R.id.allianceToggle);
+        allianceColor = findViewById(R.id.allianceToggle);*/
         map = findViewById(R.id.map);
 
-        switch (Integer.parseInt(otherSettings.getString("scouterPos", "0"))) {
+        switch (otherSettings.getInt("scouterPos", 0)) {
             case 0:
                 map.setImageResource(R.drawable.s0);
                 break;
@@ -89,7 +89,7 @@ public class PreMatch extends AppCompatActivity {
 
         }
     }
-
+/*
     public void setGoToAuton(View v) {
 
         if ((teamNum.getText().toString()).length() == 0 || (matchNum.getText().toString()).length() == 0) {
@@ -155,5 +155,5 @@ public class PreMatch extends AppCompatActivity {
 
     private int getId(String name, String type) {
         return getResources().getIdentifier(name, type, PACKAGE);
-    }
+    }*/
 }

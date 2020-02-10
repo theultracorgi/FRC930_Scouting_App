@@ -1,5 +1,6 @@
 package org.team930.bears.wears;
 
+import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -9,6 +10,7 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.ContextThemeWrapper;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -25,11 +27,11 @@ public class HomeScreen extends AppCompatActivity {
 
     Button goToPreMatch, goToGenQR, goToSettings, goToMasterScanner;
     LinearLayout masterScanner;
-    ImageView disappear;
 
     String otherPreferences, numStoredMatches, matchDataPreferences, numMatchesStored;
     Integer maxMatches;
     boolean showToast;
+
 
     SharedPreferences otherSettings, matchData;
     ContextThemeWrapper ctw;
@@ -40,7 +42,6 @@ public class HomeScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home__screen);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-
 
         ctw = new ContextThemeWrapper(this, THEME_HOLO_LIGHT);
         builder = new AlertDialog.Builder(ctw);
@@ -74,7 +75,7 @@ public class HomeScreen extends AppCompatActivity {
             SPOS.putBoolean("csVisible", false);
 
             SPOS.putBoolean("dataAvailable", false);
-            SPOS.putString("scouterPos", "0");
+            SPOS.putInt("scouterPos", 0);
             SPOS.putBoolean("firstOpen", false);
 
             SPMD.putString("teamNum", "0");

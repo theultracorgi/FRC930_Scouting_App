@@ -27,7 +27,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:button_function="nav_confirm"
-        app:confirm_message="Press Again to Continue To Post Match"
+        app:toast="Press Again to Continue To Post Match"
         app:label="NextActivity"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

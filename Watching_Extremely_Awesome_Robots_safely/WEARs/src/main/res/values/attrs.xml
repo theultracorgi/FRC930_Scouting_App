@@ -14,7 +14,7 @@
         </attr>
         <attr name="next_activity" format="string"/>
         <attr name="double_press" format="boolean"/>
-        <attr name="confirm_message" format="string"/>
+        <attr name="toast" format="string"/>
     </declare-styleable>
 
     <declare-styleable name="textbox">

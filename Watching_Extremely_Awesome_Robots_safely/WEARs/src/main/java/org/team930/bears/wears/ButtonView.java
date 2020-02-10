@@ -80,7 +80,7 @@ public class ButtonView extends LinearLayout {
                             }
                             clickCount = 0;
                         }
-                    }, 700);
+                    }, 1500);
                 }
                 }
 
@@ -132,7 +132,7 @@ public class ButtonView extends LinearLayout {
         this.label = b.getString(R.styleable.global_label);
         this.buttonText = a.getString(R.styleable.button_text);
         this.buttonMode = a.getInteger(R.styleable.button_button_function, 0);
-        this.confirmMessage = a.getString(R.styleable.button_confirm_message);
+        this.confirmMessage = a.getString(R.styleable.button_toast);
 
 
         try {

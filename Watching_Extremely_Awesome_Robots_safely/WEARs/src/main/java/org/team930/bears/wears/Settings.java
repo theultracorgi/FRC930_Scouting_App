@@ -55,6 +55,8 @@ public class Settings extends AppCompatActivity {
         password = findViewById(R.id.password);
         scouterPos = findViewById(R.id.scouterPos);
 
+        scouterPos.setPos(otherSettings.getInt("scouterPos",0));
+
         if (otherSettings.getBoolean("deleteData", false)) {
 
         } else {
@@ -111,7 +113,7 @@ public class Settings extends AppCompatActivity {
         super.onPause();
         SharedPreferences.Editor SPOS = otherSettings.edit();
 
-        SPOS.putString("scouterPos", Integer.toString(scouterPos.getPos()));
+        SPOS.putInt("scouterPos",scouterPos.getPos());
         SPOS.apply();
     }
 
