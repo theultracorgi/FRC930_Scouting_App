@@ -1,26 +1,23 @@
-<?xml version="1.0" encoding="utf-8"?><!--suppress ALL -->
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorBackground"
-    android:screenOrientation="portrait"
-    tools:ignore="Overdraw">
+    android:screenOrientation="portrait">
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/logo"
-        android:layout_width="match_parent"
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginEnd="80dp"
         android:adjustViewBounds="true"
-        android:scaleType="fitStart"
-        android:src="@drawable/team_logo_glitch"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toTopOf="@+id/teamNum"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/team_logo_glitch" />
 
     <org.team930.bears.wears.TextboxView
         android:id="@+id/teamNum"
@@ -29,9 +26,9 @@
         app:hint="Team Number"
         app:label="Team Number"
         app:label_location="none"
+        app:layout_constraintBottom_toTopOf="@+id/startPos"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/logo" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <org.team930.bears.wears.TextboxView
         android:id="@+id/matchNum"
@@ -40,30 +37,33 @@
         app:hint="Match Number"
         app:label="Match Number"
         app:label_location="none"
+        app:layout_constraintBottom_toTopOf="@+id/startPos"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@id/logo" />
+        app:layout_constraintStart_toStartOf="@+id/guideline" />
 
     <org.team930.bears.wears.SpinnerView
-        android:id="@+id/spinnerView"
+        android:id="@+id/startPos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:entries="@array/startPos"
         app:label="Starting Position"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/teamNum" />
+        app:layout_constraintBottom_toTopOf="@+id/map" />
 
     <ImageView
         android:id="@+id/map"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginEnd="4dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="6dp"
+        android:layout_marginTop="6dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitStart"
+        app:layout_constraintBottom_toTopOf="@+id/goToMatchMetrics"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerView"
         tools:ignore="ContentDescription" />
 
     <androidx.constraintlayout.widget.Guideline
@@ -74,6 +74,7 @@
         app:layout_constraintGuide_percent=".5" />
 
     <org.team930.bears.wears.ButtonView
+        android:id="@+id/goToMatchMetrics"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:label="Match Metrics"
@@ -85,8 +86,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-
-    <!--Next-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

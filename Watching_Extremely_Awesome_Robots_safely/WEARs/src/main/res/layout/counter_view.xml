@@ -15,11 +15,9 @@
         android:id="@+id/counterLabelView"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:background="@color/colorWhite"
         android:fontFamily="@font/montserratitalic"
         android:gravity="center"
         android:text="default"
-
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/counterSub"

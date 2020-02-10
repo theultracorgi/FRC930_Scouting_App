@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -47,6 +48,10 @@ public class HomeScreen extends AppCompatActivity {
         builder = new AlertDialog.Builder(ctw);
         permissions = new AlertDialog.Builder(ctw);
         showToast = true;
+
+
+       // goToPreMatch = findViewById(R.id.button2);
+
 
         numStoredMatches = getString(R.string.numStoredMatches);
         maxMatches = getResources().getInteger(R.integer.maxMatches);
@@ -97,6 +102,11 @@ public class HomeScreen extends AppCompatActivity {
     }
 
 
+    public void setButton2(View v) {
+        Toast.makeText(this, "going", Toast.LENGTH_SHORT).show();
+        Intent newActivity = new Intent(this, PreMatch.class);
+        startActivity(newActivity);
+    }
 
 
     Intent intent;

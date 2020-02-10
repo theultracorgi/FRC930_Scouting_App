@@ -15,7 +15,6 @@
             android:id="@+id/seekbarLabelView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorWhite"
             android:fontFamily="@font/montserratitalic"
             android:gravity="left|center_vertical"
             android:text="default"

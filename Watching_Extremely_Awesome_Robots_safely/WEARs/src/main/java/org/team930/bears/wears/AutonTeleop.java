@@ -2,6 +2,7 @@ package org.team930.bears.wears;
 
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
+import android.icu.util.Calendar;
 import android.os.Bundle;
 import android.os.Handler;
 
@@ -20,7 +21,7 @@ public class AutonTeleop extends AppCompatActivity {
     boolean doubleBackToExitPressedOnce = false;
 
     SharedPreferences matchData, otherSettings;
-
+    long prevTime = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,27 +38,20 @@ public class AutonTeleop extends AppCompatActivity {
     }
 
 
-
     @Override
     public void onBackPressed() {
-        if (doubleBackToExitPressedOnce) {
+
+        long thisTime = Calendar.getInstance().getTimeInMillis();
+        if ((thisTime - prevTime) <= 1000) {//1 SEC
+            Toast.makeText(this, "DOUBLE TAP DETECTED!!!", Toast.LENGTH_LONG).show();
             super.onBackPressed();
-            return;
+        } else {
+            //first tap
+            prevTime = thisTime;
         }
 
-        this.doubleBackToExitPressedOnce = true;
-        Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
-
-        new Handler().postDelayed(new Runnable() {
-
-            @Override
-            public void run() {
-                doubleBackToExitPressedOnce=false;
-            }
-        }, 2000);
     }
 
+
 }
-
-
 

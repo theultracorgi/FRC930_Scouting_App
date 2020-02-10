@@ -1,7 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Base.Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Base.Theme.AppCompat.Light">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorDarkBlue</item>
         <item name="colorPrimaryDark">@color/colorDarkBlue</item>
@@ -11,7 +11,6 @@
         <item name="colorControlActivated">@color/colorBase</item>
         <item name="colorButtonNormal">@color/colorBase</item>
         <item name="android:elevation">0dp</item>
-        <item name="android:stateListAnimator">@null</item>
         <item name="android:spinnerDropDownItemStyle">@style/mySpinnerItemStyle</item>
         <item name="android:spinnerItemStyle">@style/mySpinnerItemStyle</item>
         <item name="android:editTextColor">@color/colorBlack</item>
@@ -25,17 +24,12 @@
         <item name="android:textSize" >18sp</item>
         <item name="android:paddingLeft">2dp</item>
         <item name="android:paddingRight">2dp</item>
-        <item name="android:popupBackground">#ffffff</item>
         <item name="android:fontFamily">@font/montserratregular</item>
-        <item name="android:background">#ffffff</item>
     </style>
 
     <style name="mySwitchStyle" parent="Base.Theme.AppCompat.Light">
-        <!-- active thumb & track color (30% transparency) -->
         <item name="colorControlActivated">@color/colorBase</item>
         <item name="colorSwitchThumbNormal">@color/textLight</item>
-        <item name="android:colorForeground">@color/textDark</item>
     </style>
-
 
 </resources>

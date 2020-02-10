@@ -15,10 +15,9 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Attr;
 
-import java.util.Locale;
-import java.util.logging.LogRecord;
+import java.util.Calendar;
+
 
 
 public class ButtonView extends LinearLayout {
@@ -32,6 +31,7 @@ public class ButtonView extends LinearLayout {
     String matchDataPreferences, numMatchesStored, otherPreferences;
 
     SharedPreferences matchData, otherSettings;
+    long prevTime = 0;
 
 
     public ButtonView(Context context, AttributeSet attrs) {
@@ -60,27 +60,25 @@ public class ButtonView extends LinearLayout {
             @Override
             public void onClick(View view) {
                 clickCount++;
-                Handler handler = new Handler();
+
                 if(buttonMode == 0) {
                     Intent newActivity = new Intent(getContext(), next_activity);
                     getContext().startActivity(newActivity);
 
                 } else if(buttonMode == 1 || buttonMode == 2) {
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            if (clickCount == 1) {
-                                Toast.makeText(getContext(), confirmMessage, Toast.LENGTH_SHORT).show();
-                            } else if (clickCount == 2) {
-                                if (buttonMode == 1) {
-                                    deleteData();
-                                }
-                                Intent newActivity = new Intent(getContext(), next_activity);
-                                getContext().startActivity(newActivity);
-                            }
-                            clickCount = 0;
+
+                    long thisTime = Calendar.getInstance().getTimeInMillis();
+                    if(prevTime<thisTime) {
+                        if ((thisTime - prevTime) <= 1000) {//1 SEC
+                            Toast.makeText(getContext(), "DOUBLE TAP DETECTED!!!", Toast.LENGTH_LONG).show();
+                            Intent newActivity = new Intent(getContext(), next_activity);
+                            getContext().startActivity(newActivity);
+                        } else {
+                            //first tap
+                            Toast.makeText(getContext(), confirmMessage, Toast.LENGTH_SHORT).show();
+                            prevTime = thisTime;
                         }
-                    }, 1500);
+                    }
                 }
                 }
 

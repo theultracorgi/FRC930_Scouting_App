@@ -128,23 +128,20 @@ public class PreMatch extends AppCompatActivity {
 
         }
     }
-    @Override
+    long prevTime = 0;
+   @Override
     public void onBackPressed() {
-        if (doubleBackToExitPressedOnce) {
+
+        long thisTime = Calendar.getInstance().getTimeInMillis();
+        if ((thisTime - prevTime) <= 1000) {//1 SEC
+
             super.onBackPressed();
-            return;
+        } else {
+             Toast.makeText(this, "Press Again to Go Back", Toast.LENGTH_LONG).show();
+            prevTime = thisTime;
         }
 
-        this.doubleBackToExitPressedOnce = true;
-        Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
-
-        new Handler().postDelayed(new Runnable() {
-
-            @Override
-            public void run() {
-                doubleBackToExitPressedOnce=false;
-            }
-        }, 2000);
+    }
     }
 
     public final static String PACKAGE = "..."; // insert your package name

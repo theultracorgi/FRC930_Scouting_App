@@ -16,7 +16,6 @@
         android:id="@+id/spinnerLabelView"
         android:layout_width="wrap_content"
         android:layout_height="fill_parent"
-        android:background="@color/colorWhite"
         android:fontFamily="@font/montserratitalic"
         android:gravity="left|center"
         android:text="default"
