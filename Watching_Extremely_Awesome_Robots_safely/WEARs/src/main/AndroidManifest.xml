@@ -13,14 +13,14 @@
         />
 
     <application
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:icon="@drawable/better_app_icon"
         android:label="WEARs"
         android:roundIcon="@drawable/better_app_icon_rounded"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:testOnly="false"
-        tools:ignore="AllowBackup,GoogleAppIndexingWarning">
+        tools:ignore="GoogleAppIndexingWarning">
 
         <activity android:name=".HomeScreen"
             android:label="WEARs">
@@ -42,7 +42,7 @@
         <activity android:name=".QRCreator"
             android:label="QR Creator"/>
         <activity android:name=".MasterScanner"
-            android:label="QR Scanner"/>
+            android:label="Data Export"/>
 
     </application>
 

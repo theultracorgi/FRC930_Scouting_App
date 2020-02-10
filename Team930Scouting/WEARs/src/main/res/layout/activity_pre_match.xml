@@ -1,0 +1,91 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:screenOrientation="portrait">
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:layout_marginEnd="80dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toTopOf="@+id/teamNum"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/team_logo_glitch" />
+
+    <org.team930.bears.wears.TextboxView
+        android:id="@+id/teamNum"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:hint="Team Number"
+        app:label="Team Number"
+        app:label_location="none"
+        app:layout_constraintBottom_toTopOf="@+id/startPos"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <org.team930.bears.wears.TextboxView
+        android:id="@+id/matchNum"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:hint="Match Number"
+        app:label="Match Number"
+        app:label_location="none"
+        app:layout_constraintBottom_toTopOf="@+id/startPos"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline" />
+
+    <org.team930.bears.wears.SpinnerView
+        android:id="@+id/startPos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/startPos"
+        app:label="Starting Position"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/map" />
+
+    <ImageView
+        android:id="@+id/map"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="6dp"
+        android:layout_marginTop="6dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitStart"
+        app:layout_constraintBottom_toTopOf="@+id/goToMatchMetrics"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="ContentDescription" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".5" />
+
+    <org.team930.bears.wears.ButtonView
+        android:id="@+id/goToMatchMetrics"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:label="Match Metrics"
+        app:text="Next"
+        app:button_function="nav_confirm"
+        app:next_activity="AutonTeleop"
+        app:toast="Press Again to Continue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

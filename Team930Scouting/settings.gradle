@@ -1,0 +1,4 @@
+include ':WEARs'
+include ':zxing-modified', ':sample', ':library'
+include ':integration'
+rootProject.name='Team-930-Scouting'

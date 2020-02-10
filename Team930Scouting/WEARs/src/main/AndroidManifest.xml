@@ -1,0 +1,40 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="org.team930.bears.wears">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+
+    <activity android:name=".HomeScreen"
+        android:label="WEARs">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+    </activity>
+
+    <activity android:name=".PreMatch"
+        android:label="Pre-Match"/>
+    <activity android:name=".PostMatch"
+        android:label="Post-Match"/>
+
+    <activity android:name=".AutonTeleop"
+        android:label="Match"/>
+    <activity android:name=".Settings"
+        android:label="Settings"/>
+    <activity android:name=".QRCreator"
+        android:label="QR Creator"/>
+    <activity android:name=".MasterScanner"
+        android:label="Data Export"/>
+
+</application>
+
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+tools:ignore="ManifestOrder" />
+</manifest>

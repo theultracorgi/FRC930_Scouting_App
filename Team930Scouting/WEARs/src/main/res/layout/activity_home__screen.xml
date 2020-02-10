@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/constraintLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:screenOrientation="portrait">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="160dp"
+        android:layout_marginEnd="160dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonView4"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/team_logo_glitch" />
+
+    <org.team930.bears.wears.ButtonView
+        android:id="@+id/buttonView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:button_function="navigate"
+        app:label="Match Scouter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:next_activity="PreMatch"
+        app:text=">" />
+
+
+    <org.team930.bears.wears.ButtonView
+        android:id="@+id/buttonView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:button_function="navigate"
+        app:label="Generate QR"
+        app:layout_constraintBottom_toTopOf="@+id/buttonView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonView"
+        app:layout_constraintVertical_bias="0.0"
+        app:next_activity="QRCreator"
+        app:text=">" />
+
+    <org.team930.bears.wears.ButtonView
+        android:id="@+id/buttonView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:button_function="navigate"
+        app:label="Master Scanner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonView2"
+        app:next_activity="MasterScanner"
+        app:text=">" />
+
+    <org.team930.bears.wears.ButtonView
+        android:id="@+id/buttonView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:button_function="navigate"
+        app:label="Settings"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonView3"
+        app:next_activity="Settings"
+        app:text=">" >
+
+    </org.team930.bears.wears.ButtonView>
+</androidx.constraintlayout.widget.ConstraintLayout>
