@@ -18,17 +18,16 @@
         android:fontFamily="@font/montserratitalic"
         android:gravity="left|center"
         android:text="default"
-        android:textSize="30sp"
+        android:textSize="26sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintHeight_percent=".5"
         tools:ignore="HardcodedText,NestedWeights,RtlHardcoded,SpUsage" />
 
     <EditText
         android:id="@+id/textboxTop"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:fontFamily="@font/montserratmedium"
         android:hint="default_hint"
         android:inputType="text"
@@ -37,7 +36,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintHeight_percent=".5"
         app:layout_constraintTop_toBottomOf="@+id/textboxTopLabelView"
         tools:ignore="HardcodedText,NestedWeights,RtlHardcoded,SpUsage" />
 

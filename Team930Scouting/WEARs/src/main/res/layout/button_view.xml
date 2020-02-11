@@ -17,7 +17,7 @@
         android:fontFamily="@font/montserratitalic"
         android:gravity="left|center"
         android:text="default"
-        android:textSize="30sp"
+        android:textSize="32sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

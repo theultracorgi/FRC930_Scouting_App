@@ -9,6 +9,10 @@
         <attr name="center" format="boolean" > </attr>
     </declare-styleable>
 
+    <declare-styleable name="spinner">
+        <attr name="other_enabled" format="boolean" > </attr>
+    </declare-styleable>
+
     <declare-styleable name="button">
         <attr name="text" format="string" > </attr>
         <attr name="button_function" format="enum">

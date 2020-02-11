@@ -32,4 +32,10 @@
         <item name="colorSwitchThumbNormal">@color/textLight</item>
     </style>
 
+    <style name="plusButtonStyle" parent="AppTheme">
+        <item name="android:background">@drawable/ic_add_white_24dp</item>
+        <item name="android:tint">@color/colorBase</item>
+
+    </style>
+
 </resources>

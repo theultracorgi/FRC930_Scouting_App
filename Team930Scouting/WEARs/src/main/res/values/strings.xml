@@ -24,13 +24,10 @@
         <item>RedBottom</item>
     </string-array>
 
-    <string-array name="checkboxList">
-        <item>BlueTop</item>
-        <item>BlueMid</item>
-        <item>BlueBottom</item>
-        <item>RedTop</item>
-        <item>RedMid</item>
-        <item>RedBottom</item>
+    <string-array name="autoFail">
+        <item>Crashed Into Others</item>
+        <item>Selected Wrong Routine</item>
+        <item>Shot Wrong Direction</item>
     </string-array>
 
 

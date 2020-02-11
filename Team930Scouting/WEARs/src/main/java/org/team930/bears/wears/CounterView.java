@@ -9,6 +9,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -22,7 +23,7 @@ public class CounterView extends LinearLayout {
     int increment;
 
     TextView display, labelView;
-    Button add, sub;
+    ImageButton add, sub;
 
 
     public CounterView(Context context, AttributeSet attrs) {

@@ -15,12 +15,11 @@
     <TextView
         android:id="@+id/spinnerLabelView"
         android:layout_width="wrap_content"
-        android:layout_height="fill_parent"
+        android:layout_height="wrap_content"
         android:fontFamily="@font/montserratitalic"
         android:gravity="left|center"
         android:text="default"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="26sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="HardcodedText,NestedWeights,RtlHardcoded,SpUsage" />
@@ -28,17 +27,33 @@
     <Spinner
         android:id="@+id/spinner"
         android:layout_width="wrap_content"
-        android:layout_height="fill_parent"
+        android:layout_height="wrap_content"
         android:layout_gravity="end"
         android:gravity="end|center_vertical"
         android:popupTheme="@style/mySpinnerItemStyle"
         android:spinnerMode="dialog"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintBottom_toTopOf="@+id/spinnerOther"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/spinnerLabelView"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="HardcodedText" />
+
+    <EditText
+        android:id="@+id/spinnerOther"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserratmedium"
+        android:hint="Please Specify"
+        android:inputType="text"
+        android:text=""
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerLabelView"
+        tools:ignore="HardcodedText,NestedWeights,RtlHardcoded,SpUsage" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -15,7 +15,7 @@
         android:layout_height="fill_parent"
         android:fontFamily="@font/montserratitalic"
         android:text="Something"
-        android:textSize="30sp"
+        android:textSize="32sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
