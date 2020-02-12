@@ -4,12 +4,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent">
 
 <androidx.constraintlayout.widget.ConstraintLayout
     android:id="@+id/ConstraintLayout"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline50"
@@ -43,7 +43,9 @@
         app:label="Autonomous"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" >
+
+    </org.team930.bears.wears.LabelView>
 
     <org.team930.bears.wears.CounterView
         android:id="@+id/aUpperPort"
@@ -360,24 +362,73 @@
 
     <org.team930.bears.wears.CounterView
         android:id="@+id/tPenaltiesIncurred"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:label="Penalties Incurred"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="16dp"
+        app:label="Penalties Incurred (Bad)"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="parent">
-
-    </org.team930.bears.wears.CounterView>
+        app:layout_constraintTop_toBottomOf="@id/tPasses" />
 
     <org.team930.bears.wears.ToggleView
         android:id="@+id/tPenaltiesAccrued"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:label="Penalties They Caused Opponents to Take"
+        app:label="Consistently Accruing Penalties (Good)"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tPenaltiesIncurred" />
+        app:layout_constraintTop_toBottomOf="@id/tPenaltiesIncurred"
+        />
+
+    <org.team930.bears.wears.LabelView
+        android:id="@+id/tWoFLabel"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="16dp"
+        app:label="Wheel Of Fortune"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tPenaltiesAccrued" />
+
+    <org.team930.bears.wears.ToggleView
+        android:id="@+id/tRotationAttempt"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:label="Rotation Attempt"
+        app:layout_constraintBottom_toBottomOf="@+id/tRotationTime"
+        app:layout_constraintEnd_toStartOf="@+id/guideline50"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tWoFLabel" />
+
+    <org.team930.bears.wears.ChronometerView
+        android:id="@+id/tRotationTime"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:label="Rotation Control"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline50"
+        app:layout_constraintTop_toBottomOf="@+id/tWoFLabel" />
+
+    <org.team930.bears.wears.ToggleView
+        android:id="@+id/tPositionAttempt"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:label="Position Attempt"
+        app:layout_constraintBottom_toBottomOf="@+id/tPositionTime"
+        app:layout_constraintEnd_toStartOf="@+id/guideline50"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tRotationTime" />
+
+    <org.team930.bears.wears.ChronometerView
+        android:id="@+id/tPositionTime"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:label="Position Control"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline50"
+        app:layout_constraintTop_toBottomOf="@+id/tRotationTime" />
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
