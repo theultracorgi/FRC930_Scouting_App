@@ -10,17 +10,28 @@
     android:padding="5dp">
 
     <TextView
-        android:id="@+id/labelLabelView"
-        android:layout_width="0dp"
-        android:layout_height="fill_parent"
+        android:id="@+id/labelStripeLabelView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:fontFamily="@font/montserratitalic"
         android:text="Something"
         android:textSize="32sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
     </TextView>
+
+    <ImageView
+        android:id="@+id/labelStripe"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="16dp"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/labelStripeLabelView"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@color/colorBase" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

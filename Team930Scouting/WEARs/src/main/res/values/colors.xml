@@ -10,6 +10,13 @@
     <color name="colorBackground">#d6d6d6</color>
     <!--forced-->
 
+    <color name="textBlue">#124CFF</color>
+    <color name="textPurple">#9D00FF</color>
+    <color name="textRed">#FF1F2A</color>
+    <color name="textYellow">#FFB802</color>
+    <color name="textGreen">#0EA502</color>
+
+
 
     <color name="textDark" tools:ignore="UnusedResources">#464646</color>
     <color name="textMedium">#7c7c7c</color>

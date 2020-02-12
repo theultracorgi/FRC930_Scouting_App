@@ -42,14 +42,14 @@
 
     <TextView
         android:id="@+id/counterD"
-        android:layout_width="45dp"
+        android:layout_width="30dp"
         android:layout_height="0dp"
         android:fontFamily="@font/montserratsemibold"
-        android:gravity="center"
+        android:gravity="center|center_horizontal|center_vertical"
         android:includeFontPadding="false"
         android:text="0"
         android:textColor="@color/textDark"
-        android:textSize="30sp"
+        android:textSize="22sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/counterAdd"
         app:layout_constraintTop_toTopOf="parent"

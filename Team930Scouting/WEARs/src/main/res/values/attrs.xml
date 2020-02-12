@@ -2,11 +2,18 @@
 <resources>
     <declare-styleable name="counter">
         <attr name="increment" format="integer" > </attr>
-        <attr name="base" format="integer"></attr>
+        <attr name="base" format="integer"/>
     </declare-styleable>
 
     <declare-styleable name="label">
-        <attr name="center" format="boolean" > </attr>
+        <attr name="center" format="boolean"/>
+        <attr name="color_text" format="enum">
+            <enum name="zone3" value="1"/>
+            <enum name="zone2" value="2"/>
+            <enum name="zone4" value="3"/>
+            <enum name="zone5" value="4"/>
+            <enum name="zone1" value="5"/>
+        </attr>
     </declare-styleable>
 
     <declare-styleable name="spinner">
@@ -26,7 +33,7 @@
     </declare-styleable>
 
     <declare-styleable name="textbox">
-        <attr name="hint" format="string" ></attr>
+        <attr name="hint" format="string"/>
         <attr name="label_location" format="enum">
             <enum name="top" value="0"/>
             <enum name="side" value="1"/>
@@ -35,15 +42,15 @@
     </declare-styleable>
 
     <declare-styleable name="global">
-        <attr name="label" format="string" ></attr>
+        <attr name="label" format="string"/>
         <attr name="android:entries" />
     </declare-styleable>
 
     <declare-styleable name="seekbar">
-        <attr name="floor" format="integer" ></attr>
-        <attr name="ceil" format="integer" ></attr>
-        <attr name="floor_name" format="string" ></attr>
-        <attr name="ceil_name" format="string" ></attr>
-        <attr name="zero_name" format="string" ></attr>
+        <attr name="floor" format="integer"/>
+        <attr name="ceil" format="integer"/>
+        <attr name="floor_name" format="string"/>
+        <attr name="ceil_name" format="string"/>
+        <attr name="zero_name" format="string"/>
     </declare-styleable>
 </resources>

@@ -1,13 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+<androidx.constraintlayout.widget.ConstraintLayout
     android:id="@+id/ConstraintLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline50"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintGuide_percent="0.5"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline66"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".66" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline33"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".33" />
 
     <org.team930.bears.wears.LabelView
-        android:id="@+id/labelView"
+        android:id="@+id/aLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:center="true"
@@ -34,7 +63,7 @@
         app:label="Bottom Port"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline50"
-        app:layout_constraintTop_toBottomOf="@+id/labelView" />
+        app:layout_constraintTop_toBottomOf="@+id/aLabel" />
 
     <org.team930.bears.wears.ToggleView
         android:id="@+id/initiationLine"
@@ -45,18 +74,8 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline50"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/labelView"
+        app:layout_constraintTop_toBottomOf="@+id/aLabel"
         app:layout_constraintVertical_bias="0.53" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline50"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintGuide_percent="0.5"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <org.team930.bears.wears.CounterView
         android:id="@+id/aInnerPort"
@@ -68,7 +87,7 @@
         app:layout_constraintTop_toBottomOf="@id/aBottomPort" />
 
     <org.team930.bears.wears.SpinnerView
-        android:id="@+id/spinnerView2"
+        android:id="@+id/aFailReason"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:entries="@array/autoFail"
@@ -79,15 +98,17 @@
         app:other_enabled="true" />
 
     <org.team930.bears.wears.ToggleView
+        android:id="@+id/aBallsNotShot"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:label="Grabbed Balls Not Shot?"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerView2" />
+        app:layout_constraintTop_toBottomOf="@+id/aFailReason" />
 
     <org.team930.bears.wears.ToggleView
+        android:id="@+id/aFail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:label="Auto Fail?"
@@ -96,6 +117,269 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/aUpperPort" />
 
+    <org.team930.bears.wears.LabelView
+        android:id="@+id/tLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:center="true"
+        app:label="Teleoperated"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/aBallsNotShot" />
+
+    <org.team930.bears.wears.LabelView
+        android:id="@+id/tZone1Label"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:color_text="zone1"
+        app:label="Zone 1 Power Cells"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tLabel" />
+
+    <org.team930.bears.wears.CounterView
+        android:id="@+id/tZone1Upper"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:label="Upper"
+        app:layout_constraintEnd_toStartOf="@+id/guideline33"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tZone1Label" >
+
+    </org.team930.bears.wears.CounterView>
+
+    <org.team930.bears.wears.CounterView
+        android:id="@+id/tZone1Inner"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:label="Inner"
+        app:layout_constraintEnd_toStartOf="@+id/guideline66"
+        app:layout_constraintStart_toStartOf="@+id/guideline33"
+        app:layout_constraintTop_toBottomOf="@+id/tZone1Label" />
+
+    <org.team930.bears.wears.CounterView
+        android:id="@+id/tZone1Missed"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:label="Missed"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline66"
+        app:layout_constraintTop_toBottomOf="@+id/tZone1Label" />
+
+    <org.team930.bears.wears.LabelView
+        android:id="@+id/tZone2Label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:color_text="zone2"
+        app:label="Zone 2 Power Cells"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tZone1Inner" />
+
+    <org.team930.bears.wears.CounterView
+        android:id="@+id/tZone2Upper"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:label="Upper"
+        app:layout_constraintEnd_toStartOf="@+id/guideline50"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tZone2Label" />
+
+    <org.team930.bears.wears.CounterView
+        android:id="@+id/tZone2Inner"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:label="Inner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.967"
+        app:layout_constraintStart_toStartOf="@+id/guideline50"
+        app:layout_constraintTop_toBottomOf="@+id/tZone2Label" />
+
+    <org.team930.bears.wears.CounterView
+        android:id="@+id/tZone2Bottom"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:label="Bottom"
+        app:layout_constraintEnd_toStartOf="@+id/guideline50"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tZone2Upper" />
+
+    <org.team930.bears.wears.CounterView
+        android:id="@+id/tZone2Missed"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:label="Missed"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline50"
+        app:layout_constraintTop_toBottomOf="@+id/tZone2Inner" />
+
+    <org.team930.bears.wears.LabelView
+        android:id="@+id/tZone3Label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:color_text="zone3"
+        app:label="Zone 3 Power Cells"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tZone2Bottom" />
+
+
+    <org.team930.bears.wears.CounterView
+        android:id="@+id/tZone3Upper"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:label="Upper"
+        app:layout_constraintEnd_toStartOf="@+id/guideline33"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tZone3Label" />
+
+    <org.team930.bears.wears.CounterView
+        android:id="@+id/tZone3Missed"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:label="Missed"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline66"
+        app:layout_constraintTop_toBottomOf="@+id/tZone3Label" />
+
+    <org.team930.bears.wears.CounterView
+        android:id="@+id/tZone3Inner"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:label="Inner"
+        app:layout_constraintEnd_toStartOf="@+id/guideline66"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline33"
+        app:layout_constraintTop_toBottomOf="@+id/tZone3Label" />
+
+
+    <org.team930.bears.wears.LabelView
+        android:id="@+id/tZone4Label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:color_text="zone4"
+        app:label="Zone 4 Power Cells"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tZone3Missed" />
+
+
+    <org.team930.bears.wears.CounterView
+        android:id="@+id/tZone4Upper"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:label="Upper"
+        app:layout_constraintEnd_toStartOf="@+id/guideline33"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tZone4Label" />
+
+    <org.team930.bears.wears.CounterView
+        android:id="@+id/tZone4Missed"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:label="Missed"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline66"
+        app:layout_constraintTop_toBottomOf="@+id/tZone4Label" />
+
+    <org.team930.bears.wears.CounterView
+        android:id="@+id/tZone4Inner"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:label="Inner"
+        app:layout_constraintEnd_toStartOf="@+id/guideline66"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline33"
+        app:layout_constraintTop_toBottomOf="@+id/tZone4Label" />
+
+
+    <org.team930.bears.wears.LabelView
+        android:id="@+id/tZone5Label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:color_text="zone5"
+        app:label="Zone 5 Power Cells"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tZone4Missed" />
+
+
+    <org.team930.bears.wears.CounterView
+        android:id="@+id/tZone5Upper"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:label="Upper"
+        app:layout_constraintEnd_toStartOf="@+id/guideline33"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tZone5Label" >
+
+    </org.team930.bears.wears.CounterView>
+
+    <org.team930.bears.wears.CounterView
+        android:id="@+id/tZone5Missed"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:label="Missed"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline66"
+        app:layout_constraintTop_toBottomOf="@+id/tZone5Label" />
+
+    <org.team930.bears.wears.CounterView
+        android:id="@+id/tZone5Inner"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:label="Inner"
+        app:layout_constraintEnd_toStartOf="@+id/guideline66"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline33"
+        app:layout_constraintTop_toBottomOf="@+id/tZone5Label" />
+
+    <org.team930.bears.wears.CounterView
+        android:id="@+id/tPasses"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:label="Passes Made"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tZone5Inner" />
+
+    <org.team930.bears.wears.CounterView
+        android:id="@+id/tPenaltiesIncurred"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:label="Penalties Incurred"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="parent">
+
+    </org.team930.bears.wears.CounterView>
+
+    <org.team930.bears.wears.ToggleView
+        android:id="@+id/tPenaltiesAccrued"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:label="Penalties They Caused Opponents to Take"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tPenaltiesIncurred" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
+</ScrollView>
