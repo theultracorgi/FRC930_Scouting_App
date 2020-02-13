@@ -16,10 +16,6 @@
         </attr>
     </declare-styleable>
 
-    <declare-styleable name="spinner">
-        <attr name="other_enabled" format="boolean" > </attr>
-    </declare-styleable>
-
     <declare-styleable name="button">
         <attr name="text" format="string" > </attr>
         <attr name="button_function" format="enum">
@@ -43,6 +39,7 @@
     <declare-styleable name="global">
         <attr name="label" format="string"/>
         <attr name="android:entries" />
+        <attr name="other_enabled" format="boolean" > </attr>
     </declare-styleable>
 
     <declare-styleable name="image">
@@ -56,4 +53,5 @@
         <attr name="ceil_name" format="string"/>
         <attr name="zero_name" format="string"/>
     </declare-styleable>
+
 </resources>

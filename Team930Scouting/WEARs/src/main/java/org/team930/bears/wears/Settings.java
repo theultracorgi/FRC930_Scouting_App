@@ -1,10 +1,13 @@
 package org.team930.bears.wears;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 
+import android.icu.util.Calendar;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.os.Handler;
 import android.text.InputType;
@@ -17,14 +20,13 @@ import android.widget.LinearLayout;
 
 
 import android.widget.Toast;
-
 @SuppressWarnings("ALL")
 public class Settings extends AppCompatActivity {
-    LinearLayout adminUnlock;
-    Button submitPassword;
+    Button submitPassword, deleteData;
     EditText password;
     SpinnerView scouterPos;
-    boolean doubleBackToExitPressedOnce = false;
+    ConstraintLayout deleteView;
+
 
     String adminPassword, previousAttempt;
     String matchDataPreferences, otherPreferences, numMatchesStored, TBA_AUTH_KEY;
@@ -50,17 +52,18 @@ public class Settings extends AppCompatActivity {
 
         otherPreferences = getString(R.string.otherPreferences);
         otherSettings = getSharedPreferences(otherPreferences, 0);
-        adminUnlock = findViewById(R.id.adminUnlock);
         submitPassword = findViewById(R.id.submitPassword);
         password = findViewById(R.id.password);
         scouterPos = findViewById(R.id.scouterPos);
+        deleteData = findViewById(R.id.deleteData);
+        deleteView = findViewById(R.id.deleteView);
 
         scouterPos.setPos(otherSettings.getInt("scouterPos",0));
 
         if (otherSettings.getBoolean("deleteData", false)) {
-
+            deleteView.setVisibility(View.VISIBLE);
         } else {
-
+            deleteView.setVisibility(View.GONE);
         }
 
         if (otherSettings.getBoolean("admin", false)) {
@@ -95,6 +98,54 @@ public class Settings extends AppCompatActivity {
         }
     }
 
+    long prevTime = 0;
+    public void setDeleteData(View v) {
+        long thisTime = Calendar.getInstance().getTimeInMillis();
+        if(prevTime<thisTime) {
+            if ((thisTime - prevTime) <= 1000) {//1 SEC
+                deleteData();
+                deleteView.setVisibility(View.GONE);
+                super.recreate();
+            } else {
+                //first tap
+                Toast.makeText(this, "Press Again to Confirm Data Clear", Toast.LENGTH_SHORT).show();
+                prevTime = thisTime;
+            }
+        }
+
+    }
+
+
+
+private void deleteData() {
+
+        SharedPreferences.Editor SPOS = otherSettings.edit();
+
+        SPOS.putBoolean("deleteData", false);
+        SPOS.putInt(numMatchesStored, 0);
+
+        SPOS.putString("scannedMatches", "");
+        SPOS.putInt("scannedID", 0);
+        SPOS.putBoolean("csVisible", false);
+
+        SPOS.putBoolean("dataAvailable", false);
+
+        SPOS.apply();
+
+        SharedPreferences.Editor SPMD = matchData.edit();
+
+
+        SPMD.putString("preMatchVals", "");
+        SPMD.putString("autonTeleopVals", "");
+        SPMD.putString("postMatchVals", "");
+
+
+        SPMD.putString("firstQR", "");
+        SPMD.putString("secondQR", "");
+
+        SPMD.apply();
+        Toast.makeText(this, "Data Successfully Deleted", Toast.LENGTH_LONG).show();
+        }
 
     private void setAdminTrue(){
         password.setHint("Type \"revoke\"");

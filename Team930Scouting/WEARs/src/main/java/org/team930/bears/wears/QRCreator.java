@@ -60,7 +60,7 @@ public class QRCreator extends AppCompatActivity {
         indicator = findViewById(R.id.qrcodey);
 
         disFirstQR = false;
-        if(otherSettings.getInt(numStoredMatches, 12) > 1) {
+        if(otherSettings.getInt(numStoredMatches, 8) > 1) {
             disFirstQR = true;
 
         }
@@ -74,10 +74,9 @@ public class QRCreator extends AppCompatActivity {
 
     public void setGenQRCode(View v) {
 
-        if(otherSettings.getInt(numStoredMatches, 12) <= 1) {
+        if(otherSettings.getString("secondQR", "").length() == 0) {
             sendableData = matchData.getString("firstQR", "0");
         } else {
-
             if (disFirstQR == true) {
                 sendableData = matchData.getString("firstQR", "0");
             } else {
@@ -95,7 +94,7 @@ public class QRCreator extends AppCompatActivity {
                 Bitmap bmp = Bitmap.createBitmap(width, height, Bitmap.Config.RGB_565);
                 for (int x = 0; x < width; x++) {
                     for (int y = 0; y < height; y++) {
-                        bmp.setPixel(x, y, bitMatrix.get(x, y) ? Color.rgb(0, 0, 0) : Color.WHITE);
+                        bmp.setPixel(x, y, bitMatrix.get(x, y) ? Color.BLACK : Color.WHITE);
                     }
                 }
                 qrCode.setBackgroundDrawable(getResources().getDrawable(R.color.colorWhite));
@@ -111,17 +110,21 @@ public class QRCreator extends AppCompatActivity {
             SPOS.putBoolean("deleteData", true);
             SPOS.apply();
             //QR Code Generation
-            disFirstQR = !disFirstQR;
-            if(otherSettings.getInt(numStoredMatches, 8) > 1) {
-                if (disFirstQR) {
-                    indicator.setText("QR Code 2");
+            if(otherSettings.getString("secondQR", "").length() ==0) {
 
-                } else {
-                    indicator.setText("QR Code 1");
-                }
             } else {
+                disFirstQR = !disFirstQR;
+                if(otherSettings.getInt(numStoredMatches, 8) > 1) {
+                    if (disFirstQR) {
+                        indicator.setText("QR Code 2");
 
+                    } else {
+                        indicator.setText("QR Code 1");
+                    }
+                }
             }
+
+
         } else if (showToast) {
             Toast.makeText(getApplicationContext(), "No Data", Toast.LENGTH_SHORT).show();
             showToast = false;

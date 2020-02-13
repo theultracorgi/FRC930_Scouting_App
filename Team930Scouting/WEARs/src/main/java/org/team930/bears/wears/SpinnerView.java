@@ -106,19 +106,15 @@ public class SpinnerView extends LinearLayout {
     }
 
 
-    private void initializeViews(Context context, AttributeSet attrs) {
-        TypedArray a = context.getTheme().obtainStyledAttributes(
-                attrs,
-                R.styleable.spinner,
-                0, 0);
 
+    private void initializeViews(Context context, AttributeSet attrs) {
         TypedArray b = context.getTheme().obtainStyledAttributes(
                 attrs,
                 R.styleable.global,
                 0, 0);
         this.label = b.getString(R.styleable.global_label);
         this.tempList = b.getTextArray(R.styleable.global_android_entries);
-        this.otherEnabled = a.getBoolean(R.styleable.spinner_other_enabled, false);
+        this.otherEnabled = b.getBoolean(R.styleable.global_other_enabled, false);
 
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);

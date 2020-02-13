@@ -15,14 +15,6 @@
     <string name="adminPassword">478609</string>
     <integer name="maxMatches">8</integer>
     <string name="TBA_AUTH_KEY">jNdQjBDqhihOqZw8Al5t83XKRSxBOh3OJDKo3GLDYp5xSzvQJP2oEKOu9gCgM5DQ</string>
-    <string-array name="spinnerList">
-        <item>BlueTop</item>
-        <item>BlueMid</item>
-        <item>BlueBottom</item>
-        <item>RedTop</item>
-        <item>RedMid</item>
-        <item>RedBottom</item>
-    </string-array>
 
     <string-array name="autoFail">
         <item>Crashed Into Others</item>
@@ -31,9 +23,18 @@
     </string-array>
 
     <string-array name="startPos">
-        <item>Far</item>
-        <item>Middle</item>
-        <item>Near</item>
+        <item>Blue Far</item>
+        <item>Blue Middle</item>
+        <item>Blue Near</item>
+        <item>Red Far</item>
+        <item>Red Middle</item>
+        <item>Red Near</item>
+    </string-array>
+
+    <string-array name="penalties">
+        <item>Pinning</item>
+        <item>Contacting Opponents in Safe Zones</item>
+        <item>Touched Opponents While Climbing</item>
     </string-array>
 
     <string-array name="endgameState">

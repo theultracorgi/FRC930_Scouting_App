@@ -11,6 +11,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline50"
         android:layout_width="wrap_content"
@@ -33,7 +35,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="230dp" />
+        app:layout_constraintGuide_percent=".33" />
 
     <org.team930.bears.wears.LabelView
         android:id="@+id/aLabel"
@@ -49,14 +51,14 @@
     </org.team930.bears.wears.LabelView>
 
     <org.team930.bears.wears.CounterView
-        android:id="@+id/aUpperPort"
+        android:id="@+id/aOuterPort"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:label="Upper Port"
+        app:label="Outer Port"
         app:layout_constraintEnd_toStartOf="@+id/guideline50"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/aFail">
+        app:layout_constraintTop_toBottomOf="@id/aInitiationLine">
 
     </org.team930.bears.wears.CounterView>
 
@@ -71,7 +73,7 @@
         app:layout_constraintTop_toBottomOf="@+id/aLabel" />
 
     <org.team930.bears.wears.ToggleView
-        android:id="@+id/initiationLine"
+        android:id="@+id/aInitiationLine"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -87,7 +89,7 @@
         android:layout_height="wrap_content"
         app:label="Inner Port"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/aUpperPort"
+        app:layout_constraintStart_toEndOf="@+id/aOuterPort"
         app:layout_constraintTop_toBottomOf="@id/aBottomPort" />
 
     <org.team930.bears.wears.SpinnerView
@@ -119,7 +121,7 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline50"
         app:layout_constraintHorizontal_bias="0.045"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/initiationLine" />
+        app:layout_constraintTop_toBottomOf="@+id/aOuterPort" />
 
     <org.team930.bears.wears.LabelView
         android:id="@+id/tLabel"
@@ -144,10 +146,10 @@
         app:layout_constraintTop_toBottomOf="@+id/tLabel" />
 
     <org.team930.bears.wears.CounterView
-        android:id="@+id/tZone1Upper"
+        android:id="@+id/tZone1Outer"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:label="Upper"
+        app:label="Outer"
         app:layout_constraintEnd_toStartOf="@+id/guideline33"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -185,10 +187,10 @@
         app:layout_constraintTop_toBottomOf="@+id/tZone1Inner" />
 
     <org.team930.bears.wears.CounterView
-        android:id="@+id/tZone2Upper"
+        android:id="@+id/tZone2Outer"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:label="Upper"
+        app:label="Outer"
         app:layout_constraintEnd_toStartOf="@+id/guideline50"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tZone2Label" />
@@ -211,7 +213,7 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline50"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tZone2Upper" />
+        app:layout_constraintTop_toBottomOf="@+id/tZone2Outer" />
 
     <org.team930.bears.wears.CounterView
         android:id="@+id/tZone2Missed"
@@ -236,10 +238,10 @@
 
 
     <org.team930.bears.wears.CounterView
-        android:id="@+id/tZone3Upper"
+        android:id="@+id/tZone3Outer"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:label="Upper"
+        app:label="Outer"
         app:layout_constraintEnd_toStartOf="@+id/guideline33"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -279,10 +281,10 @@
 
 
     <org.team930.bears.wears.CounterView
-        android:id="@+id/tZone4Upper"
+        android:id="@+id/tZone4Outer"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:label="Upper"
+        app:label="Outer"
         app:layout_constraintEnd_toStartOf="@+id/guideline33"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -322,10 +324,10 @@
 
 
     <org.team930.bears.wears.CounterView
-        android:id="@+id/tZone5Upper"
+        android:id="@+id/tZone5Outer"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:label="Upper"
+        app:label="Outer"
         app:layout_constraintEnd_toStartOf="@+id/guideline33"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -407,6 +409,7 @@
         android:id="@+id/tRotationTime"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         app:label="Rotation Control"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline50"
@@ -431,17 +434,6 @@
         app:layout_constraintStart_toStartOf="@+id/guideline50"
         app:layout_constraintTop_toBottomOf="@+id/tRotationTime" />
 
-    <org.team930.bears.wears.SpinnerView
-        android:id="@+id/tEndgameState"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:entries="@array/endgameState"
-        app:label="Endgame Result"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tEndgameLabel" />
-
     <org.team930.bears.wears.LabelView
         android:id="@+id/tEndgameLabel"
         android:layout_width="match_parent"
@@ -452,6 +444,27 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tPositionTime" />
+
+    <org.team930.bears.wears.SpinnerView
+        android:id="@+id/tEndgameState"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/endgameState"
+        app:label="Endgame Result"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tEndgameTime" />
+
+
+    <org.team930.bears.wears.ChronometerView
+        android:id="@+id/tEndgameTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:label="Endgame Time"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tEndgameLabel" />
 
     <org.team930.bears.wears.ToggleView
         android:id="@+id/tOtherClimbs"
@@ -482,19 +495,51 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tClimbFailDetails" />
 
-    <org.team930.bears.wears.ButtonView
-        android:id="@+id/tToPostMatch"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/tNextContainer"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="2dp"
+        android:layout_marginStart="2dp"
         android:layout_marginTop="16dp"
-        app:button_function="nav_confirm"
-        app:label="Go To Post Match"
-        app:toast="Press Again to Go To Post Match"
+        android:layout_marginEnd="2dp"
+        android:background="@drawable/rounded_corners_chunk_material"
+        android:clickable="true"
+        android:focusable="true"
+        android:orientation="horizontal"
+        android:padding="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tOtherClimbDetails"
-        app:next_activity="PostMatch"
-        app:text="Next" />
+        app:layout_constraintTop_toBottomOf="@+id/tOtherClimbDetails">
+
+        <TextView
+            android:id="@+id/tPostMatchLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:fontFamily="@font/montserratitalic"
+            android:gravity="left|center"
+            android:text="Go To Post Match"
+            android:textSize="32sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="HardcodedText,NestedWeights,RtlHardcoded,SpUsage" />
+
+        <Button
+            android:id="@+id/goToPostMatch"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:fontFamily="@font/montserratbold"
+            android:text="Next"
+            android:textColor="@color/colorWhite"
+            android:onClick="setTGoToPostmatch"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/tPostMatchLabel"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="HardcodedText" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

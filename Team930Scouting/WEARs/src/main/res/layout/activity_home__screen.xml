@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -18,61 +19,191 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonView4"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintTop_toBottomOf="@+id/settingsView"
         app:srcCompat="@drawable/team_logo_glitch" />
 
-    <org.team930.bears.wears.ButtonView
-        android:id="@+id/buttonView"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/matchScouterView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:button_function="navigate"
-        app:label="Match Scouter"
+        android:layout_margin="2dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="2dp"
+        android:background="@drawable/rounded_corners_chunk_material"
+        android:clickable="true"
+        android:focusable="true"
+        android:orientation="horizontal"
+        android:padding="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:next_activity="PreMatch"
-        app:text=">" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/matchScouterLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:fontFamily="@font/montserratitalic"
+            android:gravity="left|center"
+            android:text="Match Scouter"
+            android:textSize="32sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="HardcodedText,NestedWeights,RtlHardcoded,SpUsage" />
+
+        <Button
+            android:id="@+id/goToMatchScouter"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:fontFamily="@font/montserratbold"
+            android:text=">"
+            android:textColor="@color/colorWhite"
+            android:onClick="setGoToMatchScouter"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/matchScouterLabel"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="HardcodedText" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-    <org.team930.bears.wears.ButtonView
-        android:id="@+id/buttonView2"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/genQRView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:button_function="navigate"
-        app:label="Generate QR"
-        app:layout_constraintBottom_toTopOf="@+id/buttonView3"
+        android:layout_margin="2dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginEnd="2dp"
+        android:background="@drawable/rounded_corners_chunk_material"
+        android:clickable="true"
+        android:focusable="true"
+        android:orientation="horizontal"
+        android:padding="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/matchScouterView">
+
+        <TextView
+            android:id="@+id/genQRLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:fontFamily="@font/montserratitalic"
+            android:gravity="left|center"
+            android:text="Generate QR"
+            android:textSize="32sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="HardcodedText,NestedWeights,RtlHardcoded,SpUsage" />
+
+        <Button
+            android:id="@+id/goToGenQR"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:fontFamily="@font/montserratbold"
+            android:onClick="setGoToGenQR"
+            android:textColor="@color/colorWhite"
+            android:text=">"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/genQRLabel"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="HardcodedText" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/masterScannerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="2dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginEnd="2dp"
+        android:background="@drawable/rounded_corners_chunk_material"
+        android:clickable="true"
+        android:focusable="true"
+        android:orientation="horizontal"
+        android:padding="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonView"
-        app:layout_constraintVertical_bias="0.0"
-        app:next_activity="QRCreator"
-        app:text=">" />
+        app:layout_constraintTop_toBottomOf="@+id/genQRView">
 
-    <org.team930.bears.wears.ButtonView
-        android:id="@+id/buttonView3"
+        <TextView
+            android:id="@+id/masterScannerLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:fontFamily="@font/montserratitalic"
+            android:gravity="left|center"
+            android:text="Master Scanner"
+            android:textSize="32sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="HardcodedText,NestedWeights,RtlHardcoded,SpUsage" />
+
+        <Button
+            android:id="@+id/goToMasterScanner"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:fontFamily="@font/montserratbold"
+            android:onClick="setGoToMasterScanner"
+            android:textColor="@color/colorWhite"
+            android:text=">"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/masterScannerLabel"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="HardcodedText" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/settingsView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:button_function="navigate"
-        app:label="Master Scanner"
+        android:layout_margin="2dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginEnd="2dp"
+        android:background="@drawable/rounded_corners_chunk_material"
+        android:clickable="true"
+        android:focusable="true"
+        android:orientation="horizontal"
+        android:padding="5dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonView2"
-        app:next_activity="MasterScanner"
-        app:text=">" />
+        app:layout_constraintTop_toBottomOf="@+id/masterScannerView">
 
-    <org.team930.bears.wears.ButtonView
-        android:id="@+id/buttonView4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:button_function="navigate"
-        app:label="Settings"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonView3"
-        app:next_activity="Settings"
-        app:text=">" >
+        <TextView
+            android:id="@+id/settingsLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:fontFamily="@font/montserratitalic"
+            android:gravity="left|center"
+            android:text="Settings"
+            android:textSize="32sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="HardcodedText,NestedWeights,RtlHardcoded,SpUsage" />
 
-    </org.team930.bears.wears.ButtonView>
+        <Button
+            android:id="@+id/goToSettings"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:fontFamily="@font/montserratbold"
+            android:onClick="setGoToSettings"
+            android:textColor="@color/colorWhite"
+            android:text=">"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/settingsLabel"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="HardcodedText" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -20,6 +20,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import static android.app.AlertDialog.THEME_HOLO_LIGHT;
+import static android.view.View.GONE;
+import static android.view.View.VISIBLE;
 
 
 @SuppressWarnings("ALL")
@@ -27,7 +29,6 @@ public class HomeScreen extends AppCompatActivity {
 
 
     Button goToPreMatch, goToGenQR, goToSettings, goToMasterScanner;
-    LinearLayout masterScanner;
 
     String otherPreferences, numStoredMatches, matchDataPreferences, numMatchesStored;
     Integer maxMatches;
@@ -44,15 +45,6 @@ public class HomeScreen extends AppCompatActivity {
         setContentView(R.layout.activity_home__screen);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-        ctw = new ContextThemeWrapper(this, THEME_HOLO_LIGHT);
-        builder = new AlertDialog.Builder(ctw);
-        permissions = new AlertDialog.Builder(ctw);
-        showToast = true;
-
-
-       // goToPreMatch = findViewById(R.id.button2);
-
-
         numStoredMatches = getString(R.string.numStoredMatches);
         maxMatches = getResources().getInteger(R.integer.maxMatches);
 
@@ -60,10 +52,13 @@ public class HomeScreen extends AppCompatActivity {
         otherSettings = getSharedPreferences(otherPreferences, 0);
 
         numMatchesStored = getString(R.string.numStoredMatches);
-
-
         matchDataPreferences = getString(R.string.matchDataPreferences);
         matchData = getSharedPreferences(matchDataPreferences, 0);
+
+        goToPreMatch = findViewById(R.id.goToMatchScouter);
+        goToGenQR = findViewById(R.id.goToGenQR);
+        goToMasterScanner = findViewById(R.id.goToMasterScanner);
+        goToSettings = findViewById(R.id.goToSettings);
 
 
         SharedPreferences.Editor SPOS = otherSettings.edit();
@@ -83,33 +78,39 @@ public class HomeScreen extends AppCompatActivity {
             SPOS.putInt("scouterPos", 0);
             SPOS.putBoolean("firstOpen", false);
 
-            SPMD.putString("teamNum", "0");
-            SPMD.putString("matchNum", "0");
-
-
             SPMD.putString("preMatchVals", "");
             SPMD.putString("autonTeleopVals", "");
             SPMD.putString("postMatchVals", "");
 
-
             SPMD.putString("firstQR", "");
             SPMD.putString("secondQR", "");
-
-
             SPMD.apply();
             SPOS.apply();
+        }
+
+        if(otherSettings.getBoolean("admin",false)){
+            findViewById(R.id.masterScannerView).setVisibility(VISIBLE);
+        } else {
+            findViewById(R.id.masterScannerView).setVisibility(GONE);
         }
     }
 
 
-    public void setButton2(View v) {
-        Toast.makeText(this, "going", Toast.LENGTH_SHORT).show();
-        Intent newActivity = new Intent(this, PreMatch.class);
-        startActivity(newActivity);
+    Intent intent;
+
+    public void setGoToMatchScouter(View v) {
+        if(otherSettings.getInt(numMatchesStored,maxMatches) >=maxMatches) {
+            Toast.makeText(this, "All your data are belong to us", Toast.LENGTH_LONG).show();
+        } else {
+            Intent goToPostMatch = new Intent(this, PreMatch.class);
+            startActivity(goToPostMatch);
+        }
     }
 
-
-    Intent intent;
+    public void setGoToGenQR(View v) {
+        Intent goToPostMatch = new Intent(this, QRCreator.class);
+        startActivity(goToPostMatch);
+    }
 
     public void setGoToMasterScanner(View v) {
 
@@ -155,10 +156,9 @@ public class HomeScreen extends AppCompatActivity {
         }
     }
 
-    public void setRevokeAdmin(View v) {
-        if (otherSettings.getBoolean("admin", false)) {
-
-        }
+    public void setGoToSettings(View v) {
+        Intent goToPostMatch = new Intent(this, Settings.class);
+        startActivity(goToPostMatch);
     }
 
     private boolean checkWriteExternalPermission() {

@@ -3,15 +3,12 @@ package org.team930.bears.wears;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.text.InputFilter;
-import android.text.Layout;
 import android.text.Spanned;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import androidx.constraintlayout.widget.ConstraintSet;
 
 public class TextboxView extends LinearLayout {
 
@@ -36,7 +33,7 @@ public class TextboxView extends LinearLayout {
             textbox = findViewById(R.id.textboxSide);
             sideLabelView.setText(label);
         } else {
-            textbox = findViewById(R.id.textboxNone);
+            textbox = findViewById(R.id.checkBoxOther);
             textbox.setPadding(8,8,8,8);
         }
 

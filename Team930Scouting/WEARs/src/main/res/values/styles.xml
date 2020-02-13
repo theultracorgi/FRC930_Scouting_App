@@ -38,4 +38,12 @@
 
     </style>
 
+    <style name="textBoxStyle" parent="AppTheme">
+        <item name="android:fontFamily">@font/montserratmedium</item>
+
+    </style>
+    <style name="checkBoxStyle" parent="AppTheme">
+        <item name="android:fontFamily">@font/montserratregular</item>
+    </style>
+
 </resources>

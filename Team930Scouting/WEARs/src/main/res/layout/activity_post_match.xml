@@ -1,139 +1,305 @@
 <?xml version="1.0" encoding="utf-8"?><!--suppress XmlUnusedNamespaceDeclaration, XmlUnusedNamespaceDeclaration -->
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorBackground"
-    android:screenOrientation="portrait"
-    tools:ignore="Overdraw">
+    android:layout_height="wrap_content">
 
-    <org.team930.bears.wears.LabelView
-        android:id="@+id/pGeneralLabel"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ConstraintLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:center="true"
-        app:label="General"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="wrap_content">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/pGuide50"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintGuide_percent="0.5"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
+        <org.team930.bears.wears.LabelView
+            android:id="@+id/pGeneralLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:center="true"
+            app:label="General"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/pGuide66"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent=".66" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/pGuide50"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintGuide_percent="0.5"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/pGuide33"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="230dp" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/pGuide66"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".66" />
 
-    <org.team930.bears.wears.SeekbarView
-        android:id="@+id/pPassingEffectiveness"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        app:ceil="5"
-        app:ceil_name="5 (Super Gud)"
-        app:floor_name="1 (Mega Boujee)"
-        app:label="Passing Effectiveness"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pGeneralLabel"
-        app:zero_name="N/A" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/pGuide33"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".33" />
 
-    <org.team930.bears.wears.ToggleView
-        android:id="@+id/pPassedTo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:label="Were They Passed To?"
-        app:layout_constraintTop_toBottomOf="@+id/pPassingEffectiveness"
-        tools:layout_editor_absoluteX="-16dp" />
+        <org.team930.bears.wears.SeekbarView
+            android:id="@+id/pPassingEffectiveness"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:ceil="5"
+            app:ceil_name="5 (Super Gud)"
+            app:floor_name="1 (Mega Boujee)"
+            app:label="Passing Effectiveness"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pGeneralLabel"
+            app:zero_name="N/A" />
 
-    <org.team930.bears.wears.SeekbarView
-        android:id="@+id/pBarCrossing"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        app:ceil="5"
-        app:ceil_name="5 (Not Affected By Bar)"
-        app:floor_name="1 (Big Struggle Mode)"
-        app:label="Boundary Line Crossing"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/pPassedTo"
-        app:zero_name="N/A" />
+        <org.team930.bears.wears.ToggleView
+            android:id="@+id/pPassedTo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:label="Were They Passed To?"
+            app:layout_constraintTop_toBottomOf="@+id/pPassingEffectiveness"
+            tools:layout_editor_absoluteX="-16dp" />
 
-    <org.team930.bears.wears.TextboxView
-        android:id="@+id/pSecondsDisabled"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        app:label="# Seconds Disabled"
-        app:label_location="side"
-        app:layout_constraintEnd_toStartOf="@+id/pGuide50"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pBarCrossing" />
+        <org.team930.bears.wears.SeekbarView
+            android:id="@+id/pBarCrossing"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:ceil="5"
+            app:ceil_name="5 (Not Affected By Bar)"
+            app:floor_name="1 (Big Struggle Mode)"
+            app:label="Boundary Line Crossing"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/pPassedTo"
+            app:zero_name="N/A" />
 
-    <org.team930.bears.wears.TextboxView
-        android:id="@+id/pReasonDisabled"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        app:label="# Seconds Disabled"
-        app:label_location="side"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/pGuide50"
-        app:layout_constraintTop_toBottomOf="@+id/pBarCrossing" />
+        <org.team930.bears.wears.TextboxView
+            android:id="@+id/pSecondsDisabled"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:label="Time Disabled"
+            app:label_location="side"
+            app:layout_constraintEnd_toStartOf="@+id/pGuide50"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pBarCrossing" />
 
-    <org.team930.bears.wears.ToggleView
-        android:id="@+id/pGettingInTheWay"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        app:label="Getting in the way of partners?"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pReasonDisabled" />
+        <org.team930.bears.wears.TextboxView
+            android:id="@+id/pReasonDisabled"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:label="Reason"
+            app:label_location="side"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/pGuide50"
+            app:layout_constraintTop_toBottomOf="@+id/pBarCrossing" />
 
-    <org.team930.bears.wears.LabelView
-        android:id="@+id/pDefenseLabel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        app:center="true"
-        app:label="Defense"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pGettingInTheWay" />
+        <org.team930.bears.wears.ToggleView
+            android:id="@+id/pGettingInTheWay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:label="Getting in the way of partners?"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pReasonDisabled" />
 
-    <org.team930.bears.wears.SeekbarView
-        android:id="@+id/pGettingDefended"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        app:ceil="5"
-        app:ceil_name="5 (Didn't affect them)"
-        app:floor_name="1 (Got Shut Down)"
-        app:label="Effectiveness Against Defense"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pDefenseLabel"
-        app:zero_name="N/A" />
+        <org.team930.bears.wears.LabelView
+            android:id="@+id/pDefenseLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:center="true"
+            app:label="Defense"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pGettingInTheWay" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <org.team930.bears.wears.SeekbarView
+            android:id="@+id/pGettingDefended"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:ceil="5"
+            app:ceil_name="5 (Didn't affect them)"
+            app:floor_name="1 (Got Shut Down)"
+            app:label="Effectiveness Against Defense"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pDefenseLabel"
+            app:zero_name="N/A" />
+
+        <org.team930.bears.wears.ToggleView
+            android:id="@+id/pDefensePushed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:label="Were they getting pushed around?"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pGettingDefended" />
+
+        <org.team930.bears.wears.SeekbarView
+            android:id="@+id/pDefenseEffectiveness"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:ceil="5"
+            app:ceil_name="5 (Shut Down Opponent)"
+            app:floor_name="1 (Didn't affect Opponent)"
+            app:label="Effectiveness Playing Defense"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pDefensePushed"
+            app:zero_name="N/A" />
+
+        <org.team930.bears.wears.SeekbarView
+            android:id="@+id/pDefenseAggressiveness"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:ceil="5"
+            app:ceil_name="5 (Way too Aggressive)"
+            app:floor_name="1 (Not Aggressive At All)"
+            app:label="Aggressiveness of Defense"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pDefenseEffectiveness"
+            app:zero_name="N/A" />
+
+        <org.team930.bears.wears.ToggleView
+            android:id="@+id/pDefensePushing"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:label="Were they pushing other robots?"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pDefenseAggressiveness" />
+
+        <org.team930.bears.wears.CheckboxView
+            android:id="@+id/pPenalties"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/penalties"
+            app:label="Penalties Incurred"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pDefensePushing"
+            app:other_enabled="true" />
+
+        <org.team930.bears.wears.LabelView
+            android:id="@+id/pCommentsLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:center="true"
+            app:label="Comments"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pPenalties" />
+
+        <org.team930.bears.wears.TextboxView
+            android:id="@+id/pStruggles"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:label="Particular Struggles They Had"
+            app:hint="#StruggleLife"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pCommentsLabel" />
+
+        <org.team930.bears.wears.TextboxView
+            android:id="@+id/pOtherComments"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:hint="Why they performed well/poorly, a nice haiku, etc."
+            app:label="Other Comments"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pStruggles" />
+
+        <org.team930.bears.wears.ToggleView
+            android:id="@+id/pWorthPicking"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:label="Is This Team Worth Picking?"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pOtherComments" />
+
+        <org.team930.bears.wears.TextboxView
+            android:id="@+id/pWhyPick"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:hint="Why?"
+            app:label_location="none"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pWorthPicking" />
+
+        <org.team930.bears.wears.TextboxView
+            android:id="@+id/pScouter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:hint="Scouter Name"
+            app:label_location="none"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pWhyPick" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/pSubmitContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="2dp"
+            android:background="@drawable/rounded_corners_chunk_material"
+            android:clickable="true"
+            android:focusable="true"
+            android:orientation="horizontal"
+            android:padding="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pScouter">
+
+            <TextView
+                android:id="@+id/pSubmitLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:fontFamily="@font/montserratitalic"
+                android:gravity="left|center"
+                android:text="Submit Data"
+                android:textSize="32sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="HardcodedText,NestedWeights,RtlHardcoded,SpUsage" />
+
+            <Button
+                android:id="@+id/pSubmitData"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:fontFamily="@font/montserratbold"
+                android:onClick="setSubmitData"
+                android:text="Submit"
+                android:textColor="@color/colorWhite"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/pSubmitLabel"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="HardcodedText" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

@@ -27,18 +27,15 @@ import static android.app.AlertDialog.THEME_HOLO_LIGHT;
 
 @SuppressWarnings("ALL")
 public class PostMatch extends AppCompatActivity {
-    ToggleButton disabled;
-    Button submitData;
-    EditText comments;
-    SeekBar defense;
-    TextView dProgress;
 
-    boolean doubleBackToExitPressedOnce = false;
-    Integer mDisabled, defenseProgress;
-    String matchDataPreferences, otherPreferences, numStoredMatches, fullMatchData;
-    String disabledPassable, defensePassable, commentsPassable;
-
+    int disabled;
+    String matchDataPreferences, otherPreferences, numStoredMatches;
     SharedPreferences matchData, otherSettings;
+
+    SeekbarView passingEffectivenss, boundaryEffectiveness, defendedEffectiveness, defenseEffectivness, defenseAggressiveness;
+    TextboxView secondsDisabled, reasonDisabled, struggles, otherComments, whyPick, scouter;
+    ToggleView passedTo, gettingInWay, pushed, pushing, worthPicking;
+    CheckboxView penalties;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,83 +43,114 @@ public class PostMatch extends AppCompatActivity {
         setContentView(R.layout.activity_post_match);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-
         numStoredMatches = getString(R.string.numStoredMatches);
-        mDisabled = 0;
+        disabled = 0;
 
         matchDataPreferences = getString(R.string.matchDataPreferences);
         matchData = getSharedPreferences(matchDataPreferences, 0);
-        defenseProgress = 0;
 
         otherPreferences = getString(R.string.otherPreferences);
         otherSettings = getSharedPreferences(otherPreferences, 0);
-/*
-        disabled = findViewById(R.id.disabled);
-        comments = findViewById(R.id.comments);
-        submitData = findViewById(R.id.submitData);
-        defense = findViewById(R.id.defense);
-        dProgress = findViewById(R.id.progress);
-*/
 
-//TODO do you like this robot? Why in Comments
+
+        //Finding Views
+        passingEffectivenss = findViewById(R.id.pPassingEffectiveness);
+        boundaryEffectiveness = findViewById(R.id.pBarCrossing);
+        defendedEffectiveness = findViewById(R.id.pGettingDefended);
+        defenseEffectivness = findViewById(R.id.pDefenseEffectiveness);
+        defenseAggressiveness = findViewById(R.id.pDefenseAggressiveness);
+
+        secondsDisabled = findViewById(R.id.pSecondsDisabled);
+        reasonDisabled = findViewById(R.id.pReasonDisabled);
+        struggles = findViewById(R.id.pStruggles);
+        otherComments = findViewById(R.id.pOtherComments);
+        whyPick = findViewById(R.id.pWhyPick);
+        scouter = findViewById(R.id.pScouter);
+
+        passedTo = findViewById(R.id.pPassedTo);
+        gettingInWay = findViewById(R.id.pGettingInTheWay);
+        pushed = findViewById(R.id.pDefensePushed);
+        pushing = findViewById(R.id.pDefensePushing);
+        worthPicking = findViewById(R.id.pWorthPicking);
+
+        penalties = findViewById(R.id.pPenalties);
+
     }
 
-    public void setDisabled(View v) {
-
-        if (disabled.isChecked()) {
-            mDisabled = 1;
-        } else {
-            mDisabled = 0;
-        }
-    }
+    long prevTime = 0;
 
     public void setSubmitData(View v) {
 
-        if ((comments.getText().toString()).length() <= 10 || !comments.getText().toString().contains(" ")) {
-
+        if (whyPick.getText().length() <= 10 || !whyPick.getText().toString().contains(" ")) {
             Toast.makeText(this, "cool kids make more comments", Toast.LENGTH_SHORT).show();
 
-
+        } else if (secondsDisabled.getText().length() > 0 && reasonDisabled.getText().length() < 5) {
+            Toast.makeText(this, "y were they disabled tho???", Toast.LENGTH_SHORT).show();
         } else {
+            long thisTime = java.util.Calendar.getInstance().getTimeInMillis();
+            if (prevTime < thisTime) {
+                if ((thisTime - prevTime) <= 1000) {//1 SEC
+
+                    if (secondsDisabled.getText().length() > 0) {
+                        if (Integer.parseInt(secondsDisabled.getText()) > 0) {
+                            disabled = 1;
+                        }
+                    }
+
+                    int[] penaltyStates = penalties.getCheckBoxCheckedArray();
 
 
-            SharedPreferences.Editor SPMD = matchData.edit();
-            SharedPreferences.Editor SPOS = otherSettings.edit();
+                    SharedPreferences.Editor SPMD = matchData.edit();
+                    SharedPreferences.Editor SPOS = otherSettings.edit();
 
-            SPMD.putString("postMatchVals", disabledPassable + "," + defensePassable + "," + commentsPassable);
-            SPMD.apply();
+                    SPMD.putString("postMatchVals", passingEffectivenss.getProgress() + "," + passedTo.getState() + "," +
+                            boundaryEffectiveness.getProgress() + "," + disabled + "," + reasonDisabled.getText() + "," +
+                            gettingInWay.getState() + "," +
+                            defendedEffectiveness.getProgress() + "," + pushed.getState() + "," +
+                            defenseEffectivness.getProgress() + "," + defenseAggressiveness.getProgress() + "," + pushing.getState() + "," +
+                            penaltyStates[0] + "," + penaltyStates[1] + "," + penaltyStates[2] + "," + penaltyStates[3] + "," +
+                            struggles.getText() + "," + otherComments.getText() + "," + worthPicking.getState() + "," + whyPick.getText() + "," + scouter.getText()
+                    );
+                    SPMD.apply();
 
-            fullMatchData = matchData.getString("preMatchVals", "") + matchData.getString("autonTeleopVals", "") + matchData.getString("postMatchVals", "") + "\n";
+                    SPOS.putInt(numStoredMatches, otherSettings.getInt(numStoredMatches, 7) + 1);
+                    SPOS.apply();
 
+                    if (otherSettings.getInt(numStoredMatches, 8) <= 4) {
+                        SPMD.putString("firstQR", matchData.getString("firstQR", "") + matchData.getString("preMatchVals", "") + matchData.getString("autonTeleopVals", "") + matchData.getString("postMatchVals", "") + "\n");
+                    } else {
+                        SPMD.putString("secondQR", matchData.getString("secondQR", "") + matchData.getString("preMatchVals", "") + matchData.getString("autonTeleopVals", "") + matchData.getString("postMatchVals", "") + "\n");
+                    }
+                    SPOS.apply();
+                    SPMD.apply();
 
-            SPOS.putInt(numStoredMatches, otherSettings.getInt(numStoredMatches, 3) + 1);
-            SPOS.apply();
+                    Intent submitData = new Intent(PostMatch.this, HomeScreen.class);
+                    startActivity(submitData);
 
-            if (otherSettings.getInt(numStoredMatches, 4) % 2 == 0) {
-                SPMD.putString("secondQR", matchData.getString("secondQR", "") + fullMatchData);
-            } else {
-                SPMD.putString("firstQR", matchData.getString("firstQR", "") + fullMatchData);
+                } else {
+                    //first tap
+                    Toast.makeText(this, "Press Again To Go to Submit Data", Toast.LENGTH_SHORT).show();
+                    prevTime = thisTime;
+                }
+
             }
-            SPOS.apply();
-
-            Intent submitData = new Intent(PostMatch.this, HomeScreen.class);
-            startActivity(submitData);
-
         }
 
 
     }
-    long prevTime = 0;
+
+    long backPrevTime = 0;
+
     @Override
     public void onBackPressed() {
 
         long thisTime = Calendar.getInstance().getTimeInMillis();
-        if ((thisTime - prevTime) <= 1000) {//1 SEC
+        if ((thisTime - backPrevTime) <= 1000) {//1 SEC
 
             super.onBackPressed();
         } else {
             Toast.makeText(this, "Press Again to Go Back", Toast.LENGTH_LONG).show();
-            prevTime = thisTime;
+            backPrevTime = thisTime;
         }
 
     }

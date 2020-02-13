@@ -62,18 +62,46 @@
 
     </LinearLayout>
 
-    <org.team930.bears.wears.ButtonView
-        android:id="@+id/buttonView5"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/deleteView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:button_function="delete"
-        app:label="Delete 'le data'"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/adminUnlock"
-        app:next_activity="Settings"
-        app:text="Confirm"
-        app:toast="Please Click Again to Delete Data" />
+        android:layout_margin="2dp"
+        android:background="@drawable/rounded_corners_chunk_material"
+        android:clickable="true"
+        android:focusable="true"
+        android:orientation="horizontal"
+        android:padding="5dp"
+        app:layout_constraintTop_toBottomOf="@+id/adminUnlock">
+
+        <TextView
+            android:id="@+id/deleteLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:fontFamily="@font/montserratitalic"
+            android:gravity="left|center"
+            android:text="Delete 'le data'"
+            android:textSize="32sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="HardcodedText,NestedWeights,RtlHardcoded,SpUsage" />
+
+        <Button
+            android:id="@+id/deleteData"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:fontFamily="@font/montserratbold"
+            android:onClick="setDeleteData"
+            android:text="Confirm"
+            android:textColor="@color/colorWhite"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/buttonLabelView"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="HardcodedText" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

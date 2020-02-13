@@ -36,6 +36,8 @@ public class ChronometerView extends LinearLayout {
         start = findViewById(R.id.chronometerStart);
         stop = findViewById(R.id.chronometerStop);
 
+
+        pauseOffset = 0;
         running = false;
         labelView.setText(label);
         start.setText("Start");
@@ -70,7 +72,7 @@ public class ChronometerView extends LinearLayout {
     }
 
     public double getChonometerReading() {
-        return (double) (SystemClock.elapsedRealtime()-pauseOffset);
+        return (double) (pauseOffset);
     }
 
 
