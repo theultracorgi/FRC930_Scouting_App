@@ -30,10 +30,23 @@
         <item>Shot Wrong Direction</item>
     </string-array>
 
-
     <string-array name="startPos">
         <item>Far</item>
         <item>Middle</item>
         <item>Near</item>
+    </string-array>
+
+    <string-array name="endgameState">
+        <item>No Endgame</item>
+        <item>Successful Park</item>
+        <item>Successful Climb</item>
+        <item>Successful Climb On Partner</item>
+        <item>Successful Climb And Lifting</item>
+        <item>Successfully Assist to Climb</item>
+        <item>Successful Climb But Failed Lifting</item>
+        <item>Failed Climb</item>
+        <item>Failed Climb On Partner</item>
+        <item>Failed Climb And Lifting</item>
+        <item>Failed Assist To Climb</item>
     </string-array>
 </resources>

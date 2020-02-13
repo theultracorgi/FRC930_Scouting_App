@@ -29,9 +29,10 @@ public class SeekbarView extends LinearLayout {
         seekbar = findViewById(R.id.seekbar);
 
         labelView.setText(label);
-        displayStatus();
 
         seekbar.setMax(ceil);
+
+        displayStatus();
 
 
 
@@ -87,7 +88,7 @@ public class SeekbarView extends LinearLayout {
                 0, 0);
         this.label = b.getString(R.styleable.global_label);
         this.ceil = a.getInt(R.styleable.seekbar_ceil,5);
-        this.floor = a.getInt(R.styleable.seekbar_floor,0);
+        this.floor = a.getInt(R.styleable.seekbar_floor,1);
         this.floorName = a.getString(R.styleable.seekbar_floor_name);
         this.ceilName = a.getString(R.styleable.seekbar_ceil_name);
         this.zeroName = a.getString(R.styleable.seekbar_zero_name);

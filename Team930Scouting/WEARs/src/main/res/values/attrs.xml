@@ -28,7 +28,6 @@
             <enum name="nav_confirm" value="2"/>
         </attr>
         <attr name="next_activity" format="string"/>
-        <attr name="double_press" format="boolean"/>
         <attr name="toast" format="string"/>
     </declare-styleable>
 
@@ -44,6 +43,10 @@
     <declare-styleable name="global">
         <attr name="label" format="string"/>
         <attr name="android:entries" />
+    </declare-styleable>
+
+    <declare-styleable name="image">
+        <attr name="source" format="reference"/>
     </declare-styleable>
 
     <declare-styleable name="seekbar">

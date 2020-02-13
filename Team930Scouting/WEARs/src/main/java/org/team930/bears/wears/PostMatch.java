@@ -56,35 +56,14 @@ public class PostMatch extends AppCompatActivity {
 
         otherPreferences = getString(R.string.otherPreferences);
         otherSettings = getSharedPreferences(otherPreferences, 0);
-
+/*
         disabled = findViewById(R.id.disabled);
         comments = findViewById(R.id.comments);
         submitData = findViewById(R.id.submitData);
         defense = findViewById(R.id.defense);
         dProgress = findViewById(R.id.progress);
+*/
 
-        defense.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-
-                int val = (progress * (seekBar.getWidth() - 2 * seekBar.getThumbOffset())) / seekBar.getMax();
-                dProgress.setText("" + progress);
-                dProgress.setX(seekBar.getX() + val + seekBar.getThumbOffset() / 2);
-
-                defenseProgress = defense.getProgress();
-
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
-        });
 //TODO do you like this robot? Why in Comments
     }
 
