@@ -30,7 +30,8 @@ public class QRCreator extends AppCompatActivity {
     ImageView qrCode;
     TextView indicator;
 
-    boolean showToast, disFirstQR;
+    int disColor;
+    boolean showToast, disFirstQR, oneQR;
     String otherPreferences, matchDataPreferences, sendableData, numStoredMatches;
 
     SharedPreferences otherSettings, matchData;
@@ -55,6 +56,8 @@ public class QRCreator extends AppCompatActivity {
         matchDataPreferences = getString(R.string.matchDataPreferences);
         matchData = getSharedPreferences(matchDataPreferences, 0);
 
+        oneQR = true;
+
         border = findViewById(R.id.border);
         qrCode = findViewById(R.id.qrCode);
         indicator = findViewById(R.id.qrcodey);
@@ -74,13 +77,17 @@ public class QRCreator extends AppCompatActivity {
 
     public void setGenQRCode(View v) {
 
-        if(otherSettings.getString("secondQR", "").length() == 0) {
+        if(otherSettings.getInt(numStoredMatches,4) <= 4) {
             sendableData = matchData.getString("firstQR", "0");
+            disColor = Color.BLACK;
         } else {
             if (disFirstQR == true) {
                 sendableData = matchData.getString("firstQR", "0");
+                disColor = Color.BLUE;
+
             } else {
                 sendableData = matchData.getString("secondQR", "0");
+                disColor = Color.RED;
             }
         }
         if (otherSettings.getInt(numStoredMatches, 0) > 0) {
@@ -94,7 +101,7 @@ public class QRCreator extends AppCompatActivity {
                 Bitmap bmp = Bitmap.createBitmap(width, height, Bitmap.Config.RGB_565);
                 for (int x = 0; x < width; x++) {
                     for (int y = 0; y < height; y++) {
-                        bmp.setPixel(x, y, bitMatrix.get(x, y) ? Color.BLACK : Color.WHITE);
+                        bmp.setPixel(x, y, bitMatrix.get(x, y) ? disColor : Color.WHITE);
                     }
                 }
                 qrCode.setBackgroundDrawable(getResources().getDrawable(R.color.colorWhite));
@@ -110,17 +117,15 @@ public class QRCreator extends AppCompatActivity {
             SPOS.putBoolean("deleteData", true);
             SPOS.apply();
             //QR Code Generation
-            if(otherSettings.getString("secondQR", "").length() ==0) {
+            if(otherSettings.getInt(numStoredMatches,4) <= 4) {
 
             } else {
                 disFirstQR = !disFirstQR;
-                if(otherSettings.getInt(numStoredMatches, 8) > 1) {
                     if (disFirstQR) {
                         indicator.setText("QR Code 2");
 
                     } else {
                         indicator.setText("QR Code 1");
-                    }
                 }
             }
 

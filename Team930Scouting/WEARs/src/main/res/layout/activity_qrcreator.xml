@@ -58,12 +58,11 @@
                     android:layout_marginRight="10dp"
                     android:layout_marginLeft="10dp"
                     android:background="@color/colorWhite"
-                    android:maxLines="1"
                     android:padding="5dp"
                     android:text="QR Code"
                     android:textAlignment="center"
                     android:textColor="@color/textMedium"
-                    android:textSize="30dp"
+                    android:textSize="50dp"
                     android:textStyle="italic"
 
                     tools:ignore="HardcodedText,SpUsage" />
