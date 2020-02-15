@@ -5,7 +5,7 @@
     <color name="colorAccentTwo">#FBDB65</color>
     <color name="colorAccentThree">#4298B5</color>
     <color name="colorDarkBlue">#071D49</color>
-    <color name ="colorRoyalBlue">#1E22AA</color>
+    <color name="colorRoyalBlue">#1E22AA</color>
     <color name="colorBlack">#101820</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorBackground">#d6d6d6</color>
@@ -16,8 +16,6 @@
     <color name="textRed">#FF1F2A</color>
     <color name="textYellow">#FFB802</color>
     <color name="textGreen">#0EA502</color>
-
-
 
     <color name="textDark" tools:ignore="UnusedResources">#464646</color>
     <color name="textMedium">#7c7c7c</color>

@@ -1,4 +1,4 @@
-include ':WEARs'
+include ':WEARs', ':yaboiinthepits'
 include ':zxing-modified', ':sample', ':library'
 include ':integration'
 rootProject.name='Team-930-Scouting'

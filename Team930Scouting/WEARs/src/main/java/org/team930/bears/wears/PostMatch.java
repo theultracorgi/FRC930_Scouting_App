@@ -92,7 +92,7 @@ public class PostMatch extends AppCompatActivity {
                 if ((thisTime - prevTime) <= 1000) {//1 SEC
 
                     if (secondsDisabled.getText().length() > 0) {
-                        if (Integer.parseInt(secondsDisabled.getText()) > 0) {
+                        if (secondsDisabled.getText().length() > 0) {
                             disabled = 1;
                         }
                     }
@@ -113,10 +113,10 @@ public class PostMatch extends AppCompatActivity {
                     );
                     SPMD.apply();
 
-                    SPOS.putInt(numStoredMatches, otherSettings.getInt(numStoredMatches, 7) + 1);
+                    SPOS.putInt(numStoredMatches, otherSettings.getInt(numStoredMatches, 5) + 1);
                     SPOS.apply();
 
-                    if (otherSettings.getInt(numStoredMatches, 8) <= 4) {
+                    if (otherSettings.getInt(numStoredMatches, 6) <= 3) {
                         SPMD.putString("firstQR", matchData.getString("firstQR", "") + matchData.getString("preMatchVals", "") + matchData.getString("autonTeleopVals", "") + matchData.getString("postMatchVals", "") + "\n");
                     } else {
                         SPMD.putString("secondQR", matchData.getString("secondQR", "") + matchData.getString("preMatchVals", "") + matchData.getString("autonTeleopVals", "") + matchData.getString("postMatchVals", "") + "\n");

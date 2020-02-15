@@ -17,7 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 @SuppressWarnings("ALL")
 public class AutonTeleop extends AppCompatActivity {
 
-    String matchDataPreferences, otherPreferences;
+    String matchDataPreferences, otherPreferences, aFailTrue;
     SharedPreferences matchData, otherSettings;
 
     Button tGoToPostmatch;
@@ -45,7 +45,6 @@ public class AutonTeleop extends AppCompatActivity {
 
         matchData = getSharedPreferences(matchDataPreferences, 0);
         otherSettings = getSharedPreferences(otherPreferences, 0);
-
 
         //Finding Views
         tGoToPostmatch = findViewById(R.id.goToPostMatch);
@@ -103,13 +102,19 @@ public class AutonTeleop extends AppCompatActivity {
 
     public void setTGoToPostmatch(View v) {
 
+        if (aFail.getState() == 1) {
+            aFailTrue = aFailReason.getSelection();
+        } else {
+            aFailTrue = "";
+        }
+
         long thisTime = java.util.Calendar.getInstance().getTimeInMillis();
         if (prevTime < thisTime) {
             if ((thisTime - prevTime) <= 1000) {//1 SEC
                 SharedPreferences.Editor SPMD = matchData.edit();
                 SPMD.putString("autonTeleopVals", initiationLine.getState() + "," +
                         aBottom.getCount() + "," + aOuter.getCount() + "," + aInner.getCount() + "," +
-                        aFail.getState() + "," + aFailReason.getSelection() + "," + grabbedBalls.getState() + "," +
+                        aFailTrue + "," + grabbedBalls.getState() + "," +
                         z1Inner.getCount() + "," + z1Outer.getCount() + "," + z1Missed.getCount() + "," +
                         z2Inner.getCount() + "," + z2Outer.getCount() + "," + z2Bottom.getCount() + "," + z2Missed.getCount() + "," +
                         z3Inner.getCount() + "," + z3Outer.getCount() + "," + z3Missed.getCount() + "," +

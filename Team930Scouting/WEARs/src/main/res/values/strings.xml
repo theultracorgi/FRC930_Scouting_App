@@ -13,7 +13,7 @@
         <item>Red 3</item>
     </string-array>
     <string name="adminPassword">478609</string>
-    <integer name="maxMatches">8</integer>
+    <integer name="maxMatches">6</integer>
     <string name="TBA_AUTH_KEY">jNdQjBDqhihOqZw8Al5t83XKRSxBOh3OJDKo3GLDYp5xSzvQJP2oEKOu9gCgM5DQ</string>
 
     <string-array name="autoFail">

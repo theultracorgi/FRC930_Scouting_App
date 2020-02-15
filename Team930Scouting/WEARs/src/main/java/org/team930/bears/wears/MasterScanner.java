@@ -143,7 +143,7 @@ public class MasterScanner extends AppCompatActivity {
         if (resultCode == RESULT_CANCELED) {
             Toast.makeText(this, "Scan Cancelled", Toast.LENGTH_SHORT).show();
 
-        } else if (scanResult != null && scanResult.getContents() != "0" && scanResult.getContents().toLowerCase() != "null") {
+        } else if (scanResult != null && scanResult.getContents() != "0" && scanResult.getContents().toLowerCase() != "null" && scanResult.getContents().toLowerCase() != "Null") {
             // handle scan result
 
             SharedPreferences.Editor SPOS = otherSettings.edit();

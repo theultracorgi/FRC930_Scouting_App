@@ -55,6 +55,11 @@ public class HomeScreen extends AppCompatActivity {
         matchDataPreferences = getString(R.string.matchDataPreferences);
         matchData = getSharedPreferences(matchDataPreferences, 0);
 
+        ctw = new ContextThemeWrapper(this, THEME_HOLO_LIGHT);
+        builder = new AlertDialog.Builder(ctw);
+        permissions = new AlertDialog.Builder(ctw);
+        showToast = true;
+
         goToPreMatch = findViewById(R.id.goToMatchScouter);
         goToGenQR = findViewById(R.id.goToGenQR);
         goToMasterScanner = findViewById(R.id.goToMasterScanner);

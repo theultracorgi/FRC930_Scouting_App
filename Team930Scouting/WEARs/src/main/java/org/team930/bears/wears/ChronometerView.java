@@ -72,7 +72,7 @@ public class ChronometerView extends LinearLayout {
     }
 
     public double getChonometerReading() {
-        return (double) (pauseOffset);
+        return (pauseOffset/1000.0);
     }
 
 
