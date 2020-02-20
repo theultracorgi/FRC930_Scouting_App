@@ -1,11 +1,49 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Base.Theme.AppCompat.Light">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">@color/colorRoyalBlue</item>
+        <item name="colorPrimaryDark">@color/colorDarkBlue</item>
+        <item name="colorAccent">@color/colorAccentOne</item>
+        <item name="android:colorBackground">@color/colorBackground</item>
+        <item name="android:textColorPrimary">@color/textWhite</item>
+        <item name="colorControlActivated">@color/colorBase</item>
+        <item name="colorButtonNormal">@color/colorBase</item>
+        <item name="android:elevation">0dp</item>
+        <item name="android:spinnerDropDownItemStyle">@style/mySpinnerItemStyle</item>
+        <item name="android:spinnerItemStyle">@style/mySpinnerItemStyle</item>
+        <item name="android:editTextColor">@color/colorBlack</item>
+        <item name="android:fontFamily">@font/montserratregular</item>
+
+    </style>
+
+
+    <style name="mySpinnerItemStyle" parent="android:Widget.TextView.SpinnerItem">
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:textSize" >18sp</item>
+        <item name="android:paddingLeft">2dp</item>
+        <item name="android:paddingRight">2dp</item>
+        <item name="android:fontFamily">@font/montserratregular</item>
+    </style>
+
+    <style name="mySwitchStyle" parent="Base.Theme.AppCompat.Light">
+        <item name="colorControlActivated">@color/colorBase</item>
+        <item name="colorSwitchThumbNormal">@color/textLight</item>
+    </style>
+
+    <style name="plusButtonStyle" parent="AppTheme">
+        <item name="android:background">@drawable/ic_add_white_24dp</item>
+        <item name="android:tint">@color/colorDarkBlue</item>
+
+    </style>
+
+    <style name="textBoxStyle" parent="AppTheme">
+        <item name="android:fontFamily">@font/montserratmedium</item>
+
+    </style>
+    <style name="checkBoxStyle" parent="AppTheme">
+        <item name="android:fontFamily">@font/montserratregular</item>
     </style>
 
 </resources>

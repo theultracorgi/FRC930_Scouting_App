@@ -1,3 +1,107 @@
-<resources>
-    <string name="app_name">YaBoiInThePits</string>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name" tools:ignore="UnusedResources">WEARs</string>
+
+    <string name="matchDataPreferences">matchData</string>
+    <string name="otherPreferences">otherPreferences</string>
+    <string name="numStoredMatches">numStoredMatches</string>
+    <string-array name="scouterPos">
+        <item>Blue 1</item>
+        <item>Blue 2</item>
+        <item>Blue 3</item>
+        <item>Red 1</item>
+        <item>Red 2</item>
+        <item>Red 3</item>
+    </string-array>
+    <string name="adminPassword">478609</string>
+    <integer name="maxMatches">6</integer>
+    <string name="TBA_AUTH_KEY">jNdQjBDqhihOqZw8Al5t83XKRSxBOh3OJDKo3GLDYp5xSzvQJP2oEKOu9gCgM5DQ</string>
+
+    <string-array name="autoFail">
+        <item>Crashed Into Others</item>
+        <item>Selected Wrong Routine</item>
+        <item>Shot Wrong Direction</item>
+    </string-array>
+
+    <string-array name="penalties">
+        <item>Pinning</item>
+        <item>Contacting Opponents in Safe Zones</item>
+        <item>Touched Opponents While Climbing</item>
+    </string-array>
+
+    <string-array name="motorType">
+        <item>Falcon 500s</item>
+        <item>NEOs</item>
+        <item>CIMs</item>
+        <item>Mini CIMs</item>
+        <item>Redlines</item>
+        <item>775 Pros</item>
+    </string-array>
+    <string-array name="drivetrainType">
+        <item>Tank</item>
+        <item>Mecanum</item>
+        <item>Swerve</item>
+        <item>Butterfly</item>
+        <item>Tank Treads</item>
+    </string-array>
+    <string-array name="intake">
+        <item>Floor Intake</item>
+        <item>Floor Outtake</item>
+        <item>Top Intake</item>
+    </string-array>
+
+    <string-array name="shooterVariables">
+        <item>Variable Height</item>
+        <item>Variable Angle</item>
+        <item>Variable Speed</item>
+    </string-array>
+    <string-array name="goals">
+        <item>Bottom</item>
+        <item>Outer</item>
+        <item>Inner</item>
+    </string-array>
+
+    <string-array name="zones">
+        <item>Zone 1</item>
+        <item>Zone 2</item>
+        <item>Zone 3</item>
+        <item>Zone 4</item>
+        <item>Zone 5</item>
+    </string-array>
+
+    <string-array name="controlPanel">
+        <item>Rotation Control</item>
+        <item>Position Control</item>
+    </string-array>
+
+    <string-array name="controlPanelMethod">
+        <item>Camera</item>
+        <item>Auto</item>
+    </string-array>
+
+    <string-array name="endgameMechs">
+        <item>No Endgame</item>
+        <item>Single Climb</item>
+        <item>Climb + 1 Lift</item>
+        <item>Climb + 2 Lift</item>
+        <item>Climb + 1 Bar</item>
+        <item>Climb + 2 Bar</item>
+    </string-array>
+
+    <string-array name="climbPos">
+        <item>Side</item>
+        <item>Middle</item>
+    </string-array>
+
+    <string-array name="startPos">
+        <item>Left</item>
+        <item>Middle</item>
+        <item>Right</item>
+    </string-array>
+
+    <string-array name="autoRoutines">
+        <item>Cross Line</item>
+        <item>Shoot 3 Balls</item>
+        <item>Grab More Balls</item>
+        <item>Shoot More Balls</item>
+    </string-array>
 </resources>

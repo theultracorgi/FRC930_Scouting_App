@@ -245,16 +245,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/pWorthPicking" />
 
-        <org.team930.bears.wears.TextboxView
-            android:id="@+id/pScouter"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:hint="Scouter Name"
-            app:label_location="none"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/pWhyPick" />
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/pSubmitContainer"
             android:layout_width="match_parent"
@@ -270,7 +260,7 @@
             android:padding="5dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/pScouter">
+            app:layout_constraintTop_toBottomOf="@+id/pWhyPick">
 
             <TextView
                 android:id="@+id/pSubmitLabel"

@@ -1,0 +1,663 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Home">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ConstraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline33"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".33" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelin66"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".66" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline50"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintGuide_percent="0.5"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <org.team930.bears.yaboiinthepits.TextboxView
+        android:id="@+id/teamNum"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:label="Team Number"
+        app:label_location="side"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <org.team930.bears.yaboiinthepits.LabelView
+        android:id="@+id/drivetrainLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:center="true"
+        app:label="Drivetrain"
+        app:layout_constraintTop_toBottomOf="@id/teamNum"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <org.team930.bears.yaboiinthepits.CounterView
+        android:id="@+id/numWheels"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:base="6"
+        app:label="# of Wheels"
+        app:layout_constraintEnd_toStartOf="@+id/guideline50"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/drivetrainLabel">
+
+    </org.team930.bears.yaboiinthepits.CounterView>
+
+    <org.team930.bears.yaboiinthepits.CounterView
+        android:id="@+id/numOmniWheels"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:base="6"
+        app:label="# of Omnis"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline50"
+        app:layout_constraintTop_toBottomOf="@+id/drivetrainLabel">
+
+    </org.team930.bears.yaboiinthepits.CounterView>
+
+    <org.team930.bears.yaboiinthepits.CounterView
+        android:id="@+id/numMotors"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:base="4"
+        app:label="# Motors"
+        app:layout_constraintEnd_toStartOf="@+id/guideline50"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/numWheels" />
+
+    <org.team930.bears.yaboiinthepits.SpinnerView
+        android:id="@+id/drivetrainMotors"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:entries="@array/motorType"
+        app:label="Motor Type"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline50"
+        app:layout_constraintTop_toBottomOf="@+id/numOmniWheels"
+        app:other_enabled="true" />
+
+    <org.team930.bears.yaboiinthepits.SpinnerView
+        android:id="@+id/drivetrainConfig"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:entries="@array/drivetrainType"
+        app:label="Drivetrain"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/drivetrainMotors"
+        app:other_enabled="true" />
+
+    <org.team930.bears.yaboiinthepits.SeekbarView
+        android:id="@+id/bottomSpeed"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:ceil="20"
+        app:label="Bottom Speed (FPS)"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline50"
+        app:layout_constraintTop_toBottomOf="@+id/drivetrainConfig" />
+
+    <org.team930.bears.yaboiinthepits.SeekbarView
+        android:id="@+id/topSpeed"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:ceil="20"
+        app:label="Top Speed (FPS)"
+        app:layout_constraintEnd_toStartOf="@+id/guideline50"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/drivetrainConfig" />
+
+    <org.team930.bears.yaboiinthepits.ToggleView
+        android:id="@+id/camera"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:label="Driving with Camera?"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topSpeed" />
+
+    <org.team930.bears.yaboiinthepits.CheckboxView
+        android:id="@+id/intakeOuttake"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:entries="@array/intake"
+        app:label="Intake/Outtake"
+        app:layout_constraintEnd_toStartOf="@+id/guideline50"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/camera" />
+
+    <org.team930.bears.yaboiinthepits.TextboxView
+        android:id="@+id/ballLimit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:label="Max Balls"
+        app:label_location="side"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline50"
+        app:layout_constraintTop_toBottomOf="@+id/camera" />
+
+    <org.team930.bears.yaboiinthepits.TextboxView
+        android:id="@+id/ballLimitMech"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:label="How are balls limited"
+        app:label_location="top"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline50"
+        app:layout_constraintTop_toBottomOf="@+id/ballLimit" />
+
+    <org.team930.bears.yaboiinthepits.LabelView
+        android:id="@+id/shooterLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:center="true"
+        app:label="Shooter pew pew"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ballLimitMech" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/zonesLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="2dp"
+        android:padding="5dp"
+        app:layout_constraintTop_toBottomOf="@id/shooterLabel"
+        android:background="@drawable/rounded_corners_chunk_material">
+
+        <ImageView
+            android:id="@+id/fieldzones"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:scaleType="fitXY"
+            android:adjustViewBounds="true"
+            android:src="@drawable/field_zones"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/zonesLayout" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <org.team930.bears.yaboiinthepits.ToggleView
+        android:id="@+id/turret"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:label="Turret"
+        app:layout_constraintEnd_toStartOf="@+id/guideline50"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/zonesLayout" />
+
+    <org.team930.bears.yaboiinthepits.ToggleView
+        android:id="@+id/wideOuttake"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:label="Wide Outtake"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline50"
+        app:layout_constraintTop_toBottomOf="@+id/zonesLayout" />
+
+    <org.team930.bears.yaboiinthepits.TextboxView
+        android:id="@+id/outtakeHeight"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:label="Outtake Height"
+        app:label_location="side"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline50"
+        app:layout_constraintTop_toBottomOf="@+id/shooterVariables" />
+
+    <org.team930.bears.yaboiinthepits.CheckboxView
+        android:id="@+id/shooterVariables"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:entries="@array/shooterVariables"
+        app:label="Shooter Variables"
+        app:layout_constraintEnd_toStartOf="@+id/guideline50"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/turret" />
+
+    <org.team930.bears.yaboiinthepits.CheckboxView
+        android:id="@+id/shootingGoals"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:entries="@array/goals"
+        app:label="Scoring Goals"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline50"
+        app:layout_constraintTop_toBottomOf="@+id/turret" />
+
+
+    <org.team930.bears.yaboiinthepits.ToggleView
+        android:id="@+id/visionTracking"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:label="Vision Tracking"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline50"
+        app:layout_constraintTop_toBottomOf="@+id/outtakeHeight" />
+
+    <org.team930.bears.yaboiinthepits.TextboxView
+        android:id="@+id/ballsPerMatch"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:label="# Balls Per Match"
+        app:label_location="side"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline50"
+        app:layout_constraintTop_toBottomOf="@+id/visionTracking" />
+
+    <org.team930.bears.yaboiinthepits.CheckboxView
+        android:id="@+id/shootingZones"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:entries="@array/zones"
+        app:label="Where Can they Shoot?"
+        app:layout_constraintEnd_toStartOf="@+id/guideline50"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/shooterVariables" />
+
+    <org.team930.bears.yaboiinthepits.LabelView
+        android:id="@+id/dimensionsLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:center="true"
+        app:label="Dimensions"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/shootingZones" />
+
+
+    <org.team930.bears.yaboiinthepits.TextboxView
+        android:id="@+id/length"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:label="Length (in)"
+        app:label_location="side"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline50"
+        app:layout_constraintTop_toBottomOf="@+id/dimensionsLabel" />
+
+
+    <org.team930.bears.yaboiinthepits.TextboxView
+        android:id="@+id/width"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:label="Width(in)"
+        app:label_location="side"
+        app:layout_constraintEnd_toStartOf="@+id/guideline50"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dimensionsLabel" />
+
+    <org.team930.bears.yaboiinthepits.TextboxView
+        android:id="@+id/height"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:label="Height (in)"
+        app:label_location="side"
+        app:layout_constraintEnd_toStartOf="@+id/guideline50"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/width" />
+
+    <org.team930.bears.yaboiinthepits.TextboxView
+        android:id="@+id/weight"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:label="Weight"
+        app:label_location="side"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline50"
+        app:layout_constraintTop_toBottomOf="@+id/length" />
+
+    <org.team930.bears.yaboiinthepits.ToggleView
+        android:id="@+id/controlPanelCamera"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:label="Auto Mech"
+        app:layout_constraintBottom_toBottomOf="@+id/controlPanel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline50"
+        app:layout_constraintTop_toBottomOf="@+id/height"
+/>
+
+    <org.team930.bears.yaboiinthepits.CheckboxView
+        android:id="@+id/controlPanel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:entries="@array/controlPanel"
+        app:label="Control Panel"
+        app:layout_constraintEnd_toStartOf="@+id/guideline50"
+        app:layout_constraintStart_toStartOf="@+id/drivetrainLabel"
+        app:layout_constraintTop_toBottomOf="@+id/height" />
+
+    <org.team930.bears.yaboiinthepits.LabelView
+        android:id="@+id/endgameLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:center="true"
+        app:label="Endgame"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/controlPanel" />
+
+    <org.team930.bears.yaboiinthepits.SpinnerView
+        android:id="@+id/endgameMech"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:entries="@array/endgameMechs"
+        app:label="Endgame"
+        app:layout_constraintBottom_toTopOf="@+id/tippedBar"
+        app:layout_constraintEnd_toStartOf="@+id/guideline50"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/endgameLabel" />
+
+    <org.team930.bears.yaboiinthepits.CheckboxView
+        android:id="@+id/climbPos"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:entries="@array/climbPos"
+        app:label="Where can you climb?"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline50"
+        app:layout_constraintTop_toBottomOf="@+id/endgameLabel" />
+
+    <org.team930.bears.yaboiinthepits.ToggleView
+        android:id="@+id/tippedBar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:label="Tipped Bar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline50"
+        app:layout_constraintTop_toBottomOf="@+id/climbPos" />
+
+
+    <org.team930.bears.yaboiinthepits.ToggleView
+        android:id="@+id/balancingMech"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:label="Balancing Mech"
+        app:layout_constraintEnd_toStartOf="@+id/guideline50"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tippedBar" />
+
+    <org.team930.bears.yaboiinthepits.TextboxView
+        android:id="@+id/groundClearance"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:label="Clearance"
+        app:label_location="side"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline50"
+        app:layout_constraintTop_toBottomOf="@+id/tippedBar" />
+
+    <org.team930.bears.yaboiinthepits.TextboxView
+        android:id="@+id/climberWidth"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:label="Climb Width"
+        app:label_location="side"
+        app:layout_constraintEnd_toEndOf="@id/guideline50"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tippedBar" />
+
+    <org.team930.bears.yaboiinthepits.LabelView
+        android:id="@+id/autoLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:center="true"
+        app:label="Autonomous"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/groundClearance" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/autoStartLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="2dp"
+        android:padding="5dp"
+        app:layout_constraintTop_toBottomOf="@id/autoLabel"
+        android:background="@drawable/rounded_corners_chunk_material">
+
+        <ImageView
+            android:id="@+id/autoStartImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:scaleType="fitXY"
+            android:adjustViewBounds="true"
+            android:src="@drawable/starting_pos"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/autoStartLayout" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <org.team930.bears.yaboiinthepits.CheckboxView
+        android:id="@+id/autoStartPos"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:entries="@array/startPos"
+        app:label="Where can you Start"
+        app:layout_constraintBottom_toBottomOf="@+id/maxAutoBalls"
+        app:layout_constraintEnd_toEndOf="@id/guideline50"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/autoStartLayout" />
+
+    <org.team930.bears.yaboiinthepits.ToggleView
+        android:id="@+id/autoDelay"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:label="Auto Delay?"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline50"
+        app:layout_constraintTop_toBottomOf="@+id/autoStartLayout" />
+
+    <org.team930.bears.yaboiinthepits.ToggleView
+        android:id="@+id/crossLine"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:label="Initiation Line"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline50"
+        app:layout_constraintTop_toBottomOf="@+id/autoDelay" />
+
+    <org.team930.bears.yaboiinthepits.TextboxView
+        android:id="@+id/maxAutoBalls"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:hint="Max # of PCs"
+        app:label_location="none"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/guideline50"
+        app:layout_constraintTop_toBottomOf="@+id/crossLine" />
+
+
+    <org.team930.bears.yaboiinthepits.TextboxView
+        android:id="@+id/autoDes1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:label="Auto 1"
+        app:label_location="top"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/maxAutoBalls" />
+
+    <org.team930.bears.yaboiinthepits.TextboxView
+        android:id="@+id/autoDes2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:label="Auto 2"
+        app:label_location="top"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/autoDes1" />
+
+    <org.team930.bears.yaboiinthepits.TextboxView
+        android:id="@+id/autoDes3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:label="Auto 3"
+        app:label_location="top"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/autoDes2" />
+
+    <org.team930.bears.yaboiinthepits.TextboxView
+        android:id="@+id/otherComments"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:label="Other Comments"
+        app:label_location="top"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/autoDes3" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/pictureView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="2dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="2dp"
+        android:background="@drawable/rounded_corners_chunk_material"
+        android:clickable="true"
+        android:focusable="true"
+        android:orientation="horizontal"
+        android:padding="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/otherComments">
+
+        <TextView
+            android:id="@+id/pictureLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:fontFamily="@font/montserratitalic"
+            android:gravity="left|center"
+            android:text="Take Picture(s)"
+            android:textSize="32sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="HardcodedText,NestedWeights,RtlHardcoded,SpUsage" />
+
+        <Button
+            android:id="@+id/takePicture"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:fontFamily="@font/montserratbold"
+            android:onClick="setTakePic"
+            android:text=">"
+            android:textColor="@color/colorWhite"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/pictureLabel"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="HardcodedText" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/submitView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="2dp"
+            android:background="@drawable/rounded_corners_chunk_material"
+            android:clickable="true"
+            android:focusable="true"
+            android:orientation="horizontal"
+            android:padding="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/pictureView">
+
+            <TextView
+                android:id="@+id/submitLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:fontFamily="@font/montserratitalic"
+                android:gravity="left|center"
+                android:text="Submit Data"
+                android:textSize="32sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="HardcodedText,NestedWeights,RtlHardcoded,SpUsage" />
+
+            <Button
+                android:id="@+id/submit"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:fontFamily="@font/montserratbold"
+                android:onClick="setSubmitData"
+                android:text=">"
+                android:textColor="@color/colorWhite"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/submitLabel"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="HardcodedText" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

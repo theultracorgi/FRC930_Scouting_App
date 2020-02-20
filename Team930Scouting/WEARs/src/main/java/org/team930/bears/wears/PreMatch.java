@@ -16,7 +16,7 @@ import java.util.Calendar;
 
 public class PreMatch extends AppCompatActivity {
 
-    TextboxView teamNum, matchNum;
+    TextboxView scouter, teamNum, matchNum;
     SpinnerView startPos;
 
     ImageView map;
@@ -42,36 +42,35 @@ public class PreMatch extends AppCompatActivity {
 
         SPOS.apply();
 
+        scouter = findViewById(R.id.pScouter);
         teamNum = findViewById(R.id.teamNum);
         matchNum = findViewById(R.id.matchNum);
         startPos = findViewById(R.id.startPos);
         map = findViewById(R.id.map);
 
-
-
-        switch (startPos.getPos()) {
+        switch (otherSettings.getInt("scouterPos", 0)) {
             case 0:
-                map.setImageResource(R.drawable.s0);
+                map.setImageResource(R.drawable.s3);
                 allianceColor = "b";
                 break;
             case 1:
-                map.setImageResource(R.drawable.s1);
+                map.setImageResource(R.drawable.s4);
                 allianceColor = "b";
                 break;
             case 2:
-                map.setImageResource(R.drawable.s2);
+                map.setImageResource(R.drawable.s5);
                 allianceColor = "b";
                 break;
             case 3:
-                map.setImageResource(R.drawable.s3);
+                map.setImageResource(R.drawable.s0);
                 allianceColor = "r";
                 break;
             case 4:
-                map.setImageResource(R.drawable.s4);
+                map.setImageResource(R.drawable.s1);
                 allianceColor = "r";
                 break;
             case 5:
-                map.setImageResource(R.drawable.s5);
+                map.setImageResource(R.drawable.s2);
                 allianceColor = "r";
                 break;
             default:
@@ -110,6 +109,7 @@ public class PreMatch extends AppCompatActivity {
 
                     SharedPreferences.Editor SPMD = matchData.edit();
                     SPMD.putString("preMatchVals", teamNum.getText() + "," + matchNum.getText() + allianceColor + "," + startPosVal + ",");
+                    SPMD.putString("scouterName", scouter.getText());
                     SPMD.apply();
 
                     Intent goToAuton = new Intent(PreMatch.this, AutonTeleop.class);

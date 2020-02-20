@@ -134,6 +134,29 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/aBallsNotShot" />
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/zonesLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="2dp"
+        android:padding="5dp"
+        app:layout_constraintTop_toBottomOf="@id/tLabel"
+        android:background="@drawable/rounded_corners_chunk_material">
+
+        <ImageView
+            android:id="@+id/fieldzonesapp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:scaleType="fitXY"
+            android:adjustViewBounds="true"
+            android:src="@drawable/field_zones"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/zonesLayout" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <org.team930.bears.wears.LabelView
         android:id="@+id/tZone1Label"
         android:layout_width="0dp"
@@ -143,7 +166,7 @@
         app:label="Zone 1 Power Cells"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tLabel" />
+        app:layout_constraintTop_toBottomOf="@+id/zonesLayout" />
 
     <org.team930.bears.wears.CounterView
         android:id="@+id/tZone1Outer"

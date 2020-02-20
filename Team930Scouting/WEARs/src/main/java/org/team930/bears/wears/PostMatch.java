@@ -33,7 +33,7 @@ public class PostMatch extends AppCompatActivity {
     SharedPreferences matchData, otherSettings;
 
     SeekbarView passingEffectivenss, boundaryEffectiveness, defendedEffectiveness, defenseEffectivness, defenseAggressiveness;
-    TextboxView secondsDisabled, reasonDisabled, struggles, otherComments, whyPick, scouter;
+    TextboxView secondsDisabled, reasonDisabled, struggles, otherComments, whyPick;
     ToggleView passedTo, gettingInWay, pushed, pushing, worthPicking;
     CheckboxView penalties;
 
@@ -65,7 +65,6 @@ public class PostMatch extends AppCompatActivity {
         struggles = findViewById(R.id.pStruggles);
         otherComments = findViewById(R.id.pOtherComments);
         whyPick = findViewById(R.id.pWhyPick);
-        scouter = findViewById(R.id.pScouter);
 
         passedTo = findViewById(R.id.pPassedTo);
         gettingInWay = findViewById(R.id.pGettingInTheWay);
@@ -109,7 +108,7 @@ public class PostMatch extends AppCompatActivity {
                             defendedEffectiveness.getProgress() + "," + pushed.getState() + "," +
                             defenseEffectivness.getProgress() + "," + defenseAggressiveness.getProgress() + "," + pushing.getState() + "," +
                             penaltyStates[0] + "," + penaltyStates[1] + "," + penaltyStates[2] + "," + penaltyStates[3] + "," +
-                            struggles.getText() + "," + otherComments.getText() + "," + worthPicking.getState() + "," + whyPick.getText() + "," + scouter.getText()
+                            struggles.getText() + "," + otherComments.getText() + "," + worthPicking.getState() + "," + whyPick.getText() + "," + otherSettings.getString("scouterName", "")
                     );
                     SPMD.apply();
 
