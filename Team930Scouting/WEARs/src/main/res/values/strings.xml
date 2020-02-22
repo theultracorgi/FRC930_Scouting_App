@@ -35,6 +35,7 @@
         <item>Pinning</item>
         <item>Contacting Opponents in Safe Zones</item>
         <item>Touched Opponents While Climbing</item>
+        <item>Grabbed 5+ balls</item>
     </string-array>
 
     <string-array name="endgameState">

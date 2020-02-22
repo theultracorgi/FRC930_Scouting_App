@@ -107,6 +107,14 @@ public class AutonTeleop extends AppCompatActivity {
         } else {
             aFailTrue = "";
         }
+        int rotationBool = 0;
+        int positionBool = 0;
+        if(rotationAttempt.getState()==1 || rotationTime.getChonometerReading() != 0) {
+            rotationBool = 1;
+        }
+        if(positionAttempt.getState()==1 || positionTime.getChonometerReading() != 0) {
+            rotationBool = 1;
+        }
 
         long thisTime = java.util.Calendar.getInstance().getTimeInMillis();
         if (prevTime < thisTime) {
@@ -120,8 +128,8 @@ public class AutonTeleop extends AppCompatActivity {
                         z3Inner.getCount() + "," + z3Outer.getCount() + "," + z3Missed.getCount() + "," +
                         z4Inner.getCount() + "," + z4Outer.getCount() + "," + z4Missed.getCount() + "," +
                         z5Inner.getCount() + "," + z5Outer.getCount() + "," + z5Missed.getCount() + "," +
-                        rotationTime.getChonometerReading() + "," + rotationAttempt.getState() + "," +
-                        positionTime.getChonometerReading() + "," + rotationAttempt.getState() + "," +
+                        rotationTime.getChonometerReading() + "," + rotationBool + "," +
+                        positionTime.getChonometerReading() + "," + positionBool + "," +
                         passesMade.getCount() + "," + penaltiesBad.getCount() + "," + penaltiesGood.getState() + "," +
                         endgameState.getSelection() + "," + otherClimbs.getState() + "," + endgameTime.getChonometerReading() + "," +
                         endgameFailReason.getText() + "," + endgameOther.getText() + ","

@@ -103,11 +103,11 @@ public class PostMatch extends AppCompatActivity {
                     SharedPreferences.Editor SPOS = otherSettings.edit();
 
                     SPMD.putString("postMatchVals", passingEffectivenss.getProgress() + "," + passedTo.getState() + "," +
-                            boundaryEffectiveness.getProgress() + "," + disabled + "," + reasonDisabled.getText() + "," +
+                            boundaryEffectiveness.getProgress() + "," + disabled + "," + secondsDisabled.getText() + "," + reasonDisabled.getText() + "," +
                             gettingInWay.getState() + "," +
                             defendedEffectiveness.getProgress() + "," + pushed.getState() + "," +
                             defenseEffectivness.getProgress() + "," + defenseAggressiveness.getProgress() + "," + pushing.getState() + "," +
-                            penaltyStates[0] + "," + penaltyStates[1] + "," + penaltyStates[2] + "," + penaltyStates[3] + "," +
+                            penaltyStates[0] + "," + penaltyStates[1] + "," + penaltyStates[2] + "," + penaltyStates[3] + "," + penaltyStates[4] + "," +
                             struggles.getText() + "," + otherComments.getText() + "," + worthPicking.getState() + "," + whyPick.getText() + "," + otherSettings.getString("scouterName", "")
                     );
                     SPMD.apply();
