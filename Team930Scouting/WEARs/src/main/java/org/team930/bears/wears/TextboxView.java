@@ -2,8 +2,6 @@ package org.team930.bears.wears;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.text.InputFilter;
-import android.text.Spanned;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.EditText;
@@ -37,7 +35,6 @@ public class TextboxView extends LinearLayout {
             textbox.setPadding(8,8,8,8);
         }
 
-        textbox.setFilters(new InputFilter[]{setFilter()});
         textbox.clearFocus();
         textbox.setHint(hint);
     }
@@ -47,22 +44,6 @@ public class TextboxView extends LinearLayout {
         return textbox.getText().toString();
     }
 
-    private InputFilter setFilter() {
-        final String blockCharacterSet = ",";
-
-        InputFilter filter = new InputFilter() {
-
-            @Override
-            public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
-
-                if (source != null && blockCharacterSet.contains(("" + source))) {
-                    return "";
-                }
-                return null;
-            }
-        };
-        return filter;
-    }
 
     private void initializeViews(Context context, AttributeSet attrs) {
         LayoutInflater inflater = (LayoutInflater) context

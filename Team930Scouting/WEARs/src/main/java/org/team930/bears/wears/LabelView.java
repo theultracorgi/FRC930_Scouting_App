@@ -68,7 +68,9 @@ public class LabelView extends LinearLayout {
 
 
 
-
+    public void setText(String input) {
+        labelView.setText(input);
+    }
 
     private void initializeViews(Context context, AttributeSet attrs) {
         TypedArray a = context.getTheme().obtainStyledAttributes(

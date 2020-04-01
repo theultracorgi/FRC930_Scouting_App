@@ -5,16 +5,20 @@
     <string name="otherPreferences">otherPreferences</string>
     <string name="numStoredMatches">numStoredMatches</string>
     <string-array name="scouterPos">
-        <item>Blue 1</item>
-        <item>Blue 2</item>
-        <item>Blue 3</item>
-        <item>Red 1</item>
-        <item>Red 2</item>
-        <item>Red 3</item>
+        <item>Blue Far</item>
+        <item>Blue Middle</item>
+        <item>Blue Close</item>
+        <item>Red Far</item>
+        <item>Red Middle</item>
+        <item>Red Close</item>
     </string-array>
     <string name="adminPassword">478609</string>
-    <integer name="maxMatches">6</integer>
+    <integer name="maxMatches">3</integer>
     <string name="TBA_AUTH_KEY">jNdQjBDqhihOqZw8Al5t83XKRSxBOh3OJDKo3GLDYp5xSzvQJP2oEKOu9gCgM5DQ</string>
+    <string name="preMatchVals">preMatchVals</string>
+    <string name="autonTeleopVals">autonTeleopVals</string>
+    <string name="postMatchVals">postMatchVals</string>
+    <string name="sendableData">sendableData</string>
 
     <string-array name="autoFail">
         <item>Crashed Into Others</item>
@@ -23,12 +27,12 @@
     </string-array>
 
     <string-array name="startPos">
-        <item>Blue Far</item>
-        <item>Blue Middle</item>
-        <item>Blue Near</item>
-        <item>Red Far</item>
-        <item>Red Middle</item>
-        <item>Red Near</item>
+        <item>Pos 1</item>
+        <item>Pos 2</item>
+        <item>Pos 3</item>
+        <item>Pos 4</item>
+        <item>Pos 5</item>
+        <item>Pos 6</item>
     </string-array>
 
     <string-array name="penalties">

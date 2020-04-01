@@ -87,8 +87,7 @@ public class HomeScreen extends AppCompatActivity {
             SPMD.putString("autonTeleopVals", "");
             SPMD.putString("postMatchVals", "");
 
-            SPMD.putString("firstQR", "");
-            SPMD.putString("secondQR", "");
+            SPMD.putString("sendableData", "");
             SPMD.apply();
             SPOS.apply();
         }

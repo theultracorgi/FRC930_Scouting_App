@@ -5,12 +5,10 @@ import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.icu.util.Calendar;
 import android.os.Bundle;
-import android.os.Handler;
-
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
-
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -19,6 +17,8 @@ public class AutonTeleop extends AppCompatActivity {
 
     String matchDataPreferences, otherPreferences, aFailTrue;
     SharedPreferences matchData, otherSettings;
+
+    ImageView fieldZones;
 
     Button tGoToPostmatch;
     ToggleView initiationLine, aFail, grabbedBalls, penaltiesGood, rotationAttempt, positionAttempt, otherClimbs;
@@ -45,6 +45,8 @@ public class AutonTeleop extends AppCompatActivity {
 
         matchData = getSharedPreferences(matchDataPreferences, 0);
         otherSettings = getSharedPreferences(otherPreferences, 0);
+
+        fieldZones = findViewById(R.id.fieldzonesapp);
 
         //Finding Views
         tGoToPostmatch = findViewById(R.id.goToPostMatch);
@@ -95,6 +97,32 @@ public class AutonTeleop extends AppCompatActivity {
         endgameFailReason = findViewById(R.id.tClimbFailDetails);
         endgameOther = findViewById(R.id.tOtherClimbDetails);
 
+        switch (otherSettings.getInt("scouterPos", 0)) {
+            case 0:
+                fieldZones.setImageResource(R.drawable.field_zones_blue);
+                break;
+            case 1:
+                fieldZones.setImageResource(R.drawable.field_zones_blue);
+                break;
+            case 2:
+                fieldZones.setImageResource(R.drawable.field_zones_blue);
+                break;
+            case 3:
+                fieldZones.setImageResource(R.drawable.field_zones_red);
+                break;
+            case 4:
+                fieldZones.setImageResource(R.drawable.field_zones_red);
+                break;
+            case 5:
+                fieldZones.setImageResource(R.drawable.field_zones_red);
+                break;
+            default:
+                fieldZones.setImageResource(R.drawable.field_zones_red);
+                break;
+
+
+        }
+
 
     }
 
@@ -116,27 +144,26 @@ public class AutonTeleop extends AppCompatActivity {
             rotationBool = 1;
         }
 
+        SharedPreferences.Editor SPMD = matchData.edit();
+        SPMD.putString(getString(R.string.autonTeleopVals), initiationLine.getState() + "," +
+                aBottom.getCount() + "," + aOuter.getCount() + "," + aInner.getCount() + "," +
+                aFailTrue + "," + grabbedBalls.getState() + "," +
+                z1Inner.getCount() + "," + z1Outer.getCount() + "," + z1Missed.getCount() + "," +
+                z2Inner.getCount() + "," + z2Outer.getCount() + "," + z2Bottom.getCount() + "," + z2Missed.getCount() + "," +
+                z3Inner.getCount() + "," + z3Outer.getCount() + "," + z3Missed.getCount() + "," +
+                z4Inner.getCount() + "," + z4Outer.getCount() + "," + z4Missed.getCount() + "," +
+                z5Inner.getCount() + "," + z5Outer.getCount() + "," + z5Missed.getCount() + "," +
+                rotationTime.getChonometerReading() + "," + rotationBool + "," +
+                positionTime.getChonometerReading() + "," + positionBool + "," +
+                passesMade.getCount() + "," + penaltiesBad.getCount() + "," + penaltiesGood.getState() + "," +
+                endgameState.getSelection() + "," + otherClimbs.getState() + "," + endgameTime.getChonometerReading() + "," +
+                endgameFailReason.getText() + "," + endgameOther.getText() + ","
+        );
+        SPMD.apply();
+
         long thisTime = java.util.Calendar.getInstance().getTimeInMillis();
         if (prevTime < thisTime) {
             if ((thisTime - prevTime) <= 1000) {//1 SEC
-                SharedPreferences.Editor SPMD = matchData.edit();
-                SPMD.putString("autonTeleopVals", initiationLine.getState() + "," +
-                        aBottom.getCount() + "," + aOuter.getCount() + "," + aInner.getCount() + "," +
-                        aFailTrue + "," + grabbedBalls.getState() + "," +
-                        z1Inner.getCount() + "," + z1Outer.getCount() + "," + z1Missed.getCount() + "," +
-                        z2Inner.getCount() + "," + z2Outer.getCount() + "," + z2Bottom.getCount() + "," + z2Missed.getCount() + "," +
-                        z3Inner.getCount() + "," + z3Outer.getCount() + "," + z3Missed.getCount() + "," +
-                        z4Inner.getCount() + "," + z4Outer.getCount() + "," + z4Missed.getCount() + "," +
-                        z5Inner.getCount() + "," + z5Outer.getCount() + "," + z5Missed.getCount() + "," +
-                        rotationTime.getChonometerReading() + "," + rotationBool + "," +
-                        positionTime.getChonometerReading() + "," + positionBool + "," +
-                        passesMade.getCount() + "," + penaltiesBad.getCount() + "," + penaltiesGood.getState() + "," +
-                        endgameState.getSelection() + "," + otherClimbs.getState() + "," + endgameTime.getChonometerReading() + "," +
-                        endgameFailReason.getText() + "," + endgameOther.getText() + ","
-                );
-
-                SPMD.apply();
-
                 Intent goToAuton = new Intent(this, PostMatch.class);
                 startActivity(goToAuton);
 
@@ -147,11 +174,9 @@ public class AutonTeleop extends AppCompatActivity {
             }
 
         }
-
     }
 
     long backPrevTime = 0;
-
     @Override
     public void onBackPressed() {
 

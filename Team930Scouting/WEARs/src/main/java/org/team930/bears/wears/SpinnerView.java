@@ -3,7 +3,6 @@ package org.team930.bears.wears;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
@@ -12,9 +11,6 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import static android.content.ContentValues.TAG;
 
 
 public class SpinnerView extends LinearLayout {

@@ -1,29 +1,14 @@
 package org.team930.bears.wears;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
-
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.icu.util.Calendar;
 import android.os.Bundle;
-import android.os.Handler;
-import android.view.ContextThemeWrapper;
-import android.view.KeyEvent;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.SeekBar;
-import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.ToggleButton;
 
-import java.util.Locale;
-
-import static android.app.AlertDialog.THEME_HOLO_LIGHT;
+import androidx.appcompat.app.AppCompatActivity;
 
 @SuppressWarnings("ALL")
 public class PostMatch extends AppCompatActivity {
@@ -51,7 +36,6 @@ public class PostMatch extends AppCompatActivity {
 
         otherPreferences = getString(R.string.otherPreferences);
         otherSettings = getSharedPreferences(otherPreferences, 0);
-
 
         //Finding Views
         passingEffectivenss = findViewById(R.id.pPassingEffectiveness);
@@ -85,56 +69,49 @@ public class PostMatch extends AppCompatActivity {
 
         } else if (secondsDisabled.getText().length() > 0 && reasonDisabled.getText().length() < 5) {
             Toast.makeText(this, "y were they disabled tho???", Toast.LENGTH_SHORT).show();
-        } else {
+        } else { //1
+
+            int[] penaltyStates = penalties.getCheckBoxCheckedArray();
+            if (secondsDisabled.getText().length() > 0) {
+                    disabled = 1;
+            }
+
+            SharedPreferences.Editor SPMD = matchData.edit();
+
+            SPMD.putString(getString(R.string.postMatchVals), passingEffectivenss.getProgress() + "," + passedTo.getState() + "," +
+                    boundaryEffectiveness.getProgress() + "," + disabled + "," + secondsDisabled.getText() + "," + reasonDisabled.getText() + "," +
+                    gettingInWay.getState() + "," +
+                    defendedEffectiveness.getProgress() + "," + pushed.getState() + "," +
+                    defenseEffectivness.getProgress() + "," + defenseAggressiveness.getProgress() + "," + pushing.getState() + "," +
+                    penaltyStates[0] + "," + penaltyStates[1] + "," + penaltyStates[2] + "," + penaltyStates[3] + "," + penaltyStates[4] + "," +
+                    struggles.getText() + "," + otherComments.getText() + "," + worthPicking.getState() + "," + whyPick.getText() + "," +
+                    matchData.getString("scouterName", "") + "\n");
+            SPMD.apply();
+
             long thisTime = java.util.Calendar.getInstance().getTimeInMillis();
-            if (prevTime < thisTime) {
+            if (prevTime < thisTime) { //2
                 if ((thisTime - prevTime) <= 1000) {//1 SEC
 
-                    if (secondsDisabled.getText().length() > 0) {
-                        if (secondsDisabled.getText().length() > 0) {
-                            disabled = 1;
-                        }
-                    }
-
-                    int[] penaltyStates = penalties.getCheckBoxCheckedArray();
-
-
-                    SharedPreferences.Editor SPMD = matchData.edit();
                     SharedPreferences.Editor SPOS = otherSettings.edit();
-
-                    SPMD.putString("postMatchVals", passingEffectivenss.getProgress() + "," + passedTo.getState() + "," +
-                            boundaryEffectiveness.getProgress() + "," + disabled + "," + secondsDisabled.getText() + "," + reasonDisabled.getText() + "," +
-                            gettingInWay.getState() + "," +
-                            defendedEffectiveness.getProgress() + "," + pushed.getState() + "," +
-                            defenseEffectivness.getProgress() + "," + defenseAggressiveness.getProgress() + "," + pushing.getState() + "," +
-                            penaltyStates[0] + "," + penaltyStates[1] + "," + penaltyStates[2] + "," + penaltyStates[3] + "," + penaltyStates[4] + "," +
-                            struggles.getText() + "," + otherComments.getText() + "," + worthPicking.getState() + "," + whyPick.getText() + "," + otherSettings.getString("scouterName", "")
-                    );
+                    SPOS.putInt(numStoredMatches, otherSettings.getInt(numStoredMatches, 2) + 1);
+                    SPMD.putString(getString(R.string.sendableData), matchData.getString(getString(R.string.sendableData), "sendable not found,") +
+                            matchData.getString(getString(R.string.preMatchVals), "shared preference not found,") +
+                            matchData.getString(getString(R.string.autonTeleopVals), "shared preference not found,") +
+                            matchData.getString(getString(R.string.postMatchVals), "shared preference not found,"));
                     SPMD.apply();
-
-                    SPOS.putInt(numStoredMatches, otherSettings.getInt(numStoredMatches, 5) + 1);
                     SPOS.apply();
-
-                    if (otherSettings.getInt(numStoredMatches, 6) <= 3) {
-                        SPMD.putString("firstQR", matchData.getString("firstQR", "") + matchData.getString("preMatchVals", "") + matchData.getString("autonTeleopVals", "") + matchData.getString("postMatchVals", "") + "\n");
-                    } else {
-                        SPMD.putString("secondQR", matchData.getString("secondQR", "") + matchData.getString("preMatchVals", "") + matchData.getString("autonTeleopVals", "") + matchData.getString("postMatchVals", "") + "\n");
-                    }
-                    SPOS.apply();
-                    SPMD.apply();
 
                     Intent submitData = new Intent(PostMatch.this, HomeScreen.class);
                     startActivity(submitData);
 
-                } else {
+                } else { //3
                     //first tap
                     Toast.makeText(this, "Press Again To Go to Submit Data", Toast.LENGTH_SHORT).show();
                     prevTime = thisTime;
-                }
+                } //3
 
-            }
-        }
-
+            } //2
+        } //1
 
     }
 

@@ -1,5 +1,6 @@
 package org.team930.bears.wears;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
@@ -8,7 +9,6 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.util.Calendar;
@@ -17,14 +17,15 @@ import java.util.Calendar;
 public class PreMatch extends AppCompatActivity {
 
     TextboxView scouter, teamNum, matchNum;
+    LabelView scouterPos;
     SpinnerView startPos;
 
-    ImageView map;
     String matchDataPreferences, otherPreferences, allianceColor;
     String startPosVal;
 
     SharedPreferences matchData, otherSettings;
 
+    @SuppressLint("SourceLockedOrientationActivity")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,42 +47,34 @@ public class PreMatch extends AppCompatActivity {
         teamNum = findViewById(R.id.teamNum);
         matchNum = findViewById(R.id.matchNum);
         startPos = findViewById(R.id.startPos);
-        map = findViewById(R.id.map);
+        scouterPos = findViewById(R.id.pScouterPos);
 
         switch (otherSettings.getInt("scouterPos", 0)) {
             case 0:
-                map.setImageResource(R.drawable.s3);
+                scouterPos.setText("Blue Far");
                 allianceColor = "b";
                 break;
             case 1:
-                map.setImageResource(R.drawable.s4);
+                scouterPos.setText("Blue Middle");
                 allianceColor = "b";
                 break;
             case 2:
-                map.setImageResource(R.drawable.s5);
+                scouterPos.setText("Blue Close");
                 allianceColor = "b";
                 break;
             case 3:
-                map.setImageResource(R.drawable.s0);
+                scouterPos.setText("Red Far");
                 allianceColor = "r";
                 break;
             case 4:
-                map.setImageResource(R.drawable.s1);
-                allianceColor = "r";
-                break;
-            case 5:
-                map.setImageResource(R.drawable.s2);
+                scouterPos.setText("Red Middle");
                 allianceColor = "r";
                 break;
             default:
-                allianceColor = "b";
-                map.setImageResource(R.drawable.field);
+                scouterPos.setText("Red Close");
+                allianceColor = "r";
                 break;
-
-
         }
-
-
     }
 
     long prevTime = 0;
@@ -100,18 +93,16 @@ public class PreMatch extends AppCompatActivity {
                 startPosVal = "Right";
                 break;
         }
-
-
         if (isValidField()) {
+
+            SharedPreferences.Editor SPMD = matchData.edit();
+            SPMD.putString(getString(R.string.preMatchVals), teamNum.getText() + "," + matchNum.getText() + allianceColor + "," + startPosVal + ",");
+            SPMD.putString("scouterName", scouter.getText());
+            SPMD.apply();
+
             long thisTime = Calendar.getInstance().getTimeInMillis();
             if (prevTime < thisTime) {
                 if ((thisTime - prevTime) <= 1000) {//1 SEC
-
-                    SharedPreferences.Editor SPMD = matchData.edit();
-                    SPMD.putString("preMatchVals", teamNum.getText() + "," + matchNum.getText() + allianceColor + "," + startPosVal + ",");
-                    SPMD.putString("scouterName", scouter.getText());
-                    SPMD.apply();
-
                     Intent goToAuton = new Intent(PreMatch.this, AutonTeleop.class);
                     startActivity(goToAuton);
                 } else {
@@ -128,7 +119,7 @@ public class PreMatch extends AppCompatActivity {
         if (teamNum.getText().length() == 0 || matchNum.getText().length() == 0) {
             Toast.makeText(this, "Please Complete All Fields", Toast.LENGTH_SHORT).show();
             return false;
-        } else if (!isNumeric(teamNum.getText()) || !isNumeric(matchNum.getText())) {
+        } else if (isNumeric(teamNum.getText()) || isNumeric(matchNum.getText())) {
             Toast.makeText(this, "those ain't numbers my dude", Toast.LENGTH_SHORT).show();
             return false;
         } else if (Integer.parseInt(teamNum.getText()) == 0 || Integer.parseInt(matchNum.getText()) == 0) {
@@ -141,14 +132,14 @@ public class PreMatch extends AppCompatActivity {
 
     public static boolean isNumeric(String strNum) {
         if (strNum == null) {
-            return false;
+            return true;
         }
         try {
             double d = Double.parseDouble(strNum);
         } catch (NumberFormatException nfe) {
-            return false;
+            return true;
         }
-        return true;
+        return false;
     }
 
     long backPrevTime = 0;
